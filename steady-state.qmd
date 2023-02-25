@@ -41,6 +41,7 @@ intermittent dosing by including `ss=1` in an event object or input data set.
 For example:
 
 ```{r}
+#| fig-height: 3.5
 mod <- modlib("pk1", end = 120)
 
 dose <- ev(amt = 100, ii = 12, addl = 4, ss = 1)
@@ -62,6 +63,7 @@ a value for `rate` (any positive rate or -1 if the rate is being modeled), and
 setting the dose amount (`amt`/`AMT`) to zero:
 
 ```{r}
+#| fig-height: 3.5
 infus <- ev(amt = 0, rate = 5, ss = 1, cmt = "CENT")
 
 mrgsim(mod, infus, recsort = 3) %>% plot()

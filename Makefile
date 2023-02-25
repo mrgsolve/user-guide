@@ -3,7 +3,13 @@ export PATH := /Applications/RStudio.app/Contents/MacOS/pandoc:$(PATH)
 DEST := ../../mrgsolve/mrgsolve.github.io/user_guide
 
 all:
-	make publish
+	quarto render
+
+site: 
+	quarto render -t html
+
+book:
+	quarto render -t pdf
 
 spelling:
 	Rscript _spelling.R

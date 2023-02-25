@@ -144,7 +144,7 @@ $ODE dxdt_A = 0;
 '
 ```
 
-``` {r inits-mread,cache=TRUE}
+``` {r inits-mread}
 mod <- mcode("init",code)
 ```
 
@@ -162,7 +162,7 @@ condition for `A` is set to 0
 -   So, if we don't update something in `$MAIN` the initial condition is as we 
 set it in the base list
 
-``` {r topic-init-2, cache=TRUE}
+``` {r topic-init-2}
 mod %>% mrgsim %>% plot
 ```
 
@@ -173,7 +173,7 @@ Note:
 
 -   The code in `$MAIN` still doesn't get run because `IFLAG` is 0
 
-``` {r topic-init-3,cache=TRUE}
+``` {r topic-init-3}
 mod %>% init(A = 50) %>% mrgsim %>% plot
 ```
 
@@ -184,12 +184,12 @@ Note:
 -   Now, that code in `$MAIN` gets run
 -   `A_0` is set to the value of `BASE`
 
-``` {r topic-init-4,cache=TRUE}
+``` {r topic-init-4}
 mod %>% param(IFLAG=1) %>% mrgsim %>% plot
 ```
 
 
-``` {r topic-init-5,cache=TRUE}
+``` {r topic-init-5}
 mod %>% param(IFLAG=1, BASE=300) %>% mrgsim %>% plot
 ```
 
@@ -216,19 +216,19 @@ dxdt_RESP = KIN*(1-AUC/(AUC50+AUC)) - KOUT*RESP;
 '
 ```
 
-``` {r topic-init-6,cache=TRUE}
+``` {r topic-init-6}
 mod <- mcode("init2", code)
 ```
 
 The initial condition is set to 40 per the values of `KIN` and `KOUT`
 
-``` {r topic-init-7, cache=TRUE}
+``` {r topic-init-7}
 mod %>% mrgsim %>% plot
 ```
 
 Even when we change `RESP_0` in `R`, the calculation in `$MAIN` gets the final say
 
-``` {r topic-init-8, cache=TRUE}
+``` {r topic-init-8}
 mod %>% init(RESP=1E9) %>% mrgsim
 ```
 
@@ -278,14 +278,14 @@ idata %>% head
 ```
 
 
-``` {r topic-init-10,cache=TRUE}
+``` {r topic-init-10}
 out <- 
   mod %>% 
   idata_set(idata) %>% 
   mrgsim(end=40)
 ```
 
-``` {r topic-init-11,cache=TRUE}
+``` {r topic-init-11}
 plot(out, CENT~.)
 ```
 
@@ -409,7 +409,7 @@ The matching names tell `mrgsolve` to update, assigning each individual
 their individual parameter.
 
 
-```{r topic-pars-4,cache=TRUE}
+```{r topic-pars-4}
 out <- 
   mod %>%
   idata_set(exidata) %>%
@@ -428,7 +428,7 @@ Like an `idata` set, we can put parameters on a `data` set
 data <- expand.ev(amt=0, CL=c(1,2,3), VC=30)
 ```
 
-```{r topic-pars-5, cache=TRUE}
+```{r topic-pars-5}
 out <- 
   mod %>%
   data_set(data) %>% 
@@ -605,7 +605,7 @@ stime(day1)
 
 Pass this object in to `mrgsim` as `tgrid`.  It will override the default
 `start/end/delta/add` sequence.
-```{r topic-tgrid-1, cache=TRUE}
+```{r topic-tgrid-1}
 mod %>% 
   mrgsim(tgrid=day1) %>%
   plot(type='b')
@@ -616,7 +616,7 @@ __Now, look at both day 1 and day 10__:
 
 Adding a number to a `tgrid` object will offset those times by that amount.  
 
-```{r topic-tgrid-2, cache=TRUE}
+```{r topic-tgrid-2}
 des <- c(day1, day1+10*24)
 
 mod %>% 
@@ -628,7 +628,7 @@ mod %>%
 
 Pick up day 5 as well
 
-```{r topic-tgrid-3, cache=TRUE}
+```{r topic-tgrid-3}
 des <- c(des, day1+5*24)
 
 mod %>% 
@@ -652,7 +652,7 @@ df <- exTheoph
 head(df)
 ```
 
-```{r topic-tgrid-5,cache=TRUE}
+```{r topic-tgrid-5}
 mod %>% 
   Req(CP) %>%
   carry.out(a.u.g) %>%
@@ -693,7 +693,7 @@ Now, we have two groups in `GRP` in `idata_set` and we have two `tgrid` objects.
 When we simulate, the individuals in `GRP 1` will get `des1` and those in `GRP
 2` will get `des2`
 
-```{r topic-design-1,cache=TRUE}
+```{r topic-design-1}
 out <- 
   mod %>% 
   Req(CP) %>%
@@ -857,7 +857,7 @@ will not discard any remainder here.
 
 If you would like to experiment with these concepts, try running this code
 
-```{r, cache=TRUE}
+```{r}
 library(mrgsolve)
 
 code <- '
@@ -913,7 +913,7 @@ __Call `simeps(n)` to resimulate `ETA`__
 For example, we can simulate individual-level covariates
 within a certain range:
 
-```{r topic-simeta-1, cache=TRUE}
+```{r topic-simeta-1}
 code <- '
 $PARAM TVCL = 1, TVWT = 70
 
@@ -952,7 +952,7 @@ __Call `simeps(n)` to resimulate `EPS`__
 For example, we can resimulate until all 
 concentrations are greater than zero:
 
-```{r topic-simeps-1,cache=TRUE}
+```{r topic-simeps-1}
 code <- '
 $PARAM CL = 1, V = 20,
 

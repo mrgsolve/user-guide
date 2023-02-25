@@ -350,14 +350,14 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <p><strong>Augmenting observations in a clinical data set</strong> Occasionally, we want to simulate from a clinical data set (with observation records as actually observed in a population of patients) but we also want to augment those observations with a regular sequence of times (for example, to make a smooth profile on a plot). In that case, you can set <code>obsaug  = TRUE</code> when calling <code>mrgsim</code>.</p>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_set</span>(exTheoph, ID<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carry.out</span>(a.u.g) <span class="sc">%&gt;%</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    obsaug <span class="sc">%&gt;%</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">24</span>, <span class="at">delta=</span><span class="dv">1</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mrgsim</span>(<span class="at">end =</span> <span class="dv">24</span>, <span class="at">delta =</span> <span class="dv">1</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -375,7 +375,7 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 . 7:   1 2.00     1 0.3647 3.422 49.34 0.15048 0.15048
 . 8:   1 2.02     0 0.3560 3.428 49.33 0.15072 0.15072</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out <span class="sc">%&gt;%</span> <span class="fu">select</span>(time) <span class="sc">%&gt;%</span> unlist <span class="sc">%&gt;%</span> unname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out <span class="sc">%&gt;%</span> <span class="fu">select</span>(time) <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">unname</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.  [1]  0.00  0.00  0.25  0.57  1.00  1.12  2.00  2.02  3.00  3.82  4.00  5.00
 . [13]  5.10  6.00  7.00  7.03  8.00  9.00  9.05 10.00 11.00 12.00 12.12 13.00
@@ -421,7 +421,7 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <p>Use <code>data_set</code> to pass the data into the problem.</p>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_set</span>(data) <span class="sc">%&gt;%</span></span>
@@ -469,12 +469,13 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <p>Use the <code>idata_set</code> function to pass the data set into the problem.</p>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">idata_set</span>(exidata) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="datasets_files/figure-html/idata_set-1-1.png" class="img-fluid" width="672"></p>
 </div>

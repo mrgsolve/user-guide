@@ -24,6 +24,7 @@ Event objects are frequently used in a pipeline to simulate a dosing regimen.
 For example
 
 ```{r}
+#| fig-height: 4
 mod <- house(end = 72) 
 
 mod %>% ev(amt = 100, ii = 24, addl = 1) %>% mrgsim() %>% plot("CP")
@@ -32,11 +33,17 @@ mod %>% ev(amt = 100, ii = 24, addl = 1) %>% mrgsim() %>% plot("CP")
 This used the `ev()` constructor to  make an event object for two 100 mg doses 
 and this is passed into `mrgsim()` to implement this regimen. 
 
-Alternatively, we can create a standalone object and feed that into the pipeline
+Alternatively, we can create a standalone object containing the event 
+information
 
 ```{r, eval = FALSE}
+#| fig-height: 4
 regimen <- ev(amt = 100, ii = 24, addl = 1)
+```
 
+and pass that into the simulation pipeline
+
+```{r, eval = FALSE}
 mod %>% ev(regimen) %>% mrgsim() %>% plot("CP")
 ```
 
@@ -44,19 +51,19 @@ If you are not using the pipe syntax, the following would be equivalent
 calls
 
 ```{r, eval = FALSE}
+#| fig-height: 4
 mrgsim(mod, events = regimen) %>% plot("CP")
 ```
 
 And there are `mrgsim()` variants that explicitly accept an event object
 
 ```{r, eval = FALSE}
+#| fig-height: 4
 mrgsim_e(mod, regimen) %>% plot("CP")
 ```
 
 More will be said about how to create and manipulate event objects in the 
 following sections. 
-
-
 
 
 ## Construction
@@ -405,6 +412,7 @@ e
 We can see how this works by simulating the regimen
 
 ```{r}
+#| fig-height: 4
 mrgsim_e(mod, e, end = 168*4) %>% plot("CP")
 ```
 

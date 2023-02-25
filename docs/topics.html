@@ -398,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="st">$ODE dxdt_A = 0;</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="topics_cache/html/inits-mread_80ddaa88174fd5c312931c5a8e7b8d89">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"init"</span>,code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Check the initial condition</strong></p>
@@ -417,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In this chunk, the code in <code>$MAIN</code> doesn’t get run because <code>IFLAG</code> is 0</li>
 <li>So, if we don’t update something in <code>$MAIN</code> the initial condition is as we set it in the base list</li>
 </ul>
-<div class="cell" data-hash="topics_cache/html/topic-init-2_94d2fc172549394112ac95165b2ccb95">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-2-1.png" class="img-fluid" width="672"></p>
@@ -428,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>The code in <code>$MAIN</code> still doesn’t get run because <code>IFLAG</code> is 0</li>
 </ul>
-<div class="cell" data-hash="topics_cache/html/topic-init-3_f04ef8ec9122454f56162e55c5df81a2">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">init</span>(<span class="at">A =</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span> mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-3-1.png" class="img-fluid" width="672"></p>
@@ -440,13 +440,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Now, that code in <code>$MAIN</code> gets run</li>
 <li><code>A_0</code> is set to the value of <code>BASE</code></li>
 </ul>
-<div class="cell" data-hash="topics_cache/html/topic-init-4_b8b0822d0f2c9e0ef85b407025754831">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">param</span>(<span class="at">IFLAG=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-init-5_1d2d6f5048edb9d3d4807909588b2896">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">param</span>(<span class="at">IFLAG=</span><span class="dv">1</span>, <span class="at">BASE=</span><span class="dv">300</span>) <span class="sc">%&gt;%</span> mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-5-1.png" class="img-fluid" width="672"></p>
@@ -471,18 +471,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-init-6_796426f4c67f9493db814f63bd32ea1e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"init2"</span>, code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The initial condition is set to 40 per the values of <code>KIN</code> and <code>KOUT</code></p>
-<div class="cell" data-hash="topics_cache/html/topic-init-7_c47970bf36d251b5171d200a26da4925">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Even when we change <code>RESP_0</code> in <code>R</code>, the calculation in <code>$MAIN</code> gets the final say</p>
-<div class="cell" data-hash="topics_cache/html/topic-init-8_8d118158b614c062b39da9cf7db09ebe">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">init</span>(<span class="at">RESP=</span><span class="fl">1E9</span>) <span class="sc">%&gt;%</span> mrgsim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Model:  init2 
@@ -513,7 +513,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>. 
 .  Model initial conditions (N=1):
 .  name       value . name    value
-.  RESP (1)   0     | . ...   .</code></pre>
+.  RESP (1)   40    | . ...   .</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -522,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>. 
 .  Model initial conditions (N=1):
 .  name       value . name    value
-.  RESP (1)   0     | . ...   .</code></pre>
+.  RESP (1)   20    | . ...   .</code></pre>
 </div>
 </div>
 </section>
@@ -563,13 +563,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 . 6  6      5</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-init-10_11a8da4b0c013a697abb961d2a6a74a7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span> </span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">idata_set</span>(idata) <span class="sc">%&gt;%</span> </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-init-11_12c7e1882ba83e47b4bf9407b919cfc0">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, CENT<span class="sc">~</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-init-11-1.png" class="img-fluid" width="672"></p>
@@ -682,7 +682,7 @@ Let <code>mrgsolve</code> do the updating.</p>
 </div>
 </div>
 <p>The matching names tell <code>mrgsolve</code> to update, assigning each individual their individual parameter.</p>
-<div class="cell" data-hash="topics_cache/html/topic-pars-4_8f31ebe5b71f5cc8b56cf5270dc7a31d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">idata_set</span>(exidata) <span class="sc">%&gt;%</span></span>
@@ -711,7 +711,7 @@ Let <code>mrgsolve</code> do the updating.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.ev</span>(<span class="at">amt=</span><span class="dv">0</span>, <span class="at">CL=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">VC=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-pars-5_390f112b88799622f7b1dcc4ab9fae25">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_set</span>(data) <span class="sc">%&gt;%</span> </span>
@@ -939,7 +939,7 @@ Found nothing to update: param </code></pre>
 </div>
 </div>
 <p>Pass this object in to <code>mrgsim</code> as <code>tgrid</code>. It will override the default <code>start/end/delta/add</code> sequence.</p>
-<div class="cell" data-hash="topics_cache/html/topic-tgrid-1_19763a2cde85307cc1476099ea555e59">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid=</span>day1) <span class="sc">%&gt;%</span></span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -949,7 +949,7 @@ Found nothing to update: param </code></pre>
 </div>
 <p><strong>Now, look at both day 1 and day 10</strong>:</p>
 <p>Adding a number to a <code>tgrid</code> object will offset those times by that amount.</p>
-<div class="cell" data-hash="topics_cache/html/topic-tgrid-2_73507bfa2656ea54bbf1213ee140ba15">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(day1, day1<span class="sc">+</span><span class="dv">10</span><span class="sc">*</span><span class="dv">24</span>)</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
@@ -960,7 +960,7 @@ Found nothing to update: param </code></pre>
 </div>
 </div>
 <p>Pick up day 5 as well</p>
-<div class="cell" data-hash="topics_cache/html/topic-tgrid-3_c14688e83bbb1c03f25d7bb39921b639">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(des, day1<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span><span class="dv">24</span>)</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
@@ -992,7 +992,7 @@ Found nothing to update: param </code></pre>
 . 6  1 79.6 4.02 3.82  8.58   0 0.00    0</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="topics_cache/html/topic-tgrid-5_bb88c3d472a737ccbb91e166ab23bc83">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Req</span>(CP) <span class="sc">%&gt;%</span></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">carry.out</span>(a.u.g) <span class="sc">%&gt;%</span></span>
@@ -1060,7 +1060,7 @@ Found nothing to update: param </code></pre>
 <li>Pass in a list of designs; it <strong>must</strong> be at least two because there are two levels in <code>GRP</code></li>
 </ul>
 <p>When we simulate, the individuals in <code>GRP 1</code> will get <code>des1</code> and those in <code>GRP 2</code> will get <code>des2</code></p>
-<div class="cell" data-hash="topics_cache/html/topic-design-1_9daaef3e8785f3d8430233cd570ef53f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span> </span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Req</span>(CP) <span class="sc">%&gt;%</span></span>
@@ -1189,7 +1189,7 @@ However, it is required to become familiar with some of the basics and certainly
 </div>
 <p>I think it’s fair to say that the vast majority of time you want this to evaluate to <code>0.75</code> and writing <code>3.0/4.0</code> rather than <code>3/4</code> will ensure you will not discard any remainder here.</p>
 <p>If you would like to experiment with these concepts, try running this code</p>
-<div class="cell" data-hash="topics_cache/html/unnamed-chunk-58_a7d1aab892ad5021b7094f4475b10d44">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mrgsolve)</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
@@ -1245,7 +1245,7 @@ However, it is required to become familiar with some of the basics and certainly
 <li><code>simeta(n)</code> takes a single argument (<code>n</code>), the ETA number to resimulate</li>
 </ul>
 <p>For example, we can simulate individual-level covariates within a certain range:</p>
-<div class="cell" data-hash="topics_cache/html/topic-simeta-1_56b229474bff768e617a90a7a249d219">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM TVCL = 1, TVWT = 70</span></span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1280,12 +1280,12 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.        ID              time        EWT                 WT       
-.  Min.   :  1.00   Min.   :0   Min.   :-0.15355   Min.   :60.04  
-.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.08545   1st Qu.:64.27  
-.  Median : 50.50   Median :0   Median :-0.01509   Median :68.95  
-.  Mean   : 50.50   Mean   :0   Mean   :-0.02078   Mean   :68.76  
-.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.03810   3rd Qu.:72.72  
-.  Max.   :100.00   Max.   :0   Max.   : 0.13210   Max.   :79.89</code></pre>
+.  Min.   :  1.00   Min.   :0   Min.   :-0.14878   Min.   :60.32  
+.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.07678   1st Qu.:64.83  
+.  Median : 50.50   Median :0   Median :-0.02512   Median :68.26  
+.  Mean   : 50.50   Mean   :0   Mean   :-0.01536   Mean   :69.14  
+.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.04417   3rd Qu.:73.16  
+.  Max.   :100.00   Max.   :0   Max.   : 0.13023   Max.   :79.74</code></pre>
 </div>
 </div>
 <p><strong>Call <code>simeps(n)</code> to resimulate <code>EPS</code></strong></p>
@@ -1294,7 +1294,7 @@ However, it is required to become familiar with some of the basics and certainly
 <li><code>simeps()</code> takes a single argument (<code>n</code>), the EPS number to resimulate</li>
 </ul>
 <p>For example, we can resimulate until all concentrations are greater than zero:</p>
-<div class="cell" data-hash="topics_cache/html/topic-simeps-1_bd3df627478c5c37e90bc44502452a7f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20,</span></span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1329,13 +1329,13 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.        ID         time            CENT              CP         
-.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.2492  
-.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 1.9615  
-.  Median :1   Median :23.50   Median : 29.38   Median : 3.8950  
-.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 5.5417  
-.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 7.3025  
-.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :23.9290</code></pre>
+<pre><code>.        ID         time            CENT              CP          
+.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.04051  
+.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.31983  
+.  Median :1   Median :23.50   Median : 29.38   Median : 5.32209  
+.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 5.99587  
+.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 8.10313  
+.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :16.21802</code></pre>
 </div>
 </div>
 <p><strong>A safety check is recommended</strong> Note that in both examples, we implement a safety check: an integer counter is incremented every time we resimulated. The resimulation process stops if we don’t reach the desired condition within 100 replicates. You might also consider issuing a message or a flag in the simulated data if you are not able to reach the desired condition.</p>
