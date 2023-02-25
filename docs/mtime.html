@@ -251,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="mtime" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></h1>
+<h1 class="title"><span id="sec-mtime" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></h1>
 </div>
 
 
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="simple-mtime" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="simple-mtime"><span class="header-section-number">10.1</span> Simple MTIME</h2>
 <p>Use this when you just want to introduce a non-dose discontinuity in your simulation at a specific time. For example, you want a parameter to change value at a specific time and you don’t know about the values or times prior to simulating.</p>
-<p>To schedule a discontinuity, call the <code>mtime()</code> member (Section @ref(self.time)) of the <code>self</code> object (Section @ref(self-object)). This is typically done in the <code>$MAIN</code> block.</p>
+<p>To schedule a discontinuity, call the <code>mtime()</code> member (<a href="specification.html#sec-self.mtime"><span>Section&nbsp;2.3.22</span></a>) of the <code>self</code> object (<a href="specification.html#sec-self-object"><span>Section&nbsp;2.3.12</span></a>). This is typically done in the <code>$MAIN</code> block.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> mt <span class="op">=</span> self<span class="op">.</span>mtime<span class="op">(</span><span class="fl">14.12</span><span class="op">);</span></span>

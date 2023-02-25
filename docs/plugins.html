@@ -240,15 +240,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#plugin-autodec" id="toc-plugin-autodec" class="nav-link active" data-scroll-target="#plugin-autodec"><span class="toc-section-number">9.1</span>  autodec</a></li>
-  <li><a href="#plugin-nm-vars" id="toc-plugin-nm-vars" class="nav-link" data-scroll-target="#plugin-nm-vars"><span class="toc-section-number">9.2</span>  nm-vars</a></li>
-  <li><a href="#plugin-tad" id="toc-plugin-tad" class="nav-link" data-scroll-target="#plugin-tad"><span class="toc-section-number">9.3</span>  tad</a>
+  <li><a href="#sec-plugin-autodec" id="toc-sec-plugin-autodec" class="nav-link active" data-scroll-target="#sec-plugin-autodec"><span class="toc-section-number">9.1</span>  autodec</a></li>
+  <li><a href="#sec-plugin-nm-vars" id="toc-sec-plugin-nm-vars" class="nav-link" data-scroll-target="#sec-plugin-nm-vars"><span class="toc-section-number">9.2</span>  nm-vars</a></li>
+  <li><a href="#sec-plugin-tad" id="toc-sec-plugin-tad" class="nav-link" data-scroll-target="#sec-plugin-tad"><span class="toc-section-number">9.3</span>  tad</a>
   <ul class="collapse">
   <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note"><span class="toc-section-number">9.3.1</span>  Note</a></li>
   </ul></li>
-  <li><a href="#plugin-cxx11" id="toc-plugin-cxx11" class="nav-link" data-scroll-target="#plugin-cxx11"><span class="toc-section-number">9.4</span>  CXX11</a></li>
-  <li><a href="#plugin-rcpp" id="toc-plugin-rcpp" class="nav-link" data-scroll-target="#plugin-rcpp"><span class="toc-section-number">9.5</span>  Rcpp</a></li>
-  <li><a href="#plugin-mrgx" id="toc-plugin-mrgx" class="nav-link" data-scroll-target="#plugin-mrgx"><span class="toc-section-number">9.6</span>  mrgx</a>
+  <li><a href="#sec-plugin-cxx11" id="toc-sec-plugin-cxx11" class="nav-link" data-scroll-target="#sec-plugin-cxx11"><span class="toc-section-number">9.4</span>  CXX11</a></li>
+  <li><a href="#sec-plugin-rcpp" id="toc-sec-plugin-rcpp" class="nav-link" data-scroll-target="#sec-plugin-rcpp"><span class="toc-section-number">9.5</span>  Rcpp</a></li>
+  <li><a href="#sec-plugin-mrgx" id="toc-sec-plugin-mrgx" class="nav-link" data-scroll-target="#sec-plugin-mrgx"><span class="toc-section-number">9.6</span>  mrgx</a>
   <ul class="collapse">
   <li><a href="#get-the-model-environment" id="toc-get-the-model-environment" class="nav-link" data-scroll-target="#get-the-model-environment"><span class="toc-section-number">9.6.1</span>  Get the model environment</a></li>
   </ul></li>
@@ -263,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="plugins" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></h1>
+<h1 class="title"><span id="sec-plugins" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></h1>
 </div>
 
 
@@ -278,8 +278,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="plugin-autodec" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="plugin-autodec"><span class="header-section-number">9.1</span> autodec</h2>
+<section id="sec-plugin-autodec" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="sec-plugin-autodec"><span class="header-section-number">9.1</span> autodec</h2>
 <p>Available as of mrgsolve version 1.0.0.</p>
 <p>When this plugin is invoked, mrgsolve will search your model code for assignments and automatically declare them as <code>double</code> precision numbers. The following blocks are searched</p>
 <ul>
@@ -322,8 +322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>This can be a vector of variable names to NOT declare when <code>autodec</code> is invoked.</p>
 </section>
-<section id="plugin-nm-vars" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="plugin-nm-vars"><span class="header-section-number">9.2</span> nm-vars</h2>
+<section id="sec-plugin-nm-vars" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="sec-plugin-nm-vars"><span class="header-section-number">9.2</span> nm-vars</h2>
 <p>Available as of mrgsolve version 1.0.0.</p>
 <p>The <code>nm-vars</code> plugin provides a more NONMEM-like set of macros to use when coding your compartmental model. Only a small subset of the NONMEM model syntax is replicated here.</p>
 <p><strong>F, R, D, ALAG</strong></p>
@@ -386,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>mrgsolve continues to require <code>pow(base, exponent)</code> rather than <code>base**exponent</code></li>
 <li>mrgsolve continues to require a semi-colon at the end of each statement (this is a C++ requirement)</li>
-<li>mrgsolve continues to require that user-defined variables are declared with a type, except when the <code>autodec</code> plugin (Section @ref(plugin-autodec)) is invoked</li>
+<li>mrgsolve continues to require that user-defined variables are declared with a type, except when the <code>autodec</code> plugin (<a href="#sec-plugin-autodec"><span>Section&nbsp;9.1</span></a>) is invoked</li>
 </ul>
 <p><strong>An example</strong></p>
 <p>There is an example of this syntax (along with <code>autodec</code> features) in the internal model library</p>
@@ -430,8 +430,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="plugin-tad" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="plugin-tad"><span class="header-section-number">9.3</span> tad</h2>
+<section id="sec-plugin-tad" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-plugin-tad"><span class="header-section-number">9.3</span> tad</h2>
 <p><strong>Purpose</strong> Advanced calculation time after dose within your model. We call this “advanced” because it lets you track doses in multiple compartments. See the note below about a simpler way to calculate time after dose that should work fine if doses are only in a single compartment. This functionality is provided by mrgsolve.</p>
 <p><strong>Usage</strong></p>
 <p>First, tell <code>mrgsolve</code> that you want to use the <code>tad</code> plugin</p>
@@ -454,7 +454,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>had_dose</code> indicates if a dose has already been given for the current individual</li>
 <li><code>tad(self)</code> the function to call to calculate time after dose
 <ul>
-<li>the <code>self</code> object (Section @ref(self-object)) must be passed as the only argument</li>
+<li>the <code>self</code> object (<a href="specification.html#sec-self-object"><span>Section&nbsp;2.3.12</span></a>) must be passed as the only argument</li>
 <li>when the member function is called prior to the first administered dose, a value of <code>-1.0</code> is returned</li>
 </ul></li>
 <li><code>reset()</code> resets the state of the object; be sure to reset prior to simulating a new individual</li>
@@ -489,11 +489,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> tad <span class="op">=</span> self<span class="op">.</span>tad<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>self</code> object (Section @ref(self-tad)) contains a <code>tad()</code> member which will track time after dose. Note that this needs to be called every record.</p>
+<p>The <code>self</code> object (<a href="specification.html#sec-self.tad"><span>Section&nbsp;2.3.21</span></a>) contains a <code>tad()</code> member which will track time after dose. Note that this needs to be called every record.</p>
 </section>
 </section>
-<section id="plugin-cxx11" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="plugin-cxx11"><span class="header-section-number">9.4</span> CXX11</h2>
+<section id="sec-plugin-cxx11" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-plugin-cxx11"><span class="header-section-number">9.4</span> CXX11</h2>
 <p><strong>Purpose</strong></p>
 <p>Compile your model file with <code>C++11</code> standard.</p>
 <p><strong>Usage</strong></p>
@@ -501,8 +501,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN CXX11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="plugin-rcpp" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="plugin-rcpp"><span class="header-section-number">9.5</span> Rcpp</h2>
+<section id="sec-plugin-rcpp" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-plugin-rcpp"><span class="header-section-number">9.5</span> Rcpp</h2>
 <p><strong>Purpose</strong></p>
 <p>Link to <code>Rcpp</code> headers into your model.</p>
 <p><strong>Usage</strong></p>
@@ -520,8 +520,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that the arguments are the same as the R version (<code>?runif</code>) <strong>except</strong> there is no <code>n</code> argument; you always only get one draw.</p>
 <p>Information about <code>Rcpp</code> can be found here: https://github.com/RcppCore/Rcpp</p>
 </section>
-<section id="plugin-mrgx" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="plugin-mrgx"><span class="header-section-number">9.6</span> mrgx</h2>
+<section id="sec-plugin-mrgx" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-plugin-mrgx"><span class="header-section-number">9.6</span> mrgx</h2>
 <p>Compile in extra C++ / Rcpp functions that can be helpful to you for more advanced model coding. The <code>mrgx</code> plugin is dependent on the <code>Rcpp</code> plugin.</p>
 <p>The functions provided by <code>mrgx</code> are in a namespace of the same name, so to invoke these functions, you always prepend <code>mrgx::</code>.</p>
 <section id="get-the-model-environment" class="level3" data-number="9.6.1">
@@ -530,10 +530,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. &lt;environment: 0x109c7c1b0&gt;</code></pre>
+<pre><code>. &lt;environment: 0x1298390a0&gt;</code></pre>
 </div>
 </div>
-<p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see Section @ref(block-env));</p>
+<p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see <a href="specification.html#sec-block-env"><span>Section&nbsp;2.2.26</span></a>);</p>
 <p>To access this environment in your model, call</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

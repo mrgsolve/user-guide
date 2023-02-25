@@ -1,10 +1,10 @@
-# Event objects {#event-chapter}
+# Event objects {#sec-event-chapter}
 
 ```{r,include = FALSE}
 source("setup.R")
 ```
 
-Event objects are similar to the data sets described in \@ref(data-set-chapter), 
+Event objects are similar to the data sets described in @sec-data-set-chapter, 
 but are simpler and easier to create. This is the fastest way to implement a 
 basic intervention (like dosing) for a single "individual" into your model. 
 
@@ -166,7 +166,7 @@ as.data.frame(e) %>% mutate(ID = 5)
 
 __Upper case names__
 
-See section \@(ref-evd) for a constructor for an event object that renders with 
+See @sec-evd for a constructor for an event object that renders with 
 upper case names. 
 
 
@@ -428,7 +428,7 @@ ev_rx("500 mg over 2 hours q 24 h x3 in 1")
 
 See the `ev_rx()` documentation for more details and limitations.
 
-## Upper case names {#ref-evd}
+## Upper case names {#sec-evd}
 
 You'll notice in the previous sections that most of the column names were 
 rendered with lower case letters when we convert the event object to a 

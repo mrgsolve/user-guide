@@ -245,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#central-role-of-parameters-in-planning-simulations" id="toc-central-role-of-parameters-in-planning-simulations" class="nav-link" data-scroll-target="#central-role-of-parameters-in-planning-simulations"><span class="toc-section-number">1.1.1</span>  Central role of parameters in planning simulations</a></li>
   </ul></li>
   <li><a href="#sec-component-init" id="toc-sec-component-init" class="nav-link" data-scroll-target="#sec-component-init"><span class="toc-section-number">1.2</span>  Compartment list</a></li>
-  <li><a href="#component-stime" id="toc-component-stime" class="nav-link" data-scroll-target="#component-stime"><span class="toc-section-number">1.3</span>  Simulation time grid</a>
+  <li><a href="#sec-component-stime" id="toc-sec-component-stime" class="nav-link" data-scroll-target="#sec-component-stime"><span class="toc-section-number">1.3</span>  Simulation time grid</a>
   <ul class="collapse">
   <li><a href="#sec-component-tgrid" id="toc-sec-component-tgrid" class="nav-link" data-scroll-target="#sec-component-tgrid"><span class="toc-section-number">1.3.1</span>  <code>tgrid</code> objects</a></li>
   </ul></li>
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#ixpr" id="toc-ixpr" class="nav-link" data-scroll-target="#ixpr"><span class="toc-section-number">1.4.6</span>  <code>ixpr</code></a></li>
   <li><a href="#mxhnil" id="toc-mxhnil" class="nav-link" data-scroll-target="#mxhnil"><span class="toc-section-number">1.4.7</span>  <code>mxhnil</code></a></li>
   </ul></li>
-  <li><a href="#model-functions" id="toc-model-functions" class="nav-link" data-scroll-target="#model-functions"><span class="toc-section-number">1.5</span>  Functions &nbsp;</a>
+  <li><a href="#sec-model-functions" id="toc-sec-model-functions" class="nav-link" data-scroll-target="#sec-model-functions"><span class="toc-section-number">1.5</span>  Functions &nbsp;</a>
   <ul class="collapse">
   <li><a href="#the-preamble-function" id="toc-the-preamble-function" class="nav-link" data-scroll-target="#the-preamble-function"><span class="toc-section-number">1.5.1</span>  The <code>$PREAMBLE</code> function</a></li>
   <li><a href="#the-main-function" id="toc-the-main-function" class="nav-link" data-scroll-target="#the-main-function"><span class="toc-section-number">1.5.2</span>  The <code>$MAIN</code> function</a></li>
@@ -305,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="central-role-of-parameters-in-planning-simulations"><span class="header-section-number">1.1.1</span> Central role of parameters in planning simulations</h3>
 <p>The data items in the parameter list are more than just values associated with a name. When an name is added to the parameter list, that name becomes a key word that <code>mrgsolve</code> will start to recognize in input data sets or when manipulating the model object.</p>
 <p>For example, when you want to include a covariate in the model, say weight (<code>WT</code>), you’ll include a column in the data set called <code>WT</code> that will indicate the weight of this or that patient. It is crucial that you also list <code>WT</code> in <code>$PARAM</code> with some default value. It helps if that value is sensible too. When <code>mrgsolve</code> receives the data set prior to simulating, the <code>WT</code> column is matched up with the <code>WT</code> parameter name. As <code>mrgsolve</code> works its way through the input data set (from person to person or from time to time), the value of <code>WT</code> is updated so that the symbol <code>WT</code> in <code>$MAIN</code> or <code>$ODE</code> or <code>$TABLE</code> always points to the value of <code>WT</code>. If the <code>WT</code> name is not in the parameter list, it won’t matter if it is in the data set or not. Only listing a name in <code>$PARAM</code> gets it “into the game”.</p>
-<p>Understanding the parameter update mechanism is very important for planning complicated simulations with <code>mrgsolve</code>. Please see the information in <span class="quarto-unresolved-ref">?sec-datasets</span> and in <a href="topics.html#sec-topic-parameter-update"><span>Section&nbsp;11.3</span></a>.</p>
+<p>Understanding the parameter update mechanism is very important for planning complicated simulations with <code>mrgsolve</code>. Please see the information in <a href="datasets.html#sec-datasets"><span>Section&nbsp;3.1</span></a> and in <a href="topics.html#sec-topic-parameter-update"><span>Section&nbsp;11.3</span></a>.</p>
 </section>
 </section>
 <section id="sec-component-init" class="level2" data-number="1.2">
@@ -315,12 +315,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The initial values for each compartment can be queried with the <code>init()</code> function. There are several different ways to set the initial conditions in a model; <a href="topics.html#sec-topic-init"><span>Section&nbsp;11.2</span></a> illustrates several of these.</p>
 <p>See also: <a href="topics.html#sec-topic-init"><span>Section&nbsp;11.2</span></a> and <code>?init</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
-<section id="component-stime" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="component-stime"><span class="header-section-number">1.3</span> Simulation time grid</h2>
+<section id="sec-component-stime" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-component-stime"><span class="header-section-number">1.3</span> Simulation time grid</h2>
 <p>The <code>mrgsolve</code> model object stores the parameters for the series of time points to be output for a a simulation. This is the default output time grid that will be used if not over-ridden by another mechanism.</p>
 <p>The elements of the simulation time grid are: <code>start</code>, <code>end</code>, <code>delta</code> and <code>add</code>. <code>start</code>, <code>end</code>, <code>delta</code> are passed to <code>seq()</code> as <code>from</code>, <code>to</code>, and <code>by</code>, respectively. <code>add</code> is any arbitrary vector of additional times to simulate.</p>
 <p>The simulation time grid in a model object may be queried with the <code>stime()</code> function or by printing the model object to the <code>R</code> console.</p>
-<p>See also <span class="quarto-unresolved-ref">?sec-data-set</span> for discussion of the simulation time grid and input data sets and <a href="#sec-component-tgrid"><span>Section&nbsp;1.3.1</span></a> and <a href="topics.html#sec-topic-tgrid"><span>Section&nbsp;11.4</span></a> for using time grid objects .</p>
+<p>See also <a href="datasets.html#sec-data-set"><span>Section&nbsp;3.2</span></a> for discussion of the simulation time grid and input data sets and <a href="#sec-component-tgrid"><span>Section&nbsp;1.3.1</span></a> and <a href="topics.html#sec-topic-tgrid"><span>Section&nbsp;11.4</span></a> for using time grid objects .</p>
 <section id="sec-component-tgrid" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-component-tgrid"><span class="header-section-number">1.3.1</span> <code>tgrid</code> objects</h3>
 <p>A <code>tgrid</code> object has <code>start</code>, <code>end</code>, <code>delta</code> and <code>add</code> attributes. This object is independent of the model object. <code>tgrid</code> objects may be created and combined to create complex sampling designs.</p>
@@ -411,8 +411,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The maximum number of messages printed when the model is solving. If you have a lot of messages, keep working on your model code.</p>
 </section>
 </section>
-<section id="model-functions" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="model-functions"><span class="header-section-number">1.5</span> Functions &nbsp;</h2>
+<section id="sec-model-functions" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sec-model-functions"><span class="header-section-number">1.5</span> Functions &nbsp;</h2>
 <p>There are four <code>C++</code> functions that <code>mrgsolve</code> creates and manages: <code>PREAMBLE</code>, <code>MAIN</code>, <code>ODE</code>, <code>TABLE</code>. Each function is created from an entire code block in the model specification file. The user is responsible for writing correct <code>C++</code> code in each of these blocks. mrgsolve will parse these blocks and augment this code with the necessary elements to create the <code>C++</code> function.</p>
 <p>These functions may be specified in any order in the model specification file, but there is a <strong>specific calling order</strong> for these functions. Recognizing and understanding this calling order will help understand how the different pieces of the model specification fit together.</p>
 <p>Just prior to starting the problem, mrgsolve calls <code>$PREAMBLE</code>. Then, during advance from time <code>T1</code> to <code>T2</code>, first <code>$MAIN</code> is called, then <code>$ODE</code> is called repeatedly as the solver finds the values of state variables at <code>T2</code>, and, once the solution is found, <code>$TABLE</code> is called to calculate derived quantities at <code>T2</code> and to specify variables that should be included in the model output. So, it is helpful to write model specification files in the order:</p>
@@ -438,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add between-subject variability to quantities to structural model parameters (e.g.&nbsp;<code>CL</code> or <code>VC</code>).</li>
 </ul>
 <p>In addition to getting called once per record, the <code>MAIN</code> function may be called several times prior to starting the simulation run. The <code>MAIN</code> function is also called whenever the user queries the compartment list.</p>
-<p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<span class="quarto-unresolved-ref">?sec-model-functions</span>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
+<p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<a href="#sec-model-functions"><span>Section&nbsp;1.5</span></a>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
 <p>See <a href="specification.html#sec-block-main"><span>Section&nbsp;2.2.7</span></a> for details.</p>
 </section>
 <section id="the-ode-function" class="level3" data-number="1.5.3">

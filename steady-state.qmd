@@ -1,5 +1,5 @@
 
-# Steady state {#steady-state}
+# Steady state {#sec-steady-state}
 
 ```{r, include = FALSE}
 source("setup.R")

@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#ev_days" id="toc-ev_days" class="nav-link" data-scroll-target="#ev_days"><span class="toc-section-number">4.7.1</span>  ev_days</a></li>
   <li><a href="#ev_rx" id="toc-ev_rx" class="nav-link" data-scroll-target="#ev_rx"><span class="toc-section-number">4.7.2</span>  ev_rx</a></li>
   </ul></li>
-  <li><a href="#ref-evd" id="toc-ref-evd" class="nav-link" data-scroll-target="#ref-evd"><span class="toc-section-number">4.8</span>  Upper case names</a></li>
+  <li><a href="#sec-evd" id="toc-sec-evd" class="nav-link" data-scroll-target="#sec-evd"><span class="toc-section-number">4.8</span>  Upper case names</a></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="event-chapter" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></h1>
+<h1 class="title"><span id="sec-event-chapter" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></h1>
 </div>
 
 
@@ -286,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Event objects are similar to the data sets described in @ref(data-set-chapter), but are simpler and easier to create. This is the fastest way to implement a basic intervention (like dosing) for a single “individual” into your model.</p>
+<p>Event objects are similar to the data sets described in <a href="datasets.html"><span>Chapter&nbsp;3</span></a>, but are simpler and easier to create. This is the fastest way to implement a basic intervention (like dosing) for a single “individual” into your model.</p>
 <p>Event objects also offer an elegant way to compose complicated dosing regimens. Typically, the different parts of a regimen are composed as individual event objects and then combined to create a multi-faceted dose regiment.</p>
 <p>Finally, once an event object is created (either simple or complex), this object can be “expanded” into multiple individuals to create a population data set for simulation.</p>
 <p>See details in the subsequent sections.</p>
@@ -428,7 +428,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p><strong>Upper case names</strong></p>
-<p>See section @(ref-evd) for a constructor for an event object that renders with upper case names.</p>
+<p>See <a href="#sec-evd"><span>Section&nbsp;4.8</span></a> for a constructor for an event object that renders with upper case names.</p>
 </section>
 <section id="extract-information" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="extract-information"><span class="header-section-number">4.4</span> Extract information</h2>
@@ -746,8 +746,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>See the <code>ev_rx()</code> documentation for more details and limitations.</p>
 </section>
 </section>
-<section id="ref-evd" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="ref-evd"><span class="header-section-number">4.8</span> Upper case names</h2>
+<section id="sec-evd" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="sec-evd"><span class="header-section-number">4.8</span> Upper case names</h2>
 <p>You’ll notice in the previous sections that most of the column names were rendered with lower case letters when we convert the event object to a data set like object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

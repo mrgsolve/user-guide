@@ -1,4 +1,4 @@
-# Input data sets {#data-set-chapter}
+# Input data sets {#sec-data-set-chapter}
 
 ```{r,include = FALSE}
 source("setup.R")
@@ -12,19 +12,19 @@ Please see the mrgsolve help topic `?exdatasets` for examples of all of the
 data sets discussed in this chapter.  The example data sets are embedded in the
 mrgsolve package and may be used at any time.
 
-## Overview {#datasets}
+## Overview {#sec-datasets}
 Data sets are the primary mechanism for establishing the scope of your
 simulations in `mrsolve`, including individuals, interventions, observation
 times, and parameter values.  For both `data_set` and `idata_set` (see below),
 you may include columns in the data sets that have the same names as the
-parameters in your model (section \@ref(component-param), \@ref(block-param)).
+parameters in your model (@sec-component-param, @sec-block-param).
 mrgsolve can recognize these columns and update the parameter list as the
 simulation proceeds.  This process is of key importance when planning and
 executing complex simulations and is further discussed in section
-\@ref(topic-parameter-update).
+@sec-topic-parameter-update.
 
 
-## Event data sets (`data`) {#data-set}
+## Event data sets (`data`) {#sec-data-set}
 Event data sets are entered as `data.frame`, with one event per row.  Events may
 be observations, doses, or other type events.  In mrgsolve documentation, we
 refer to these data sets as `data` or `data_set` (after the function that is
@@ -57,8 +57,8 @@ compartment number with `evid` 2 to turn a compartment off.
 zero-order infusion of duration `F_CMT*amt/rate`, where `F_CMT` is the
 bioavailability fraction for the dosing compartment.  Use `rate = -1` to model
 the infusion rate and `rate = -2` to model the infusion duration, both in
-`$MAIN` (see sections \@ref(block-main), \@ref(spec-f),\@ref(spec-r),
-\@ref(spec-d)).
+`$MAIN` (see @sec-block-main, @sec-spec-f, @sec-spec-r,
+@sec-spec-d).
 * `ii` or `II`: inter-dose interval; `ii=24` means daily dosing when the model
 time unit is hours
 * `addl` or `ADDL`: additional doses; a non-zero value in `addl` requires
@@ -75,10 +75,10 @@ issued in case a mixture of lower and upper case names are found.
 
 In addition to these special column names, mrgsolve will recognize columns in
 `data_set` that have the same name as items in the parameter list (see
-\@ref(block-param) and \@ref(component-param)).  When mrgsolve sees that the
+@sec-block-param and @sec-component-param).  When mrgsolve sees that the
 names match up, it will update the values of those matching names based on what
-it finds as it moves through the data set (see section
-\@ref(topic-parameter-update)).
+it finds as it moves through the data set (see 
+@sec-topic-parameter-update).
 
 ### Two types of `data_set`
 mrgsolve distinguishes between two types of data sets: data sets that have *at
@@ -88,14 +88,14 @@ with `evid=0`*.
 * __Full data sets__ have a mix of observations and dosing events (likely, but
 not required).  When mrgsolve finds one record with `evid=0`, it assumes that
 __ALL__ output observation times are to come from the data set. In this case the
-simulation output time grid discussed in \@ref(component-stime) is ignored and
+simulation output time grid discussed in @sec-component-stime is ignored and
 only observations found in the data set appear in the simulated output.  Use
 full data sets when you want a highly customized sampling schedule or you are
 working with a clinical data set.
 * __Condensed data sets__ have no records with `evid=0`.  In this case,
 mrgsolve will fill the simulated output with observations at times specified
-by the output time grid ( section \@ref(component-stime) and see section
-\@ref(topic-designs)).  These are very convenient to use because there is less
+by the output time grid (@sec-component-stime and see 
+@sec-topic-designs too).  These are very convenient to use because there is less
 data assembly burden and output data sets can easily be created with very dense
 sampling scheme or highly customized sampling schemes with very little work.
 Use a condensed data set when you want a uniform set of sampling times for all
@@ -195,7 +195,7 @@ mod %>%
 
 
 
-## Individual data sets (`idata`)  {#idata-set}
+## Individual data sets (`idata`)  {#sec-idata-set}
 Individual data sets carry individual-level data.  This individual data is used
 in several different ways:
 
@@ -213,12 +213,11 @@ designs for each individual or group of individuals.
 called `CMT` and mrgsolve finds a column in `idata` called `CMT_0`, the value
 of `CMT_0` will be used to initialize that compartment with, potentially a
 different value for each individual.  Note that there are several other ways to
-initialize compartments detailed in \@ref(topic-init).
+initialize compartments detailed in @sec-topic-init.
 
 `idata_set` are entered as `data.frame` with one unique `ID` per row.  In
 mrgsolve documentation, we refer to individual data sets  `idata` or
-`idata_set` to distinguish them from event data sets (see section
-\@ref(data-set)).
+`idata_set` to distinguish them from event data sets (see @sec-data-set).
 
 An `idata_set` looks like this:
 ```{r}
@@ -256,13 +255,13 @@ Because there were 10 subjects in the `idata_set`, we get 10 profiles in the
 output.  Each "individual" or "unit" received the same 100 mg dose.  We would
 use a `data_set` to assign different doses to different individuals.
 
-## Numeric data only {#numeric-only}
+## Numeric data only {#sec-numeric-only}
 The `data.frame` holding the `data_set` or `idata_set` may have any type of data
 in its columns.  However, only numeric data can actually get passed into the
 simulation engine.  mrgsolve will automatically look for non-numeric columns
 and drop them from the `data_set` or `idata_set` with a warning.
 
-## Data set validation {#valid_data_set}
+## Data set validation {#sec-valid_data_set}
 
 A the time of simulation, mrgsolve will validate the input data set, removing
 non-numeric columns, checking for missing values in parameter columns, checking
@@ -287,7 +286,7 @@ This can improve efficiency when performing a very large number of replicate
 simulations on the same data set, but is unlikely to provide a meaningful 
 speed-up for a single simulation or a small number of simulations. 
 
-## Data sets for use with `$PRED` {#pred-data}
+## Data sets for use with `$PRED` {#sec-pred-data}
 Because there are no compartments involved, there are relaxed data set
 requirements for models that utilize `$PRED`.
 

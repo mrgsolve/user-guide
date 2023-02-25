@@ -75,7 +75,7 @@ model;  @sec-topic-init illustrates several of these.
 See also:  @sec-topic-init and `?init` in the `R` help system after
 loading `mrgsolve`.
 
-## Simulation time grid {#component-stime}
+## Simulation time grid {#sec-component-stime}
 
 The `mrgsolve` model object stores the parameters for the series of time points
 to be output for a a simulation.  This is the default output time grid that will
@@ -195,7 +195,7 @@ switches between non-stiff and stiff solving modes.  Rarely used.
 The maximum number of messages printed when the model is solving.  If you 
 have a lot of messages, keep working on your model code. 
 
-## Functions \ {#model-functions}
+## Functions \ {#sec-model-functions}
 
 There are four `C++` functions that `mrgsolve` creates and manages: `PREAMBLE`,
 `MAIN`, `ODE`, `TABLE`. Each function is created from an entire code block in

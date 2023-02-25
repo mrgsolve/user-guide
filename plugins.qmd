@@ -2,9 +2,9 @@
 source("setup.R")
 ```
 
-# Plugins {#plugins}
+# Plugins {#sec-plugins}
 
-## autodec {#plugin-autodec}
+## autodec {#sec-plugin-autodec}
 
 Available as of mrgsolve version 1.0.0.
 
@@ -79,7 +79,7 @@ $ENV MRGSOLVE_AUTODEC_SKIP = c("my_variable_1")
 
 This can be a vector of variable names to NOT declare when `autodec` is invoked. 
 
-## nm-vars {#plugin-nm-vars}
+## nm-vars {#sec-plugin-nm-vars}
 
 Available as of mrgsolve version 1.0.0.
 
@@ -167,7 +167,7 @@ mention a few here to make the point
 - mrgsolve continues to require a semi-colon at the end of each statement (this
   is a C++ requirement)
 - mrgsolve continues to require that user-defined variables are declared with 
-  a type, except when the `autodec` plugin (Section \@ref(plugin-autodec)) is invoked
+  a type, except when the `autodec` plugin (@sec-plugin-autodec) is invoked
   
 __An example__
 
@@ -184,7 +184,7 @@ see(modlib("nm-like", compile = FALSE))
 ```
 
 
-## tad {#plugin-tad}
+## tad {#sec-plugin-tad}
 
 __Purpose__
 Advanced calculation time after dose within your model. We call this "advanced"
@@ -221,7 +221,7 @@ The `tadose` objects contain the following (public) members
 - `had_dose` indicates if a dose has already been given for the current 
   individual
 - `tad(self)` the function to call to calculate time after dose
-  - the `self` object (Section \@ref(self-object)) must be passed as the only
+  - the `self` object (@sec-self-object) must be passed as the only
     argument
   - when the member function is called prior to the first administered dose, a 
     value of `-1.0` is returned
@@ -273,11 +273,11 @@ a single compartment
 double tad = self.tad();
 ```
 
-The `self` object (Section \@ref(self-tad)) contains a `tad()` member which 
+The `self` object (@sec-self.tad) contains a `tad()` member which 
 will track time after dose. Note that this needs to be called every record. 
 
 
-## CXX11  {#plugin-cxx11}
+## CXX11  {#sec-plugin-cxx11}
 
 __Purpose__
 
@@ -289,7 +289,7 @@ __Usage__
 $PLUGIN CXX11
 ```
 
-## Rcpp {#plugin-rcpp}
+## Rcpp {#sec-plugin-rcpp}
 
 __Purpose__
 
@@ -320,7 +320,7 @@ there is no `n` argument; you always only get one draw.
 
 Information about `Rcpp` can be found here: https://github.com/RcppCore/Rcpp
 
-## mrgx {#plugin-mrgx}
+## mrgx {#sec-plugin-mrgx}
 
 Compile in extra C++ / Rcpp functions that can be helpful to you 
 for more advanced model coding. The `mrgx` plugin is dependent on the
@@ -340,7 +340,7 @@ mrgsolve::house()@envir
 ```
 
 The objects in this environment are created by a block called `$ENV`
-in your model code (see Section \@ref(block-env));
+in your model code (see @sec-block-env);
 
 
 To access this environment in your model, call

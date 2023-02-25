@@ -1525,6 +1525,7 @@ A partial list of members are documented in the following sections.
 - `self.amt` (`AMT`)
 - `self.cmt` (`CMT`)
 - `self.evid` (`EVID`)
+- `self.time` (`TIME`)
 - `self.newind` (`NEWIND`)
 - `self.nid` 
 - `self.idn`
@@ -1536,6 +1537,10 @@ This information is provided for transparency and is not exhaustive.
 We provide an interface to these data items through pre-processor directives
 with simpler names (e.g. `EVID` will translate to `self.evid`) and users are 
 encouraged to use the simpler, API name. 
+
+### `self.time` {#sec-self.time}
+
+The current data set `TIME`.
 
 ### `self.cmt`
 The current compartment number regardless of whether it was given as `cmt` or 
@@ -1614,7 +1619,7 @@ Rcpp::Environment env = mrgx::get_envir(self);
 
 
 
-### `self.tad()` \ {#sec-self-tad}
+### `self.tad()` \ {#sec-self.tad}
 
 This is a function that calculates and returns the time after the most recent
 dose event record (any record with EVID equal to 1 or 4). `self.tad()` will 
@@ -2118,7 +2123,7 @@ Notes:
 * Because `ETA(1)` and `ETA(2)` are labeled, we can "capture" them as `ECL` and
   `EVC`
 * We added zeros for both `$OMEGA` matrices; all the etas will be zero until we
-  populate those matrices (@sec-topic-matrix-update)
+  populate those matrices (@sec-matrix-update)
 
 
 ```{c,eval=FALSE}

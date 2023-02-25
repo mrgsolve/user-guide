@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="q-and-a" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></h1>
+<h1 class="title"><span id="sec-q-and-a" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></h1>
 </div>
 
 
@@ -284,11 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$ENV</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>PKG_CXXFLAGS <span class="op">=</span> <span class="st">"-std=c++11"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>will compile your model according to <code>C++11</code> standard (but note that there is a special plugin that will do this automatically for you; see Section @ref(plugin-cxx11)).</p>
+<p>will compile your model according to <code>C++11</code> standard (but note that there is a special plugin that will do this automatically for you; see <a href="plugins.html#sec-plugin-cxx11"><span>Section&nbsp;9.4</span></a>.</p>
 </section>
 <section id="can-i-compile-my-model-with-c11" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="can-i-compile-my-model-with-c11"><span class="header-section-number">12.3</span> Can I compile my model with <code>C++11</code>?</h2>
-<p>Yes, you can do this by invoking the <code>CXX11</code> plugin (Section @ref(plugin-cxx11)).</p>
+<p>Yes, you can do this by invoking the <code>CXX11</code> plugin (<a href="plugins.html#sec-plugin-cxx11"><span>Section&nbsp;9.4</span></a>).</p>
 </section>
 <section id="how-can-i-calculate-time-after-dose" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="how-can-i-calculate-time-after-dose"><span class="header-section-number">12.4</span> How can I calculate time after dose?</h2>
@@ -300,13 +300,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>and the output will have a <code>tad</code> column. Note this does not let you interact with the <code>tad</code> value inside your model.</p>
 <p><strong>Simple calculation in the model</strong></p>
-<p>Most applications will call <code>self.tad()</code> (Section @ref(self.tad)). For example</p>
+<p>Most applications will call <code>self.tad()</code> (<a href="specification.html#sec-self.tad"><span>Section&nbsp;2.3.21</span></a>). For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> tad <span class="op">=</span> self<span class="op">.</span>tad<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>More complicated calculation in the model</strong></p>
-<p>You can get more control and track <code>tad</code> in a specific compartment by using the <code>tad</code> plugin. See Section @ref(plugin-tad) for details.</p>
+<p>You can get more control and track <code>tad</code> in a specific compartment by using the <code>tad</code> plugin. See <a href="plugins.html#sec-plugin-tad"><span>Section&nbsp;9.3</span></a> for details.</p>
 </section>
 <section id="my-model-failed-to-compile-what-now" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="my-model-failed-to-compile-what-now"><span class="header-section-number">12.5</span> My model failed to compile; what now?</h2>

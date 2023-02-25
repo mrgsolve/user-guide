@@ -1,4 +1,4 @@
-# Model Matrices {#matrix-chapter}
+# Model Matrices {#sec-matrix-chapter}
 
 ```{r,include = FALSE}
 source("setup.R")
@@ -6,7 +6,7 @@ source("setup.R")
 
 Model matrices include `$OMEGA` (for subject-level variability) and `$SIGMA`
 (for residual unexplained variability). These matrices are coded into the 
-model file (see Sections \@ref(block-omega) and \@ref(block-sigma)) and can 
+model file (see @sec-block-omega and @sec-block-sigma) and can 
 be manipulated in different ways via the model object. Because, `$OMEGA` and 
 `$SIGMA` matrices are handled using identical approach (only the names of the 
 functions change), we will focus on working with `$OMEGA` in the following 
@@ -223,7 +223,7 @@ omat(mod) %>% collapse_matrix(range = c(2,NA))
 ```
 
 
-## Updating `$OMEGA` and `$SIGMA` \  {#matrix-update}
+## Updating `$OMEGA` and `$SIGMA` \  {#sec-matrix-update}
 
 Like the values of parameters in the parameter list, we may want to update the 
 values in `$OMEGA` and `$SIGMA` matrices.  We can do so without re-compiling the 
@@ -234,7 +234,7 @@ model.
 `mrgsolve` keeps `$OMEGA` and `$SIGMA` in block matrices (regardless of whether
 the off-diagonal elements are zeros or not).  Recall that in the model
 specification file we can enter data for `$OMEGA` and `$SIGMA` as the lower
-triangle of the matrix (see section \@ref(block-omega)).  In `R`, we need to
+triangle of the matrix (see @sec-block-omega).  In `R`, we need to
 provide a matrix (as an `R` object).  `mrgsolve` provides some convenience
 functions to help ... allowing the user to enter lower diagonals instead of the
 full matrix.

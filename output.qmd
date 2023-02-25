@@ -1,4 +1,4 @@
-# Simulated output {#simulated-output}
+# Simulated output {#sec-simulated-output}
 
 ```{r, include = FALSE}
 source("setup.R")

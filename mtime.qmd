@@ -2,7 +2,7 @@
 source("setup.R")
 ```
 
-# Modeled events {#mtime}
+# Modeled events {#sec-mtime}
 
 Modeled events are interventions that you can introduce into your 
 simulation from within your model. These aren't any different in substance to 
@@ -27,8 +27,8 @@ simulation at a specific time. For example, you want a parameter to change
 value at a specific time and you don't know about the values or times prior 
 to simulating. 
 
-To schedule a discontinuity, call the `mtime()` member (Section \@ref(self.time)) 
-of the `self` object (Section \@ref(self-object)). This is typically done in 
+To schedule a discontinuity, call the `mtime()` member (@sec-self.mtime) 
+of the `self` object (@sec-self-object). This is typically done in 
 the `$MAIN` block.
 
 ```{c, eval = FALSE}
