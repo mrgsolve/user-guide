@@ -584,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-topic-parameter-update" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="sec-topic-parameter-update"><span class="header-section-number">11.3</span> Updating parameters</h2>
-<p>The parameter list was introduced in <span class="quarto-unresolved-ref">?sec-component-param</span> and the <code>$PARAM</code> code block was shown in <span class="quarto-unresolved-ref">?sec-block-param</span>. Once a model is compiled, the names and number of parameters in a model is fixed. However, the values of parameters can be changed: parameters may be updated either by the user (in <code>R</code>) or by <code>mrgsolve</code> (in the <code>C++</code> simulation engine, as the simulation proceeds).</p>
+<p>The parameter list was introduced in <a href="components.html#sec-component-param"><span>Section&nbsp;1.1</span></a> and the <code>$PARAM</code> code block was shown in <a href="specification.html#sec-block-param"><span>Section&nbsp;2.2.4</span></a>. Once a model is compiled, the names and number of parameters in a model is fixed. However, the values of parameters can be changed: parameters may be updated either by the user (in <code>R</code>) or by <code>mrgsolve</code> (in the <code>C++</code> simulation engine, as the simulation proceeds).</p>
 <ul>
 <li>To update in <code>R</code>, use the <code>param()</code> function (see examples below)</li>
 <li>To have <code>mrgsolve</code> update the parameters, attach columns to your data set (either <code>data_set</code> or <code>idata_set</code>) with the same name as items in the parameter list</li>

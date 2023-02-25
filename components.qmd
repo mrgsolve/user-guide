@@ -1,4 +1,4 @@
-# Model components {#model-components}
+# Model components {#sec-model-components}
 
 ```{r, include = FALSE}
 source("setup.R")
@@ -10,7 +10,7 @@ component listed here is maintained within a "model object".  This is an
 updatable S4 object in `R` that contains all of the basic information required
 to properly configure and simulate from the model.
 
-## Parameter list {#component-param}
+## Parameter list {#sec-component-param}
 
 The parameter list is an updatable set of name-value pairs. Referencing the name
 of an item in the parameter list will substitute the current value associated
@@ -29,7 +29,7 @@ of each parameter may be updated in one of several ways.
 The parameters in a model object can be queried or updated with the 
 `param()` function.
 
-See also: \@ref(block-param), `?param` in the `R` help system after 
+See also: @sec-block-param, `?param` in the `R` help system after 
 loading `mrgsolve`.
 
 ### Central role of parameters in planning simulations
@@ -52,10 +52,10 @@ matter if it is in the data set or not. Only listing a name in `$PARAM` gets it
 
 Understanding the parameter update mechanism is very important for planning
 complicated simulations with `mrgsolve`.  Please see the information in
-\@ref(datasets) and in \@ref(topic-parameter-update).
+@sec-datasets and in @sec-topic-parameter-update.
 
 
-## Compartment list {#component-init}
+## Compartment list {#sec-component-init}
 Like the parameter list, the compartment list is a series of name-value pairs.
 The compartment list defines the number, names, and initial values of each
 compartment in the model.     The names, numbers, and order of the compartment
@@ -70,9 +70,9 @@ for each compartment; thus only compartment names are entered.  When using
 
 The initial values for each compartment can be queried with the `init()`
 function.  There are several different ways to set the initial conditions in a
-model; section \@ref(topic-init) illustrates several of these.
+model;  @sec-topic-init illustrates several of these.
 
-See also: section \@ref(topic-init) and `?init` in the `R` help system after
+See also:  @sec-topic-init and `?init` in the `R` help system after
 loading `mrgsolve`.
 
 ## Simulation time grid {#component-stime}
@@ -88,18 +88,18 @@ respectively. `add` is any arbitrary vector of additional times to simulate.
 The simulation time grid in a model object may be queried with the `stime()` 
 function or by printing the model object to the `R` console. 
 
-See also section \@ref(data-set) for discussion of the simulation time grid 
-and input data sets and \@ref(component-tgrid) and \@ref(topic-tgrid) for 
+See also @sec-data-set for discussion of the simulation time grid 
+and input data sets and @sec-component-tgrid and @sec-topic-tgrid for 
 using time grid objects . 
 
 
-### `tgrid` objects {#component-tgrid}
+### `tgrid` objects {#sec-component-tgrid}
 
 A `tgrid` object has `start`, `end`, `delta` and `add` attributes. This object
 is independent of the model object.  `tgrid` objects may be created and combined
 to create complex sampling designs.
 
-See section \@ref(topic-tgrid) for examples and usage.
+See @sec-topic-tgrid for examples and usage.
 
 ## Solver settings
 `mrgsolve` uses the `DLSODA` solver from `ODEPACK`. Several of the settings 
@@ -231,7 +231,7 @@ first record of the data set.  This function is composed of `C++` code and is
 used to initialize variables and get them set up prior to starting on 
 the problem. 
 
-See \@ref(block-preamble) for details.
+See @sec-block-preamble for details.
 
 ### The `$MAIN` function
 
@@ -251,7 +251,7 @@ function is also called whenever the user queries the compartment list.
 
 mrgsolve allows you access compartment amounts in the `MAIN` function. But 
 it is important to remember the calling order of these model functions
-(section \@ref(model-functions)): because `MAIN` is called _before_ the system 
+(@sec-model-functions): because `MAIN` is called _before_ the system 
 advances, the compartment amounts inside this function will reflect the 
 pre-advance values. This is in contrast to accessing compartment amounts 
 inside the `TABLE` function, which will reflect the values _after_ the
@@ -260,7 +260,7 @@ to check the pre-advance compartment amounts in `MAIN`, most applications
 should interact with compartment amounts after the system advances in 
 `TABLE`.
 
-See \@ref(block-main) for details.
+See @sec-block-main for details.
 
 
 ### The `$ODE` function
@@ -271,7 +271,7 @@ advanced the system must be calculated inside `$ODE`.  But, this
 function is called repeatedly during the simulation run, so any calculation 
 that __can__ be moved out of `$ODE` (for example: to `$MAIN`) should be.  
 
-See \@ref(block-ode) for details.
+See @sec-block-ode for details.
 
 
 ### The `$TABLE` function
@@ -280,7 +280,7 @@ purpose of `TABLE` is to allow the user to interact with the values of the
 state variables after advancing, potentially derive new variables, and to 
 insert different outputs into the table of simulated results. 
 
-See \@ref(block-table) for details.
+See @sec-block-table for details.
 
 
 ## Random effect variances

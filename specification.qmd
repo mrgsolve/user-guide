@@ -2,7 +2,7 @@
 source("setup.R")
 ```
 
-# Model specification {#model-specification}
+# Model specification {#sec-sec-model-specification}
 
 This chapter details the `mrgsolve` model specification format.  
 
@@ -16,7 +16,7 @@ We recommend method `1` (separate file) for any non-trivial modeling work.
 Method `2` is handy for quickly coding a model and you'll also see us using 
 that approach frequently when demonstrating how to use `mrgsolve`.
 
-### Separate file {#spec-separate-file}
+### Separate file {#sec-spec-separate-file}
 Open a text editor and type the model into a file with name that has the 
 format `<model-name>.cpp`.  This filename format identifies a "name" for your 
 model (`<model-name>`, the "stem" of the file name).  The extension __MUST__ 
@@ -35,7 +35,7 @@ mod <- mread("mymodel")
 
 
 
-### Inline / `code` \ {#spec-inline}
+### Inline / `code` \ {#sec-spec-inline}
 Often it is more convenient to write a model right in your `R` script.  The 
 model might look something like this:
 
@@ -51,7 +51,7 @@ called `code`.  The name of this object is irrelevant.  But `code` will be
 passed into `mrgsolve` as the model definition.  When `mrgsolve` gets a model 
 like this along with a "name" for the model, mrgsolve will write the code to a 
 file called `<model-name>.cpp` and read it right back in as if you had typed 
-the code into this file (section \@ref(spec-separate-file)). 
+the code into this file (@sec-spec-separate-file). 
 
 To parse and load this model, use the `mcode()` command:
 
@@ -70,7 +70,7 @@ mod <- mread("mymodel", tempdir(), code)
 For help, see `?mread` , `?mcode` in the `R` help system after loading 
 `mrgsolve`.
 
-## Code blocks {#code-blocks}
+## Code blocks {#sec-code-blocks}
 
 ### About code blocks
 
@@ -219,7 +219,7 @@ Please see the specific block documentation for more details on the specific
 type of object that should be returned when this syntax is invoked. 
 
 
-### `$PROB` \ {#block-prob}
+### `$PROB` \ {#sec-block-prob}
 
 __Syntax__: text   
 __Multiple allowed__: yes   
@@ -231,9 +231,9 @@ in any way, except when rendering the model as a document.  Frequently, we
 write the text here in markdown format so that it will render nicely in the
 model document.  But this is completely optional. 
 
-See the annotated model in section \@ref(topic-annotated) for an example. 
+See the annotated model in @sec-topic-annotated for an example. 
 
-### `$PARAM` \ {#block-param}
+### `$PARAM` \ {#sec-block-param}
 
 __Syntax__: R   
 __Multiple allowed__: yes   
@@ -292,11 +292,11 @@ Notes:
 The `@object` and `@as_object` options should name or return a named list of 
 parameters.
 
-See also: section \@ref(block-theta) and \@ref(block-fixed).
+See also:  @sec-block-theta and @sec-block-fixed.
 
 See `?param` in the `R` help system after loading `mrgsolve`.
 
-### `$FIXED`  \ {#block-fixed}
+### `$FIXED`  \ {#sec-block-fixed}
 
 __Syntax__: R   
 __Multiple allowed__: yes   
@@ -332,7 +332,7 @@ $FIXED @annotated
 g : 9.8 : Acceleration due to gravity (m/s^2)
 ```
 
-See also: section \@ref(block-param) and \@ref(block-theta).
+See also: @sec-block-param and @sec-block-theta.
 
 Notes:
 
@@ -384,7 +384,7 @@ of compartment names when used in `$CMT`.
 
 See `?init` in the `R` help system after loading `mrgsolve`.
 
-### `$MAIN`  \ {#block-main}
+### `$MAIN`  \ {#sec-block-main}
 
 __Syntax__: C++   
 __Multiple allowed__: no   
@@ -404,7 +404,7 @@ gets called several times before starting the problem (`NEWIND == 0`) and
 just prior to simulating each individual (`NEWIND == 1`).  Finally, `$MAIN` 
 gets called every time the model initial conditions are queried with `init()`.  
 
-New variables may be declared in `$MAIN`.  See section \@ref(new-variables) 
+New variables may be declared in `$MAIN`.  See @sec-new-variables 
 for details.
 
 Examples:
@@ -422,12 +422,12 @@ double ke = CL/VC;
 
 ```
 
-### `$PK` \ {#block-pk}
+### `$PK` \ {#sec-block-pk}
 
 This is an alias for `$MAIN`.
 
 
-### `$ODE` \ {#block-ode}
+### `$ODE` \ {#sec-block-ode}
 
 __Syntax__: C++   
 __Multiple allowed__: no  
@@ -459,7 +459,7 @@ compartment and helps determine the `dxdt_` expression in a model must be
 written in `$ODE`.
 
 
-New variables may be declared in `$ODE`.  See section \@ref(new-variables) 
+New variables may be declared in `$ODE`.  See @sec-new-variables
 for details.
 
 For example:
@@ -482,12 +482,12 @@ Notes:
 * `$ODE` is written in `C++` syntax; every line must end in `;`
 * There may be only one `$ODE` block in a model
 
-### `$DES` \ {#block-des}
+### `$DES` \ {#sec-block-des}
 
 This is an alias for `$ODE`.
 
 
-### `$TABLE` \ {#block-table}
+### `$TABLE` \ {#sec-block-table}
 
 __Syntax__: C++   
 __Multiple allowed__: no   
@@ -507,16 +507,16 @@ simulated output. This macro has been deprecated.  The only way to insert
 derived values into the simulated output is via `$CAPTURE`.
 
 __NOTE__
-When variables are marked for capture (see \@ref(block-capture)), the values of
+When variables are marked for capture (see @sec-block-capture), the values of
 those variables are saved at the __end__ of the `$TABLE` function.  This process
 is carried out automatically by `mrgsolve` and therefore requires no user
 intervention.
 
-### `$ERROR` \ {#block-error}
+### `$ERROR` \ {#sec-block-error}
 
 This is an alias for `$TABLE`.
 
-### `$PREAMBLE` \ {#block-preamble}
+### `$PREAMBLE` \ {#sec-block-preamble}
 
 __Syntax__: C++   
 __Multiple allowed__: no   
@@ -567,10 +567,10 @@ Notes:
   initialized in `$PREAMBLE` are actually initialized for global (within the 
   model file)
 
-See also: \@ref(block-plugin).
+See also: @sec-block-plugin.
 
 
-### `$PRED` \ {#block-pred}
+### `$PRED` \ {#sec-block-pred}
 
 __Syntax__: C++   
 __Multiple allowed__: no   
@@ -594,11 +594,11 @@ In this example, the entire model is written in the `$PRED` block.  It is an
 error to include the following blocks when `$PRED` is being used: `$MAIN`, 
 `$TABLE`, `$PKMODEL`, `$ODE`, `$CMT`, `$INIT`.
 
-See the section \@ref(pred-data) for additional information regarding data sets
+See @sec-pred-data for additional information regarding data sets
 in use with `$PRED` block.
 
 
-### `$CAPTURE` \ {#block-capture}
+### `$CAPTURE` \ {#sec-block-capture}
 
 __Syntax__: text   
 __Multiple allowed__: yes   
@@ -668,11 +668,11 @@ CLi : Individual clearance (L/hr)
 DV  : Plasma concentration (mcg/ml)
 ```
 
-New variables may be declared in `$TABLE`.  See section \@ref(new-variables) for 
+New variables may be declared in `$TABLE`.  See @sec-new-variables for 
 details.
 
 
-### `$OMEGA` \ {#block-omega}
+### `$OMEGA` \ {#sec-block-omega}
 
 __Syntax__: text   
 __Multiple allowed__: yes   
@@ -748,7 +748,7 @@ Notes:
 * Multiple `$OMEGA` blocks are allowed
 
 
-### `$SIGMA` \ {#block-sigma}
+### `$SIGMA` \ {#sec-block-sigma}
 
 __Syntax__: text   
 __Multiple allowed__: yes   
@@ -801,7 +801,7 @@ However there are two more-common uses:
 
 1. Write `#define` preprocessor statements
 1. Define global variables, usually variables other than `double`, `bool`, 
-   `int` (see \@ref(new-variables))
+   `int` (see @sec-new-variables)
 
 __Preprocessor directives__
 Preprocessor  `#define` directives are direct substitutions that the `C++` 
@@ -891,7 +891,7 @@ Specifying three compartments with `depot=TRUE` implies `ncmt=2`.  Notice that a
 separate `$CMT` block is not appropriate when `cmt` is specified in `$PKMODEL`.
 
 
-### `$PLUGIN` \ {#block-plugin}
+### `$PLUGIN` \ {#sec-block-plugin}
 
 __Syntax__: text   
 __Multiple allowed__: no   
@@ -900,7 +900,7 @@ Plugins are a way to add extensions to your `mrgsolve` model. Plugins can either
 link your model to external libraries (like `boost` or `Rcpp`) or they can 
 open up access to additional functionality provided by `mrgsolve` itself. 
 
-Plugins are listed and discussed in more detail in  Chapter \@ref(plugins).
+Plugins are listed and discussed in more detail in @sec-plugins.
 
 __Usage__
 
@@ -1017,9 +1017,9 @@ if(NEWIND <=1) {
 }
 ```
 
-See also: \@ref(block-preamble).
+See also: @sec-block-preamble.
 
-### `$THETA`  \ {#block-theta}
+### `$THETA`  \ {#sec-block-theta}
 
 __Syntax__: text   
 __Multiple allowed__: yes   
@@ -1064,19 +1064,19 @@ would be equivalent to
 The `@object` and `@as_object` options should name or return an unnamed vector
 of parameter values (names are ignored).
 
-See also: \@ref(block-param).
+See also: @sec-block-param.
 
 
-### `$NMXML`  \ {#block-nmxml}
+### `$NMXML`  \ {#sec-block-nmxml}
 
 __Syntax__: R   
 __Multiple allowed__: yes   
 
 The `$NMXML` block lets you read and incorporate results from a NONMEM run into 
 your `mrgsolve` model.  From the NONMEM run, `THETA` will be imported into your
-parameter list (see \@ref(block-param) and \@ref(component-param)), `OMEGA` will 
-be captured as an `$OMEGA` block (\@ref(block-omega)) and `SIGMA` will be 
-captured as a `$SIGMA` block (\@ref(block-sigma)).  Users may optionally omit 
+parameter list (see @sec-block-param and @sec-component-param), `OMEGA` will 
+be captured as an `$OMEGA` block (@sec-block-omega) and `SIGMA` will be 
+captured as a `$SIGMA` block (@sec-block-sigma).  Users may optionally omit 
 any one of these from being imported.
 
 `$NMXML` contains a `project` argument and a `run` argument.  By default, the 
@@ -1167,16 +1167,16 @@ assumes that the the `xml` file can be found relative to the "working"
 directory. The only other value that `root` can take is `"cppfile"`. When 
 `root = "cppfile"`, then mrgsolve will look for the `xml` file in a directory 
 that is relative to **where the model source code file is located**. Please
-take a look at section \@ref(block-nmext) for more discussion and examples. 
+take a look at @sec-block-nmext for more discussion and examples. 
 
 
 Please see the `?nmxml` help topic for more information on arguments that can 
 be passed to `$NMXML`.
 
-See also: \@ref(block-nmext).
+See also: @sec-block-nmext.
 
 
-### `$NMEXT`  \ {#block-nmext}
+### `$NMEXT`  \ {#sec-block-nmext}
 
 __Syntax__: R   
 __Multiple allowed__: yes   
@@ -1233,7 +1233,7 @@ param(mod)
 Once the model object is obtained, the path to the `ext` file that formed 
 the source for imported parameters can be retrieved by coercing the 
 model object to list and looking for `nm_import`. See the `$NMXML` topic 
-in section \@ref(block-nmxml) for an example of equivalent functionality.
+in @sec-block-nmxml for an example of equivalent functionality.
 
 
 __IMPORTANT__: while `$NMEXT` works very similarly to `$NMXML`, there is one 
@@ -1290,9 +1290,9 @@ Notably, the user can select the function to read in the ext file.By default,
 mrgsolve will try to load data.table and use the `fread` function. If 
 data.table can't be loaded, then mrgsolve will use `utils::read.table`.
 
-See also: \@ref(block-nmxml).
+See also: @sec-block-nmxml.
 
-### `$INCLUDE`  \ {#block-include}
+### `$INCLUDE`  \ {#sec-block-include}
 
 __Syntax__: text   
 __Multiple allowed__: no   
@@ -1343,7 +1343,7 @@ any other part of the model specification, the model may not be fully compiled
 when calling `mread`.  In this case, always use `preclean=TRUE` argument to 
 `mread` to force the model to be built when calling `mread`.
 
-### `$ENV` \ {#block-env}
+### `$ENV` \ {#sec-block-env}
 
 __Syntax__: R   
 __Multiple allowed__: no   
@@ -1351,7 +1351,7 @@ __Multiple allowed__: no
 This block is all `R` code (just as you would code in a stand-alone `R` script. 
 The code is parsed and evaluated into a new environment when the model is 
 compiled.  Objects inside `$ENV` can be utilized in different C++ functions 
-(see \@ref(block-plugin)) or other parts of the simulation process.
+(see @sec-block-plugin) or other parts of the simulation process.
 
 For example:
 
@@ -1370,7 +1370,7 @@ cama <- function(mod) {
 
 ```
 
-## Variables and Macros {#variables-macros}
+## Variables and Macros {#sec-variables-macros}
 
 This section describes some macros and internal variables that can be used in
 model specification files.  In the following section, we adopt the convention
@@ -1398,8 +1398,8 @@ Gives the time of the current timestep taken by the solver.  *This is can only
 be used in `$ODE`*.  Contrast with `TIME`.
 
 Starting with mrgsolve version 1.0.0, the variable `T` is provided as a synonym 
-to `SOLVERTIME` inside `$ODE`  when you invoke the `nm-vars` plugin  (Section
-\@ref(plugin-nm-vars)).
+to `SOLVERTIME` inside `$ODE`  when you invoke the `nm-vars` plugin
+(@sec-plugin-nm-vars).
 
 ### `T` 
 Only provided when the `nm-vars` plugin is invoked; see `SOLVERTIME`.
@@ -1468,7 +1468,7 @@ if(NEWIND <=1) {
 
 This is a `bool` data item (either `true` or `false`) which is always `false` 
 unless `mrgsolve` is currently advancing the system to steady state
-(Chapter \@ref(steady-state)); then it will be `true`. This variable is only 
+(@sec-steady-state); then it will be `true`. This variable is only 
 available in the `$ODE` (or `$DES`) block. 
 
 Use this variable to modify the calculation of your model differential equations
@@ -1502,7 +1502,7 @@ will re-simulate all `ETA(n)`.
 than the ETA values.
 
 
-### `self` \ {#self-object}
+### `self` \ {#sec-self-object}
 
 `self` is an object that gets passed to your model function that contains 
 data items and functions that can be called. It is a `struct`  (see
@@ -1601,7 +1601,7 @@ if(self.rown == (self.nrow-1)) {
 ### `self.envir`
 
 This item is a null pointer that can be cast to an `Rcpp::Environment` only 
-when the `Rcpp` plugin is invoked (see Section \@ref(plugin-rcpp)).
+when the `Rcpp` plugin is invoked (see @sec-plugin-rcpp).
 
 For example
 
@@ -1614,7 +1614,7 @@ Rcpp::Environment env = mrgx::get_envir(self);
 
 
 
-### `self.tad()` \ {#self-tad}
+### `self.tad()` \ {#sec-self-tad}
 
 This is a function that calculates and returns the time after the most recent
 dose event record (any record with EVID equal to 1 or 4). `self.tad()` will 
@@ -1635,7 +1635,7 @@ Do not make this calculation depend on any test or condition; it must be called
 every time `$MAIN` is called in order to see every dose.
 
 
-### `self.mtime(<time>)` \ {#self.mtime}
+### `self.mtime(<time>)` \ {#sec-self.mtime}
 
 This is a function that creates a modeled even time.  The only argument is a 
 numeric time in the future for the current individual that indicates when a 
@@ -1664,7 +1664,7 @@ if(TIME >= mt1) KA = 2.1;
 
 ### `self.mevent(<time>, <evid>)`
 
-Related to `self.mtime()` (Section \@ref(self.mtime)), except you can set a 
+Related to `self.mtime()` (@sec-self.mtime), except you can set a 
 specific `EVID` for this intervention and you track the change time via `EVID`
 rather than the time. You'd use this if you want to anchor 
 several events in the future and be sure you can distinguish between them. 
@@ -1725,8 +1725,8 @@ fixed effect parameters. mrgsolve does not attach any special meaning to
 `THETA(n)` but starting with version 1.0.0 it will translate `THETA(n)` to 
 `THETAn`.  This is useful when importing NONMEM estimates using `$NMXML`
 or `$NMEXT`, where `THETA`s are imported as parameters with names 
-`THETA1`, `THETA2`, `THETA3` and so on (see Sections \@ref(block-nmxml) and
-\@ref(block-nmext)). `THETA(n)` is simply a NONMEM-oriented style for referring
+`THETA1`, `THETA2`, `THETA3` and so on (see @sec-block-nmxml and
+@sec-block-nmext). `THETA(n)` is simply a NONMEM-oriented style for referring
 to `THETAn`.
 
 ### `ETA(n)`
@@ -1784,10 +1784,10 @@ double CP = CENT/VC;
 $CAPTURE CP
 ```
 
-See: section \@ref(block-table) and also \@ref(block-capture)
+See: @sec-block-table and also @sec-block-capture.
 
 
-### `F_CMT` \ {#spec-f}
+### `F_CMT` \ {#sec-spec-f}
 For the `CMT` compartment, sets the bioavailability fraction for that compartment. 
 
 Example:
@@ -1796,7 +1796,7 @@ $MAIN
 F_CENT = 0.7;
 ```
 
-### `ALAG_CMT` \ {#spec-alag}
+### `ALAG_CMT` \ {#sec-spec-alag}
 For the `CMT` compartment, sets the lag time for doses into that compartment. 
 
 Example:
@@ -1805,7 +1805,7 @@ $MAIN
 ALAG_GUT = 0.25;
 ```
 
-### `R_CMT` \ {#spec-r}
+### `R_CMT` \ {#sec-spec-r}
 For the `CMT` compartment, sets the infusion rate for that compartment.  The
 infusion rate is only set via `R_CMT` when `rate` in the data set or event 
 object is set to `-1`. 
@@ -1819,7 +1819,7 @@ R_CENT = 100;
 ### `Rn`
 Only available when the `nm-vars` plugin is invoked; see `R_CMT`.
 
-### `D_CMT` \ {#spec-d}
+### `D_CMT` \ {#sec-spec-d}
 For the `CMT` compartment, sets the infusion duration for that compartment.  
 The infusion duration is only set via `D_CMT` when `rate` in the data set or 
 event object is set to `-2`. 
@@ -1837,7 +1837,7 @@ There is a NONMEM-like syntax that lets you write `F1` rather than `F_GUT`,
 in a NONMEM control stream. To make this syntax available, the `nm-vars` 
 plugin must be invoked. 
 
-See Section \@ref(plugin-nm-vars) on the `nm-vars` plugin for details. 
+See @sec-plugin-nm-vars on the `nm-vars` plugin for details. 
 
 ## Reserved words
 
@@ -1864,7 +1864,7 @@ N_CENT
 ```
 
 
-## Derive new variables {#new-variables}
+## Derive new variables {#sec-new-variables}
 New `C++` variables may be derived in `$GLOBAL`, `$PREAMBLE` `$MAIN`, `$ODE` and
 `$TABLE`. Because these are `C++` variables, the type of variable being used
 must be declared.  For the vast majority of applications, the `double` type is
@@ -1978,8 +1978,7 @@ myvec.assign(3,1);
 Users can simulate random numbers inside a model file using functions that 
 are similar to the functions you'd normally use in R (e.g. `rnorm()` and 
 `runif()`). This functionality is provided by `Rcpp` and therefore requires
-using the `Rcpp` plugin (see Chapter \@ref(plugins) and Section 
-\@ref(plugin-rcpp)). 
+using the `Rcpp` plugin (see @sec-plugins and @sec-plugin-rcpp). 
 
 `Rcpp` provides these functions inside the `R` namespace so you will have to 
 prefix the function call with `R::`. 
@@ -2119,7 +2118,7 @@ Notes:
 * Because `ETA(1)` and `ETA(2)` are labeled, we can "capture" them as `ECL` and
   `EVC`
 * We added zeros for both `$OMEGA` matrices; all the etas will be zero until we
-  populate those matrices (section \@ref(topic-matrix-update))
+  populate those matrices (@sec-topic-matrix-update)
 
 
 ```{c,eval=FALSE}

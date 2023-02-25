@@ -243,39 +243,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#how-where-to-write-a-model" id="toc-how-where-to-write-a-model" class="nav-link active" data-scroll-target="#how-where-to-write-a-model"><span class="toc-section-number">2.1</span>  How / where to write a model</a>
   <ul class="collapse">
-  <li><a href="#spec-separate-file" id="toc-spec-separate-file" class="nav-link" data-scroll-target="#spec-separate-file"><span class="toc-section-number">2.1.1</span>  Separate file</a></li>
-  <li><a href="#spec-inline" id="toc-spec-inline" class="nav-link" data-scroll-target="#spec-inline"><span class="toc-section-number">2.1.2</span>  Inline / <code>code</code> &nbsp;</a></li>
+  <li><a href="#sec-spec-separate-file" id="toc-sec-spec-separate-file" class="nav-link" data-scroll-target="#sec-spec-separate-file"><span class="toc-section-number">2.1.1</span>  Separate file</a></li>
+  <li><a href="#sec-spec-inline" id="toc-sec-spec-inline" class="nav-link" data-scroll-target="#sec-spec-inline"><span class="toc-section-number">2.1.2</span>  Inline / <code>code</code> &nbsp;</a></li>
   </ul></li>
-  <li><a href="#code-blocks" id="toc-code-blocks" class="nav-link" data-scroll-target="#code-blocks"><span class="toc-section-number">2.2</span>  Code blocks</a>
+  <li><a href="#sec-code-blocks" id="toc-sec-code-blocks" class="nav-link" data-scroll-target="#sec-code-blocks"><span class="toc-section-number">2.2</span>  Code blocks</a>
   <ul class="collapse">
   <li><a href="#about-code-blocks" id="toc-about-code-blocks" class="nav-link" data-scroll-target="#about-code-blocks"><span class="toc-section-number">2.2.1</span>  About code blocks</a></li>
   <li><a href="#programmatic-or-bulk-initialization" id="toc-programmatic-or-bulk-initialization" class="nav-link" data-scroll-target="#programmatic-or-bulk-initialization"><span class="toc-section-number">2.2.2</span>  Programmatic or bulk initialization</a></li>
-  <li><a href="#block-prob" id="toc-block-prob" class="nav-link" data-scroll-target="#block-prob"><span class="toc-section-number">2.2.3</span>  <code>$PROB</code> &nbsp;</a></li>
-  <li><a href="#block-param" id="toc-block-param" class="nav-link" data-scroll-target="#block-param"><span class="toc-section-number">2.2.4</span>  <code>$PARAM</code> &nbsp;</a></li>
-  <li><a href="#block-fixed" id="toc-block-fixed" class="nav-link" data-scroll-target="#block-fixed"><span class="toc-section-number">2.2.5</span>  <code>$FIXED</code> &nbsp;</a></li>
+  <li><a href="#sec-block-prob" id="toc-sec-block-prob" class="nav-link" data-scroll-target="#sec-block-prob"><span class="toc-section-number">2.2.3</span>  <code>$PROB</code> &nbsp;</a></li>
+  <li><a href="#sec-block-param" id="toc-sec-block-param" class="nav-link" data-scroll-target="#sec-block-param"><span class="toc-section-number">2.2.4</span>  <code>$PARAM</code> &nbsp;</a></li>
+  <li><a href="#sec-block-fixed" id="toc-sec-block-fixed" class="nav-link" data-scroll-target="#sec-block-fixed"><span class="toc-section-number">2.2.5</span>  <code>$FIXED</code> &nbsp;</a></li>
   <li><a href="#cmt-and-init" id="toc-cmt-and-init" class="nav-link" data-scroll-target="#cmt-and-init"><span class="toc-section-number">2.2.6</span>  <code>$CMT</code> and <code>$INIT</code></a></li>
-  <li><a href="#block-main" id="toc-block-main" class="nav-link" data-scroll-target="#block-main"><span class="toc-section-number">2.2.7</span>  <code>$MAIN</code> &nbsp;</a></li>
-  <li><a href="#block-pk" id="toc-block-pk" class="nav-link" data-scroll-target="#block-pk"><span class="toc-section-number">2.2.8</span>  <code>$PK</code> &nbsp;</a></li>
-  <li><a href="#block-ode" id="toc-block-ode" class="nav-link" data-scroll-target="#block-ode"><span class="toc-section-number">2.2.9</span>  <code>$ODE</code> &nbsp;</a></li>
-  <li><a href="#block-des" id="toc-block-des" class="nav-link" data-scroll-target="#block-des"><span class="toc-section-number">2.2.10</span>  <code>$DES</code> &nbsp;</a></li>
-  <li><a href="#block-table" id="toc-block-table" class="nav-link" data-scroll-target="#block-table"><span class="toc-section-number">2.2.11</span>  <code>$TABLE</code> &nbsp;</a></li>
-  <li><a href="#block-error" id="toc-block-error" class="nav-link" data-scroll-target="#block-error"><span class="toc-section-number">2.2.12</span>  <code>$ERROR</code> &nbsp;</a></li>
-  <li><a href="#block-preamble" id="toc-block-preamble" class="nav-link" data-scroll-target="#block-preamble"><span class="toc-section-number">2.2.13</span>  <code>$PREAMBLE</code> &nbsp;</a></li>
-  <li><a href="#block-pred" id="toc-block-pred" class="nav-link" data-scroll-target="#block-pred"><span class="toc-section-number">2.2.14</span>  <code>$PRED</code> &nbsp;</a></li>
-  <li><a href="#block-capture" id="toc-block-capture" class="nav-link" data-scroll-target="#block-capture"><span class="toc-section-number">2.2.15</span>  <code>$CAPTURE</code> &nbsp;</a></li>
-  <li><a href="#block-omega" id="toc-block-omega" class="nav-link" data-scroll-target="#block-omega"><span class="toc-section-number">2.2.16</span>  <code>$OMEGA</code> &nbsp;</a></li>
-  <li><a href="#block-sigma" id="toc-block-sigma" class="nav-link" data-scroll-target="#block-sigma"><span class="toc-section-number">2.2.17</span>  <code>$SIGMA</code> &nbsp;</a></li>
+  <li><a href="#sec-block-main" id="toc-sec-block-main" class="nav-link" data-scroll-target="#sec-block-main"><span class="toc-section-number">2.2.7</span>  <code>$MAIN</code> &nbsp;</a></li>
+  <li><a href="#sec-block-pk" id="toc-sec-block-pk" class="nav-link" data-scroll-target="#sec-block-pk"><span class="toc-section-number">2.2.8</span>  <code>$PK</code> &nbsp;</a></li>
+  <li><a href="#sec-block-ode" id="toc-sec-block-ode" class="nav-link" data-scroll-target="#sec-block-ode"><span class="toc-section-number">2.2.9</span>  <code>$ODE</code> &nbsp;</a></li>
+  <li><a href="#sec-block-des" id="toc-sec-block-des" class="nav-link" data-scroll-target="#sec-block-des"><span class="toc-section-number">2.2.10</span>  <code>$DES</code> &nbsp;</a></li>
+  <li><a href="#sec-block-table" id="toc-sec-block-table" class="nav-link" data-scroll-target="#sec-block-table"><span class="toc-section-number">2.2.11</span>  <code>$TABLE</code> &nbsp;</a></li>
+  <li><a href="#sec-block-error" id="toc-sec-block-error" class="nav-link" data-scroll-target="#sec-block-error"><span class="toc-section-number">2.2.12</span>  <code>$ERROR</code> &nbsp;</a></li>
+  <li><a href="#sec-block-preamble" id="toc-sec-block-preamble" class="nav-link" data-scroll-target="#sec-block-preamble"><span class="toc-section-number">2.2.13</span>  <code>$PREAMBLE</code> &nbsp;</a></li>
+  <li><a href="#sec-block-pred" id="toc-sec-block-pred" class="nav-link" data-scroll-target="#sec-block-pred"><span class="toc-section-number">2.2.14</span>  <code>$PRED</code> &nbsp;</a></li>
+  <li><a href="#sec-block-capture" id="toc-sec-block-capture" class="nav-link" data-scroll-target="#sec-block-capture"><span class="toc-section-number">2.2.15</span>  <code>$CAPTURE</code> &nbsp;</a></li>
+  <li><a href="#sec-block-omega" id="toc-sec-block-omega" class="nav-link" data-scroll-target="#sec-block-omega"><span class="toc-section-number">2.2.16</span>  <code>$OMEGA</code> &nbsp;</a></li>
+  <li><a href="#sec-block-sigma" id="toc-sec-block-sigma" class="nav-link" data-scroll-target="#sec-block-sigma"><span class="toc-section-number">2.2.17</span>  <code>$SIGMA</code> &nbsp;</a></li>
   <li><a href="#set" id="toc-set" class="nav-link" data-scroll-target="#set"><span class="toc-section-number">2.2.18</span>  <code>$SET</code></a></li>
   <li><a href="#global" id="toc-global" class="nav-link" data-scroll-target="#global"><span class="toc-section-number">2.2.19</span>  <code>$GLOBAL</code></a></li>
   <li><a href="#pkmodel" id="toc-pkmodel" class="nav-link" data-scroll-target="#pkmodel"><span class="toc-section-number">2.2.20</span>  <code>$PKMODEL</code></a></li>
-  <li><a href="#block-plugin" id="toc-block-plugin" class="nav-link" data-scroll-target="#block-plugin"><span class="toc-section-number">2.2.21</span>  <code>$PLUGIN</code> &nbsp;</a></li>
-  <li><a href="#block-theta" id="toc-block-theta" class="nav-link" data-scroll-target="#block-theta"><span class="toc-section-number">2.2.22</span>  <code>$THETA</code> &nbsp;</a></li>
-  <li><a href="#block-nmxml" id="toc-block-nmxml" class="nav-link" data-scroll-target="#block-nmxml"><span class="toc-section-number">2.2.23</span>  <code>$NMXML</code> &nbsp;</a></li>
-  <li><a href="#block-nmext" id="toc-block-nmext" class="nav-link" data-scroll-target="#block-nmext"><span class="toc-section-number">2.2.24</span>  <code>$NMEXT</code> &nbsp;</a></li>
-  <li><a href="#block-include" id="toc-block-include" class="nav-link" data-scroll-target="#block-include"><span class="toc-section-number">2.2.25</span>  <code>$INCLUDE</code> &nbsp;</a></li>
-  <li><a href="#block-env" id="toc-block-env" class="nav-link" data-scroll-target="#block-env"><span class="toc-section-number">2.2.26</span>  <code>$ENV</code> &nbsp;</a></li>
+  <li><a href="#sec-block-plugin" id="toc-sec-block-plugin" class="nav-link" data-scroll-target="#sec-block-plugin"><span class="toc-section-number">2.2.21</span>  <code>$PLUGIN</code> &nbsp;</a></li>
+  <li><a href="#sec-block-theta" id="toc-sec-block-theta" class="nav-link" data-scroll-target="#sec-block-theta"><span class="toc-section-number">2.2.22</span>  <code>$THETA</code> &nbsp;</a></li>
+  <li><a href="#sec-block-nmxml" id="toc-sec-block-nmxml" class="nav-link" data-scroll-target="#sec-block-nmxml"><span class="toc-section-number">2.2.23</span>  <code>$NMXML</code> &nbsp;</a></li>
+  <li><a href="#sec-block-nmext" id="toc-sec-block-nmext" class="nav-link" data-scroll-target="#sec-block-nmext"><span class="toc-section-number">2.2.24</span>  <code>$NMEXT</code> &nbsp;</a></li>
+  <li><a href="#sec-block-include" id="toc-sec-block-include" class="nav-link" data-scroll-target="#sec-block-include"><span class="toc-section-number">2.2.25</span>  <code>$INCLUDE</code> &nbsp;</a></li>
+  <li><a href="#sec-block-env" id="toc-sec-block-env" class="nav-link" data-scroll-target="#sec-block-env"><span class="toc-section-number">2.2.26</span>  <code>$ENV</code> &nbsp;</a></li>
   </ul></li>
-  <li><a href="#variables-macros" id="toc-variables-macros" class="nav-link" data-scroll-target="#variables-macros"><span class="toc-section-number">2.3</span>  Variables and Macros</a>
+  <li><a href="#sec-variables-macros" id="toc-sec-variables-macros" class="nav-link" data-scroll-target="#sec-variables-macros"><span class="toc-section-number">2.3</span>  Variables and Macros</a>
   <ul class="collapse">
   <li><a href="#id" id="toc-id" class="nav-link" data-scroll-target="#id"><span class="toc-section-number">2.3.1</span>  <code>ID</code></a></li>
   <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"><span class="toc-section-number">2.3.2</span>  <code>TIME</code></a></li>
@@ -288,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#ss_advance" id="toc-ss_advance" class="nav-link" data-scroll-target="#ss_advance"><span class="toc-section-number">2.3.9</span>  <code>SS_ADVANCE</code></a></li>
   <li><a href="#simeta" id="toc-simeta" class="nav-link" data-scroll-target="#simeta"><span class="toc-section-number">2.3.10</span>  <code>simeta()</code></a></li>
   <li><a href="#simeps" id="toc-simeps" class="nav-link" data-scroll-target="#simeps"><span class="toc-section-number">2.3.11</span>  <code>simeps()</code></a></li>
-  <li><a href="#self-object" id="toc-self-object" class="nav-link" data-scroll-target="#self-object"><span class="toc-section-number">2.3.12</span>  <code>self</code> &nbsp;</a></li>
+  <li><a href="#sec-self-object" id="toc-sec-self-object" class="nav-link" data-scroll-target="#sec-self-object"><span class="toc-section-number">2.3.12</span>  <code>self</code> &nbsp;</a></li>
   <li><a href="#self.cmt" id="toc-self.cmt" class="nav-link" data-scroll-target="#self.cmt"><span class="toc-section-number">2.3.13</span>  <code>self.cmt</code></a></li>
   <li><a href="#self.amt" id="toc-self.amt" class="nav-link" data-scroll-target="#self.amt"><span class="toc-section-number">2.3.14</span>  <code>self.amt</code></a></li>
   <li><a href="#self.nid" id="toc-self.nid" class="nav-link" data-scroll-target="#self.nid"><span class="toc-section-number">2.3.15</span>  <code>self.nid</code></a></li>
@@ -296,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#self.nrow" id="toc-self.nrow" class="nav-link" data-scroll-target="#self.nrow"><span class="toc-section-number">2.3.17</span>  <code>self.nrow</code></a></li>
   <li><a href="#self.rown" id="toc-self.rown" class="nav-link" data-scroll-target="#self.rown"><span class="toc-section-number">2.3.18</span>  <code>self.rown</code></a></li>
   <li><a href="#self.envir" id="toc-self.envir" class="nav-link" data-scroll-target="#self.envir"><span class="toc-section-number">2.3.19</span>  <code>self.envir</code></a></li>
-  <li><a href="#self-tad" id="toc-self-tad" class="nav-link" data-scroll-target="#self-tad"><span class="toc-section-number">2.3.20</span>  <code>self.tad()</code> &nbsp;</a></li>
-  <li><a href="#self.mtime" id="toc-self.mtime" class="nav-link" data-scroll-target="#self.mtime"><span class="toc-section-number">2.3.21</span>  <code>self.mtime(&lt;time&gt;)</code> &nbsp;</a></li>
+  <li><a href="#sec-self-tad" id="toc-sec-self-tad" class="nav-link" data-scroll-target="#sec-self-tad"><span class="toc-section-number">2.3.20</span>  <code>self.tad()</code> &nbsp;</a></li>
+  <li><a href="#sec-self.mtime" id="toc-sec-self.mtime" class="nav-link" data-scroll-target="#sec-self.mtime"><span class="toc-section-number">2.3.21</span>  <code>self.mtime(&lt;time&gt;)</code> &nbsp;</a></li>
   <li><a href="#self.meventtime-evid" id="toc-self.meventtime-evid" class="nav-link" data-scroll-target="#self.meventtime-evid"><span class="toc-section-number">2.3.22</span>  <code>self.mevent(&lt;time&gt;, &lt;evid&gt;)</code></a></li>
   <li><a href="#self.stop" id="toc-self.stop" class="nav-link" data-scroll-target="#self.stop"><span class="toc-section-number">2.3.23</span>  <code>self.stop()</code></a></li>
   <li><a href="#self.stop_id" id="toc-self.stop_id" class="nav-link" data-scroll-target="#self.stop_id"><span class="toc-section-number">2.3.24</span>  <code>self.stop_id()</code></a></li>
@@ -306,15 +306,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#etan" id="toc-etan" class="nav-link" data-scroll-target="#etan"><span class="toc-section-number">2.3.27</span>  <code>ETA(n)</code></a></li>
   <li><a href="#epsn" id="toc-epsn" class="nav-link" data-scroll-target="#epsn"><span class="toc-section-number">2.3.28</span>  <code>EPS(n)</code></a></li>
   <li><a href="#tablename" id="toc-tablename" class="nav-link" data-scroll-target="#tablename"><span class="toc-section-number">2.3.29</span>  <code>table(&lt;name&gt;)</code></a></li>
-  <li><a href="#spec-f" id="toc-spec-f" class="nav-link" data-scroll-target="#spec-f"><span class="toc-section-number">2.3.30</span>  <code>F_CMT</code> &nbsp;</a></li>
-  <li><a href="#spec-alag" id="toc-spec-alag" class="nav-link" data-scroll-target="#spec-alag"><span class="toc-section-number">2.3.31</span>  <code>ALAG_CMT</code> &nbsp;</a></li>
-  <li><a href="#spec-r" id="toc-spec-r" class="nav-link" data-scroll-target="#spec-r"><span class="toc-section-number">2.3.32</span>  <code>R_CMT</code> &nbsp;</a></li>
+  <li><a href="#sec-spec-f" id="toc-sec-spec-f" class="nav-link" data-scroll-target="#sec-spec-f"><span class="toc-section-number">2.3.30</span>  <code>F_CMT</code> &nbsp;</a></li>
+  <li><a href="#sec-spec-alag" id="toc-sec-spec-alag" class="nav-link" data-scroll-target="#sec-spec-alag"><span class="toc-section-number">2.3.31</span>  <code>ALAG_CMT</code> &nbsp;</a></li>
+  <li><a href="#sec-spec-r" id="toc-sec-spec-r" class="nav-link" data-scroll-target="#sec-spec-r"><span class="toc-section-number">2.3.32</span>  <code>R_CMT</code> &nbsp;</a></li>
   <li><a href="#rn" id="toc-rn" class="nav-link" data-scroll-target="#rn"><span class="toc-section-number">2.3.33</span>  <code>Rn</code></a></li>
-  <li><a href="#spec-d" id="toc-spec-d" class="nav-link" data-scroll-target="#spec-d"><span class="toc-section-number">2.3.34</span>  <code>D_CMT</code> &nbsp;</a></li>
+  <li><a href="#sec-spec-d" id="toc-sec-spec-d" class="nav-link" data-scroll-target="#sec-spec-d"><span class="toc-section-number">2.3.34</span>  <code>D_CMT</code> &nbsp;</a></li>
   <li><a href="#nonmem-like-syntax" id="toc-nonmem-like-syntax" class="nav-link" data-scroll-target="#nonmem-like-syntax"><span class="toc-section-number">2.3.35</span>  NONMEM-like syntax</a></li>
   </ul></li>
   <li><a href="#reserved-words" id="toc-reserved-words" class="nav-link" data-scroll-target="#reserved-words"><span class="toc-section-number">2.4</span>  Reserved words</a></li>
-  <li><a href="#new-variables" id="toc-new-variables" class="nav-link" data-scroll-target="#new-variables"><span class="toc-section-number">2.5</span>  Derive new variables</a>
+  <li><a href="#sec-new-variables" id="toc-sec-new-variables" class="nav-link" data-scroll-target="#sec-new-variables"><span class="toc-section-number">2.5</span>  Derive new variables</a>
   <ul class="collapse">
   <li><a href="#special-handling-for-double-int-bool" id="toc-special-handling-for-double-int-bool" class="nav-link" data-scroll-target="#special-handling-for-double-int-bool"><span class="toc-section-number">2.5.1</span>  Special handling for <code>double</code>, <code>int</code>, <code>bool</code></a></li>
   <li><a href="#using-other-types-globally" id="toc-using-other-types-globally" class="nav-link" data-scroll-target="#using-other-types-globally"><span class="toc-section-number">2.5.2</span>  Using other types globally</a></li>
@@ -334,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="model-specification" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></span></h1>
+<h1 class="title"><span id="sec-sec-model-specification" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></span></h1>
 </div>
 
 
@@ -361,8 +361,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Code <strong>inline</strong> as a character string already in your R script</li>
 </ol>
 <p>We recommend method <code>1</code> (separate file) for any non-trivial modeling work. Method <code>2</code> is handy for quickly coding a model and you’ll also see us using that approach frequently when demonstrating how to use <code>mrgsolve</code>.</p>
-<section id="spec-separate-file" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="spec-separate-file"><span class="header-section-number">2.1.1</span> Separate file</h3>
+<section id="sec-spec-separate-file" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-spec-separate-file"><span class="header-section-number">2.1.1</span> Separate file</h3>
 <p>Open a text editor and type the model into a file with name that has the format <code>&lt;model-name&gt;.cpp</code>. This filename format identifies a “name” for your model (<code>&lt;model-name&gt;</code>, the “stem” of the file name). The extension <strong>MUST</strong> be <code>.cpp</code> (<code>mrgsolve</code> currently assumes the extension). Note: this whole file will be read and parsed, so everything in it must be valid <code>mrgsolve</code> model specification elements.</p>
 <p>Use the <code>mread()</code> function to read and parse this file. For the model called <code>mymodel</code> saved in <code>mymodel.cpp</code> (in the current working directory), issue the command:</p>
 <div class="cell">
@@ -370,8 +370,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><code>mread()</code> returns a model object from which you can simulate.</p>
 </section>
-<section id="spec-inline" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="spec-inline"><span class="header-section-number">2.1.2</span> Inline / <code>code</code> &nbsp;</h3>
+<section id="sec-spec-inline" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-spec-inline"><span class="header-section-number">2.1.2</span> Inline / <code>code</code> &nbsp;</h3>
 <p>Often it is more convenient to write a model right in your <code>R</code> script. The model might look something like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
@@ -379,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL ncmt=1</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, we created a character vector of length 1 and saved it to the <code>R</code> object called <code>code</code>. The name of this object is irrelevant. But <code>code</code> will be passed into <code>mrgsolve</code> as the model definition. When <code>mrgsolve</code> gets a model like this along with a “name” for the model, mrgsolve will write the code to a file called <code>&lt;model-name&gt;.cpp</code> and read it right back in as if you had typed the code into this file (section @ref(spec-separate-file)).</p>
+<p>Here, we created a character vector of length 1 and saved it to the <code>R</code> object called <code>code</code>. The name of this object is irrelevant. But <code>code</code> will be passed into <code>mrgsolve</code> as the model definition. When <code>mrgsolve</code> gets a model like this along with a “name” for the model, mrgsolve will write the code to a file called <code>&lt;model-name&gt;.cpp</code> and read it right back in as if you had typed the code into this file (<a href="#sec-spec-separate-file"><span>Section&nbsp;2.1.1</span></a>).</p>
 <p>To parse and load this model, use the <code>mcode()</code> command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"mymodel"</span>, code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -392,8 +392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For help, see <code>?mread</code> , <code>?mcode</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
 </section>
-<section id="code-blocks" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="code-blocks"><span class="header-section-number">2.2</span> Code blocks</h2>
+<section id="sec-code-blocks" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-code-blocks"><span class="header-section-number">2.2</span> Code blocks</h2>
 <section id="about-code-blocks" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="about-code-blocks"><span class="header-section-number">2.2.1</span> About code blocks</h3>
 <p><strong>Block identifier</strong></p>
@@ -471,16 +471,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Please see the specific block documentation for more details on the specific type of object that should be returned when this syntax is invoked.</p>
 </section>
-<section id="block-prob" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="block-prob"><span class="header-section-number">2.2.3</span> <code>$PROB</code> &nbsp;</h3>
+<section id="sec-block-prob" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="sec-block-prob"><span class="header-section-number">2.2.3</span> <code>$PROB</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code></p>
 <p>Use this block to make notes about the model. There are no restrictions on the text that gets entered here. mrgsolve does not routinely process the text in any way, except when rendering the model as a document. Frequently, we write the text here in markdown format so that it will render nicely in the model document. But this is completely optional.</p>
-<p>See the annotated model in section @ref(topic-annotated) for an example.</p>
+<p>See the annotated model in <a href="topics.html#sec-topic-annotated"><span>Section&nbsp;11.1</span></a> for an example.</p>
 </section>
-<section id="block-param" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="block-param"><span class="header-section-number">2.2.4</span> <code>$PARAM</code> &nbsp;</h3>
+<section id="sec-block-param" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-block-param"><span class="header-section-number">2.2.4</span> <code>$PARAM</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code>, <code>@object</code>, <code>@as_object</code></p>
@@ -529,11 +529,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Values are evaluated by the <code>R</code> interpreter</li>
 </ul>
 <p>The <code>@object</code> and <code>@as_object</code> options should name or return a named list of parameters.</p>
-<p>See also: section @ref(block-theta) and @ref(block-fixed).</p>
+<p>See also: <a href="#sec-block-theta"><span>Section&nbsp;2.2.22</span></a> and <a href="#sec-block-fixed"><span>Section&nbsp;2.2.5</span></a>.</p>
 <p>See <code>?param</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
-<section id="block-fixed" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5" class="anchored" data-anchor-id="block-fixed"><span class="header-section-number">2.2.5</span> <code>$FIXED</code> &nbsp;</h3>
+<section id="sec-block-fixed" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="sec-block-fixed"><span class="header-section-number">2.2.5</span> <code>$FIXED</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@object</code>, <code>@as_object</code></p>
@@ -553,7 +553,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>$FIXED @annotated</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">:</span> <span class="fl">9.8</span> <span class="op">:</span> Acceleration due to gravity <span class="op">(</span>m<span class="op">/</span>s<span class="op">^</span><span class="dv">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See also: section @ref(block-param) and @ref(block-theta).</p>
+<p>See also: <a href="#sec-block-param"><span>Section&nbsp;2.2.4</span></a> and <a href="#sec-block-theta"><span>Section&nbsp;2.2.22</span></a>.</p>
 <p>Notes:</p>
 <ul>
 <li>Multiple blocks are allowed</li>
@@ -594,8 +594,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <code>@object</code> and <code>@as_object</code> options should name or return a named list of compartments and initial values when used in <code>$INIT</code> and a character vector of compartment names when used in <code>$CMT</code>.</p>
 <p>See <code>?init</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
-<section id="block-main" class="level3" data-number="2.2.7">
-<h3 data-number="2.2.7" class="anchored" data-anchor-id="block-main"><span class="header-section-number">2.2.7</span> <code>$MAIN</code> &nbsp;</h3>
+<section id="sec-block-main" class="level3" data-number="2.2.7">
+<h3 data-number="2.2.7" class="anchored" data-anchor-id="sec-block-main"><span class="header-section-number">2.2.7</span> <code>$MAIN</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>This code block has two main purposes:</p>
@@ -606,7 +606,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For users who are familiar with NONMEM, <code>$MAIN</code> is similar to <code>$PK</code>.</p>
 <p><code>$MAIN</code> is wrapped into a <code>C++</code> function and compiled / loaded by <code>mrgsolve</code>.<br>
 The <code>MAIN</code> function gets called just prior to advancing the system from the current time to the next time for each record in the data set. <code>$MAIN</code> also gets called several times before starting the problem (<code>NEWIND == 0</code>) and just prior to simulating each individual (<code>NEWIND == 1</code>). Finally, <code>$MAIN</code> gets called every time the model initial conditions are queried with <code>init()</code>.</p>
-<p>New variables may be declared in <code>$MAIN</code>. See section @ref(new-variables) for details.</p>
+<p>New variables may be declared in <code>$MAIN</code>. See <a href="#sec-new-variables"><span>Section&nbsp;2.5</span></a> for details.</p>
 <p>Examples:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> CMT <span class="op">]</span> CENT RESP</span>
@@ -620,12 +620,12 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> ke <span class="op">=</span> CL<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="block-pk" class="level3" data-number="2.2.8">
-<h3 data-number="2.2.8" class="anchored" data-anchor-id="block-pk"><span class="header-section-number">2.2.8</span> <code>$PK</code> &nbsp;</h3>
+<section id="sec-block-pk" class="level3" data-number="2.2.8">
+<h3 data-number="2.2.8" class="anchored" data-anchor-id="sec-block-pk"><span class="header-section-number">2.2.8</span> <code>$PK</code> &nbsp;</h3>
 <p>This is an alias for <code>$MAIN</code>.</p>
 </section>
-<section id="block-ode" class="level3" data-number="2.2.9">
-<h3 data-number="2.2.9" class="anchored" data-anchor-id="block-ode"><span class="header-section-number">2.2.9</span> <code>$ODE</code> &nbsp;</h3>
+<section id="sec-block-ode" class="level3" data-number="2.2.9">
+<h3 data-number="2.2.9" class="anchored" data-anchor-id="sec-block-ode"><span class="header-section-number">2.2.9</span> <code>$ODE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no<br>
 <strong>Options</strong>: <code>@param</code></p>
@@ -640,7 +640,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 </div>
 <p>It is important to make sure that there is a <code>dxdt_</code> expression defined for every compartment listed in <code>$CMT</code> or <code>$INIT</code>, even if it is <code>dxdt_CMT = 0;</code></p>
 <p>The <code>$ODE</code> function is called repeatedly during a simulation run. So it is wise to do as many calculations as possible outside of <code>$ODE</code>, usually in <code>$MAIN</code>. But remember that any calculation that depends on an amount in a compartment and helps determine the <code>dxdt_</code> expression in a model must be written in <code>$ODE</code>.</p>
-<p>New variables may be declared in <code>$ODE</code>. See section @ref(new-variables) for details.</p>
+<p>New variables may be declared in <code>$ODE</code>. See <a href="#sec-new-variables"><span>Section&nbsp;2.5</span></a> for details.</p>
 <p>For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>$CMT CENT RESP</span>
@@ -659,12 +659,12 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>There may be only one <code>$ODE</code> block in a model</li>
 </ul>
 </section>
-<section id="block-des" class="level3" data-number="2.2.10">
-<h3 data-number="2.2.10" class="anchored" data-anchor-id="block-des"><span class="header-section-number">2.2.10</span> <code>$DES</code> &nbsp;</h3>
+<section id="sec-block-des" class="level3" data-number="2.2.10">
+<h3 data-number="2.2.10" class="anchored" data-anchor-id="sec-block-des"><span class="header-section-number">2.2.10</span> <code>$DES</code> &nbsp;</h3>
 <p>This is an alias for <code>$ODE</code>.</p>
 </section>
-<section id="block-table" class="level3" data-number="2.2.11">
-<h3 data-number="2.2.11" class="anchored" data-anchor-id="block-table"><span class="header-section-number">2.2.11</span> <code>$TABLE</code> &nbsp;</h3>
+<section id="sec-block-table" class="level3" data-number="2.2.11">
+<h3 data-number="2.2.11" class="anchored" data-anchor-id="sec-block-table"><span class="header-section-number">2.2.11</span> <code>$TABLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>Use <code>$TABLE</code> to interact with parameters, compartment values, and other user-defined variables <strong>after</strong> the system advances to the next time.</p>
@@ -674,14 +674,14 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>NOTE</strong> <code>mrgsolve</code> formerly had a <code>table()</code> macro for inserting derived values into simulated output. This macro has been deprecated. The only way to insert derived values into the simulated output is via <code>$CAPTURE</code>.</p>
-<p><strong>NOTE</strong> When variables are marked for capture (see @ref(block-capture)), the values of those variables are saved at the <strong>end</strong> of the <code>$TABLE</code> function. This process is carried out automatically by <code>mrgsolve</code> and therefore requires no user intervention.</p>
+<p><strong>NOTE</strong> When variables are marked for capture (see <a href="#sec-block-capture"><span>Section&nbsp;2.2.15</span></a>), the values of those variables are saved at the <strong>end</strong> of the <code>$TABLE</code> function. This process is carried out automatically by <code>mrgsolve</code> and therefore requires no user intervention.</p>
 </section>
-<section id="block-error" class="level3" data-number="2.2.12">
-<h3 data-number="2.2.12" class="anchored" data-anchor-id="block-error"><span class="header-section-number">2.2.12</span> <code>$ERROR</code> &nbsp;</h3>
+<section id="sec-block-error" class="level3" data-number="2.2.12">
+<h3 data-number="2.2.12" class="anchored" data-anchor-id="sec-block-error"><span class="header-section-number">2.2.12</span> <code>$ERROR</code> &nbsp;</h3>
 <p>This is an alias for <code>$TABLE</code>.</p>
 </section>
-<section id="block-preamble" class="level3" data-number="2.2.13">
-<h3 data-number="2.2.13" class="anchored" data-anchor-id="block-preamble"><span class="header-section-number">2.2.13</span> <code>$PREAMBLE</code> &nbsp;</h3>
+<section id="sec-block-preamble" class="level3" data-number="2.2.13">
+<h3 data-number="2.2.13" class="anchored" data-anchor-id="sec-block-preamble"><span class="header-section-number">2.2.13</span> <code>$PREAMBLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>This is the fourth C++ code block. It is called once in two different settings:</p>
@@ -714,10 +714,10 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>There may be only one <code>$PREAMBLE</code> block in a model</li>
 <li>Like <code>$MAIN</code>, <code>$ODE</code> and <code>$TABLE</code>, <code>double</code>, <code>int</code> and <code>bool</code> variables initialized in <code>$PREAMBLE</code> are actually initialized for global (within the model file)</li>
 </ul>
-<p>See also: @ref(block-plugin).</p>
+<p>See also: <a href="#sec-block-plugin"><span>Section&nbsp;2.2.21</span></a>.</p>
 </section>
-<section id="block-pred" class="level3" data-number="2.2.14">
-<h3 data-number="2.2.14" class="anchored" data-anchor-id="block-pred"><span class="header-section-number">2.2.14</span> <code>$PRED</code> &nbsp;</h3>
+<section id="sec-block-pred" class="level3" data-number="2.2.14">
+<h3 data-number="2.2.14" class="anchored" data-anchor-id="sec-block-pred"><span class="header-section-number">2.2.14</span> <code>$PRED</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>Use <code>$PRED</code> to write a model without differential equations. In this block, write all algebraic expressions for derived parameters, the response, and any other derived output quantities.</p>
@@ -731,10 +731,10 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> RESP <span class="op">=</span> E0 <span class="op">-</span> IMAX<span class="op">*</span>AUC<span class="op">/(</span>AUC50<span class="op">+</span>AUC<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example, the entire model is written in the <code>$PRED</code> block. It is an error to include the following blocks when <code>$PRED</code> is being used: <code>$MAIN</code>, <code>$TABLE</code>, <code>$PKMODEL</code>, <code>$ODE</code>, <code>$CMT</code>, <code>$INIT</code>.</p>
-<p>See the section @ref(pred-data) for additional information regarding data sets in use with <code>$PRED</code> block.</p>
+<p>See <span class="quarto-unresolved-ref">?sec-pred-data</span> for additional information regarding data sets in use with <code>$PRED</code> block.</p>
 </section>
-<section id="block-capture" class="level3" data-number="2.2.15">
-<h3 data-number="2.2.15" class="anchored" data-anchor-id="block-capture"><span class="header-section-number">2.2.15</span> <code>$CAPTURE</code> &nbsp;</h3>
+<section id="sec-block-capture" class="level3" data-number="2.2.15">
+<h3 data-number="2.2.15" class="anchored" data-anchor-id="sec-block-capture"><span class="header-section-number">2.2.15</span> <code>$CAPTURE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code></p>
@@ -784,10 +784,10 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>CLi <span class="op">:</span> Individual clearance <span class="op">(</span>L<span class="op">/</span>hr<span class="op">)</span></span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>DV  <span class="op">:</span> Plasma concentration <span class="op">(</span>mcg<span class="op">/</span>ml<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>New variables may be declared in <code>$TABLE</code>. See section @ref(new-variables) for details.</p>
+<p>New variables may be declared in <code>$TABLE</code>. See <a href="#sec-new-variables"><span>Section&nbsp;2.5</span></a> for details.</p>
 </section>
-<section id="block-omega" class="level3" data-number="2.2.16">
-<h3 data-number="2.2.16" class="anchored" data-anchor-id="block-omega"><span class="header-section-number">2.2.16</span> <code>$OMEGA</code> &nbsp;</h3>
+<section id="sec-block-omega" class="level3" data-number="2.2.16">
+<h3 data-number="2.2.16" class="anchored" data-anchor-id="sec-block-omega"><span class="header-section-number">2.2.16</span> <code>$OMEGA</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@block</code>, <code>@correlation</code>, <code>@labels</code>, <code>@name</code>, <code>@object</code>, <code>@as_object</code></p>
@@ -840,8 +840,8 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>Multiple <code>$OMEGA</code> blocks are allowed</li>
 </ul>
 </section>
-<section id="block-sigma" class="level3" data-number="2.2.17">
-<h3 data-number="2.2.17" class="anchored" data-anchor-id="block-sigma"><span class="header-section-number">2.2.17</span> <code>$SIGMA</code> &nbsp;</h3>
+<section id="sec-block-sigma" class="level3" data-number="2.2.17">
+<h3 data-number="2.2.17" class="anchored" data-anchor-id="sec-block-sigma"><span class="header-section-number">2.2.17</span> <code>$SIGMA</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@block</code>, <code>@correlation</code>, <code>@labels</code>, <code>@name</code>, <code>@object</code>, <code>@as_object</code></p>
@@ -871,7 +871,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 However there are two more-common uses:</p>
 <ol type="1">
 <li>Write <code>#define</code> preprocessor statements</li>
-<li>Define global variables, usually variables other than <code>double</code>, <code>bool</code>, <code>int</code> (see @ref(new-variables))</li>
+<li>Define global variables, usually variables other than <code>double</code>, <code>bool</code>, <code>int</code> (see <a href="#sec-new-variables"><span>Section&nbsp;2.5</span></a>)</li>
 </ol>
 <p><strong>Preprocessor directives</strong> Preprocessor <code>#define</code> directives are direct substitutions that the <code>C++</code> preprocessor makes prior to compiling your code.</p>
 <p>For example:</p>
@@ -921,12 +921,12 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 <p>Specifying three compartments with <code>depot=TRUE</code> implies <code>ncmt=2</code>. Notice that a separate <code>$CMT</code> block is not appropriate when <code>cmt</code> is specified in <code>$PKMODEL</code>.</p>
 </section>
-<section id="block-plugin" class="level3" data-number="2.2.21">
-<h3 data-number="2.2.21" class="anchored" data-anchor-id="block-plugin"><span class="header-section-number">2.2.21</span> <code>$PLUGIN</code> &nbsp;</h3>
+<section id="sec-block-plugin" class="level3" data-number="2.2.21">
+<h3 data-number="2.2.21" class="anchored" data-anchor-id="sec-block-plugin"><span class="header-section-number">2.2.21</span> <code>$PLUGIN</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>Plugins are a way to add extensions to your <code>mrgsolve</code> model. Plugins can either link your model to external libraries (like <code>boost</code> or <code>Rcpp</code>) or they can open up access to additional functionality provided by <code>mrgsolve</code> itself.</p>
-<p>Plugins are listed and discussed in more detail in Chapter @ref(plugins).</p>
+<p>Plugins are listed and discussed in more detail in <span class="quarto-unresolved-ref">?sec-plugins</span>.</p>
 <p><strong>Usage</strong></p>
 <p>To invoke a plugin, list the plugin name in the code block. For requesting <code>Rcpp</code> headers in your model, call</p>
 <div class="cell">
@@ -1023,11 +1023,11 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> WT <span class="op">=</span> mrgx<span class="op">::</span>rnorm<span class="op">(</span><span class="dv">80</span><span class="op">,</span><span class="dv">20</span><span class="op">,</span><span class="dv">40</span><span class="op">,</span><span class="dv">140</span><span class="op">);</span></span>
 <span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See also: @ref(block-preamble).</p>
+<p>See also: <a href="#sec-block-preamble"><span>Section&nbsp;2.2.13</span></a>.</p>
 </section>
 </section>
-<section id="block-theta" class="level3" data-number="2.2.22">
-<h3 data-number="2.2.22" class="anchored" data-anchor-id="block-theta"><span class="header-section-number">2.2.22</span> <code>$THETA</code> &nbsp;</h3>
+<section id="sec-block-theta" class="level3" data-number="2.2.22">
+<h3 data-number="2.2.22" class="anchored" data-anchor-id="sec-block-theta"><span class="header-section-number">2.2.22</span> <code>$THETA</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@name</code>, <code>@object</code>, <code>@as_object</code></p>
@@ -1058,13 +1058,13 @@ This makes sure the ratio between the two is taken first, before any other opera
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PARAM <span class="op">]</span> theta1 <span class="op">=</span> <span class="fl">0.1</span><span class="op">,</span> theta2 <span class="op">=</span> <span class="fl">0.2</span><span class="op">,</span> theta3 <span class="op">=</span> <span class="fl">0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>@object</code> and <code>@as_object</code> options should name or return an unnamed vector of parameter values (names are ignored).</p>
-<p>See also: @ref(block-param).</p>
+<p>See also: <a href="#sec-block-param"><span>Section&nbsp;2.2.4</span></a>.</p>
 </section>
-<section id="block-nmxml" class="level3" data-number="2.2.23">
-<h3 data-number="2.2.23" class="anchored" data-anchor-id="block-nmxml"><span class="header-section-number">2.2.23</span> <code>$NMXML</code> &nbsp;</h3>
+<section id="sec-block-nmxml" class="level3" data-number="2.2.23">
+<h3 data-number="2.2.23" class="anchored" data-anchor-id="sec-block-nmxml"><span class="header-section-number">2.2.23</span> <code>$NMXML</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: yes</p>
-<p>The <code>$NMXML</code> block lets you read and incorporate results from a NONMEM run into your <code>mrgsolve</code> model. From the NONMEM run, <code>THETA</code> will be imported into your parameter list (see @ref(block-param) and @ref(component-param)), <code>OMEGA</code> will be captured as an <code>$OMEGA</code> block (@ref(block-omega)) and <code>SIGMA</code> will be captured as a <code>$SIGMA</code> block (@ref(block-sigma)). Users may optionally omit any one of these from being imported.</p>
+<p>The <code>$NMXML</code> block lets you read and incorporate results from a NONMEM run into your <code>mrgsolve</code> model. From the NONMEM run, <code>THETA</code> will be imported into your parameter list (see <a href="#sec-block-param"><span>Section&nbsp;2.2.4</span></a> and <a href="components.html#sec-component-param"><span>Section&nbsp;1.1</span></a>), <code>OMEGA</code> will be captured as an <code>$OMEGA</code> block (<a href="#sec-block-omega"><span>Section&nbsp;2.2.16</span></a>) and <code>SIGMA</code> will be captured as a <code>$SIGMA</code> block (<a href="#sec-block-sigma"><span>Section&nbsp;2.2.17</span></a>). Users may optionally omit any one of these from being imported.</p>
 <p><code>$NMXML</code> contains a <code>project</code> argument and a <code>run</code> argument. By default, the estimates are read from from the file <code>project/run/run.xml</code>. That is, it is assumed that there is a directory named <code>run</code> that is inside the <code>project</code> directory where <code>$NMXML</code> will find <code>run.xml</code>. Your NONMEM run directories may not be organized in a way that is compatible with this default. In that case, you will need to provide the <code>file</code> argument, which should be the path to the <code>run.xml</code> file, either as a full path or as a path relative to the current working directory.</p>
 <p>Once the model object is obtained, the path to the <code>xml</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>:</p>
 <div class="cell">
@@ -1128,8 +1128,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 . 
 . ----------------  source: nmxml.cpp  ----------------
 . 
-.   project: /private/var/fol.../T/Rtmpq2XFoS
-.   shared object: nmxml-so-1823c75f228d8 
+.   project: /private/var/fol.../T/RtmpTtlaEP
+.   shared object: nmxml-so-140a1086ebd7 
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;
@@ -1172,12 +1172,12 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 </div>
 <p><strong>root argument</strong>: please use the <code>root = "cppfile"</code> argument going forward.</p>
-<p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMXML</code> that tells mrgsolve the location where it should read the <code>xml</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>xml</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>xml</code> file in a directory that is relative to <strong>where the model source code file is located</strong>. Please take a look at section @ref(block-nmext) for more discussion and examples.</p>
+<p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMXML</code> that tells mrgsolve the location where it should read the <code>xml</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>xml</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>xml</code> file in a directory that is relative to <strong>where the model source code file is located</strong>. Please take a look at <a href="#sec-block-nmext"><span>Section&nbsp;2.2.24</span></a> for more discussion and examples.</p>
 <p>Please see the <code>?nmxml</code> help topic for more information on arguments that can be passed to <code>$NMXML</code>.</p>
-<p>See also: @ref(block-nmext).</p>
+<p>See also: <a href="#sec-block-nmext"><span>Section&nbsp;2.2.24</span></a>.</p>
 </section>
-<section id="block-nmext" class="level3" data-number="2.2.24">
-<h3 data-number="2.2.24" class="anchored" data-anchor-id="block-nmext"><span class="header-section-number">2.2.24</span> <code>$NMEXT</code> &nbsp;</h3>
+<section id="sec-block-nmext" class="level3" data-number="2.2.24">
+<h3 data-number="2.2.24" class="anchored" data-anchor-id="sec-block-nmext"><span class="header-section-number">2.2.24</span> <code>$NMEXT</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: yes</p>
 <p>Like <code>$NMXML</code>, <code>$NMEXT</code> allows the import of <code>$THETA</code>, <code>$OMEGA</code>, and <code>$SIGMA</code> from your NONMEM run into your mrgsolve model, but the estimates are read from the <code>.ext</code> file output. <code>$NMEXT</code> is able to import the NONMEM estimates much faster than <code>$NMXML</code> when loading from sampling based methods (mainly <code>METHOD=BAYES</code>).</p>
@@ -1227,7 +1227,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 .  THETA4 3.47   | .      .</code></pre>
 </div>
 </div>
-<p>Once the model object is obtained, the path to the <code>ext</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>. See the <code>$NMXML</code> topic in section @ref(block-nmxml) for an example of equivalent functionality.</p>
+<p>Once the model object is obtained, the path to the <code>ext</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>. See the <code>$NMXML</code> topic in <a href="#sec-block-nmxml"><span>Section&nbsp;2.2.23</span></a> for an example of equivalent functionality.</p>
 <p><strong>IMPORTANT</strong>: while <code>$NMEXT</code> works very similarly to <code>$NMXML</code>, there is one key difference between the two: when using <code>$NMEXT</code>, you will always get one <code>$OMEGA</code> matrix and one <code>$SIGMA</code> matrix, regardless of the block structure used in the NONMEM control stream. When using <code>$NMXML</code>, you get the same block structure in the mrgsolve model as the NONMEM model. For example: in the NONMEM control stream, <code>$OMEGA</code> is one 2x2 matrix and one 3x3 matrix. Importing those estimates with <code>$NMEXT</code> will give you one 5x5 matrix, while importing the estimates with <code>$NMXML</code> will give you a list of one 2x2 and one 3x3 matrix.</p>
 <p><strong>root argument</strong>: please use the <code>root = "cppfile"</code> argument going forward.</p>
 <p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMEXT</code> that tells mrgsolve the location where it should read the <code>ext</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>ext</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>ext</code> file in a directory that is relative to <strong>where the model source code file is located</strong>.</p>
@@ -1247,10 +1247,10 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 <p>When used in the proper context, <code>here()</code> will generate an absolute path from your projects root directory to the nonmem project directory. Please refer to the <code>here::here()</code> documentation for proper use of this function.</p>
 <p>See the <code>?nmext</code> R help topic for arguments that can be passed to <code>$NMEXT</code> block. Notably, the user can select the function to read in the ext file.By default, mrgsolve will try to load data.table and use the <code>fread</code> function. If data.table can’t be loaded, then mrgsolve will use <code>utils::read.table</code>.</p>
-<p>See also: @ref(block-nmxml).</p>
+<p>See also: <a href="#sec-block-nmxml"><span>Section&nbsp;2.2.23</span></a>.</p>
 </section>
-<section id="block-include" class="level3" data-number="2.2.25">
-<h3 data-number="2.2.25" class="anchored" data-anchor-id="block-include"><span class="header-section-number">2.2.25</span> <code>$INCLUDE</code> &nbsp;</h3>
+<section id="sec-block-include" class="level3" data-number="2.2.25">
+<h3 data-number="2.2.25" class="anchored" data-anchor-id="sec-block-include"><span class="header-section-number">2.2.25</span> <code>$INCLUDE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>To include your own header file(s) in a model use <code>$INCLUDE</code></p>
@@ -1281,11 +1281,11 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 <p>But be careful when doing this: if there are changes to <code>mystuff.h</code> but not to any other part of the model specification, the model may not be fully compiled when calling <code>mread</code>. In this case, always use <code>preclean=TRUE</code> argument to <code>mread</code> to force the model to be built when calling <code>mread</code>.</p>
 </section>
-<section id="block-env" class="level3" data-number="2.2.26">
-<h3 data-number="2.2.26" class="anchored" data-anchor-id="block-env"><span class="header-section-number">2.2.26</span> <code>$ENV</code> &nbsp;</h3>
+<section id="sec-block-env" class="level3" data-number="2.2.26">
+<h3 data-number="2.2.26" class="anchored" data-anchor-id="sec-block-env"><span class="header-section-number">2.2.26</span> <code>$ENV</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: no</p>
-<p>This block is all <code>R</code> code (just as you would code in a stand-alone <code>R</code> script. The code is parsed and evaluated into a new environment when the model is compiled. Objects inside <code>$ENV</code> can be utilized in different C++ functions (see @ref(block-plugin)) or other parts of the simulation process.</p>
+<p>This block is all <code>R</code> code (just as you would code in a stand-alone <code>R</code> script. The code is parsed and evaluated into a new environment when the model is compiled. Objects inside <code>$ENV</code> can be utilized in different C++ functions (see <a href="#sec-block-plugin"><span>Section&nbsp;2.2.21</span></a>) or other parts of the simulation process.</p>
 <p>For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>$ENV</span>
@@ -1302,8 +1302,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 </section>
 </section>
-<section id="variables-macros" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="variables-macros"><span class="header-section-number">2.3</span> Variables and Macros</h2>
+<section id="sec-variables-macros" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-variables-macros"><span class="header-section-number">2.3</span> Variables and Macros</h2>
 <p>This section describes some macros and internal variables that can be used in model specification files. In the following section, we adopt the convention that <code>CMT</code> stands for a compartment in the model.</p>
 <p><strong>IMPORTANT NOTE</strong>:</p>
 <p>It should be clear from the usage examples which variables can be set by the user and which are to be read or checked. <strong>All internal variables are pre-defined and pre-initialized by mrgsolve. <em>The user should never try to declare an internal variable; this will always result in an compile-time error</em></strong>.</p>
@@ -1318,7 +1318,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <section id="solvertime" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="solvertime"><span class="header-section-number">2.3.3</span> <code>SOLVERTIME</code></h3>
 <p>Gives the time of the current timestep taken by the solver. <em>This is can only be used in <code>$ODE</code></em>. Contrast with <code>TIME</code>.</p>
-<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (Section @ref(plugin-nm-vars)).</p>
+<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<span class="quarto-unresolved-ref">?sec-plugin-nm-vars</span>).</p>
 </section>
 <section id="t" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="t"><span class="header-section-number">2.3.4</span> <code>T</code></h3>
@@ -1379,7 +1379,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="ss_advance" class="level3" data-number="2.3.9">
 <h3 data-number="2.3.9" class="anchored" data-anchor-id="ss_advance"><span class="header-section-number">2.3.9</span> <code>SS_ADVANCE</code></h3>
-<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless <code>mrgsolve</code> is currently advancing the system to steady state (Chapter @ref(steady-state)); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
+<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless <code>mrgsolve</code> is currently advancing the system to steady state (<span class="quarto-unresolved-ref">?sec-steady-state</span>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
 <p>Use this variable to modify the calculation of your model differential equations while the system is advancing to steady state. One use case is when you have an accumulation compartment to calculate <code>AUC</code> but you want to halt accumulation while the system is working toward steady state</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>$ODE</span>
@@ -1401,8 +1401,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <h3 data-number="2.3.11" class="anchored" data-anchor-id="simeps"><span class="header-section-number">2.3.11</span> <code>simeps()</code></h3>
 <p><code>simeps()</code> works like <code>simeta()</code>, but all <code>EPS(n)</code> values are re-simulated rather than the ETA values.</p>
 </section>
-<section id="self-object" class="level3" data-number="2.3.12">
-<h3 data-number="2.3.12" class="anchored" data-anchor-id="self-object"><span class="header-section-number">2.3.12</span> <code>self</code> &nbsp;</h3>
+<section id="sec-self-object" class="level3" data-number="2.3.12">
+<h3 data-number="2.3.12" class="anchored" data-anchor-id="sec-self-object"><span class="header-section-number">2.3.12</span> <code>self</code> &nbsp;</h3>
 <p><code>self</code> is an object that gets passed to your model function that contains data items and functions that can be called. It is a <code>struct</code> (see the source code <a href="https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolv.h">here</a>. A partial list of members are documented in the following sections.</p>
 <p><code>self</code> functions include</p>
 <ul>
@@ -1486,7 +1486,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.envir" class="level3" data-number="2.3.19">
 <h3 data-number="2.3.19" class="anchored" data-anchor-id="self.envir"><span class="header-section-number">2.3.19</span> <code>self.envir</code></h3>
-<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see Section @ref(plugin-rcpp)).</p>
+<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <span class="quarto-unresolved-ref">?sec-plugin-rcpp</span>).</p>
 <p>For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp mrgx</span>
@@ -1495,8 +1495,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="self-tad" class="level3" data-number="2.3.20">
-<h3 data-number="2.3.20" class="anchored" data-anchor-id="self-tad"><span class="header-section-number">2.3.20</span> <code>self.tad()</code> &nbsp;</h3>
+<section id="sec-self-tad" class="level3" data-number="2.3.20">
+<h3 data-number="2.3.20" class="anchored" data-anchor-id="sec-self-tad"><span class="header-section-number">2.3.20</span> <code>self.tad()</code> &nbsp;</h3>
 <p>This is a function that calculates and returns the time after the most recent dose event record (any record with EVID equal to 1 or 4). <code>self.tad()</code> will return <code>-1</code> when it is called before the first dose record within an individual (<code>NEWIND &lt;= 1</code>).</p>
 <p>This function should be called in <code>$MAIN</code> every time <code>$MAIN</code> is called.</p>
 <p>For example:</p>
@@ -1507,8 +1507,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 <p>Do not make this calculation depend on any test or condition; it must be called every time <code>$MAIN</code> is called in order to see every dose.</p>
 </section>
-<section id="self.mtime" class="level3" data-number="2.3.21">
-<h3 data-number="2.3.21" class="anchored" data-anchor-id="self.mtime"><span class="header-section-number">2.3.21</span> <code>self.mtime(&lt;time&gt;)</code> &nbsp;</h3>
+<section id="sec-self.mtime" class="level3" data-number="2.3.21">
+<h3 data-number="2.3.21" class="anchored" data-anchor-id="sec-self.mtime"><span class="header-section-number">2.3.21</span> <code>self.mtime(&lt;time&gt;)</code> &nbsp;</h3>
 <p>This is a function that creates a modeled even time. The only argument is a numeric time in the future for the current individual that indicates when a discontinuity should be included in the simulation.</p>
 <p>When when <code>self.mtime()</code> is called, a new record is added to the current individual’s record set with <code>EVID</code> set to 2. This means that when the system advances to this record (this time), the differential equation solver will reset and restart, creating the discontinuity. The function returns the time of this event so the user can work with it in subsequent code.</p>
 <p>For example,</p>
@@ -1526,7 +1526,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.meventtime-evid" class="level3" data-number="2.3.22">
 <h3 data-number="2.3.22" class="anchored" data-anchor-id="self.meventtime-evid"><span class="header-section-number">2.3.22</span> <code>self.mevent(&lt;time&gt;, &lt;evid&gt;)</code></h3>
-<p>Related to <code>self.mtime()</code> (Section @ref(self.mtime)), except you can set a specific <code>EVID</code> for this intervention and you track the change time via <code>EVID</code> rather than the time. You’d use this if you want to anchor several events in the future and be sure you can distinguish between them. For example</p>
+<p>Related to <code>self.mtime()</code> (<a href="#sec-self.mtime"><span>Section&nbsp;2.3.21</span></a>), except you can set a specific <code>EVID</code> for this intervention and you track the change time via <code>EVID</code> rather than the time. You’d use this if you want to anchor several events in the future and be sure you can distinguish between them. For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>mevent<span class="op">(</span>change_point1<span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span>
@@ -1553,7 +1553,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="thetan" class="level3" data-number="2.3.26">
 <h3 data-number="2.3.26" class="anchored" data-anchor-id="thetan"><span class="header-section-number">2.3.26</span> <code>THETA(n)</code></h3>
-<p><code>THETA(n)</code> is ubiquitous in NONMEM control streams, representing estimated fixed effect parameters. mrgsolve does not attach any special meaning to <code>THETA(n)</code> but starting with version 1.0.0 it will translate <code>THETA(n)</code> to <code>THETAn</code>. This is useful when importing NONMEM estimates using <code>$NMXML</code> or <code>$NMEXT</code>, where <code>THETA</code>s are imported as parameters with names <code>THETA1</code>, <code>THETA2</code>, <code>THETA3</code> and so on (see Sections @ref(block-nmxml) and @ref(block-nmext)). <code>THETA(n)</code> is simply a NONMEM-oriented style for referring to <code>THETAn</code>.</p>
+<p><code>THETA(n)</code> is ubiquitous in NONMEM control streams, representing estimated fixed effect parameters. mrgsolve does not attach any special meaning to <code>THETA(n)</code> but starting with version 1.0.0 it will translate <code>THETA(n)</code> to <code>THETAn</code>. This is useful when importing NONMEM estimates using <code>$NMXML</code> or <code>$NMEXT</code>, where <code>THETA</code>s are imported as parameters with names <code>THETA1</code>, <code>THETA2</code>, <code>THETA3</code> and so on (see <a href="#sec-block-nmxml"><span>Section&nbsp;2.2.23</span></a> and <a href="#sec-block-nmext"><span>Section&nbsp;2.2.24</span></a>). <code>THETA(n)</code> is simply a NONMEM-oriented style for referring to <code>THETAn</code>.</p>
 </section>
 <section id="etan" class="level3" data-number="2.3.27">
 <h3 data-number="2.3.27" class="anchored" data-anchor-id="etan"><span class="header-section-number">2.3.27</span> <code>ETA(n)</code></h3>
@@ -1600,10 +1600,10 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>$CAPTURE CP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See: section @ref(block-table) and also @ref(block-capture)</p>
+<p>See: <a href="#sec-block-table"><span>Section&nbsp;2.2.11</span></a> and also <a href="#sec-block-capture"><span>Section&nbsp;2.2.15</span></a>.</p>
 </section>
-<section id="spec-f" class="level3" data-number="2.3.30">
-<h3 data-number="2.3.30" class="anchored" data-anchor-id="spec-f"><span class="header-section-number">2.3.30</span> <code>F_CMT</code> &nbsp;</h3>
+<section id="sec-spec-f" class="level3" data-number="2.3.30">
+<h3 data-number="2.3.30" class="anchored" data-anchor-id="sec-spec-f"><span class="header-section-number">2.3.30</span> <code>F_CMT</code> &nbsp;</h3>
 <p>For the <code>CMT</code> compartment, sets the bioavailability fraction for that compartment.</p>
 <p>Example:</p>
 <div class="cell">
@@ -1611,8 +1611,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>F_CENT <span class="op">=</span> <span class="fl">0.7</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="spec-alag" class="level3" data-number="2.3.31">
-<h3 data-number="2.3.31" class="anchored" data-anchor-id="spec-alag"><span class="header-section-number">2.3.31</span> <code>ALAG_CMT</code> &nbsp;</h3>
+<section id="sec-spec-alag" class="level3" data-number="2.3.31">
+<h3 data-number="2.3.31" class="anchored" data-anchor-id="sec-spec-alag"><span class="header-section-number">2.3.31</span> <code>ALAG_CMT</code> &nbsp;</h3>
 <p>For the <code>CMT</code> compartment, sets the lag time for doses into that compartment.</p>
 <p>Example:</p>
 <div class="cell">
@@ -1620,8 +1620,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>ALAG_GUT <span class="op">=</span> <span class="fl">0.25</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="spec-r" class="level3" data-number="2.3.32">
-<h3 data-number="2.3.32" class="anchored" data-anchor-id="spec-r"><span class="header-section-number">2.3.32</span> <code>R_CMT</code> &nbsp;</h3>
+<section id="sec-spec-r" class="level3" data-number="2.3.32">
+<h3 data-number="2.3.32" class="anchored" data-anchor-id="sec-spec-r"><span class="header-section-number">2.3.32</span> <code>R_CMT</code> &nbsp;</h3>
 <p>For the <code>CMT</code> compartment, sets the infusion rate for that compartment. The infusion rate is only set via <code>R_CMT</code> when <code>rate</code> in the data set or event object is set to <code>-1</code>.</p>
 <p>Example:</p>
 <div class="cell">
@@ -1633,8 +1633,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <h3 data-number="2.3.33" class="anchored" data-anchor-id="rn"><span class="header-section-number">2.3.33</span> <code>Rn</code></h3>
 <p>Only available when the <code>nm-vars</code> plugin is invoked; see <code>R_CMT</code>.</p>
 </section>
-<section id="spec-d" class="level3" data-number="2.3.34">
-<h3 data-number="2.3.34" class="anchored" data-anchor-id="spec-d"><span class="header-section-number">2.3.34</span> <code>D_CMT</code> &nbsp;</h3>
+<section id="sec-spec-d" class="level3" data-number="2.3.34">
+<h3 data-number="2.3.34" class="anchored" data-anchor-id="sec-spec-d"><span class="header-section-number">2.3.34</span> <code>D_CMT</code> &nbsp;</h3>
 <p>For the <code>CMT</code> compartment, sets the infusion duration for that compartment.<br>
 The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> in the data set or event object is set to <code>-2</code>.</p>
 <p>Example:</p>
@@ -1646,7 +1646,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <section id="nonmem-like-syntax" class="level3" data-number="2.3.35">
 <h3 data-number="2.3.35" class="anchored" data-anchor-id="nonmem-like-syntax"><span class="header-section-number">2.3.35</span> NONMEM-like syntax</h3>
 <p>There is a NONMEM-like syntax that lets you write <code>F1</code> rather than <code>F_GUT</code>, <code>D2</code> rather than <code>D_CENT</code> as well as other variables that are commonly used in a NONMEM control stream. To make this syntax available, the <code>nm-vars</code> plugin must be invoked.</p>
-<p>See Section @ref(plugin-nm-vars) on the <code>nm-vars</code> plugin for details.</p>
+<p>See <span class="quarto-unresolved-ref">?sec-plugin-nm-vars</span> on the <code>nm-vars</code> plugin for details.</p>
 </section>
 </section>
 <section id="reserved-words" class="level2" data-number="2.4">
@@ -1717,8 +1717,8 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>N_CENT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="new-variables" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="new-variables"><span class="header-section-number">2.5</span> Derive new variables</h2>
+<section id="sec-new-variables" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-new-variables"><span class="header-section-number">2.5</span> Derive new variables</h2>
 <p>New <code>C++</code> variables may be derived in <code>$GLOBAL</code>, <code>$PREAMBLE</code> <code>$MAIN</code>, <code>$ODE</code> and <code>$TABLE</code>. Because these are <code>C++</code> variables, the type of variable being used must be declared. For the vast majority of applications, the <code>double</code> type is used (double-precision numeric value).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
@@ -1795,7 +1795,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="random-number-generation"><span class="header-section-number">2.6</span> Random number generation</h2>
-<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see Chapter @ref(plugins) and Section @ref(plugin-rcpp)).</p>
+<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <span class="quarto-unresolved-ref">?sec-plugins</span> and <span class="quarto-unresolved-ref">?sec-plugin-rcpp</span>).</p>
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">
@@ -1896,7 +1896,7 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>There are two <code>$OMEGA</code> matrices; we name them <code>IIV</code> and <code>IOV</code></li>
 <li>The IIV “etas” are labeled as <code>ECL/EVC/EKA</code>; these are aliases to <code>ETA(1)/ETA(2)/ETA(3)</code>. The <code>IOV</code> matrix is unlabeled; we must refer to <code>ETA(4)/ETA(5)</code> for this</li>
 <li>Because <code>ETA(1)</code> and <code>ETA(2)</code> are labeled, we can “capture” them as <code>ECL</code> and <code>EVC</code></li>
-<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (section @ref(topic-matrix-update))</li>
+<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<span class="quarto-unresolved-ref">?sec-topic-matrix-update</span>)</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>
