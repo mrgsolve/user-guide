@@ -36,8 +36,8 @@ pretty clear in the pdfbook).
 - @sec-model-components tells you about what is in the mrgsolve model
   object (like parameters, compartments, C++ functions and the like)
 - @sec-model-specification tells you about model specification. There 
-  are two main sections to this chapter: Section @sec-code-blocks) lists 
-  the different model code blocks and Section @sec-variables-macros) lists
+  are two main sections to this chapter: @sec-code-blocks) lists 
+  the different model code blocks and @sec-variables-macros) lists
   the different variables that you can get (or set) in the different code blocks
 - @sec-data-set-chapter shows you how to format input data sets
 - @sec-event-chapter shows you how to create and work with simple 
