@@ -1,0 +1,511 @@
+# Event objects {#event-chapter}
+
+```{r,echo=FALSE,message=FALSE}
+source("setup.R")
+```
+
+Event objects are similar to the data sets described in \@ref(data-set-chapter), 
+but are simpler and easier to create. This is the fastest way to implement a 
+basic intervention (like dosing) for a single "individual" into your model. 
+
+Event objects also offer an elegant way to compose complicated dosing regimens. 
+Typically, the different parts of a regimen are composed as individual event 
+objects and then combined to create a multi-faceted dose regiment. 
+
+Finally, once an event object is created (either simple or complex), this 
+object can be "expanded" into multiple individuals to create a population 
+data set for simulation. 
+
+See details in the subsequent sections.
+
+## Usage 
+
+Event objects are frequently used in a pipeline to simulate a dosing regimen. 
+For example
+
+```{r}
+mod <- house(end = 72) 
+
+mod %>% ev(amt = 100, ii = 24, addl = 1) %>% mrgsim() %>% plot("CP")
+```
+
+This used the `ev()` constructor to  make an event object for two 100 mg doses 
+and this is passed into `mrgsim()` to implement this regimen. 
+
+Alternatively, we can create a standalone object and feed that into the pipeline
+
+```{r, eval = FALSE}
+regimen <- ev(amt = 100, ii = 24, addl = 1)
+
+mod %>% ev(regimen) %>% mrgsim() %>% plot("CP")
+```
+
+If you are not using the pipe syntax, the following would be equivalent 
+calls
+
+```{r, eval = FALSE}
+mrgsim(mod, events = regimen) %>% plot("CP")
+```
+
+And there are `mrgsim()` variants that explicitly accept an event object
+
+```{r, eval = FALSE}
+mrgsim_e(mod, regimen) %>% plot("CP")
+```
+
+More will be said about how to create and manipulate event objects in the 
+following sections. 
+
+
+
+
+## Construction
+
+A new event object can be created with the `ev()` constructor. For a single, 
+100 mg dose it would be
+
+```{r}
+e <- ev(amt = 100)
+```
+
+When you print the object to the R console we see the 100 mg dose along with 
+the following defaults
+
+- `time` set to 0
+- `cmt` set to 1 (the first compartment)
+- `evid` set to 1 (a bolus dose)
+
+```{r}
+e
+```
+
+Of course, we can override any of these defaults or add additional items as
+needed. For a single 100 mg dose infused over 2 hours in compartment 2 one 
+hour after the simulation starts
+
+```{r}
+e <- ev(amt = 100, rate = 50, cmt = 2, time = 1)
+```
+
+To use this event object, we can pass it into `mrgsim()` under the `events` 
+argument
+
+```{r}
+mod <- house(delta = 1, end = 24)
+
+mrgsim(mod, events = e)
+```
+
+Event object inputs can be functions of previously defined inputs. For example
+
+```{r}
+ev(amt = 100, rate = amt / 2)
+```
+
+
+See the `?ev()` help topic for more information on additional arguments 
+when constructing event objects. Here, I'd like to specifically highlight a 
+handful of options that can be helpful when constructing event objects. 
+
+__Infusion duration__
+
+Above, we created some infusion event objects by adding an infusion rate to the 
+input. We can also indicate an infusion by adding an infusion time through 
+the `tinf` argument
+
+```{r}
+ev(amt = 100, tinf = 2)
+```
+
+
+__ID__
+
+While the primary use case for event objects are for _single individuals_, 
+we can code a series of IDs into the object too
+
+```{r}
+ev(amt = 100, ID = 1:3)
+```
+
+Here, we asked for 3 IDs in the object. Once this is turned into a simulation
+data set (see below), we'll have a population data set from which to simulate.
+
+
+__Additional data items__
+
+We can also pass through arbitrary data columns through the event object. For
+example, we can pass through `WT`
+
+```{r}
+ev(amt = 100, WT = 80)
+```
+
+
+## Coerce to data set
+
+As we noted, event objects are very similar to data sets and they are nothing 
+but data sets under the hood. We can take the event objects we created above
+and coerce them to other objects. 
+
+__Using as_data_set__
+
+```{r}
+as_data_set(e)
+```
+
+
+This will ensure that there is an `ID` column in the output and it will 
+be suitable to use for simulation.
+
+__Using as.data.frame__
+
+```{r}
+as.data.frame(e) %>% mutate(ID = 5)
+```
+
+
+__Upper case names__
+
+See section \@(ref-evd) for a constructor for an event object that renders with 
+upper case names. 
+
+
+## Extract information
+
+There is a `$` operator for event objects
+
+```{r}
+e$amt
+```
+
+
+## Combining event objects
+
+
+### Concatenate
+
+Two or more event objects can be concatenated using the `c` operator
+
+```{r}
+e1 <- ev(amt = 100)
+e2 <- ev(amt = 200, time = 24)
+
+c(e1, e2)
+```
+
+This essentially "rbinds" the rows of the individual event objects and 
+sorts the rows by `time`. 
+
+__NOTE__: the result of this manipulation is another event object. 
+
+### Sequence
+
+Event objects can also be combined to happen in a sequence. In the previous
+example, we wanted the 200 mg to happen at 24 hours and we had to code that
+fact into `time` accordingly.
+
+By specifying a dosing interval (`ii`) we can ask mrgsolve to do that 
+automatically by calling the `seq()` method.
+
+```{r}
+e1 <- ev(amt = 100, ii = 24)
+e2 <- ev(amt = 200, ii = 24)
+
+seq(e1, e2)
+```
+
+This was a trivial example to get a simple result. We can try something more 
+complicated to make the point
+
+```{r}
+e3 <- ev(amt = 100, ii = 6,  addl = 28)
+e4 <- ev(amt = 200, ii = 12, addl = 124)
+e5 <- ev(amt = 400, ii = 24, addl = 3)
+
+seq(e3, e4, e5)
+```
+
+__NOTE__: when mrgsolve puts event objects into a sequence, it starts the 
+next segment of the regimen one dosing interval after the previous regimen 
+finished. Going back to the simple example
+
+```{r}
+seq(e1, e2)
+```
+
+`e1` was just a single dose at time 0. mrgsolve will have `e2` start one dosing
+interval (24 hours) after the last (only) dose in `e1`. We can alter the amount
+of time between segments of the regimen by using the `wait` argument. For 
+example, to push `e2` out by an additional 24 hours we'd use
+
+```{r}
+seq(e1, wait = 24, e2)
+```
+
+We can also use a negative value for `wait` to make the next dose happen sooner
+
+```{r}
+seq(e1, wait = -12, e2)
+```
+
+
+Finally, we should note that event objects can be used multiple times in a 
+sequence
+
+```{r}
+seq(e1, e2, wait = 7*24, e2, e1)
+```
+
+### repeat
+
+Like the `seq()` method for event objects, `ev_repeat` will put an event object
+into a sequence `n` times
+
+```{r}
+ev_repeat(e1, n = 3)
+```
+
+By default, this function returns a regular data frame. To return an event 
+object instead call
+
+```{r, eval = FALSE}
+ev_repeat(e1, n = 3, as.ev = TRUE)
+```
+
+
+You can put a waiting period too. To illustrate this, let's compose a more 
+complicated regimen and repeat that
+
+```{r}
+e1 <- ev(amt = 500, ii = 24)
+e2 <- ev(amt = 250, ii = 24, addl = 5)
+e3 <- ev_seq(e1, e2)
+
+e3 %>% realize_addl()
+```
+
+In this regimen, we have daily dosing for 7 doses. The last dose is given 
+at 144 hours. When putting this into a sequence, we'll wait one dosing interval
+and then the `wait` period and then start again
+
+```{r}
+ev_repeat(e3, n = 3, wait = 7*24)
+```
+
+
+### Create a "data_set"
+
+Use the `as_data_set()` function to combine multiple event objects into a single
+data set. 
+
+```{r}
+as_data_set(e1, e2)
+```
+
+It's important to note that 
+
+1. The result is a regular old `data.frame()`; once you call `as_data_set()`, 
+   you exit the event object world
+1. Each event object is given a different `ID`
+
+
+Recall that we can create event objects with multiple `IDs`; `as_data_set()`
+is handy to use with this feature
+
+```{r}
+as_data_set(
+  ev(amt = 100, ID = 1:3), 
+  ev(amt = 200, ID = 1:3), 
+  ev(amt = 300, ID = 1:2)
+)
+```
+
+
+Notice that `as_data_set` has created unique IDs for the 3 subjects in 
+the 100 mg group, the 3 subjects in the 200 mg group, and the 2 subjects in 
+the 300 mg group.
+
+We'll cover a function called `ev_rep()` below to "expand" an event object to 
+multiple individuals
+
+```{r, eval = FALSE}
+as_data_set(
+  e1 %>% ev_rep(1:300),
+  e2 %>% ev_rep(1:300)
+)
+```
+
+
+## Modifying an event object
+
+### Tidy-like manipulation
+
+Event objects can be mutated
+
+```{r}
+mutate(e, amt = 200)
+```
+
+Columns can be removed from event objects
+
+```{r}
+ev(amt = 100, WT = 50, AGE = 12) %>% select(-WT)
+```
+
+Rows can be removed from event objects
+
+```{r}
+e <- c(ev(amt = 100), ev(amt = 200, time = 12), ev(amt = 300, time = 24))
+
+filter(e, time <= 12)
+```
+
+
+### realize_addl
+
+"Additional" doses can be made explicit in an event object
+
+```{r}
+ev(amt = 100, ii = 6, addl = 3) %>% realize_addl()
+```
+
+### ev_rep
+
+Event objects can be "expanded" into multiple IDs to create a population; 
+use the `ev_rep()` function for this. 
+
+```{r}
+ev(amt = 100) %>% ev_rep(1:5)
+```
+
+By default, `ev_rep()` returns a regular data frame. You can request that 
+an event object is returned
+
+```{r, eval = FALSE}
+ev(amt = 100) %>% ev_rep(1:5, as.ev = TRUE)
+```
+
+`ev_rep()` can work on an event object with any complexity.
+
+
+## Creative composition
+
+mrgsolve has a couple of more creative ways to construct event objects. 
+
+### ev_days
+
+`ev_days()` will create dosing sequences when dosing are on certain days (of the 
+week). For example, to dose only on Monday, Wednesday, and Friday for on month
+
+```{r}
+e <- ev_days(ev(amt = 100), ii = 168, addl = 3, days = 'm,w,f')
+e
+```
+
+We can see how this works by simulating the regimen
+
+```{r}
+mrgsim_e(mod, e, end = 168*4) %>% plot("CP")
+```
+
+
+### ev_rx
+
+`ev_rx()` is a way to write a regimen out with notation similar to what you 
+might see on a prescription. For example, 100 mg twice daily for 3 doses into 
+compartment 2 would be
+
+```{r}
+ev_rx("100 mg q12h x3 in 2")
+```
+
+To code an infusion
+
+```{r}
+ev_rx("500 mg over 2 hours q 24 h x3 in 1")
+```
+
+
+See the `ev_rx()` documentation for more details and limitations.
+
+## Upper case names {#ref-evd}
+
+You'll notice in the previous sections that most of the column names were 
+rendered with lower case letters when we convert the event object to a 
+data set like object:
+
+```{r}
+as.data.frame(ev(amt = 100))
+```
+
+And when this event object is use to simulate, you'll see these lower case names 
+in the simulated output. The reasons for this are historical and this behavior 
+is unlikely to change because it goes so far back into the history of mrgsolve. 
+
+Nevertheless, recent versions of mrgsolve have included similar constructor 
+functions that will render column names in upper case which are commonly seen 
+in analysis data sets. 
+
+The `evd()` constructor behaves just like `ev()`, but it will render upper
+case names when coerced to a data set or used for simulation.
+
+```{r}
+e <- evd(amt = 100)
+
+e
+```
+
+The `d` in `evd()` indicates that the event object will render with names like 
+a Data set and you will see a reminder of the data set like nature of this 
+object when it is printed. 
+
+When this object is rendered to a data frame, you will see the names rendered in 
+upper case
+
+```{r}
+as.data.frame(e)
+```
+
+You can also coerce an event object created with `ev()` to one that behaves 
+as if it were created via `evd()`
+
+```{r}
+as.evd(ev(amt = 100))
+```
+
+It is important to note that the case of the column names aren't made upper 
+case until the data frame is rendered. So, in the previous example, `time` and 
+`amt` are in lower case because we have not rendered yet. If you want to work 
+on this object before it is rendered, be sure to lower case names before rendering
+and upper case after rendering. For example we use `rate` in the the following 
+example, not `RATE`:
+
+```{r}
+evd(amt = 100) %>% mutate(rate = amt / 5)
+```
+
+You can coerce a traditional event object to a data like event object with
+
+```{r}
+as.evd(ev(amt = 100))
+```
+
+And finally, there are two utility functions for changing the names of a 
+data like or event object. To convert to upper case use `uctran()`
+
+```{r}
+ev(amt = 100) %>% as_data_set() %>% uctran()
+```
+
+To convert to lower case, use `lctran()`
+
+```{r}
+evd(amt = 100) %>% as_data_set() %>% lctran()
+```
+
+
+The utility functions also work on event objects. For example, 
+
+```{r}
+ev(amt = 100) %>% uctran()
+```

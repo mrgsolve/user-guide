@@ -1,0 +1,35 @@
+project:
+  type: book
+execute:
+  freeze: auto  # re-render only when source changes
+book:
+  title: "user-guide"
+  author: "Kyle Baron"
+  date: "2/24/2023"
+  chapters:
+    - index.qmd
+    - components.qmd
+    - specification.qmd
+    - datasets.qmd
+    - event.qmd
+    - matrix.qmd
+    - output.qmd
+    - sequence.qmd
+    - steady-state.qmd
+    - plugins.qmd
+    - mtime.qmd
+    - topics.qmd
+    - q-and-a.qmd
+    - install.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

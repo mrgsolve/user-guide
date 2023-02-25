@@ -1,0 +1,403 @@
+```{r,echo=FALSE,message=FALSE}
+source("setup.R")
+```
+
+# Plugins {#plugins}
+
+## autodec {#plugin-autodec}
+
+Available as of mrgsolve version 1.0.0.
+
+When this plugin is invoked, mrgsolve will search your model code for assignments
+and automatically declare them as `double` precision numbers. The following 
+blocks are searched
+
+- `$PREAMBLE`
+- `$MAIN` (or `$PK`)
+- `$ODE` (or `$DES`)
+- `$TABLE` (or `$ERROR`)
+- `$PRED`
+
+For example, the following code requires that `CL` gets assigned a type
+
+```{c, eval = FALSE}
+$PARAM WT = 70, TVCL = 1.2
+
+$PK
+double CL = TVCL * pow(WT/70, 0.75);
+```
+
+This is the default mrgsolve behavior and has been since the beginning.
+
+The `autodec` plugin lets you write the following
+
+```{c, eval = FALSE}
+$PLUGIN autodec 
+
+$PARAM WT = 70, TVCL = 1.2
+
+$PK
+CL = TVCL * pow(WT/70, 0.75);
+```
+
+mrgsolve will find `CL = ...` and understand that this is a user initiated 
+variable and will declare it as `double` for you. Don't worry about `WT = 70` 
+in `$PARAM`; mrgsolve should already know about that won't try to declare it. 
+
+When you are using the `autodec` plugin, you can still declare variables as 
+`double` or `int` or `bool`. mrgsolve already finds those variables and will 
+understand to leave those declarations alone. Note that it may still very 
+convenient to declare using the `capture` type those variables that you 
+want captured into the output
+
+```{c, eval = FALSE}
+$PLUGIN autodec
+
+$ERROR
+capture Y = IPRED * exp(EPS(1));
+```
+
+The `capture` typedef makes `Y` a `double`; we didn't need to declare it with 
+`autodec` in play, but decided to declare with `capture` so that it is copied
+into the simulated output.
+
+
+The `autodec` plugin is intended for more straightforward models where most / 
+all variables are real valued. Because mrgsolve can handle any valid C++ code
+in these blocks, there is a possibility that the code could get much more 
+complicated, including custom classes and methods. In this case, we recommend
+to bypass this feature and take control of declaring variables as you would 
+in the default mode. 
+
+In case mrgsolve does try to declare (as `double`) a variable that shouldn't 
+be handled that way, you can note this name in an environment variable inside
+your model called `MRGSOLVE_AUTODEC_SKIP`
+
+```{c, eval = FALSE}
+$ENV MRGSOLVE_AUTODEC_SKIP = c("my_variable_1")
+```
+
+This can be a vector of variable names to NOT declare when `autodec` is invoked. 
+
+## nm-vars {#plugin-nm-vars}
+
+Available as of mrgsolve version 1.0.0.
+
+The `nm-vars` plugin provides a more NONMEM-like set of macros to use when 
+coding your compartmental model. Only a small subset of the NONMEM model syntax
+is replicated here. 
+
+
+__F, R, D, ALAG__
+
+- To set bioavailability for the nth compartment, use `Fn`
+- To set the infusion rate for the nth compartment, use `Rn`
+- To set the infusion duration for the nth compartment, use `Dn`
+- To set the lag time for the nth compartment, use `ALAGn`
+
+For example
+
+```{c, eval = FALSE}
+$CMT GUT CENT GUT2
+
+$PK
+F1 = 0.87;    // equivalent to F_GUT  = 0.87;
+R2 = 2.25;    // equivalent to R_CENT = 2.25;
+ALAG3 = 0.25; // equivalent to ALAG_GUT2 = 0.25; 
+```
+
+__A, A_0, DADT__
+
+- To refer to the amount in the nth compartment, use `A(n)`
+- To refer to the initial amount in the nth compartment, use `A_0(n)`
+- To refer to the differential equation for the nth compartment, use `DADT(n)`
+
+For example
+
+```{c, eval = FALSE}
+$CMT CMT1 CMT2
+
+$PK
+A_0(2) = 50;
+  
+$DES
+DADT(1) = -KA * A(1);
+DADT(2) =  KA * A(1) - KE * A(2); 
+```
+
+__Math__
+
+Starting with version 1.0.1, macros are provided for several math functions
+
+- `EXP(a)`  gets mapped to `exp(a)`
+- `LOG(a)`  gets mapped to `log(a)`
+- `SQRT(a)` gets mapped to `sqrt(a)`
+
+These are purely for convenience, so that upper-case versions from NMTRAN don't
+require conversion to lower-case; this happens automatically via the C++ 
+preprocessor. 
+
+__Other syntax__
+
+- Using `THETA(n)` in model code will resolve to `THETAn`; this feature is 
+  always available, even when `nm-vars` hasn't been invoked; we mention it here
+  since it is a fundamental piece of the NONMEM syntax that mrgsolve has 
+  internalized 
+- Use `T` in `$DES` to refer to the current time in the odesolver rather
+  than `SOLVERTIME`
+  
+__Reserved words with nm-vars is invoked__
+
+There are some additional reserved words when the `nm-vars` plugin is invoked
+
+- `A`
+- `A_0`
+- `DADT`
+- `T`
+
+It is an error to use one of these symbols as the name of a parameter or 
+compartment or to try to declare them as variables. 
+
+__mrgsolve syntax that is still required__
+
+There are a lot of differences remaining between mrgsolve and NONMEM syntax. We
+mention a few here to make the point
+
+- mrgsolve continues to require `pow(base, exponent)` rather than `base**exponent`
+- mrgsolve continues to require a semi-colon at the end of each statement (this
+  is a C++ requirement)
+- mrgsolve continues to require that user-defined variables are declared with 
+  a type, except when the `autodec` plugin (Section \@ref(plugin-autodec)) is invoked
+  
+__An example__
+
+There is an example of this syntax (along with `autodec` features) in the 
+internal model library
+
+```{r, eval = FALSE}
+mod <- modlib("nm-like")
+see(mod)
+```
+
+```{r, echo = FALSE}
+see(modlib("nm-like", compile = FALSE))
+```
+
+
+## tad {#plugin-tad}
+
+__Purpose__
+Advanced calculation time after dose within your model. We call this "advanced"
+because it lets you track doses in multiple compartments. See the note below 
+about a simpler way to calculate time after dose that should work fine if doses
+are only in a single compartment. This functionality is provided by mrgsolve. 
+
+__Usage__
+
+First, tell `mrgsolve` that you want to use the `tad` plugin
+
+```{c, eval = FALSE}
+$PLUGIN tad
+```
+
+The create `tadose` objects, one for each compartment where you want to track
+time after dose. One approach is to do this in `[ global ]`
+
+```{c, eval = FALSE}
+[plugin] tad
+
+[ global ] 
+mrg::tadose tad_cmt_1(1); 
+mrg::tadose tad_cmt_2(2);
+```
+
+Notice that we pass the compartment number that we want to track in each 
+case and also that we refer to the `mrg::` namespace for the `tadose` class. 
+
+The `tadose` objects contain the following (public) members
+
+- `cmt` the compartment to track
+- `told` the time of last dose; defaults to `-1e9`
+- `had_dose` indicates if a dose has already been given for the current 
+  individual
+- `tad(self)` the function to call to calculate time after dose
+  - the `self` object (Section \@ref(self-object)) must be passed as the only
+    argument
+  - when the member function is called prior to the first administered dose, a 
+    value of `-1.0` is returned
+- `reset()` resets the state of the object; be sure to reset prior to simulating
+  a new individual
+
+As an example, you can call the `reset()` method on one of the `tadose` objects
+
+```{c, eval = FALSE}
+tad_cmt_1.reset();
+```
+
+
+You can find the source code for this object 
+[here](https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolve-tad.h).
+
+A working example model that tracks doses in compartments `1` and `2` is
+provided here
+
+```{c, eval = FALSE}
+[plugin] tad
+
+[ global ] 
+mrg::tadose tad_cmt_1(1); 
+mrg::tadose tad_cmt_2(2);
+
+[ pkmodel ] cmt = "GUT,CENT", depot = TRUE
+
+[ param ] CL = 1, V = 20, KA = 1
+
+[ main ] 
+capture tad1 = tad_cmt_1.tad(self); 
+capture tad2 = tad_cmt_2.tad(self);
+```
+
+__Static approach__
+
+Another approach would be to make these static in `[ main ]` but this approach
+would only work if you only use these in `[ main ]`; the `[ global ]` approach 
+is preferable since then you can access the object in any block (function). 
+
+
+### Note
+Note there is a simpler way to calculate time after dose when only dosing into
+a single compartment
+
+```{c, eval = FALSE}
+[ main ]
+double tad = self.tad();
+```
+
+The `self` object (Section \@ref(self-tad)) contains a `tad()` member which 
+will track time after dose. Note that this needs to be called every record. 
+
+
+## CXX11  {#plugin-cxx11}
+
+__Purpose__
+
+Compile your model file with `C++11` standard.
+
+__Usage__ 
+
+```{c, eval = FALSE}
+$PLUGIN CXX11
+```
+
+## Rcpp {#plugin-rcpp}
+
+__Purpose__
+
+Link to `Rcpp` headers into your model.
+
+__Usage__ 
+
+```{c, eval = FALSE}
+$PLUGIN Rcpp
+```
+
+Note that once your model is linked to `Rcpp`, you can start using that 
+functionality immediately (without including `Rcpp.h`).
+
+A very useful feature provided by `Rcpp` is that it exposes all of the `dpqr`
+functions that you normally use in R (e.g. `rnorm()` or `runif()`). So, if you
+want to simulate a number from Uniform (0,1) you can write
+
+```{c, eval = FALSE}
+$PLUGIN Rcpp
+
+$TABLE
+double uni = R::runif(0,1);
+```
+
+Note that the arguments are the same as the R version (`?runif`) **except** 
+there is no `n` argument; you always only get one draw.
+
+Information about `Rcpp` can be found here: https://github.com/RcppCore/Rcpp
+
+## mrgx {#plugin-mrgx}
+
+Compile in extra C++ / Rcpp functions that can be helpful to you 
+for more advanced model coding. The `mrgx` plugin is dependent on the
+`Rcpp` plugin. 
+
+The functions provided by `mrgx` are in a namespace of the same name, 
+so to invoke these functions, you always prepend `mrgx::`. 
+
+
+### Get the model environment
+
+Note that your model object (`mod`) contains an R environment. For 
+example
+
+```{r}
+mrgsolve::house()@envir
+```
+
+The objects in this environment are created by a block called `$ENV`
+in your model code (see Section \@ref(block-env));
+
+
+To access this environment in your model, call
+
+```{c, eval = FALSE}
+Rcpp::Environment env = mrgx::get_envir(self);
+```
+
+## Extract an object from the model environment
+
+When you have an object created in `$ENV`
+
+```{c, eval = FALSE}
+[ env ] 
+rand <- rnorm(100)
+```
+
+You can extract this object with
+
+```{c, eval = FALSE}
+[ preamble ]
+Rcpp::NumericVector draw = mrgx::get("rand", self);
+```
+
+
+
+## RcppArmadillo
+
+__Purpose__
+
+Link to `RcppArmadillo` headers into your model. 
+
+__Usage__ 
+
+```{c, eval = FALSE}
+$PLUGIN RcppArmadillo
+```
+
+Information about `armadillo` can be found here: http://arma.sourceforge.net/
+Information about `RcppArmadillo` can be found here: 
+https://github.com/RcppCore/RcppArmadillo
+
+## BH
+
+__Purpose__
+
+Link to `boost` headers into your model. 
+
+__Usage__ 
+
+```{c, eval = FALSE}
+$PLUGIN BH
+```
+
+Note that once your model is linked to `BH` (`boost`), you will be able to 
+include the `boost` header file that you need. You have to include the header
+file that contains the `boost` function you want to use.
+
+Information about `boost` can be found here: https://boost.org. Information 
+about `BH` can be found here: https://github.com/eddelbuettel/bh

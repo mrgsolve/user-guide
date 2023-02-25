@@ -1,0 +1,114 @@
+```{r,echo=FALSE,message=FALSE}
+source("setup.R")
+```
+
+# Questions and Answers {#q-and-a}
+
+I'm using this chapter as a place to provide miscellaneous information that
+might not have an obvious place to live. I'd call this a FAQ, but not all of the
+questions are asked frequently or at all.
+
+## Can I interrupt a simulation?
+
+Starting with `mrgsolve` version `0.11.1`, you can interrupt a long simulation
+by pressing `Control-C` or `Esc`, the standard way to pass an interrupt signal
+through R. `mrgsolve` will stop every so often to look for the interrupt signal.
+
+You can control the frequency with which `mrgsolve` looks for the interrupt
+signal through an argument to `mrgsim` (default: 256 simulation records).
+Increase to check less frequently, increase to check more frequently (this might
+be needed for a model where a large amount of work is required to advance one
+step) or set to negative number to never check.
+
+## Can I pass compiler flags to my model?
+
+Compiler flags can be passed to your model by setting  `PKG_CXXFLAGS` in 
+`$ENV`.  For example
+
+```{c, eval = FALSE}
+$ENV
+PKG_CXXFLAGS = "-std=c++11"
+```
+
+will compile your model according to `C++11` standard (but note that there is a
+special plugin that will do this automatically for you; see Section
+\@ref(plugin-cxx11)).
+
+## Can I compile my model with `C++11`?
+
+Yes, you can do this by invoking the `CXX11` plugin (Section \@ref(plugin-cxx11)).
+
+## How can I calculate time after dose?
+
+There are three approaches
+
+__tad argument to mrgsim()__
+
+To get time after dose into your output you can call
+
+```{r, eval = FALSE}
+mrgsim(mod, tad = TRUE)
+```
+
+and the output will have a `tad` column. Note this does not let you interact
+with the `tad` value inside your model.
+
+__Simple calculation in the model__
+
+Most applications will call `self.tad()` (Section \@ref(self.tad)). For example
+
+```{c, eval = FALSE}
+[ main ] 
+double tad = self.tad();
+```
+
+__More complicated calculation in the model__
+
+You can get more control and track `tad` in a specific compartment by using 
+the `tad` plugin.  See Section \@ref(plugin-tad) for details.
+
+## My model failed to compile; what now?
+
+The model can fail to compile for a variety of reasons, including an error 
+in the `C++` code or inability of R to find the compiler and other pieces of
+the tool chain. 
+
+If your model is not compiling, try the `recover` argument to `mread()` (or 
+`mcode()`)
+
+```{r, eval = FALSE}
+mod <- mread(..., recover = TRUE)
+```
+
+You will see a warning on the console and `mread()` will return a list of 
+build information. You can look into that information or share it in the 
+[mrgsolve issue tracker](https://github.com/metrumresearchgroup/mrgsolve/issues) 
+on GitHub.
+
+If your model has `C++` syntax problems, the errors should be printed on the 
+console. If you possibly have problems with the compiler or the rest of the 
+toolchain, take a look at the `pkgbuild` package, which provides some helpful
+tools, especially if you are working on a Windows platform
+
+```{r, eval = FALSE}
+pkgbuild::check_build_tools()
+pkgbuild::has_build_tools()
+pkgbuild::has_rtools()
+```
+
+## Can I run mrgsolve on a network drive?
+
+No; do not run mrgsolve on a network drive. Your R installation, mrgsolve 
+installation, and R working directory should be on a local hard disk.
+
+## Can I run mrgsolve on a cloud-synced folder?
+
+No; do not run mrgsolve in a synced folder for cloud services like OneDrive, 
+GoogleDrive, DropBox etc. Your R installation, mrgsolve installation, and R 
+working directory should be on a local hard disk. 
+
+## Can I run mrgsolve in a path that includes spaces?
+
+No; do not run mrgsolve in a path that includes spaces. Your R installation, 
+mrgsolve installation, and R working directory should all be in locations 
+whose paths do not include spaces.

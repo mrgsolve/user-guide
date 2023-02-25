@@ -1,0 +1,91 @@
+--- 
+title: "mrgsolve User Guide"
+author: "Metrum Research Group"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+url: 'https\://mrgsolve.github.io/user_guide/'
+github-repo: mrgsolve/user_guide
+twitter-handle: mrgsolve
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "A guide to using mrgsolve."
+---
+
+
+```{r, include = FALSE}
+source("setup.R")
+```
+
+
+# Introduction {-}
+<img src="images/MRG-Solve-Hex.png" align="right" width="200px"></img> Welcome to
+the mrgsolve user guide. The user guide is the main documentation source for how
+mrgsolve works and how to best use mrgsolve in your modeling and simulation
+project.  As with most of the mrgsolve documentation, this is a work in
+progress.  I am currently working to transition this to more of a reference
+resource, rather than demonstration.  So key content in the user guide includes
+chapter \@ref(model-specification) on model specification, chapter
+\@ref(model-components) on model components and chapter \@ref(section-sequence)
+on the simulation sequence. Installation is a big topic but we defer to the wiki
+page for installation help since requirements tend to change frequently with new
+R releases.  The other content is hopefully helpful as well.  I'm leaving it all
+in place for now, but will gradually transition the "how-to" and demo type
+content over to the vignettes repository or the gallery repository (see
+[below](#other-resources)).
+
+Please feel free to ask questions about anything mrgsolve-related on the 
+issue tracker on the main github repo: https://github.com/metrumresearchgroup/mrgsolve/issues.
+
+
+## Overview {-}
+
+If you are accessing the user guide via html, you should be able to see a 
+table of contents on the left. That has a lot of detail in there so I'm going 
+to give you high-level overview of what is here (the high-level should be 
+pretty clear in the pdfbook). 
+
+- Chapter \@ref(model-components) tells you about what is in the mrgsolve model
+  object (like parameters, compartments, C++ functions and the like)
+- Chapter \@ref(model-specification) tells you about model specification. There 
+  are two main sections to this chapter: Section \@ref(code-blocks) lists 
+  the different model code blocks and Section \@ref(variables-macros) lists
+  the different variables that you can get (or set) in the different code blocks
+- Chapter \@ref(data-set-chapter) shows you how to format input data sets
+- Chapter \@ref(event-chapter) shows you how to create and work with simple 
+  data set objects called `event` objects
+- Chapter \@ref(matrix-chapter) shows how to work with model matrices
+- Chapter \@ref(simulated-output) tells you about the simulated output object
+  and how you can work with it
+- Chapter \@ref(section-sequence) dives into the simulation sequence, showing 
+  you the steps that mrgsolve takes to work through a problem
+- Chapter \@ref(steady-state) gives the details on how mrgsolve advances the 
+  system to a pharmacokinetic steady state
+- Chapter \@ref(plugins) talks about different plugins you can use for more 
+  advanced modeling
+- Chapter \@ref(mtime) talks about modeled events (discontinuities in the 
+  simulation that are triggered from within the model rather than from the 
+  data set)
+- Chapter \@ref(topics) is a collection of applied examples on different topics
+- Chapter \@ref(q-and-a) are brief questions and answers providing some bits
+  of information that don't obviously fit into another chapter
+- Chapter \@ref(install) provides links to some Wiki pages that can help with 
+  installation
+
+## PDF Version {-}
+This book is also available in pdf format [here](user-guide.pdf).
+
+## Other Resources {-}
+
+
+- Main resource page: [mrgsolve.github.io](https://mrgsolve.github.io)
+- Vignettes: [mrgsolve.github.io/vignettes](https://mrgsolve.github.io/vignettes)
+- R documentation: [mrgsolve.github.io/docs](https://mrgsolve.github.io/docs)
+- Gallery: [github.com/mrgsolve/gallery](https://github.com/mrgsolve/gallery) 
+
+
+<hr>
+
+This book was assembled on `r date()` with mrgsolve version `r packageVersion("mrgsolve")`.
+
