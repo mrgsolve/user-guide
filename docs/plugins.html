@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mrgsolve user guide - 9&nbsp; Plugins</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./mtime.html" rel="next">
+<link href="./steady-state.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">mrgsolve user guide</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./components.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Model components</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./specification.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./event.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./output.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sequence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./steady-state.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plugins.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mtime.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./topics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./q-and-a.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#plugin-autodec" id="toc-plugin-autodec" class="nav-link active" data-scroll-target="#plugin-autodec"><span class="toc-section-number">9.1</span>  autodec</a></li>
+  <li><a href="#plugin-nm-vars" id="toc-plugin-nm-vars" class="nav-link" data-scroll-target="#plugin-nm-vars"><span class="toc-section-number">9.2</span>  nm-vars</a></li>
+  <li><a href="#plugin-tad" id="toc-plugin-tad" class="nav-link" data-scroll-target="#plugin-tad"><span class="toc-section-number">9.3</span>  tad</a>
+  <ul class="collapse">
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note"><span class="toc-section-number">9.3.1</span>  Note</a></li>
+  </ul></li>
+  <li><a href="#plugin-cxx11" id="toc-plugin-cxx11" class="nav-link" data-scroll-target="#plugin-cxx11"><span class="toc-section-number">9.4</span>  CXX11</a></li>
+  <li><a href="#plugin-rcpp" id="toc-plugin-rcpp" class="nav-link" data-scroll-target="#plugin-rcpp"><span class="toc-section-number">9.5</span>  Rcpp</a></li>
+  <li><a href="#plugin-mrgx" id="toc-plugin-mrgx" class="nav-link" data-scroll-target="#plugin-mrgx"><span class="toc-section-number">9.6</span>  mrgx</a>
+  <ul class="collapse">
+  <li><a href="#get-the-model-environment" id="toc-get-the-model-environment" class="nav-link" data-scroll-target="#get-the-model-environment"><span class="toc-section-number">9.6.1</span>  Get the model environment</a></li>
+  </ul></li>
+  <li><a href="#extract-an-object-from-the-model-environment" id="toc-extract-an-object-from-the-model-environment" class="nav-link" data-scroll-target="#extract-an-object-from-the-model-environment"><span class="toc-section-number">9.7</span>  Extract an object from the model environment</a></li>
+  <li><a href="#rcpparmadillo" id="toc-rcpparmadillo" class="nav-link" data-scroll-target="#rcpparmadillo"><span class="toc-section-number">9.8</span>  RcppArmadillo</a></li>
+  <li><a href="#bh" id="toc-bh" class="nav-link" data-scroll-target="#bh"><span class="toc-section-number">9.9</span>  BH</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="plugins" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="plugin-autodec" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="plugin-autodec"><span class="header-section-number">9.1</span> autodec</h2>
+<p>Available as of mrgsolve version 1.0.0.</p>
+<p>When this plugin is invoked, mrgsolve will search your model code for assignments and automatically declare them as <code>double</code> precision numbers. The following blocks are searched</p>
+<ul>
+<li><code>$PREAMBLE</code></li>
+<li><code>$MAIN</code> (or <code>$PK</code>)</li>
+<li><code>$ODE</code> (or <code>$DES</code>)</li>
+<li><code>$TABLE</code> (or <code>$ERROR</code>)</li>
+<li><code>$PRED</code></li>
+</ul>
+<p>For example, the following code requires that <code>CL</code> gets assigned a type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$PARAM WT <span class="op">=</span> <span class="dv">70</span><span class="op">,</span> TVCL <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CL <span class="op">=</span> TVCL <span class="op">*</span> pow<span class="op">(</span>WT<span class="op">/</span><span class="dv">70</span><span class="op">,</span> <span class="fl">0.75</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is the default mrgsolve behavior and has been since the beginning.</p>
+<p>The <code>autodec</code> plugin lets you write the following</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN autodec </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>$PARAM WT <span class="op">=</span> <span class="dv">70</span><span class="op">,</span> TVCL <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>CL <span class="op">=</span> TVCL <span class="op">*</span> pow<span class="op">(</span>WT<span class="op">/</span><span class="dv">70</span><span class="op">,</span> <span class="fl">0.75</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>mrgsolve will find <code>CL = ...</code> and understand that this is a user initiated variable and will declare it as <code>double</code> for you. Don’t worry about <code>WT = 70</code> in <code>$PARAM</code>; mrgsolve should already know about that won’t try to declare it.</p>
+<p>When you are using the <code>autodec</code> plugin, you can still declare variables as <code>double</code> or <code>int</code> or <code>bool</code>. mrgsolve already finds those variables and will understand to leave those declarations alone. Note that it may still very convenient to declare using the <code>capture</code> type those variables that you want captured into the output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN autodec</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>$ERROR</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>capture Y <span class="op">=</span> IPRED <span class="op">*</span> exp<span class="op">(</span>EPS<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>capture</code> typedef makes <code>Y</code> a <code>double</code>; we didn’t need to declare it with <code>autodec</code> in play, but decided to declare with <code>capture</code> so that it is copied into the simulated output.</p>
+<p>The <code>autodec</code> plugin is intended for more straightforward models where most / all variables are real valued. Because mrgsolve can handle any valid C++ code in these blocks, there is a possibility that the code could get much more complicated, including custom classes and methods. In this case, we recommend to bypass this feature and take control of declaring variables as you would in the default mode.</p>
+<p>In case mrgsolve does try to declare (as <code>double</code>) a variable that shouldn’t be handled that way, you can note this name in an environment variable inside your model called <code>MRGSOLVE_AUTODEC_SKIP</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>$ENV MRGSOLVE_AUTODEC_SKIP <span class="op">=</span> c<span class="op">(</span><span class="st">"my_variable_1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This can be a vector of variable names to NOT declare when <code>autodec</code> is invoked.</p>
+</section>
+<section id="plugin-nm-vars" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="plugin-nm-vars"><span class="header-section-number">9.2</span> nm-vars</h2>
+<p>Available as of mrgsolve version 1.0.0.</p>
+<p>The <code>nm-vars</code> plugin provides a more NONMEM-like set of macros to use when coding your compartmental model. Only a small subset of the NONMEM model syntax is replicated here.</p>
+<p><strong>F, R, D, ALAG</strong></p>
+<ul>
+<li>To set bioavailability for the nth compartment, use <code>Fn</code></li>
+<li>To set the infusion rate for the nth compartment, use <code>Rn</code></li>
+<li>To set the infusion duration for the nth compartment, use <code>Dn</code></li>
+<li>To set the lag time for the nth compartment, use <code>ALAGn</code></li>
+</ul>
+<p>For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT GUT2</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>F1 <span class="op">=</span> <span class="fl">0.87</span><span class="op">;</span>    <span class="co">// equivalent to F_GUT  = 0.87;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>R2 <span class="op">=</span> <span class="fl">2.25</span><span class="op">;</span>    <span class="co">// equivalent to R_CENT = 2.25;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ALAG3 <span class="op">=</span> <span class="fl">0.25</span><span class="op">;</span> <span class="co">// equivalent to ALAG_GUT2 = 0.25; </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>A, A_0, DADT</strong></p>
+<ul>
+<li>To refer to the amount in the nth compartment, use <code>A(n)</code></li>
+<li>To refer to the initial amount in the nth compartment, use <code>A_0(n)</code></li>
+<li>To refer to the differential equation for the nth compartment, use <code>DADT(n)</code></li>
+</ul>
+<p>For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>$CMT CMT1 CMT2</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>A_0<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">=</span> <span class="dv">50</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>$DES</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>DADT<span class="op">(</span><span class="dv">1</span><span class="op">)</span> <span class="op">=</span> <span class="op">-</span>KA <span class="op">*</span> A<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>DADT<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">=</span>  KA <span class="op">*</span> A<span class="op">(</span><span class="dv">1</span><span class="op">)</span> <span class="op">-</span> KE <span class="op">*</span> A<span class="op">(</span><span class="dv">2</span><span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Math</strong></p>
+<p>Starting with version 1.0.1, macros are provided for several math functions</p>
+<ul>
+<li><code>EXP(a)</code> gets mapped to <code>exp(a)</code></li>
+<li><code>LOG(a)</code> gets mapped to <code>log(a)</code></li>
+<li><code>SQRT(a)</code> gets mapped to <code>sqrt(a)</code></li>
+</ul>
+<p>These are purely for convenience, so that upper-case versions from NMTRAN don’t require conversion to lower-case; this happens automatically via the C++ preprocessor.</p>
+<p><strong>Other syntax</strong></p>
+<ul>
+<li>Using <code>THETA(n)</code> in model code will resolve to <code>THETAn</code>; this feature is always available, even when <code>nm-vars</code> hasn’t been invoked; we mention it here since it is a fundamental piece of the NONMEM syntax that mrgsolve has internalized</li>
+<li>Use <code>T</code> in <code>$DES</code> to refer to the current time in the odesolver rather than <code>SOLVERTIME</code></li>
+</ul>
+<p><strong>Reserved words with nm-vars is invoked</strong></p>
+<p>There are some additional reserved words when the <code>nm-vars</code> plugin is invoked</p>
+<ul>
+<li><code>A</code></li>
+<li><code>A_0</code></li>
+<li><code>DADT</code></li>
+<li><code>T</code></li>
+</ul>
+<p>It is an error to use one of these symbols as the name of a parameter or compartment or to try to declare them as variables.</p>
+<p><strong>mrgsolve syntax that is still required</strong></p>
+<p>There are a lot of differences remaining between mrgsolve and NONMEM syntax. We mention a few here to make the point</p>
+<ul>
+<li>mrgsolve continues to require <code>pow(base, exponent)</code> rather than <code>base**exponent</code></li>
+<li>mrgsolve continues to require a semi-colon at the end of each statement (this is a C++ requirement)</li>
+<li>mrgsolve continues to require that user-defined variables are declared with a type, except when the <code>autodec</code> plugin (Section @ref(plugin-autodec)) is invoked</li>
+</ul>
+<p><strong>An example</strong></p>
+<p>There is an example of this syntax (along with <code>autodec</code> features) in the internal model library</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"nm-like"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">see</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>. 
+. Model file:  nm-like.cpp 
+. $PROB Model written with some nonmem-like syntax features
+. 
+. $PLUGIN nm-vars autodec
+. 
+. $PARAM
+. THETA1 = 1, THETA2 = 21, THETA3 = 1.3, WT = 70, F1I = 0.5, D2I = 2
+. KIN = 100, KOUT = 0.1, IC50 = 10, IMAX = 0.9
+. 
+. $CMT @number 3
+. 
+. $PK
+. CL = THETA(1) * pow(WT/70, 0.75); 
+. V  = THETA(2); 
+. KA = THETA(3);
+. 
+. F1 = F1I;
+. D2 = D2I;
+. A_0(3) = KIN / KOUT;
+. 
+. $DES 
+. CP = A(2)/V;
+. INH = IMAX*CP/(IC50 + CP);
+.   
+. DADT(1) = -KA*A(1);
+. DADT(2) =  KA*A(1) - (CL/V)*A(2);
+. DADT(3) =  KIN * (1-INH) - KOUT * A(3);
+. 
+. $ERROR
+. CP = A(2)/V;</code></pre>
+</div>
+</div>
+</section>
+<section id="plugin-tad" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="plugin-tad"><span class="header-section-number">9.3</span> tad</h2>
+<p><strong>Purpose</strong> Advanced calculation time after dose within your model. We call this “advanced” because it lets you track doses in multiple compartments. See the note below about a simpler way to calculate time after dose that should work fine if doses are only in a single compartment. This functionality is provided by mrgsolve.</p>
+<p><strong>Usage</strong></p>
+<p>First, tell <code>mrgsolve</code> that you want to use the <code>tad</code> plugin</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN tad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The create <code>tadose</code> objects, one for each compartment where you want to track time after dose. One approach is to do this in <code>[ global ]</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that we pass the compartment number that we want to track in each case and also that we refer to the <code>mrg::</code> namespace for the <code>tadose</code> class.</p>
+<p>The <code>tadose</code> objects contain the following (public) members</p>
+<ul>
+<li><code>cmt</code> the compartment to track</li>
+<li><code>told</code> the time of last dose; defaults to <code>-1e9</code></li>
+<li><code>had_dose</code> indicates if a dose has already been given for the current individual</li>
+<li><code>tad(self)</code> the function to call to calculate time after dose
+<ul>
+<li>the <code>self</code> object (Section @ref(self-object)) must be passed as the only argument</li>
+<li>when the member function is called prior to the first administered dose, a value of <code>-1.0</code> is returned</li>
+</ul></li>
+<li><code>reset()</code> resets the state of the object; be sure to reset prior to simulating a new individual</li>
+</ul>
+<p>As an example, you can call the <code>reset()</code> method on one of the <code>tadose</code> objects</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tad_cmt_1<span class="op">.</span>reset<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can find the source code for this object <a href="https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolve-tad.h">here</a>.</p>
+<p>A working example model that tracks doses in compartments <code>1</code> and <code>2</code> is provided here</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> pkmodel <span class="op">]</span> cmt <span class="op">=</span> <span class="st">"GUT,CENT"</span><span class="op">,</span> depot <span class="op">=</span> TRUE</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> param <span class="op">]</span> CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> V <span class="op">=</span> <span class="dv">20</span><span class="op">,</span> KA <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>capture tad1 <span class="op">=</span> tad_cmt_1<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span> </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>capture tad2 <span class="op">=</span> tad_cmt_2<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Static approach</strong></p>
+<p>Another approach would be to make these static in <code>[ main ]</code> but this approach would only work if you only use these in <code>[ main ]</code>; the <code>[ global ]</code> approach is preferable since then you can access the object in any block (function).</p>
+<section id="note" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="note"><span class="header-section-number">9.3.1</span> Note</h3>
+<p>Note there is a simpler way to calculate time after dose when only dosing into a single compartment</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> tad <span class="op">=</span> self<span class="op">.</span>tad<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>self</code> object (Section @ref(self-tad)) contains a <code>tad()</code> member which will track time after dose. Note that this needs to be called every record.</p>
+</section>
+</section>
+<section id="plugin-cxx11" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="plugin-cxx11"><span class="header-section-number">9.4</span> CXX11</h2>
+<p><strong>Purpose</strong></p>
+<p>Compile your model file with <code>C++11</code> standard.</p>
+<p><strong>Usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN CXX11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plugin-rcpp" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="plugin-rcpp"><span class="header-section-number">9.5</span> Rcpp</h2>
+<p><strong>Purpose</strong></p>
+<p>Link to <code>Rcpp</code> headers into your model.</p>
+<p><strong>Usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that once your model is linked to <code>Rcpp</code>, you can start using that functionality immediately (without including <code>Rcpp.h</code>).</p>
+<p>A very useful feature provided by <code>Rcpp</code> is that it exposes all of the <code>dpqr</code> functions that you normally use in R (e.g.&nbsp;<code>rnorm()</code> or <code>runif()</code>). So, if you want to simulate a number from Uniform (0,1) you can write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> uni <span class="op">=</span> R<span class="op">::</span>runif<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that the arguments are the same as the R version (<code>?runif</code>) <strong>except</strong> there is no <code>n</code> argument; you always only get one draw.</p>
+<p>Information about <code>Rcpp</code> can be found here: https://github.com/RcppCore/Rcpp</p>
+</section>
+<section id="plugin-mrgx" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="plugin-mrgx"><span class="header-section-number">9.6</span> mrgx</h2>
+<p>Compile in extra C++ / Rcpp functions that can be helpful to you for more advanced model coding. The <code>mrgx</code> plugin is dependent on the <code>Rcpp</code> plugin.</p>
+<p>The functions provided by <code>mrgx</code> are in a namespace of the same name, so to invoke these functions, you always prepend <code>mrgx::</code>.</p>
+<section id="get-the-model-environment" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="get-the-model-environment"><span class="header-section-number">9.6.1</span> Get the model environment</h3>
+<p>Note that your model object (<code>mod</code>) contains an R environment. For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. &lt;environment: 0x109c7c1b0&gt;</code></pre>
+</div>
+</div>
+<p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see Section @ref(block-env));</p>
+<p>To access this environment in your model, call</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="extract-an-object-from-the-model-environment" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="extract-an-object-from-the-model-environment"><span class="header-section-number">9.7</span> Extract an object from the model environment</h2>
+<p>When you have an object created in <code>$ENV</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> env <span class="op">]</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rand <span class="op">&lt;-</span> rnorm<span class="op">(</span><span class="dv">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can extract this object with</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> preamble <span class="op">]</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>NumericVector draw <span class="op">=</span> mrgx<span class="op">::</span>get<span class="op">(</span><span class="st">"rand"</span><span class="op">,</span> self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rcpparmadillo" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="rcpparmadillo"><span class="header-section-number">9.8</span> RcppArmadillo</h2>
+<p><strong>Purpose</strong></p>
+<p>Link to <code>RcppArmadillo</code> headers into your model.</p>
+<p><strong>Usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN RcppArmadillo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Information about <code>armadillo</code> can be found here: http://arma.sourceforge.net/ Information about <code>RcppArmadillo</code> can be found here: https://github.com/RcppCore/RcppArmadillo</p>
+</section>
+<section id="bh" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="bh"><span class="header-section-number">9.9</span> BH</h2>
+<p><strong>Purpose</strong></p>
+<p>Link to <code>boost</code> headers into your model.</p>
+<p><strong>Usage</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN BH</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that once your model is linked to <code>BH</code> (<code>boost</code>), you will be able to include the <code>boost</code> header file that you need. You have to include the header file that contains the <code>boost</code> function you want to use.</p>
+<p>Information about <code>boost</code> can be found here: https://boost.org. Information about <code>BH</code> can be found here: https://github.com/eddelbuettel/bh</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./steady-state.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./mtime.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

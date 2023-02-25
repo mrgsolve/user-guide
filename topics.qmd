@@ -1,11 +1,11 @@
-```{r,echo=FALSE,message=FALSE}
+```{r,include = FALSE}
 source("setup.R")
 ```
 
 
-# Topics {#topics}
+# Topics {#sec-topics}
 
-## Annotated model specification {#topic-annotated}
+## Annotated model specification {#sec-topic-annotated}
 Here is a complete annotated `mrgsolve` model.  The goal was to get in several
 of the most common blocks that you might want to annotate.  The different code
 blocks are rendered here separately for clarity in presentation; but users
@@ -85,7 +85,7 @@ CL  : Individual clearance (L/hr)
 ```
 
 
-## Set initial conditions {#topic-init}
+## Set initial conditions {#sec-topic-init}
 
 ``` {r}
 library(mrgsolve)
@@ -290,10 +290,10 @@ plot(out, CENT~.)
 ```
 
 
-## Updating parameters {#topic-parameter-update}
+## Updating parameters {#sec-topic-parameter-update}
 
-The parameter list was introduced in section \@ref(component-param) and the
-`$PARAM` code block was shown in \@ref(block-param). Once a model is compiled,
+The parameter list was introduced in @sec-component-param and the
+`$PARAM` code block was shown in @sec-block-param. Once a model is compiled,
 the names and number of parameters in a model is fixed. However, the values of
 parameters can be changed: parameters may be updated either by the user (in `R`)
 or by `mrgsolve` (in the `C++` simulation engine, as the simulation proceeds).
@@ -365,7 +365,7 @@ mod <-  param(mod, CL=2.1)
 param(mod)
 ```
 But whatever you've done in `R`, there is a base set (with values) to use. 
-See section \@ref(topic-parameter-update-base) for a more detailed discussion 
+See @sec-topic-parameter-update-base for a more detailed discussion 
 of using `param()` to updated the base list.
 
 __Parameters can also be updated during the simulation run__
@@ -453,7 +453,7 @@ mod %>%
 ```
 
 For more information on time-varying covariates 
-(parameters), see sections \@ref(topics-time-varying) and \@ref(section-sequence).
+(parameters), see @sec-topics-time-varying and @sec-section-sequence.
 
 
 __Parameters are carried back when first record isn't at `time == 0`__
@@ -511,7 +511,7 @@ mod %>%
 The data set always gets the last word.
 
 
-### Updating the base parameter list {#topic-parameter-update-base}
+### Updating the base parameter list {#sec-topic-parameter-update-base}
 
 From the previous section
 ```{r}
@@ -562,7 +562,7 @@ Found nothing to update: param
 
 
 
-## Time grid objects {#topic-tgrid}
+## Time grid objects {#sec-topic-tgrid}
 
 __Simulation times in `mrgsolve`__
 
@@ -638,7 +638,7 @@ mod %>%
 
 
 
-## Individualized sampling designs {#topic-designs}
+## Individualized sampling designs {#sec-topic-designs}
 
 Here is a PopPK model and a full `data_set`.
 
@@ -992,7 +992,7 @@ consider issuing a message or a flag in the simulated data if you are not able
 to reach the desired condition.
 
 
-## Time varying covariates {#topics-time-varying}
+## Time varying covariates {#sec-topics-time-varying}
 
 A note in a previous section showed how to implement time-varying covariates or
 other time-varying parameters by including those parameters as column in the
@@ -1014,4 +1014,4 @@ mod %>% mrgsim(nocb = FALSE)
 ```
 
 There is additional information about the sequence of events that takes place
-during system advance in section \@ref(section-sequence).
+during system advance in @sec-section-sequence.

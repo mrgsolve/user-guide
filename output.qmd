@@ -1,6 +1,6 @@
 # Simulated output {#simulated-output}
 
-```{r}
+```{r, include = FALSE}
 source("setup.R")
 ```
 

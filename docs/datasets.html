@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mrgsolve user guide - 3&nbsp; Input data sets</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./event.html" rel="next">
+<link href="./specification.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">mrgsolve user guide</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./components.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Model components</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./specification.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./event.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./output.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sequence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./steady-state.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plugins.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mtime.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./topics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./q-and-a.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link active" data-scroll-target="#datasets"><span class="toc-section-number">3.1</span>  Overview</a></li>
+  <li><a href="#data-set" id="toc-data-set" class="nav-link" data-scroll-target="#data-set"><span class="toc-section-number">3.2</span>  Event data sets (<code>data</code>)</a>
+  <ul class="collapse">
+  <li><a href="#two-types-of-data_set" id="toc-two-types-of-data_set" class="nav-link" data-scroll-target="#two-types-of-data_set"><span class="toc-section-number">3.2.1</span>  Two types of <code>data_set</code></a></li>
+  <li><a href="#sorting-requirements" id="toc-sorting-requirements" class="nav-link" data-scroll-target="#sorting-requirements"><span class="toc-section-number">3.2.2</span>  Sorting requirements</a></li>
+  <li><a href="#creating-data-sets" id="toc-creating-data-sets" class="nav-link" data-scroll-target="#creating-data-sets"><span class="toc-section-number">3.2.3</span>  Creating data sets</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="toc-section-number">3.2.4</span>  Example</a></li>
+  </ul></li>
+  <li><a href="#idata-set" id="toc-idata-set" class="nav-link" data-scroll-target="#idata-set"><span class="toc-section-number">3.3</span>  Individual data sets (<code>idata</code>)</a>
+  <ul class="collapse">
+  <li><a href="#use-case" id="toc-use-case" class="nav-link" data-scroll-target="#use-case"><span class="toc-section-number">3.3.1</span>  Use case</a></li>
+  </ul></li>
+  <li><a href="#numeric-only" id="toc-numeric-only" class="nav-link" data-scroll-target="#numeric-only"><span class="toc-section-number">3.4</span>  Numeric data only</a></li>
+  <li><a href="#valid_data_set" id="toc-valid_data_set" class="nav-link" data-scroll-target="#valid_data_set"><span class="toc-section-number">3.5</span>  Data set validation</a></li>
+  <li><a href="#pred-data" id="toc-pred-data" class="nav-link" data-scroll-target="#pred-data"><span class="toc-section-number">3.6</span>  Data sets for use with <code>$PRED</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="data-set-chapter" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Input data sets are used in mrgsolve to allow the user to specify interventions and input data items.</p>
+<p>Please see the mrgsolve help topic <code>?exdatasets</code> for examples of all of the data sets discussed in this chapter. The example data sets are embedded in the mrgsolve package and may be used at any time.</p>
+<section id="datasets" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="datasets"><span class="header-section-number">3.1</span> Overview</h2>
+<p>Data sets are the primary mechanism for establishing the scope of your simulations in <code>mrsolve</code>, including individuals, interventions, observation times, and parameter values. For both <code>data_set</code> and <code>idata_set</code> (see below), you may include columns in the data sets that have the same names as the parameters in your model (section @ref(component-param), @ref(block-param)). mrgsolve can recognize these columns and update the parameter list as the simulation proceeds. This process is of key importance when planning and executing complex simulations and is further discussed in section @ref(topic-parameter-update).</p>
+</section>
+<section id="data-set" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-set"><span class="header-section-number">3.2</span> Event data sets (<code>data</code>)</h2>
+<p>Event data sets are entered as <code>data.frame</code>, with one event per row. Events may be observations, doses, or other type events. In mrgsolve documentation, we refer to these data sets as <code>data</code> or <code>data_set</code> (after the function that is used to associate the data set with the model object prior to simulation).</p>
+<p>Event data sets have several special column names that mrgsolve is always aware of:</p>
+<ul>
+<li><p><code>ID</code> the subject id. This id does not need to be unique in the <code>data_set</code>: mrgsolve detects an new individual when the current value of <code>ID</code> is different from the immediate preceding value of <code>ID</code>. However, we always recommend using unique <code>ID</code>.</p></li>
+<li><p><code>time</code> or <code>TIME</code>: states the time of the data record</p></li>
+<li><p><code>evid</code> or <code>EVID</code>: the event id indicator. <code>evid</code> can take the values:</p>
+<ul>
+<li><strong>0</strong> = observation record</li>
+<li><strong>1</strong> = dosing event (bolus or infusion)</li>
+<li><strong>2</strong> = other type event, with solver stop and restart</li>
+<li><strong>3</strong> = system reset</li>
+<li><strong>4</strong> = reset and dose</li>
+<li><strong>8</strong> = replace the amount in the compartment with <code>amt</code></li>
+</ul></li>
+<li><p><code>amt</code> or <code>AMT</code>: the dose amount (if <code>evid==1</code>)</p></li>
+<li><p><code>cmt</code> or <code>CMT</code>: the dosing compartment number. This may also be a character value naming the compartment name. The compartment number must be consistent with the number of compartments in the model for dosing records (<code>evid</code>==1).<br>
+For observation records, a <code>cmt</code> value of 0 is acceptable. Use a negative compartment number with <code>evid</code> 2 to turn a compartment off.<br>
+</p></li>
+<li><p><code>rate</code> or <code>RATE</code>: if non-zero and <code>evid=1</code> or <code>evid=4</code>, implements a zero-order infusion of duration <code>F_CMT*amt/rate</code>, where <code>F_CMT</code> is the bioavailability fraction for the dosing compartment. Use <code>rate = -1</code> to model the infusion rate and <code>rate = -2</code> to model the infusion duration, both in <code>$MAIN</code> (see sections @ref(block-main), @ref(spec-f),@ref(spec-r), @ref(spec-d)).</p></li>
+<li><p><code>ii</code> or <code>II</code>: inter-dose interval; <code>ii=24</code> means daily dosing when the model time unit is hours</p></li>
+<li><p><code>addl</code> or <code>ADDL</code>: additional doses; a non-zero value in <code>addl</code> requires non-zero <code>ii</code> on the same record</p></li>
+<li><p><code>ss</code> or <code>SS</code> steady state indicator; use 1 to implement steady-state dosing; 0 otherwise. mrgsolve also recognizes dosing records where <code>ss=2</code>. This allows combination of different steady state dosing regimens under linear kinetics (e.g.&nbsp;10 mg QAM and 20 mg QPM daily to steady state).</p></li>
+</ul>
+<p>The column names in the preceding list were written either as lower case form (e.g.&nbsp;<code>amt</code>) or upper case form (e.g.&nbsp;<code>AMT</code>). Either may be used, however the data set will be checked for consistency of usage. An error will be issued in case a mixture of lower and upper case names are found.</p>
+<p>In addition to these special column names, mrgsolve will recognize columns in <code>data_set</code> that have the same name as items in the parameter list (see @ref(block-param) and @ref(component-param)). When mrgsolve sees that the names match up, it will update the values of those matching names based on what it finds as it moves through the data set (see section @ref(topic-parameter-update)).</p>
+<section id="two-types-of-data_set" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="two-types-of-data_set"><span class="header-section-number">3.2.1</span> Two types of <code>data_set</code></h3>
+<p>mrgsolve distinguishes between two types of data sets: data sets that have <em>at least one observation record</em> (<code>evid=0</code>) and data sets that have <em>no records with <code>evid=0</code></em>.</p>
+<ul>
+<li><strong>Full data sets</strong> have a mix of observations and dosing events (likely, but not required). When mrgsolve finds one record with <code>evid=0</code>, it assumes that <strong>ALL</strong> output observation times are to come from the data set. In this case the simulation output time grid discussed in @ref(component-stime) is ignored and only observations found in the data set appear in the simulated output. Use full data sets when you want a highly customized sampling schedule or you are working with a clinical data set.</li>
+<li><strong>Condensed data sets</strong> have no records with <code>evid=0</code>. In this case, mrgsolve will fill the simulated output with observations at times specified by the output time grid ( section @ref(component-stime) and see section @ref(topic-designs)). These are very convenient to use because there is less data assembly burden and output data sets can easily be created with very dense sampling scheme or highly customized sampling schemes with very little work. Use a condensed data set when you want a uniform set of sampling times for all subjects in the data set.</li>
+</ul>
+<p><strong>Example of condensed data set</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(extran1, <span class="at">package =</span> <span class="st">"mrgsolve"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>extran1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID  amt cmt time addl ii rate evid
+. 1  1 1000   1    0    3 24    0    1
+. 2  2 1000   2    0    0  0   20    1
+. 3  3 1000   1    0    0  0    0    1
+. 4  3  500   1   24    0  0    0    1
+. 5  3  500   1   48    0  0    0    1
+. 6  3 1000   1   72    0  0    0    1
+. 7  4 2000   2    0    2 48  100    1
+. 8  5 1000   1    0    0  0    0    1
+. 9  5 5000   1   24    0  0   60    1</code></pre>
+</div>
+</div>
+<p>See <code>?exdatasets</code> in the <code>R</code> help system after loading mrgsolve.</p>
+<p><strong>Example of full data set</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(exTheoph, <span class="at">package =</span> <span class="st">"mrgsolve"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exTheoph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID   WT Dose time  conc cmt  amt evid
+. 1  1 79.6 4.02 0.00  0.00   1 4.02    1
+. 2  1 79.6 4.02 0.25  2.84   0 0.00    0
+. 3  1 79.6 4.02 0.57  6.57   0 0.00    0
+. 4  1 79.6 4.02 1.12 10.50   0 0.00    0
+. 5  1 79.6 4.02 2.02  9.66   0 0.00    0
+. 6  1 79.6 4.02 3.82  8.58   0 0.00    0</code></pre>
+</div>
+</div>
+<p>See <code>?exdatasets</code> in the <code>R</code> help system after loading mrgsolve.</p>
+<p><strong>Augmenting observations in a clinical data set</strong> Occasionally, we want to simulate from a clinical data set (with observation records as actually observed in a population of patients) but we also want to augment those observations with a regular sequence of times (for example, to make a smooth profile on a plot). In that case, you can set <code>obsaug  = TRUE</code> when calling <code>mrgsim</code>.</p>
+<p>For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  mod <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_set</span>(exTheoph, ID<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">carry.out</span>(a.u.g) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    obsaug <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">24</span>, <span class="at">delta=</span><span class="dv">1</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Model:  housemodel 
+. Dim:    36 x 8 
+. Time:   0 to 24.37 
+. ID:     1 
+.     ID time a.u.g    GUT  CENT  RESP      DV      CP
+. 1:   1 0.00     1 0.0000 0.000 50.00 0.00000 0.00000
+. 2:   1 0.00     0 4.0200 0.000 50.00 0.00000 0.00000
+. 3:   1 0.25     0 2.9781 1.035 49.95 0.04552 0.04552
+. 4:   1 0.57     0 2.0285 1.961 49.81 0.08624 0.08624
+. 5:   1 1.00     1 1.2108 2.729 49.61 0.12001 0.12001
+. 6:   1 1.12     0 1.0484 2.875 49.57 0.12643 0.12643
+. 7:   1 2.00     1 0.3647 3.422 49.34 0.15048 0.15048
+. 8:   1 2.02     0 0.3560 3.428 49.33 0.15072 0.15072</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out <span class="sc">%&gt;%</span> <span class="fu">select</span>(time) <span class="sc">%&gt;%</span> unlist <span class="sc">%&gt;%</span> unname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.  [1]  0.00  0.00  0.25  0.57  1.00  1.12  2.00  2.02  3.00  3.82  4.00  5.00
+. [13]  5.10  6.00  7.00  7.03  8.00  9.00  9.05 10.00 11.00 12.00 12.12 13.00
+. [25] 14.00 15.00 16.00 17.00 18.00 19.00 20.00 21.00 22.00 23.00 24.00 24.37</code></pre>
+</div>
+</div>
+<p><code>obsaug</code> requests that the data set be augmented with observations from the simulation time grid. We can optionally request an indicator called <code>a.u.g</code> to appear in the output that takes value of 1 for augmented observations and 0 for observations from the data set.</p>
+</section>
+<section id="sorting-requirements" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="sorting-requirements"><span class="header-section-number">3.2.2</span> Sorting requirements</h3>
+<p>The <code>ID</code>s in the data set can appear in any order. However, an error will be generated if <code>time</code> on any record is less that <code>time</code> on the previous record within any <code>ID</code>.</p>
+</section>
+<section id="creating-data-sets" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="creating-data-sets"><span class="header-section-number">3.2.3</span> Creating data sets</h3>
+<p>The <code>expand.ev</code> function is provided by mrgsolve to help in creating data sets of a certain style. But any <code>R</code> code that produces a valid data set is fine to use.</p>
+</section>
+<section id="example" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="example"><span class="header-section-number">3.2.4</span> Example</h3>
+<p>To create a data set of 3 people each receiving <strong>250 mg every 8 hours for 12 total doses</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.ev</span>(<span class="at">ID=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">amt=</span><span class="dv">250</span>, <span class="at">ii=</span><span class="dv">8</span>, <span class="at">addl=</span><span class="dv">11</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID time amt ii addl cmt evid
+. 1  1    0 250  8   11   1    1
+. 2  2    0 250  8   11   1    1
+. 3  3    0 250  8   11   1    1</code></pre>
+</div>
+</div>
+<p>Notice that <code>expand.ev</code> assumes that <code>time</code> is 0 and <code>cmt</code> is 1. To dose as a 2-hour infusion into the second compartment use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.ev</span>(<span class="at">ID=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">amt=</span><span class="dv">250</span>, <span class="at">rate=</span><span class="dv">125</span>, <span class="at">ii=</span><span class="dv">8</span>, <span class="at">addl=</span><span class="dv">11</span>, <span class="at">cmt=</span><span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID time amt rate ii addl cmt evid
+. 1  1    0 250  125  8   11   2    1
+. 2  2    0 250  125  8   11   2    1
+. 3  3    0 250  125  8   11   2    1</code></pre>
+</div>
+</div>
+<p>Use <code>data_set</code> to pass the data into the problem.</p>
+<p>For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_set</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">240</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(CP<span class="sc">~</span>time<span class="sc">|</span><span class="fu">factor</span>(ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="datasets_files/figure-html/data_set-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="idata-set" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="idata-set"><span class="header-section-number">3.3</span> Individual data sets (<code>idata</code>)</h2>
+<p>Individual data sets carry individual-level data. This individual data is used in several different ways:</p>
+<ul>
+<li><strong>Individual-level parameters</strong>: Just prior to simulating any individual, mrgsolve checks the appropriate row in <code>idata</code> (if supplied) for any columns with parameter names. If parameter names are found, the parameter list is updated and that update remains in effect for the duration of that individual’s data records.</li>
+<li><strong>Individual- or group-level designs</strong>: Each individual or group of individual may be assigned a different sampling design. For example, individuals in arm 1 may need to be simulated for 4 weeks whereas individuals in arm 2 may need to be simulated for 8 weeks. <code>idata</code> may be used to identify one of several sampling designs for each individual or group of individuals.</li>
+<li><strong>Individual-level compartment initialization</strong>: if a model has a compartment called <code>CMT</code> and mrgsolve finds a column in <code>idata</code> called <code>CMT_0</code>, the value of <code>CMT_0</code> will be used to initialize that compartment with, potentially a different value for each individual. Note that there are several other ways to initialize compartments detailed in @ref(topic-init).</li>
+</ul>
+<p><code>idata_set</code> are entered as <code>data.frame</code> with one unique <code>ID</code> per row. In mrgsolve documentation, we refer to individual data sets <code>idata</code> or <code>idata_set</code> to distinguish them from event data sets (see section @ref(data-set)).</p>
+<p>An <code>idata_set</code> looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(exidata)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>exidata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.    ID    CL    VC     KA  KOUT  IC50 FOO
+. 1   1 1.050 47.80 0.8390 2.450 1.280   4
+. 2   2 0.730 30.10 0.0684 2.510 1.840   6
+. 3   3 2.820 23.80 0.1180 3.880 2.480   5
+. 4   4 0.552 26.30 0.4950 1.180 0.977   2
+. 5   5 0.483  4.36 0.1220 2.350 0.483  10
+. 6   6 3.620 39.80 0.1260 1.890 4.240   1
+. 7   7 0.395 12.10 0.0317 1.250 0.802   8
+. 8   8 1.440 31.20 0.0931 4.030 1.310   7
+. 9   9 2.570 18.20 0.0570 0.862 1.950   3
+. 10 10 2.000  6.51 0.1540 3.220 0.699   9</code></pre>
+</div>
+</div>
+<p>Here we have an <code>idata_set</code> with 10 subjects, one subject per row. The <code>ID</code> column connects the data in each row to the data in a <code>data_set</code>, which also requires an <code>ID</code> column.</p>
+<p>The <code>ID</code> column is the only required column name in <code>idata_set</code> and <code>ID</code> should always be a unique identifier for that row.</p>
+<section id="use-case" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="use-case"><span class="header-section-number">3.3.1</span> Use case</h3>
+<p><code>idata_set</code> is usually helpful for implementing a batch of simulations when a <code>data_set</code> is not used. The batch may be as a sensitivity analysis or for population simulation. Usually, an events object is used with <code>idata</code>, but it is not required.</p>
+<p>Use the <code>idata_set</code> function to pass the data set into the problem.</p>
+<p>For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">idata_set</span>(exidata) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  mrgsim <span class="sc">%&gt;%</span> plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="datasets_files/figure-html/idata_set-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Because there were 10 subjects in the <code>idata_set</code>, we get 10 profiles in the output. Each “individual” or “unit” received the same 100 mg dose. We would use a <code>data_set</code> to assign different doses to different individuals.</p>
+</section>
+</section>
+<section id="numeric-only" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="numeric-only"><span class="header-section-number">3.4</span> Numeric data only</h2>
+<p>The <code>data.frame</code> holding the <code>data_set</code> or <code>idata_set</code> may have any type of data in its columns. However, only numeric data can actually get passed into the simulation engine. mrgsolve will automatically look for non-numeric columns and drop them from the <code>data_set</code> or <code>idata_set</code> with a warning.</p>
+</section>
+<section id="valid_data_set" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="valid_data_set"><span class="header-section-number">3.5</span> Data set validation</h2>
+<p>A the time of simulation, mrgsolve will validate the input data set, removing non-numeric columns, checking for missing values in parameter columns, checking compartment numbers, etc.</p>
+<p>Users can pre-validate the data set so that this does not need to happen at run time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(exTheoph)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exTheoph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID   WT Dose time  conc cmt  amt evid
+. 1  1 79.6 4.02 0.00  0.00   1 4.02    1
+. 2  1 79.6 4.02 0.25  2.84   0 0.00    0
+. 3  1 79.6 4.02 0.57  6.57   0 0.00    0
+. 4  1 79.6 4.02 1.12 10.50   0 0.00    0
+. 5  1 79.6 4.02 2.02  9.66   0 0.00    0
+. 6  1 79.6 4.02 3.82  8.58   0 0.00    0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>. Loading model from cache.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> <span class="fu">valid_data_set</span>(exTheoph,mod)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.  'valid_data_set' num [1:132, 1:9] 1 1 1 1 1 1 1 1 1 1 ...
+.  - attr(*, "dimnames")=List of 2
+.   ..$ : NULL
+.   ..$ : chr [1:9] "ID" "WT" "Dose" "time" ...</code></pre>
+</div>
+</div>
+<p>This can improve efficiency when performing a very large number of replicate simulations on the same data set, but is unlikely to provide a meaningful speed-up for a single simulation or a small number of simulations.</p>
+</section>
+<section id="pred-data" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="pred-data"><span class="header-section-number">3.6</span> Data sets for use with <code>$PRED</code></h2>
+<p>Because there are no compartments involved, there are relaxed data set requirements for models that utilize <code>$PRED</code>.</p>
+<ul>
+<li><code>time</code> or <code>TIME</code> is not required as input; when this is not supplied, a <code>time</code> column will be included in output with value 0</li>
+<li>When <code>time</code> or <code>TIME</code> is supplied, it may be negative; but records must still be sorted by <code>time</code> or <code>TIME</code></li>
+<li>If supplied, <code>cmt</code> or <code>CMT</code> must be zero</li>
+<li>An error is generated if <code>rate</code> or <code>RATE</code> is supplied</li>
+<li>An error is generated if <code>ss</code> or <code>SS</code> is supplied</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./specification.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./event.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

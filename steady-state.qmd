@@ -1,11 +1,7 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+
 # Steady state {#steady-state}
 
-```{r, setup,  echo=FALSE,message=FALSE}
+```{r, include = FALSE}
 source("setup.R")
 ```
 

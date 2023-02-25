@@ -1,4 +1,4 @@
-```{r,echo=FALSE,message=FALSE}
+```{r,include = FALSE}
 source("setup.R")
 ```
 

@@ -1,6 +1,6 @@
 # Event objects {#event-chapter}
 
-```{r,echo=FALSE,message=FALSE}
+```{r,include = FALSE}
 source("setup.R")
 ```
 

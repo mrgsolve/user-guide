@@ -1,6 +1,6 @@
 # Model Matrices {#matrix-chapter}
 
-```{r,echo=FALSE,message=FALSE}
+```{r,include = FALSE}
 source("setup.R")
 ```
 

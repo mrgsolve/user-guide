@@ -1,9 +1,10 @@
 project:
   type: book
+  output-dir: docs
 execute:
   freeze: auto  # re-render only when source changes
 book:
-  title: "user-guide"
+  title: "mrgsolve user guide"
   author: "Kyle Baron"
   date: "2/24/2023"
   chapters:
@@ -28,8 +29,8 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
 
 
 

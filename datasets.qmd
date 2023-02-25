@@ -1,6 +1,6 @@
 # Input data sets {#data-set-chapter}
 
-```{r,echo=FALSE,message=FALSE}
+```{r,include = FALSE}
 source("setup.R")
 ```
 
@@ -127,7 +127,7 @@ make a smooth profile on a plot).  In that case, you can set `obsaug  = TRUE`
 when calling `mrgsim`.
 
 For example:
-```{r obsaug-1,cache=TRUE}
+```{r obsaug-1}
 mod <- mrgsolve:::house()
 
 out <- 
@@ -184,7 +184,7 @@ data
 Use `data_set` to pass the data into the problem.
 
 For example:
-```{r data_set-1,cache=TRUE}
+```{r data_set-1}
 mod <- mrgsolve:::house()
 
 mod %>%
@@ -243,7 +243,7 @@ Use the `idata_set` function to pass the data set into the problem.
 
 For example:
 
-```{r idata_set-1,cache=TRUE}
+```{r idata_set-1}
 mod <- mrgsolve:::house()
 
 mod %>%
