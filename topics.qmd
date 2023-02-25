@@ -705,6 +705,7 @@ When we simulate, the individuals in `GRP 1` will get `des1` and those in `GRP
 2` will get `des2`
 
 ```{r topic-design-1}
+#| fig-height: 4
 out <- 
   mod %>% 
   Req(CP) %>%
@@ -712,8 +713,8 @@ out <-
   idata_set(id) %>%
   data_set(df) %>%
   design(descol="GRP", deslist=list(des1,des2)) %>%
-  obsaug %>%
-  mrgsim 
+  obsaug() %>%
+  mrgsim() 
 
 plot(out, CP~time|GRP)
 ```
