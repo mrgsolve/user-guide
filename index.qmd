@@ -6,14 +6,15 @@ source("setup.R")
 
 
 # Introduction {.unnumbered}
+
 <img src="images/MRG-Solve-Hex.png" align="right" width="200px"></img> Welcome to
 the mrgsolve user guide. The user guide is the main documentation source for how
 mrgsolve works and how to best use mrgsolve in your modeling and simulation
 project.  As with most of the mrgsolve documentation, this is a work in
 progress.  I am currently working to transition this to more of a reference
 resource, rather than demonstration.  So key content in the user guide includes
-chapter \@ref(model-specification) on model specification, chapter
-\@ref(model-components) on model components and chapter \@ref(section-sequence)
+@sec-model-specification on model specification, 
+@sec-model-components on model components and  @sec-section-sequence
 on the simulation sequence. Installation is a big topic but we defer to the wiki
 page for installation help since requirements tend to change frequently with new
 R releases.  The other content is hopefully helpful as well.  I'm leaving it all
@@ -25,44 +26,44 @@ Please feel free to ask questions about anything mrgsolve-related on the
 issue tracker on the main github repo: https://github.com/metrumresearchgroup/mrgsolve/issues.
 
 
-## Overview {-}
+## Overview {.unnumbered}
 
 If you are accessing the user guide via html, you should be able to see a 
 table of contents on the left. That has a lot of detail in there so I'm going 
 to give you high-level overview of what is here (the high-level should be 
 pretty clear in the pdfbook). 
 
-- Chapter \@ref(model-components) tells you about what is in the mrgsolve model
+- @sec-model-components tells you about what is in the mrgsolve model
   object (like parameters, compartments, C++ functions and the like)
-- Chapter \@ref(model-specification) tells you about model specification. There 
-  are two main sections to this chapter: Section \@ref(code-blocks) lists 
-  the different model code blocks and Section \@ref(variables-macros) lists
+- @sec-model-specification tells you about model specification. There 
+  are two main sections to this chapter: Section @sec-code-blocks) lists 
+  the different model code blocks and Section @sec-variables-macros) lists
   the different variables that you can get (or set) in the different code blocks
-- Chapter \@ref(data-set-chapter) shows you how to format input data sets
-- Chapter \@ref(event-chapter) shows you how to create and work with simple 
+- @sec-data-set-chapter shows you how to format input data sets
+- @sec-event-chapter shows you how to create and work with simple 
   data set objects called `event` objects
-- Chapter \@ref(matrix-chapter) shows how to work with model matrices
-- Chapter \@ref(simulated-output) tells you about the simulated output object
+- @sec-matrix-chapter shows how to work with model matrices
+- @sec-simulated-output tells you about the simulated output object
   and how you can work with it
-- Chapter \@ref(section-sequence) dives into the simulation sequence, showing 
+- @sec-section-sequence dives into the simulation sequence, showing 
   you the steps that mrgsolve takes to work through a problem
-- Chapter \@ref(steady-state) gives the details on how mrgsolve advances the 
+- @sec-steady-state gives the details on how mrgsolve advances the 
   system to a pharmacokinetic steady state
-- Chapter \@ref(plugins) talks about different plugins you can use for more 
+- @sec-plugins talks about different plugins you can use for more 
   advanced modeling
-- Chapter \@ref(mtime) talks about modeled events (discontinuities in the 
+- @sec-mtime talks about modeled events (discontinuities in the 
   simulation that are triggered from within the model rather than from the 
   data set)
-- Chapter \@ref(topics) is a collection of applied examples on different topics
-- Chapter \@ref(q-and-a) are brief questions and answers providing some bits
+- @sec-topics is a collection of applied examples on different topics
+- @sec-q-and-a are brief questions and answers providing some bits
   of information that don't obviously fit into another chapter
-- Chapter \@ref(install) provides links to some Wiki pages that can help with 
+- @sec-install provides links to some Wiki pages that can help with 
   installation
 
-## PDF Version {-}
+## PDF Version {.unnumbered}
 This book is also available in pdf format [here](user-guide.pdf).
 
-## Other Resources {-}
+## Other Resources {.unnumbered}
 
 
 - Main resource page: [mrgsolve.github.io](https://mrgsolve.github.io)

@@ -1,4 +1,4 @@
-# Installation {#install}
+# Installation {#sec-install}
 
 The most up to date installation instructions can be found on our `github` site:
 
