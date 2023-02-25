@@ -1,18 +1,6 @@
 library(spelling)
 
-path <- c(
-  "index.Rmd", 
-  "components.Rmd",
-  "topics.Rmd", 
-  "sequence.Rmd", 
-  "install.Rmd", 
-  "output.Rmd", 
-  "datasets.Rmd", 
-  "install.Rmd"
-  
-)
-
-path <- list.files(pattern = "\\.Rmd$")
+path <- list.files(pattern = "\\.qmd$")
 
 ignore <- readLines("WORDLIST")
 

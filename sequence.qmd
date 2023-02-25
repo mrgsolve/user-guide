@@ -68,9 +68,7 @@ that will overwrite both the base list and any parameter value that was
 copied from an `idata_set`.  It is not an error to have different parameter 
 values in an `idata_set` and a `data-set`, but the value found in the `data_set`
 will be used when this happens.  More on parameters and the parameter update
-sequence can be found in @sec-topic-parameter-update and 
-@sec-component-param.
-
+sequence can be found in @sec-topic-parameter-update and @sec-component-param.
 1. `$MAIN` is called
 1. The system is advanced via `$ODE` or `$PKMODEL`, 
 whichever one is invoked in the model specification
@@ -90,4 +88,3 @@ written to the output matrix.
 1. Continue to the next record in the individual.
 1. Once the last record is processed in an 
 individual, a new individual is started.
-

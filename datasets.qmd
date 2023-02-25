@@ -194,7 +194,6 @@ mod %>%
 ```
 
 
-
 ## Individual data sets (`idata`)  {#sec-idata-set}
 Individual data sets carry individual-level data.  This individual data is used
 in several different ways:
@@ -257,6 +256,7 @@ output.  Each "individual" or "unit" received the same 100 mg dose.  We would
 use a `data_set` to assign different doses to different individuals.
 
 ## Numeric data only {#sec-numeric-only}
+
 The `data.frame` holding the `data_set` or `idata_set` may have any type of data
 in its columns.  However, only numeric data can actually get passed into the
 simulation engine.  mrgsolve will automatically look for non-numeric columns
@@ -288,6 +288,7 @@ simulations on the same data set, but is unlikely to provide a meaningful
 speed-up for a single simulation or a small number of simulations. 
 
 ## Data sets for use with `$PRED` {#sec-pred-data}
+
 Because there are no compartments involved, there are relaxed data set
 requirements for models that utilize `$PRED`.
 
@@ -298,6 +299,4 @@ requirements for models that utilize `$PRED`.
 * If supplied, `cmt` or `CMT` must be zero
 * An error is generated if `rate` or `RATE` is supplied
 * An error is generated if `ss` or `SS` is supplied
-
-
 

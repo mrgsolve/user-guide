@@ -17,22 +17,61 @@ Method `2` is handy for quickly coding a model and you'll also see us using
 that approach frequently when demonstrating how to use `mrgsolve`.
 
 ### Separate file {#sec-spec-separate-file}
-Open a text editor and type the model into a file with name that has the 
-format `<model-name>.cpp`.  This filename format identifies a "name" for your 
-model (`<model-name>`, the "stem" of the file name).  The extension __MUST__ 
-be `.cpp` (`mrgsolve` currently assumes the extension).  Note: this whole file 
-will be read and parsed, so everything in it must be valid `mrgsolve` model
+
+For most applications, you will want to put your model code in a standalone
+file. This file can have any extension, but there is some special behavior 
+when you use the `.cpp` extension. We'll show you both here. 
+
+#### Using `.cpp` file extension
+
+Open a text editor and type the model code into a file with name that has the
+format `<model-name>.cpp`.  This filename format identifies a "name" for your
+model (`<model-name>`, the "stem" of the file name).  Note: this whole file will
+be read and parsed, so everything in it must be valid `mrgsolve` model
 specification elements.  
 
 Use the `mread()` function to read and parse this file.  For the model 
 called `mymodel` saved in `mymodel.cpp` (in the current working directory), 
 issue the command:
+
 ```{r,eval=FALSE}
 mod <- mread("mymodel")
 ```
 
 `mread()` returns a model object from which you can simulate.
 
+#### Using any file extension
+
+You can use any file extension to save your `mrgsolve` model. Rather 
+than using `.cpp`, you might use `.mod`. When you are using an extension
+other than `.cpp`, pass in the entire file name, both stem and 
+extension. If you have the model code saved in `mymodel.mod` then 
+you'd call
+
+```{r, eval = FALSE}
+mod <- mread("mymodel.mod")
+```
+
+to load that model. 
+
+#### The model project directory
+
+The second argument to `mread()` is `project`. This is the directory where
+`mrgsolve` will look for your model file (passed as the first argument to
+`mread()`). 
+
+If your `myproject.mod` file is located in the `models` directory, then 
+you could load that file with 
+
+```{r, eval = FALSE}
+mod <- mread("mymodel.mod", project = "models")
+```
+
+Alternatively, you can just past the entire path to the model file
+
+```{r, eval = FALSE}
+mod <- mread("models/mymodel.mod")
+```
 
 
 ### Inline / `code` \ {#sec-spec-inline}
