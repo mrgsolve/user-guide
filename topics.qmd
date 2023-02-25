@@ -163,7 +163,8 @@ condition for `A` is set to 0
 set it in the base list
 
 ``` {r topic-init-2}
-mod %>% mrgsim %>% plot
+#| fig-height: 3.5
+mod %>% mrgsim() %>% plot()
 ```
 
 
@@ -174,7 +175,8 @@ Note:
 -   The code in `$MAIN` still doesn't get run because `IFLAG` is 0
 
 ``` {r topic-init-3}
-mod %>% init(A = 50) %>% mrgsim %>% plot
+#| fig-height: 3.5
+mod %>% init(A = 50) %>% mrgsim() %>% plot()
 ```
 
 **Now, turn on `IFLAG`**
@@ -185,12 +187,14 @@ Note:
 -   `A_0` is set to the value of `BASE`
 
 ``` {r topic-init-4}
-mod %>% param(IFLAG=1) %>% mrgsim %>% plot
+#| fig-height: 3.5
+mod %>% param(IFLAG=1) %>% mrgsim() %>% plot()
 ```
 
 
 ``` {r topic-init-5}
-mod %>% param(IFLAG=1, BASE=300) %>% mrgsim %>% plot
+#| fig-height: 3.5
+mod %>% param(IFLAG=1, BASE=300) %>% mrgsim() %>% plot()
 ```
 
 
@@ -223,13 +227,15 @@ mod <- mcode("init2", code)
 The initial condition is set to 40 per the values of `KIN` and `KOUT`
 
 ``` {r topic-init-7}
-mod %>% mrgsim %>% plot
+#| fig-height: 3.5
+mod %>% mrgsim() %>% plot()
 ```
 
 Even when we change `RESP_0` in `R`, the calculation in `$MAIN` gets the final say
 
 ``` {r topic-init-8}
-mod %>% init(RESP=1E9) %>% mrgsim
+#| fig-height: 3.5
+mod %>% init(RESP=1E9) %>% mrgsim()
 ```
 
 
@@ -244,7 +250,7 @@ init(mod)
 ```
 
 ``` {r, topic init 10}
-mod %>% param(KIN=100) %>% init
+mod %>% param(KIN=100) %>% init()
 ```
 
 
@@ -254,7 +260,7 @@ mod %>% param(KIN=100) %>% init
 Go back to house model
 
 ``` {r, init-by-idata-house}
-mod <- mrgsolve:::house()
+mod <- house()
 ```
 
 ``` {r,init-by-idata-init}
@@ -274,7 +280,7 @@ idata <- expand.idata(CENT_0 = seq(0,25,1))
 ```
 
 ``` {r,init-by-idata-expand.idata-2}
-idata %>% head
+idata %>% head()
 ```
 
 
@@ -286,6 +292,7 @@ out <-
 ```
 
 ``` {r topic-init-11}
+#| fig-height: 4
 plot(out, CENT~.)
 ```
 
@@ -578,7 +585,7 @@ arbitrary vector of simulation times called `add`.
 ```{r}
 mod %>%
   mrgsim(end=4,delta=2,add=c(7,9,50)) %>%
-  as.data.frame
+  as.data.frame()
 ```
 
 
@@ -606,6 +613,7 @@ stime(day1)
 Pass this object in to `mrgsim` as `tgrid`.  It will override the default
 `start/end/delta/add` sequence.
 ```{r topic-tgrid-1}
+#| fig-height: 4
 mod %>% 
   mrgsim(tgrid=day1) %>%
   plot(type='b')
@@ -617,6 +625,7 @@ __Now, look at both day 1 and day 10__:
 Adding a number to a `tgrid` object will offset those times by that amount.  
 
 ```{r topic-tgrid-2}
+#| fig-height: 4
 des <- c(day1, day1+10*24)
 
 mod %>% 
@@ -629,6 +638,7 @@ mod %>%
 Pick up day 5 as well
 
 ```{r topic-tgrid-3}
+#| fig-height: 4
 des <- c(des, day1+5*24)
 
 mod %>% 
@@ -643,7 +653,7 @@ mod %>%
 Here is a PopPK model and a full `data_set`.
 
 ```{r}
-mod <- mrgsolve:::house()
+mod <- house()
 
 data(exTheoph)
 
@@ -653,12 +663,13 @@ head(df)
 ```
 
 ```{r topic-tgrid-5}
+#| fig-height: 3.5
 mod %>% 
   Req(CP) %>%
   carry.out(a.u.g) %>%
   data_set(df) %>%
-  obsaug %>%
-  mrgsim 
+  obsaug() %>%
+  mrgsim() 
 ```
 
 Now, define two time grid objects: `des1` runs from 0 to 24 and `des2` runs from
