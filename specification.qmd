@@ -560,7 +560,8 @@ This is an alias for `$TABLE`.
 __Syntax__: C++   
 __Multiple allowed__: no   
 
-This is the fourth C++ code block.  It is called once in two different settings:
+This is the fourth C++ code block.  It is called once in two different settings
+(@sec-section-sequence):
 
 1. Immediately prior to starting the simulation run
 1. Immediately prior to calling `$MAIN` when calculating initial conditions
@@ -606,7 +607,7 @@ Notes:
   initialized in `$PREAMBLE` are actually initialized for global (within the 
   model file)
 
-See also: @sec-block-plugin.
+See also: @sec-section-sequence and @sec-block-plugin.
 
 
 ### `$PRED` \ {#sec-block-pred}
@@ -732,7 +733,8 @@ $OMEGA
 ```
 will generate a 3x3 omega matrix.
 
-A __block__ matrix may be entered by using `block=TRUE`. So:
+A __block__ matrix may be entered by using `block = TRUE`. So:
+
 ```{c, eval=FALSE}
 $OMEGA @block
 0.1 0.02 0.3
@@ -758,11 +760,13 @@ $OMEGA @name PK @block
 $OMEGA @name PD
 0.1 0.2 0.3 0.5
 ```
-to distinguish between multiple `$OMEGA` blocks and to facilitate updating later. The model in the preceding example will have two 
-`$OMEGA` matrices: 2x2 and 4x4.
+to distinguish between multiple `$OMEGA` blocks and to facilitate updating 
+later. The model in the preceding example will have two `$OMEGA` matrices: 
+2x2 and 4x4.
 
 
 Annotated example (diagonal matrix):
+
 ```{c, eval=FALSE}
 $OMEGA @annotated
 ECL: 0.09 : ETA on clearance
@@ -771,6 +775,7 @@ EKA: 0.45 : ETA on absorption rate constant
 ```
 
 Annotated example (block matrix):
+
 ```{c, eval=FALSE}
 $OMEGA @annotated @block
 ECL: 0.09 : ETA on clearance
@@ -780,11 +785,18 @@ EKA: 0.001 0.001 0.45 : ETA on absorption rate constant
 
 The `@object` and `@as_object` options should name or return a square numeric 
 matrix. If `rownames` are included in the matrix, then they will be used to 
-form labels for the realized ETAs. 
+form labels for the realized ETAs. For example, we can initialize a very 
+large `$OMEGA` matrix with 
 
-Notes:
+```{c, eval = FALSE}
+$OMEGA @as_object
+n <- 20
+lbl <- paste0("ETA_", LETTERS[1:n])
+matrix(0, 20, 20, dimnames = list(lbl, lbl))
+```
 
-* Multiple `$OMEGA` blocks are allowed
+Note: this only initializes the matrix; you will (likely) need to update it 
+with meaningful values after the model is loaded (@sec-matrix-chapter).
 
 
 ### `$SIGMA` \ {#sec-block-sigma}
@@ -817,6 +829,7 @@ Use this code block to set different options for the simulation. Use a
 Most of the options that can be entered in `$SET` are passed to `update`. 
 
 For example:
+
 ```{c,eval=FALSE}
 [ SET ] end = 240, delta = 0.5, req = "RESP"
 ```
@@ -1389,8 +1402,7 @@ __Multiple allowed__: no
 
 This block is all `R` code (just as you would code in a stand-alone `R` script. 
 The code is parsed and evaluated into a new environment when the model is 
-compiled.  Objects inside `$ENV` can be utilized in different C++ functions 
-(see @sec-block-plugin) or other parts of the simulation process.
+compiled.  
 
 For example:
 
@@ -1408,6 +1420,64 @@ cama <- function(mod) {
 }
 
 ```
+
+Objects inside `$ENV` can be utilized in different C++ functions 
+(see @sec-block-plugin) or other parts of the simulation process.
+
+Objects inside `$ENV` will also be made available when parsing different
+parts of the model specification file. For example, we can initialize an
+`$OMEGA` block with the `Sigma`  object in the `$ENV` block example above:
+
+```{c, eval = FALSE}
+$OMEGA @object Sigma
+```
+
+
+Another example is providing constants or functions to simplify code in the `$PARAM` block
+
+```{c, eval = FALSE}
+$ENV
+rescale <- 1/1000 
+
+convert <- function(x) x * 5 / 166.2
+
+$PARAM
+p = 500 * rescale
+
+q  = convert(2.51)
+```
+
+You can also make your model specification file depend on an R package; 
+for example, if you want to use the `here` package to render a path to 
+your NONMEM model
+
+```{c, eval = FALSE}
+$ENV
+if(!requireNamespace("here")) {
+  stop("the `here` package is required to load this model.")  
+}
+
+$NMXML
+run = 101
+project = here::here("model/nonmem")
+```
+
+You can access the model environment using the `env_get()` function: 
+
+```{c, eval = FALSE}
+env_get(mod)
+```
+
+or directly in the `envir` slot
+
+```{c, eval = FALSE}
+mod@envir
+```
+
+See also `env_ls()` to list the names of variables in the model environment, 
+`env_update()` to change the values of objects in the model environment, 
+or `env_eval` to re-evaluate the model environment code.   
+
 
 ## Variables and Macros {#sec-variables-macros}
 

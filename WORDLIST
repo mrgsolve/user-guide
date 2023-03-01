@@ -61,5 +61,15 @@ maxsteps
 soloc
 RcppArmadillo
 modfile
+rx
+typedef
+odesolver
+NMTRAN
+nm
+matlist
+ev
+DADT
+autodec
+addl
 
 
