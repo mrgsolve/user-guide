@@ -108,8 +108,7 @@ as.matrix(om)
 
 Let's look at an example where there is a more complicated `$OMEGA` structure.
 
-```{r}
-code <- '
+```{mread, stem = "multiple-matrices", annot = TRUE}
 $OMEGA @name first @labels a b c
 1 2 3
 
@@ -118,8 +117,10 @@ $OMEGA @name second @labels d e
 
 $OMEGA @name third @labels f g h i
 6 7 8 9
-'
-mod <- mcode("multiple-matrices", code, compile = FALSE)
+```
+
+```{r}
+mod <- mread("inline/multiple-matrices.cpp", quiet = TRUE)
 ```
 
 Each `$OMEGA` block codes a diagonal matrix; the interesting feature is that
@@ -350,13 +351,13 @@ mod %>%
 ### Example: unnamed matrix
 
 Here is a model with only a 3x3 `$OMEGA` matrix
-```{r}
-code <- '
+```{mread, stem = "matrix", annot = TRUE}
 $OMEGA
 1 2 3
-'
+```
 
-mod <- mcode("matrix", code, compile=FALSE)
+```{r}
+mod <- mread("inline/matrix.cpp", compile = FALSE, quiet = TRUE)
 ```
 
 Let's check the values in the matrix using `omat()`
@@ -385,14 +386,15 @@ When there are multiple `$OMEGA` matrices, it can be helpful to assign them
 names.  Here, there are two matrices: one for interindividual variability 
 (`IIV`) and one for interoccasion variability (`IOV`). 
 
-```{r}
-code <- '
+```{mread, stem = "iov", annot = TRUE}
 $OMEGA @name IIV
 1 2 3
 $OMEGA @name IOV
 4 5
-'
-mod <- mcode("iov", code, compile=FALSE)
+```
+
+```{r}
+mod <- mread("inline/iov.cpp", compile = FALSE, quiet = TRUE)
 
 revar(mod)
 ```
@@ -402,7 +404,7 @@ Now, we can update either `IIV` or `IOV` (or both) by name
 ```{r}
 mod %>% 
   omat(IOV = dmat(11,12), IIV = dmat(13, 14, 15)) %>% 
-  omat
+  omat()
 ```
 
 Again, an error is generated if we try to assign a 3x3 matrix to the `IOV` 
@@ -417,15 +419,16 @@ ans
 
 ### Example: unnamed matrices
 If we do write the model with unnamed matrices, we can still update them
-```{r}
-code <- '
+```{mread, stem = "multi", annot = TRUE}
 $OMEGA
 1 2 3
 
 $OMEGA 
 4 5
-'
-mod <- mcode("multi", code, compile = FALSE)
+```
+
+```{r}
+mod <- mread("inline/multi.cpp", compile = FALSE, quiet = TRUE)
 ```
 
 In this case, the only way to update is to pass in a __list__ of matrices, where 
