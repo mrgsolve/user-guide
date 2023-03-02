@@ -7,6 +7,7 @@ source("setup.R")
 This chapter details the `mrgsolve` model specification format.  
 
 ## How / where to write a model
+
 There are two ways to write your model:
 
 1. Code in a __separate file__ and source into your R script 
@@ -307,11 +308,11 @@ KA:  1.2 : Absorption rate constant (1/hr)
 See the `popex` model for an example of using `@covariates`
 
 ```{r, include = FALSE, message = FALSE}
-obj <- as.list(mod <- modlib("popex",compile = FALSE))
+obj <- as.list(mod <- modlib("popex", compile = FALSE))
 ```
 
-```{r,echo=FALSE}
-blocks(mod,PARAM)
+```{r, echo = FALSE}
+blocks(mod, PARAM)
 ```
 
 then
@@ -443,8 +444,7 @@ gets called several times before starting the problem (`NEWIND == 0`) and
 just prior to simulating each individual (`NEWIND == 1`).  Finally, `$MAIN` 
 gets called every time the model initial conditions are queried with `init()`.  
 
-New variables may be declared in `$MAIN`.  See @sec-new-variables 
-for details.
+New variables may be declared in `$MAIN`.  See @sec-new-variables for details.
 
 Examples:
 
@@ -648,6 +648,7 @@ This is a block to identify variables that should be captured in the simulated
 output.
 
 For example:
+
 ```{c,eval=FALSE}
 [ PARAM ] A = 1, B = 2
 
@@ -658,7 +659,7 @@ bool yes = true;
 [ CAPTURE ] A B C yes
 ```
 
-This construct will result in 4 additional columns in the simulated output 
+This construct will result in four additional columns in the simulated output 
 with names `A`, `B`, `C`, and `yes`.  
 
 Users can also rename captured variables by providing a 
@@ -710,6 +711,21 @@ DV  : Plasma concentration (mcg/ml)
 
 New variables may be declared in `$TABLE`.  See @sec-new-variables for 
 details.
+
+::: {.callout-tip}
+In addition to listing model variables for otput in the `$CAPTURE` block,
+users can "dynamically" capture model variables through the `capture` 
+argument to [`mread()`](https://mrgsolve.org/docs/reference/mread.html). These
+may be model parameters (listed in `$PARAM`) or user-defined model variables.
+
+To get a listing of available user-defined variables, you can use
+
+```{r}
+#| eval: false
+mod <- house()
+as.list(mod)$cpp_variables
+```
+:::
 
 
 ### `$OMEGA` \ {#sec-block-omega}
@@ -1125,7 +1141,17 @@ __Syntax__: R
 __Multiple allowed__: yes   
 
 The `$NMXML` block lets you read and incorporate results from a NONMEM run into 
-your `mrgsolve` model.  From the NONMEM run, `THETA` will be imported into your
+your `mrgsolve` model. For example
+
+```{r}
+#| eval: false
+$NMXML 
+run = 1001
+project = "../model/nonmem"
+root = "cppfile"
+```
+
+From the NONMEM run, `THETA` will be imported into your
 parameter list (see @sec-block-param and @sec-component-param), `OMEGA` will 
 be captured as an `$OMEGA` block (@sec-block-omega) and `SIGMA` will be 
 captured as a `$SIGMA` block (@sec-block-sigma).  Users may optionally omit 
@@ -1162,12 +1188,12 @@ list.files(path, recursive=TRUE)
 
 ```
 
- 
 We can create a `mrgsolve` control stream that will import `THETA`, `OMEGA` and 
 `SIGMA` from that run using the `$NMXML` code block.
 
-```{r}
-code <- '
+
+
+```{mread, stem = "nmxml-1", annot = TRUE}
 $NMXML
 run = 1005
 project = path
@@ -1193,14 +1219,15 @@ double CP = (CENT/V2)*(1+PROP) + ADD/5;
 $CAPTURE CP
 
 $SET delta=4, end=96
-'
+
 ```
+
 
 
 __NOTE__: in order to use this code, we need to install the `xml2` package.
 
-```{r}
-mod <- mcode("nmxml", code, quiet = TRUE)
+```{r, message = FALSE}
+mod <- mread("inline/nmxml-1.cpp", compile = FALSE)
 
 mod
 
@@ -1220,7 +1247,6 @@ directory. The only other value that `root` can take is `"cppfile"`. When
 `root = "cppfile"`, then mrgsolve will look for the `xml` file in a directory 
 that is relative to **where the model source code file is located**. Please
 take a look at @sec-block-nmext for more discussion and examples. 
-
 
 Please see the `?nmxml` help topic for more information on arguments that can 
 be passed to `$NMXML`.
@@ -1242,13 +1268,10 @@ faster than `$NMXML` when loading from sampling based methods (mainly
 We can load the same mode as the `$NMXML` example above with the following 
 code:
 
-```{r}
-path <- file.path(path.package("mrgsolve"),"nonmem")
-
-code <- '
+```{mread, stem = "nmext-1", annot = TRUE}
 $NMEXT
 run = 1005
-project = path
+project = file.path(path.package("mrgsolve"),"nonmem")
 root = "cppfile"
 
 olabels = c("ECL", "EVC", "EKA")
@@ -1271,13 +1294,11 @@ double CP = (CENT/V2)*(1+PROP) + ADD/5;
 $CAPTURE CP
 
 $SET delta = 4, end = 96
-'
-
 ```
 
 
-```{r}
-mod <- mcode("nmext", code, quiet=TRUE)
+```{r, message = FALSE}
+mod <- mread("inline/nmext-1.cpp", quiet=TRUE)
 
 param(mod)
 ```
@@ -1376,8 +1397,8 @@ __Requirements__
     (don't use quotes around the file name; `mrgsolve` will take care of that)
   - A warning is issued if the header file does not end in `.h`
   - When the header file is changed (MD5 checksum changes), the model will be 
-    forced to be rebuilt (recompiled) when `mread` or `mcode` (but not 
-    `mread_cache` or `mcode_cache`) is called; this feature is only available 
+    forced to be rebuilt (recompiled) when `mread()` or `mcode()` (but not 
+    `mread_cache()` or `mcode_cache()`) is called; this feature is only available 
     for header files listed in `$INCLUDE` (see below)
   - Do not use `$INCLUDE` to include `Rcpp`, `boost`, `RcppArmadillo` or 
     `RcppEigen` headers; use the appropriate `$PLUGIN` instead
