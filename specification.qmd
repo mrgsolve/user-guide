@@ -110,6 +110,21 @@ mod <- mread("mymodel", tempdir(), code)
 For help, see `?mread` , `?mcode` in the `R` help system after loading 
 `mrgsolve`.
 
+### Comments
+
+You can comment out code in the model specification file with two 
+front slashes `//`
+
+```{c, eval = FALSE}
+$MAIN
+
+double a = 1.234;
+// double b = 5.678; 
+```
+
+This comment sequence is what is used in `C++` code, but you can use it 
+_anywhere_ in the mrgsolve model specification file.
+
 ## Code blocks {#sec-code-blocks}
 
 ### About code blocks
@@ -751,7 +766,7 @@ will generate a 3x3 omega matrix.
 
 A __block__ matrix may be entered by using `block = TRUE`. So:
 
-```{c, eval=FALSE}
+```{c, eval = FALSE}
 $OMEGA @block
 0.1 0.02 0.3
 ```
@@ -759,6 +774,7 @@ will generate a 2x2 matrix with covariance 0.02.
 
 A 2x2 matrix where the off-diagonal element is a correlation, not a covariance 
 can be specified like this:
+
 ```{c,eval=FALSE}
 $OMEGA @correlation
 0.1 0.67 0.3
@@ -776,10 +792,20 @@ $OMEGA @name PK @block
 $OMEGA @name PD
 0.1 0.2 0.3 0.5
 ```
+
 to distinguish between multiple `$OMEGA` blocks and to facilitate updating 
 later. The model in the preceding example will have two `$OMEGA` matrices: 
 2x2 and 4x4.
 
+Labels can be assigned which function as aliases for the different `ETAs`
+
+```{c, eval = FALSE}
+$OMEGA @block @labels ETA_CL ETA_V
+0.1 0.05 0.2
+```
+
+The number of labels should match the number of rows (or columns) in the 
+matrix.
 
 Annotated example (diagonal matrix):
 
@@ -1637,7 +1663,7 @@ than the ETA values.
 `self` is an object that gets passed to your model function that contains 
 data items and functions that can be called. It is a `struct`  (see
 the source code 
-[here](https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolv.h). 
+[here](https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolv.h)). 
 A partial list of members are documented in the following sections. 
 
 `self` functions include

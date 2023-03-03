@@ -79,7 +79,7 @@ For example
 library(dplyr)
 library(mrgsolve)
 
-mod <- mrgsolve:::house()
+mod <- house()
 
 mod %>% 
   ev(amt=100) %>%

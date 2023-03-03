@@ -102,10 +102,10 @@ to create complex sampling designs.
 See @sec-topic-tgrid for examples and usage.
 
 ## Solver settings
-`mrgsolve` uses the `DLSODA` solver from `ODEPACK`. Several of the settings 
-for that solver are stored in the model object and passed to the solver when
-the problem is started.  Settings include: `atol`, `rtol`, `maxsteps`, `hmax`,
-`hmin`, `ixpr`, `mxhnil`.  
+`mrgsolve` uses the `DLSODA` solver like the one from `ODEPACK`. Several of the 
+settings for that solver are stored in the model object and passed to the solver
+when the problem is started.  Settings include: `atol`, `rtol`, `maxsteps`, 
+`hmax`, `hmin`, `ixpr`, `mxhnil`.  
 
 ### `atol`
 
@@ -113,7 +113,7 @@ Absolute tolerance parameter. Adjust this value lower when you see state variabl
 (compartments) that are becoming very small and possibly turning negative. For
 example:
 
-```{r}
+```{r, message = FALSE}
 mod <- modlib("viral1", end = 144) 
 
 out <- mrgsim_e(mod, ev(amt = 1000)) %>% filter(V < 0)
