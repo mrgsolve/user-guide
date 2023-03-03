@@ -312,6 +312,18 @@ KM = 25, VMAX = 400, FLAG = 1, WT = 80
 SEX = 0, N = sqrt(25)
 ```
 
+Note that the "values" in the parameter list will get evaluated by the R 
+interpreter and the evaluation will happen inside the environment which is 
+defined by the `$ENV` block. For example
+
+```{c, eval = FALSE}
+$ENV NWT = 1.2
+
+$PARAM 
+WT = 80 * 2.2
+MASS = 600 * MWT
+```
+
 Annotated example:
 ```{c, eval=FALSE}
 [ PARAM ] @annotated
@@ -331,6 +343,7 @@ blocks(mod, PARAM)
 ```
 
 then
+
 ```{r, eval  = FALSE}
 mod <- modlib("popex")
 ```

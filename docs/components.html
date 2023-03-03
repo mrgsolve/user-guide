@@ -324,18 +324,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="solver-settings" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="solver-settings"><span class="header-section-number">1.4</span> Solver settings</h2>
-<p><code>mrgsolve</code> uses the <code>DLSODA</code> solver from <code>ODEPACK</code>. Several of the settings for that solver are stored in the model object and passed to the solver when the problem is started. Settings include: <code>atol</code>, <code>rtol</code>, <code>maxsteps</code>, <code>hmax</code>, <code>hmin</code>, <code>ixpr</code>, <code>mxhnil</code>.</p>
+<p><code>mrgsolve</code> uses the <code>DLSODA</code> solver like the one from <code>ODEPACK</code>. Several of the settings for that solver are stored in the model object and passed to the solver when the problem is started. Settings include: <code>atol</code>, <code>rtol</code>, <code>maxsteps</code>, <code>hmax</code>, <code>hmin</code>, <code>ixpr</code>, <code>mxhnil</code>.</p>
 <section id="atol" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="atol"><span class="header-section-number">1.4.1</span> <code>atol</code></h3>
 <p>Absolute tolerance parameter. Adjust this value lower when you see state variables (compartments) that are becoming very small and possibly turning negative. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"viral1"</span>, <span class="at">end =</span> <span class="dv">144</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>. Loading model from cache.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(V <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"viral1"</span>, <span class="at">end =</span> <span class="dv">144</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(V <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 8
 .      ID  time expos        T         I         V  logV logChange
@@ -350,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Adjusting <code>atol</code> to <code>1E-20</code> or <code>1E-30</code> will prevent this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="at">atol =</span> <span class="fl">1E-20</span>)  <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">%in%</span> out<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="at">atol =</span> <span class="fl">1E-20</span>)  <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">%in%</span> out<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 8
 .      ID  time expos        T        I        V  logV logChange
@@ -372,18 +370,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="maxsteps"><span class="header-section-number">1.4.3</span> <code>maxsteps</code></h3>
 <p>This is the maximum number of steps the solver will take when advancing from one time to the next. If the solver can’t make it in <code>maxsteps</code> it will stop and give an error message like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  At current T <span class="op">(=</span>R1<span class="op">),</span> MXSTEP <span class="op">(=</span>I1<span class="op">)</span> steps   </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      taken on this call before reaching TOUT     </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="dv">2000</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> R <span class="op">=</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="fl">0.0004049985</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  ISTATE <span class="op">(=</span>I1<span class="op">)</span> illegal<span class="op">.</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  Run aborted<span class="op">..</span> apparent infinite loop<span class="op">.</span>    </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>Error in <span class="op">(</span>function <span class="op">(</span>x<span class="op">,</span> data<span class="op">,</span> idata <span class="op">=</span> null_idata<span class="op">,</span> carry<span class="op">.</span>out <span class="op">=</span> character<span class="op">(</span><span class="dv">0</span><span class="op">),</span>  <span class="op">:</span> </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  error from XERRWD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  At current T <span class="op">(=</span>R1<span class="op">),</span> MXSTEP <span class="op">(=</span>I1<span class="op">)</span> steps   </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      taken on this call before reaching TOUT     </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="dv">2000</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> R <span class="op">=</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="fl">0.0004049985</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  ISTATE <span class="op">(=</span>I1<span class="op">)</span> illegal<span class="op">.</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  Run aborted<span class="op">..</span> apparent infinite loop<span class="op">.</span>    </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>Error in <span class="op">(</span>function <span class="op">(</span>x<span class="op">,</span> data<span class="op">,</span> idata <span class="op">=</span> null_idata<span class="op">,</span> carry<span class="op">.</span>out <span class="op">=</span> character<span class="op">(</span><span class="dv">0</span><span class="op">),</span>  <span class="op">:</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  error from XERRWD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might see this when you have to integrate along time between records in a data set. There isn’t necessarily a problem, but the solver might have to advance over many doses to get to the next record and it only has a limited number of steps it can take between those records before it stops with this error.</p>
 <p>When you see this, increase <code>maxsteps</code> to 50000 or larger.</p>
