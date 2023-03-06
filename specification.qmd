@@ -670,7 +670,7 @@ in use with `$PRED` block.
 
 __Syntax__: text   
 __Multiple allowed__: yes   
-__Options__: `@annotated`   
+__Options__: `@annotated`, `@etas`
 
 This is a block to identify variables that should be captured in the simulated
 output.
@@ -737,8 +737,28 @@ CLi : Individual clearance (L/hr)
 DV  : Plasma concentration (mcg/ml)
 ```
 
-New variables may be declared in `$TABLE`.  See @sec-new-variables for 
-details.
+Use the `@etas` option to specify an expression that evaluates to integers
+which identify the `ETA` number(s) to capture. For example
+
+```{c, eval = FALSE}
+$OMEGA 0.1 0.2 0.3
+
+$CAPTURE @etas 1:LAST
+CL DV
+```
+
+Will capture all three `ETA`s into the simulation outputs. NONMEM-style
+names will be used (e.g. `ETA1`). This is in contrast to the names that are 
+generated when `ETA(1)` is captured; in this case, the parens are removed and 
+replaced with `_` so the output name is `ETA_1`. mrgsolve will provide `LAST`
+(and `last`) which will evaluate to the maximum number of `ETAs` in the problem
+(in this case, 3). You can write any valid expression in `@etas`. When the 
+expression is evaluated, it will be evaluated in the model environment created
+through the `$ENV` block (@sec-block-env).
+
+
+
+
 
 ::: {.callout-tip}
 In addition to listing model variables for otput in the `$CAPTURE` block,
