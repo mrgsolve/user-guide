@@ -154,6 +154,35 @@ The `ID`s in the data set can appear in any order.  However, an error will be
 generated if `time` on any record is less that `time` on the previous record
 within any `ID`.
 
+### Missing values 
+
+If missing values (`NA`) are found in columns which match parameter names, 
+a warning will be issued and the user should expect `NaN` in the simulated 
+output if these parameters factor into the advance of the system. 
+
+Starting with version 1.0.8, missing values in the following columns will be 
+silently converted to `0`
+
+- `CMT`
+- `AMT`
+- `RATE`
+- `EVID`
+- `II`
+- `ADDL`
+- `SS`
+
+The lower case versions of these names may also include `NA` and will get 
+converted to `0`
+
+- `cmt`
+- `amt`
+- `rate`
+- `evid`
+- `ii`
+- `addl`
+- `ss`
+
+
 ### Creating data sets
 The `expand.ev` function is provided by mrgsolve to help in creating data sets
 of a certain style.  But any `R` code that produces a valid data set is fine to
