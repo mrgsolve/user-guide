@@ -240,17 +240,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#two-types-of-data_set" id="toc-two-types-of-data_set" class="nav-link" data-scroll-target="#two-types-of-data_set"><span class="toc-section-number">3.2.1</span>  Two types of <code>data_set</code></a></li>
   <li><a href="#sorting-requirements" id="toc-sorting-requirements" class="nav-link" data-scroll-target="#sorting-requirements"><span class="toc-section-number">3.2.2</span>  Sorting requirements</a></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="toc-section-number">3.2.3</span>  Missing values</a></li>
-  <li><a href="#creating-data-sets" id="toc-creating-data-sets" class="nav-link" data-scroll-target="#creating-data-sets"><span class="toc-section-number">3.2.4</span>  Creating data sets</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="toc-section-number">3.2.5</span>  Example</a></li>
+  <li><a href="#creating-data-sets" id="toc-creating-data-sets" class="nav-link" data-scroll-target="#creating-data-sets"><span class="toc-section-number">3.2.3</span>  Creating data sets</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="toc-section-number">3.2.4</span>  Example</a></li>
   </ul></li>
   <li><a href="#sec-idata-set" id="toc-sec-idata-set" class="nav-link" data-scroll-target="#sec-idata-set"><span class="toc-section-number">3.3</span>  Individual data sets (<code>idata</code>)</a>
   <ul class="collapse">
   <li><a href="#use-case" id="toc-use-case" class="nav-link" data-scroll-target="#use-case"><span class="toc-section-number">3.3.1</span>  Use case</a></li>
   </ul></li>
   <li><a href="#sec-numeric-only" id="toc-sec-numeric-only" class="nav-link" data-scroll-target="#sec-numeric-only"><span class="toc-section-number">3.4</span>  Numeric data only</a></li>
-  <li><a href="#sec-valid_data_set" id="toc-sec-valid_data_set" class="nav-link" data-scroll-target="#sec-valid_data_set"><span class="toc-section-number">3.5</span>  Data set validation</a></li>
-  <li><a href="#sec-pred-data" id="toc-sec-pred-data" class="nav-link" data-scroll-target="#sec-pred-data"><span class="toc-section-number">3.6</span>  Data sets for use with <code>$PRED</code></a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="toc-section-number">3.5</span>  Missing values</a></li>
+  <li><a href="#sec-valid_data_set" id="toc-sec-valid_data_set" class="nav-link" data-scroll-target="#sec-valid_data_set"><span class="toc-section-number">3.6</span>  Data set validation</a></li>
+  <li><a href="#sec-pred-data" id="toc-sec-pred-data" class="nav-link" data-scroll-target="#sec-pred-data"><span class="toc-section-number">3.7</span>  Data sets for use with <code>$PRED</code></a></li>
   </ul>
 </nav>
     </div>
@@ -389,36 +389,12 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="sorting-requirements"><span class="header-section-number">3.2.2</span> Sorting requirements</h3>
 <p>The <code>ID</code>s in the data set can appear in any order. However, an error will be generated if <code>time</code> on any record is less that <code>time</code> on the previous record within any <code>ID</code>.</p>
 </section>
-<section id="missing-values" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">3.2.3</span> Missing values</h3>
-<p>If missing values (<code>NA</code>) are found in columns which match parameter names, a warning will be issued and the user should expect <code>NaN</code> in the simulated output if these parameters factor into the advance of the system.</p>
-<p>Starting with version 1.0.8, missing values in the following columns will be silently converted to <code>0</code></p>
-<ul>
-<li><code>CMT</code></li>
-<li><code>AMT</code></li>
-<li><code>RATE</code></li>
-<li><code>EVID</code></li>
-<li><code>II</code></li>
-<li><code>ADDL</code></li>
-<li><code>SS</code></li>
-</ul>
-<p>The lower case versions of these names may also include <code>NA</code> and will get converted to <code>0</code></p>
-<ul>
-<li><code>cmt</code></li>
-<li><code>amt</code></li>
-<li><code>rate</code></li>
-<li><code>evid</code></li>
-<li><code>ii</code></li>
-<li><code>addl</code></li>
-<li><code>ss</code></li>
-</ul>
-</section>
-<section id="creating-data-sets" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="creating-data-sets"><span class="header-section-number">3.2.4</span> Creating data sets</h3>
+<section id="creating-data-sets" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="creating-data-sets"><span class="header-section-number">3.2.3</span> Creating data sets</h3>
 <p>The <code>expand.ev</code> function is provided by mrgsolve to help in creating data sets of a certain style. But any <code>R</code> code that produces a valid data set is fine to use.</p>
 </section>
-<section id="example" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="example"><span class="header-section-number">3.2.5</span> Example</h3>
+<section id="example" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="example"><span class="header-section-number">3.2.4</span> Example</h3>
 <p>To create a data set of 3 people each receiving <strong>250 mg every 8 hours for 12 total doses</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">expand.ev</span>(<span class="at">ID=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">amt=</span><span class="dv">250</span>, <span class="at">ii=</span><span class="dv">8</span>, <span class="at">addl=</span><span class="dv">11</span>)</span>
@@ -512,8 +488,33 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <h2 data-number="3.4" class="anchored" data-anchor-id="sec-numeric-only"><span class="header-section-number">3.4</span> Numeric data only</h2>
 <p>The <code>data.frame</code> holding the <code>data_set</code> or <code>idata_set</code> may have any type of data in its columns. However, only numeric data can actually get passed into the simulation engine. mrgsolve will automatically look for non-numeric columns and drop them from the <code>data_set</code> or <code>idata_set</code> with a warning.</p>
 </section>
-<section id="sec-valid_data_set" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-valid_data_set"><span class="header-section-number">3.5</span> Data set validation</h2>
+<section id="missing-values" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">3.5</span> Missing values</h2>
+<p>If missing values (<code>NA</code>) are found in columns which match parameter names, a warning will be issued and the user should expect <code>NaN</code> in the simulated output if these parameters factor into the advance of the system.</p>
+<p>Starting with version 1.0.8, missing values in the following columns of input <code>data_set</code>s will be silently converted to <code>0</code></p>
+<ul>
+<li><code>CMT</code></li>
+<li><code>AMT</code></li>
+<li><code>RATE</code></li>
+<li><code>EVID</code></li>
+<li><code>II</code></li>
+<li><code>ADDL</code></li>
+<li><code>SS</code></li>
+</ul>
+<p>The lower case versions of these names may also include <code>NA</code> and will get converted to <code>0</code></p>
+<ul>
+<li><code>cmt</code></li>
+<li><code>amt</code></li>
+<li><code>rate</code></li>
+<li><code>evid</code></li>
+<li><code>ii</code></li>
+<li><code>addl</code></li>
+<li><code>ss</code></li>
+</ul>
+<p><code>idata_set</code>s are not checked for missing values in these columns.</p>
+</section>
+<section id="sec-valid_data_set" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-valid_data_set"><span class="header-section-number">3.6</span> Data set validation</h2>
 <p>A the time of simulation, mrgsolve will validate the input data set, removing non-numeric columns, checking for missing values in parameter columns, checking compartment numbers, etc.</p>
 <p>Users can pre-validate the data set so that this does not need to happen at run time.</p>
 <div class="cell">
@@ -529,11 +530,11 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 . 5  1 79.6 4.02 2.02  9.66   0 0.00    0
 . 6  1 79.6 4.02 3.82  8.58   0 0.00    0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1"</span>, <span class="at">compile =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>. Building pk1 ... done.</code></pre>
+<pre><code>. Loading model from cache.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> <span class="fu">valid_data_set</span>(exTheoph,mod)</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>valid <span class="ot">&lt;-</span> <span class="fu">valid_data_set</span>(exTheoph, mod)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(valid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -545,8 +546,8 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 </div>
 <p>This can improve efficiency when performing a very large number of replicate simulations on the same data set, but is unlikely to provide a meaningful speed-up for a single simulation or a small number of simulations.</p>
 </section>
-<section id="sec-pred-data" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-pred-data"><span class="header-section-number">3.6</span> Data sets for use with <code>$PRED</code></h2>
+<section id="sec-pred-data" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-pred-data"><span class="header-section-number">3.7</span> Data sets for use with <code>$PRED</code></h2>
 <p>Because there are no compartments involved, there are relaxed data set requirements for models that utilize <code>$PRED</code>.</p>
 <ul>
 <li><code>time</code> or <code>TIME</code> is not required as input; when this is not supplied, a <code>time</code> column will be included in output with value 0</li>
