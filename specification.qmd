@@ -1986,6 +1986,19 @@ double DV = (CENT/VC)*(1+EPS(2)) + EPS(1);
 
 ```
 
+### `SIGMA(n)`
+
+Starting with version 1.0.8, users have read-only access to on-diagonal elements
+of $\Sigma$ through the `SIGMA()` macro. For example
+
+```{c, eval = FALSE}
+$SIGMA 0.1 12
+
+$TABLE
+double STD = sqrt(SIGMA(1) + pow(F,2)*SIGMA(2));
+```
+
+
 ### `table(<name>) `
 This macro has been deprecated.  Users should __not__ use code like this:
 
