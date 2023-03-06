@@ -1208,7 +1208,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 . ---------------  source: nmxml-1.cpp  ---------------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: nmxml-1.cpp-so-fa8f4796df2f &lt;not loaded&gt;
+.   shared object: nmxml-1.cpp-so-101fd1b95f6a8 &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;
@@ -1338,6 +1338,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>project <span class="op">=</span> here<span class="op">::</span>here<span class="op">(</span><span class="st">"model/pk"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When used in the proper context, <code>here()</code> will generate an absolute path from your projects root directory to the nonmem project directory. Please refer to the <code>here::here()</code> documentation for proper use of this function.</p>
+<p>Starting with version 1.0.8, when the NONMEM run is found using the <code>run</code> + <code>project</code> arguments, you can pass <code>run = "@cppstem"</code> and mrgsolve will look for the NONMEM run number that matches the stem of the current mrgsolve file. See details and example in <a href="#sec-block-nmxml"><span>Section&nbsp;2.2.23</span></a>.</p>
 <p>See the <code>?nmext</code> R help topic for arguments that can be passed to <code>$NMEXT</code> block. Notably, the user can select the function to read in the ext file.By default, mrgsolve will try to load data.table and use the <code>fread</code> function. If data.table can’t be loaded, then mrgsolve will use <code>utils::read.table</code>.</p>
 <p>See also: <a href="#sec-block-nmxml"><span>Section&nbsp;2.2.23</span></a>.</p>
 </section>

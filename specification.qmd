@@ -1436,6 +1436,11 @@ When used in the proper context, `here()` will generate an absolute path from
 your projects root directory to the nonmem project directory. Please refer to 
 the `here::here()` documentation for proper use of this function. 
 
+Starting with version 1.0.8, when the NONMEM run is found using the `run` +
+`project` arguments, you can pass `run = "@cppstem"` and mrgsolve will look for
+the NONMEM run number that matches the stem of the current mrgsolve file. 
+See details and example in @sec-block-nmxml.
+
 See the `?nmext` R help topic for arguments that can be passed to `$NMEXT` block.
 Notably, the user can select the function to read in the ext file.By default, 
 mrgsolve will try to load data.table and use the `fread` function. If 
