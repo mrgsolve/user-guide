@@ -673,7 +673,7 @@ __Multiple allowed__: yes
 __Options__: `@annotated`, `@etas`
 
 This is a block to identify variables that should be captured in the simulated
-output.
+output. The `@etas` option is new with version 1.0.8.
 
 For example:
 
