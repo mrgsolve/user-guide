@@ -1307,6 +1307,25 @@ directory. The only other value that `root` can take is `"cppfile"`. When
 that is relative to **where the model source code file is located**. Please
 take a look at @sec-block-nmext for more discussion and examples. 
 
+Starting with version 1.0.8, when the NONMEM run is found using the `run` +
+`project` arguments, you can pass `run = "@cppstem"` and mrgsolve will look for
+the NONMEM run number that matches the stem of the current mrgsolve file. For
+example, if you are coding a model to match NONMEM run `101.ctl`, then call your
+mrgsolve model file `101.cpp` or `101.mod`; just match the file stem. Then write
+
+```{c, eval = FALSE, filename = "101.cpp"}
+$NMXML 
+run = "@cppstem"
+project = <nonmem-run-directory>
+```
+
+mrgsolve will check the stem of the mrgsolve model file and  look for the NONMEM
+`.xml` file in
+
+```{r, eval = FALSE}
+<nonmem-run-directory>/101/101.xml
+```
+
 Please see the `?nmxml` help topic for more information on arguments that can 
 be passed to `$NMXML`.
 
