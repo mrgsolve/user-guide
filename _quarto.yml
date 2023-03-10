@@ -29,9 +29,7 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    linkcolor: "#097f5f"
   pdf:
     documentclass: scrreprt
     toc-depth: 2
-
-
-

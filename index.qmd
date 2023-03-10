@@ -74,5 +74,5 @@ This book is also available in pdf format [here](mrgsolve-user-guide.pdf).
 
 <hr>
 
-This book was assembled on `r date()` with mrgsolve version `r packageVersion("mrgsolve")`.
+This book was assembled on `r date()` with mrgsolve version `r packageVersion("mrgsolve")`. 
 
