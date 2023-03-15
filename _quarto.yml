@@ -7,10 +7,6 @@ book:
   title: "mrgsolve user guide"
   author: "Kyle Baron"
   date: "3/10/2023"
-  public-url: https://mrgsolve.org/
-  repo-url: https://github.com/mrgsolve/user-guide/
-  repo-actions: [source]
-  downloads: [pdf]
   chapters:
     - index.qmd
     - components.qmd
