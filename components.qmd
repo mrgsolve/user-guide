@@ -102,10 +102,20 @@ to create complex sampling designs.
 See @sec-topic-tgrid for examples and usage.
 
 ## Solver settings
+
 `mrgsolve` uses the `DLSODA` solver like the one from `ODEPACK`. Several of the 
 settings for that solver are stored in the model object and passed to the solver
 when the problem is started.  Settings include: `atol`, `rtol`, `maxsteps`, 
 `hmax`, `hmin`, `ixpr`, `mxhnil`.  
+
+Solver settings can be changed through the `update()` method for your mrgsolve
+model object. For example, to change `rtol` to `1e-5`, write
+
+```{r, eval = FALSE}
+mod <- update(mod, rtol = 1e-5)
+```
+
+where `mod` is your mrgsolve model object.
 
 ### `atol`
 
@@ -260,27 +270,41 @@ to check the pre-advance compartment amounts in `MAIN`, most applications
 should interact with compartment amounts after the system advances in 
 `TABLE`.
 
-See @sec-block-main for details.
+The `MAIN` block contains code that is equivalent to the code you'd write in 
+NONMEM's `$PK` block. You can use either `$MAIN` or `$PK` in your 
+mrgsolve model.
+
+See @sec-block-main and @sec-block-pk for details.
 
 
 ### The `$ODE` function
 
-The `ODE` function is where the user writes the model differential equations.  
+The `ODE` function is where the user writes the model differential equations. 
 Any derived quantity that depends on a state variable and is used to 
 advanced the system must be calculated inside `$ODE`.  But, this 
 function is called repeatedly during the simulation run, so any calculation 
 that __can__ be moved out of `$ODE` (for example: to `$MAIN`) should be.  
 
-See @sec-block-ode for details.
+The `ODE` block contains code that is equivalent to the code you'd write in 
+NONMEM's `$DES` block. You can use either `$ODE` or `$DES` in your mrgsolve
+model.
+
+See @sec-block-ode and @sec-block-des for details.
 
 
 ### The `$TABLE` function
+
 The `TABLE` function is called __after__ the solver advances in time.  The 
 purpose of `TABLE` is to allow the user to interact with the values of the 
 state variables after advancing, potentially derive new variables, and to 
 insert different outputs into the table of simulated results. 
 
-See @sec-block-table for details.
+The `TABLE` block contains code that is equivalent to the code you'd write in 
+NONMEM's `$ERROR` block. You can use either `$TABLE` or `$ERROR` in your 
+mrgsolve model.
+
+
+See @sec-block-table and @sec-block-error for details.
 
 
 ## Random effect variances
@@ -290,7 +314,8 @@ Users can specify `OMEGA` matrices for simulating between-subject random effects
 (one draw per individual) or `SIGMA` matrices for simulating within-subject
 random effects (one draw per observation).
 
-The user may use the `revar()` function to query both `OMEGA` and `SIGMA`.
+See @sec-matrix-chapter for complete details on how to work with `OMEGA` and 
+`SIGMA` in your mrgsolve model.
 
 ### `OMEGA`
 The matrices are specified in `$OMEGA` blocks in the model specification file. 
@@ -301,4 +326,3 @@ The matrices are specified in `$OMEGA` blocks in the model specification file.
 The matrices are specified in `$SIGMA` blocks in the model specification file.  
 
 `SIGMA` may be queried or updated by the `smat()` function. 
-

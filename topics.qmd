@@ -574,7 +574,7 @@ Found nothing to update: param
 __Simulation times in `mrgsolve`__
 
 ```{r}
-mod <- mrgsolve:::house() %>% Req(CP) %>% ev(amt=1000,ii=24, addl=1000) 
+mod <- mrgsolve:::house() %>% Req(CP) %>% ev(amt = 1000, ii = 24, addl = 1000) 
 ```
 
 
@@ -584,7 +584,7 @@ arbitrary vector of simulation times called `add`.
 
 ```{r}
 mod %>%
-  mrgsim(end=4,delta=2,add=c(7,9,50)) %>%
+  mrgsim(end = 4, delta = 2, add = c(7,9,50)) %>%
   as.data.frame()
 ```
 
@@ -596,13 +596,13 @@ sampling designs from elementary building blocks.
 
 __Make a day 1 sampling with intensive sampling around the peak and sparser otherwise__
 ```{r}
-peak1 <- tgrid(1,4,0.1)
-sparse1 <- tgrid(0,24,4)
+peak1 <- tgrid(1, 4, 0.1)
+sparse1 <- tgrid(0, 24, 4)
 ```
 
 __Use the `c` operator to combine simpler designs into more complicated designs__
 ```{r}
-day1 <- c(peak1,sparse1)
+day1 <- c(peak1, sparse1)
 ```
 
 Check this by calling `stime`
@@ -615,8 +615,8 @@ Pass this object in to `mrgsim` as `tgrid`.  It will override the default
 ```{r topic-tgrid-1}
 #| fig-height: 4
 mod %>% 
-  mrgsim(tgrid=day1) %>%
-  plot(type='b')
+  mrgsim(tgrid = day1) %>%
+  plot(type = 'b')
 ```
 
 
@@ -626,11 +626,11 @@ Adding a number to a `tgrid` object will offset those times by that amount.
 
 ```{r topic-tgrid-2}
 #| fig-height: 4
-des <- c(day1, day1+10*24)
+des <- c(day1, day1 + 10*24)
 
 mod %>% 
-  mrgsim(tgrid=des) %>%
-  plot(type='b')
+  mrgsim(tgrid = des) %>%
+  plot(type = 'b')
 
 
 ```
@@ -639,11 +639,11 @@ Pick up day 5 as well
 
 ```{r topic-tgrid-3}
 #| fig-height: 4
-des <- c(des, day1+5*24)
+des <- c(des, day1 + 5*24)
 
 mod %>% 
-  mrgsim(tgrid=des) %>%
-  plot(type='b')
+  mrgsim(tgrid = des) %>%
+  plot(type = 'b')
 ```
 
 
@@ -676,8 +676,8 @@ Now, define two time grid objects: `des1` runs from 0 to 24 and `des2` runs from
 0 to 96, both every hour.
 ```{r}
 
-des1 <- tgrid(0,24,1)
-des2 <- tgrid(0,96,1)
+des1 <- tgrid(0, 24, 1)
+des2 <- tgrid(0, 96, 1)
 
 range(stime(des1))
 range(stime(des2))
@@ -685,10 +685,11 @@ range(stime(des2))
 
 Now, derive an `idata_set` after adding a grouping column (`GRP`) that splits
 the data set into two groups
+
 ```{r}
 df <-  mutate(df, GRP = as.integer(ID > 5))
 
-id <- df %>% distinct(ID,GRP) 
+id <- distinct(df, ID, GRP) 
 
 id
 ```
@@ -712,7 +713,7 @@ out <-
   carry.out(a.u.g,GRP) %>%
   idata_set(id) %>%
   data_set(df) %>%
-  design(descol="GRP", deslist=list(des1,des2)) %>%
+  design(descol = "GRP", deslist = list(des1, des2)) %>%
   obsaug() %>%
   mrgsim() 
 

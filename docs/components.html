@@ -325,15 +325,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="solver-settings" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="solver-settings"><span class="header-section-number">1.4</span> Solver settings</h2>
 <p><code>mrgsolve</code> uses the <code>DLSODA</code> solver like the one from <code>ODEPACK</code>. Several of the settings for that solver are stored in the model object and passed to the solver when the problem is started. Settings include: <code>atol</code>, <code>rtol</code>, <code>maxsteps</code>, <code>hmax</code>, <code>hmin</code>, <code>ixpr</code>, <code>mxhnil</code>.</p>
+<p>Solver settings can be changed through the <code>update()</code> method for your mrgsolve model object. For example, to change <code>rtol</code> to <code>1e-5</code>, write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">rtol =</span> <span class="fl">1e-5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>where <code>mod</code> is your mrgsolve model object.</p>
 <section id="atol" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="atol"><span class="header-section-number">1.4.1</span> <code>atol</code></h3>
 <p>Absolute tolerance parameter. Adjust this value lower when you see state variables (compartments) that are becoming very small and possibly turning negative. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"viral1"</span>, <span class="at">end =</span> <span class="dv">144</span>) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(V <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"viral1"</span>, <span class="at">end =</span> <span class="dv">144</span>) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(V <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 8
 .      ID  time expos        T         I         V  logV logChange
@@ -348,7 +353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Adjusting <code>atol</code> to <code>1E-20</code> or <code>1E-30</code> will prevent this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="at">atol =</span> <span class="fl">1E-20</span>)  <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">%in%</span> out<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="at">atol =</span> <span class="fl">1E-20</span>)  <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">%in%</span> out<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 8
 .      ID  time expos        T        I        V  logV logChange
@@ -370,18 +375,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="maxsteps"><span class="header-section-number">1.4.3</span> <code>maxsteps</code></h3>
 <p>This is the maximum number of steps the solver will take when advancing from one time to the next. If the solver can’t make it in <code>maxsteps</code> it will stop and give an error message like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  At current T <span class="op">(=</span>R1<span class="op">),</span> MXSTEP <span class="op">(=</span>I1<span class="op">)</span> steps   </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      taken on this call before reaching TOUT     </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="dv">2000</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> R <span class="op">=</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="fl">0.0004049985</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  ISTATE <span class="op">(=</span>I1<span class="op">)</span> illegal<span class="op">.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  Run aborted<span class="op">..</span> apparent infinite loop<span class="op">.</span>    </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>Error in <span class="op">(</span>function <span class="op">(</span>x<span class="op">,</span> data<span class="op">,</span> idata <span class="op">=</span> null_idata<span class="op">,</span> carry<span class="op">.</span>out <span class="op">=</span> character<span class="op">(</span><span class="dv">0</span><span class="op">),</span>  <span class="op">:</span> </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  error from XERRWD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  At current T <span class="op">(=</span>R1<span class="op">),</span> MXSTEP <span class="op">(=</span>I1<span class="op">)</span> steps   </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      taken on this call before reaching TOUT     </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="dv">2000</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> R <span class="op">=</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="fl">0.0004049985</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  ISTATE <span class="op">(=</span>I1<span class="op">)</span> illegal<span class="op">.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>In above message<span class="op">,</span> I <span class="op">=</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>DLSODA<span class="op">-</span>  Run aborted<span class="op">..</span> apparent infinite loop<span class="op">.</span>    </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>Error in <span class="op">(</span>function <span class="op">(</span>x<span class="op">,</span> data<span class="op">,</span> idata <span class="op">=</span> null_idata<span class="op">,</span> carry<span class="op">.</span>out <span class="op">=</span> character<span class="op">(</span><span class="dv">0</span><span class="op">),</span>  <span class="op">:</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  error from XERRWD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might see this when you have to integrate along time between records in a data set. There isn’t necessarily a problem, but the solver might have to advance over many doses to get to the next record and it only has a limited number of steps it can take between those records before it stops with this error.</p>
 <p>When you see this, increase <code>maxsteps</code> to 50000 or larger.</p>
@@ -432,24 +437,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>In addition to getting called once per record, the <code>MAIN</code> function may be called several times prior to starting the simulation run. The <code>MAIN</code> function is also called whenever the user queries the compartment list.</p>
 <p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<a href="#sec-model-functions"><span>Section&nbsp;1.5</span></a>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
-<p>See <a href="specification.html#sec-block-main"><span>Section&nbsp;2.2.7</span></a> for details.</p>
+<p>The <code>MAIN</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$PK</code> block. You can use either <code>$MAIN</code> or <code>$PK</code> in your mrgsolve model.</p>
+<p>See <a href="specification.html#sec-block-main"><span>Section&nbsp;2.2.7</span></a> and <a href="specification.html#sec-block-pk"><span>Section&nbsp;2.2.8</span></a> for details.</p>
 </section>
 <section id="the-ode-function" class="level3" data-number="1.5.3">
 <h3 data-number="1.5.3" class="anchored" data-anchor-id="the-ode-function"><span class="header-section-number">1.5.3</span> The <code>$ODE</code> function</h3>
-<p>The <code>ODE</code> function is where the user writes the model differential equations.<br>
-Any derived quantity that depends on a state variable and is used to advanced the system must be calculated inside <code>$ODE</code>. But, this function is called repeatedly during the simulation run, so any calculation that <strong>can</strong> be moved out of <code>$ODE</code> (for example: to <code>$MAIN</code>) should be.</p>
-<p>See <a href="specification.html#sec-block-ode"><span>Section&nbsp;2.2.9</span></a> for details.</p>
+<p>The <code>ODE</code> function is where the user writes the model differential equations. Any derived quantity that depends on a state variable and is used to advanced the system must be calculated inside <code>$ODE</code>. But, this function is called repeatedly during the simulation run, so any calculation that <strong>can</strong> be moved out of <code>$ODE</code> (for example: to <code>$MAIN</code>) should be.</p>
+<p>The <code>ODE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$DES</code> block. You can use either <code>$ODE</code> or <code>$DES</code> in your mrgsolve model.</p>
+<p>See <a href="specification.html#sec-block-ode"><span>Section&nbsp;2.2.9</span></a> and <a href="specification.html#sec-block-des"><span>Section&nbsp;2.2.10</span></a> for details.</p>
 </section>
 <section id="the-table-function" class="level3" data-number="1.5.4">
 <h3 data-number="1.5.4" class="anchored" data-anchor-id="the-table-function"><span class="header-section-number">1.5.4</span> The <code>$TABLE</code> function</h3>
 <p>The <code>TABLE</code> function is called <strong>after</strong> the solver advances in time. The purpose of <code>TABLE</code> is to allow the user to interact with the values of the state variables after advancing, potentially derive new variables, and to insert different outputs into the table of simulated results.</p>
-<p>See <a href="specification.html#sec-block-table"><span>Section&nbsp;2.2.11</span></a> for details.</p>
+<p>The <code>TABLE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$ERROR</code> block. You can use either <code>$TABLE</code> or <code>$ERROR</code> in your mrgsolve model.</p>
+<p>See <a href="specification.html#sec-block-table"><span>Section&nbsp;2.2.11</span></a> and <a href="specification.html#sec-block-error"><span>Section&nbsp;2.2.12</span></a> for details.</p>
 </section>
 </section>
 <section id="random-effect-variances" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="random-effect-variances"><span class="header-section-number">1.6</span> Random effect variances</h2>
 <p>The <code>mrgsolve</code> model object keeps track of a arbitrary number of block matrices that are used to simulate variates from multivariate normal distributions. Users can specify <code>OMEGA</code> matrices for simulating between-subject random effects (one draw per individual) or <code>SIGMA</code> matrices for simulating within-subject random effects (one draw per observation).</p>
-<p>The user may use the <code>revar()</code> function to query both <code>OMEGA</code> and <code>SIGMA</code>.</p>
+<p>See <a href="matrix.html"><span>Chapter&nbsp;5</span></a> for complete details on how to work with <code>OMEGA</code> and <code>SIGMA</code> in your mrgsolve model.</p>
 <section id="omega" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="omega"><span class="header-section-number">1.6.1</span> <code>OMEGA</code></h3>
 <p>The matrices are specified in <code>$OMEGA</code> blocks in the model specification file.</p>

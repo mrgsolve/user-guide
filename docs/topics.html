@@ -900,12 +900,12 @@ Found nothing to update: param </code></pre>
 <h2 data-number="11.4" class="anchored" data-anchor-id="sec-topic-tgrid"><span class="header-section-number">11.4</span> Time grid objects</h2>
 <p><strong>Simulation times in <code>mrgsolve</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>() <span class="sc">%&gt;%</span> <span class="fu">Req</span>(CP) <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">1000</span>,<span class="at">ii=</span><span class="dv">24</span>, <span class="at">addl=</span><span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> mrgsolve<span class="sc">:::</span><span class="fu">house</span>() <span class="sc">%&gt;%</span> <span class="fu">Req</span>(CP) <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">addl =</span> <span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>mrgsolve</code> keeps track of a simulation <code>start</code> and <code>end</code> time and a fixed size step between <code>start</code> and <code>end</code> (called <code>delta</code>). <code>mrgsolve</code> also keeps an arbitrary vector of simulation times called <code>add</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">4</span>,<span class="at">delta=</span><span class="dv">2</span>,<span class="at">add=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">50</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end =</span> <span class="dv">4</span>, <span class="at">delta =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">50</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.   ID time       CP
@@ -922,12 +922,12 @@ Found nothing to update: param </code></pre>
 <p>The <code>tgrid</code> object abstracts this setup and allows us to make complicated sampling designs from elementary building blocks.</p>
 <p><strong>Make a day 1 sampling with intensive sampling around the peak and sparser otherwise</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>peak1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="fl">0.1</span>)</span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>sparse1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>peak1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.1</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>sparse1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Use the <code>c</code> operator to combine simpler designs into more complicated designs</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>day1 <span class="ot">&lt;-</span> <span class="fu">c</span>(peak1,sparse1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>day1 <span class="ot">&lt;-</span> <span class="fu">c</span>(peak1, sparse1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check this by calling <code>stime</code></p>
 <div class="cell">
@@ -941,8 +941,8 @@ Found nothing to update: param </code></pre>
 <p>Pass this object in to <code>mrgsim</code> as <code>tgrid</code>. It will override the default <code>start/end/delta/add</code> sequence.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid=</span>day1) <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid =</span> day1) <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type =</span> <span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-tgrid-1-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -950,22 +950,22 @@ Found nothing to update: param </code></pre>
 <p><strong>Now, look at both day 1 and day 10</strong>:</p>
 <p>Adding a number to a <code>tgrid</code> object will offset those times by that amount.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(day1, day1<span class="sc">+</span><span class="dv">10</span><span class="sc">*</span><span class="dv">24</span>)</span>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(day1, day1 <span class="sc">+</span> <span class="dv">10</span><span class="sc">*</span><span class="dv">24</span>)</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
-<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid=</span>des) <span class="sc">%&gt;%</span></span>
-<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid =</span> des) <span class="sc">%&gt;%</span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type =</span> <span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-tgrid-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Pick up day 5 as well</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(des, day1<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span><span class="dv">24</span>)</span>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>des <span class="ot">&lt;-</span> <span class="fu">c</span>(des, day1 <span class="sc">+</span> <span class="dv">5</span><span class="sc">*</span><span class="dv">24</span>)</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
-<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid=</span>des) <span class="sc">%&gt;%</span></span>
-<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type=</span><span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">tgrid =</span> des) <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="at">type =</span> <span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="topics_files/figure-html/topic-tgrid-3-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1017,8 +1017,8 @@ Found nothing to update: param </code></pre>
 </div>
 <p>Now, define two time grid objects: <code>des1</code> runs from 0 to 24 and <code>des2</code> runs from 0 to 96, both every hour.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>des1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">1</span>)</span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>des2 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>,<span class="dv">96</span>,<span class="dv">1</span>)</span>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>des1 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="dv">1</span>)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>des2 <span class="ot">&lt;-</span> <span class="fu">tgrid</span>(<span class="dv">0</span>, <span class="dv">96</span>, <span class="dv">1</span>)</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">stime</span>(des1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1033,7 +1033,7 @@ Found nothing to update: param </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span>  <span class="fu">mutate</span>(df, <span class="at">GRP =</span> <span class="fu">as.integer</span>(ID <span class="sc">&gt;</span> <span class="dv">5</span>))</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(ID,GRP) </span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">distinct</span>(df, ID, GRP) </span>
 <span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1067,7 +1067,7 @@ Found nothing to update: param </code></pre>
 <span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">carry.out</span>(a.u.g,GRP) <span class="sc">%&gt;%</span></span>
 <span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">idata_set</span>(id) <span class="sc">%&gt;%</span></span>
 <span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_set</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">design</span>(<span class="at">descol=</span><span class="st">"GRP"</span>, <span class="at">deslist=</span><span class="fu">list</span>(des1,des2)) <span class="sc">%&gt;%</span></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">design</span>(<span class="at">descol =</span> <span class="st">"GRP"</span>, <span class="at">deslist =</span> <span class="fu">list</span>(des1, des2)) <span class="sc">%&gt;%</span></span>
 <span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">obsaug</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>() </span>
 <span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -1279,13 +1279,13 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.        ID              time        EWT                  WT       
-.  Min.   :  1.00   Min.   :0   Min.   :-0.142987   Min.   :60.67  
-.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.083995   1st Qu.:64.36  
-.  Median : 50.50   Median :0   Median :-0.021660   Median :68.50  
-.  Mean   : 50.50   Mean   :0   Mean   :-0.009106   Mean   :69.61  
-.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.070702   3rd Qu.:75.13  
-.  Max.   :100.00   Max.   :0   Max.   : 0.129697   Max.   :79.69</code></pre>
+<pre><code>.        ID              time        EWT                   WT       
+.  Min.   :  1.00   Min.   :0   Min.   :-0.1524084   Min.   :60.10  
+.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.0682351   1st Qu.:65.38  
+.  Median : 50.50   Median :0   Median :-0.0090525   Median :69.37  
+.  Mean   : 50.50   Mean   :0   Mean   : 0.0009205   Mean   :70.31  
+.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.0847712   3rd Qu.:76.19  
+.  Max.   :100.00   Max.   :0   Max.   : 0.1318273   Max.   :79.86</code></pre>
 </div>
 </div>
 <p><strong>Call <code>simeps(n)</code> to resimulate <code>EPS</code></strong></p>
@@ -1330,12 +1330,12 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.        ID         time            CENT              CP         
-.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.1274  
-.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.2657  
-.  Median :1   Median :23.50   Median : 29.38   Median : 4.6861  
-.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 5.4252  
-.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 7.7880  
-.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :13.9642</code></pre>
+.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.1533  
+.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.4251  
+.  Median :1   Median :23.50   Median : 29.38   Median : 4.3800  
+.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 6.2113  
+.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 9.7018  
+.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :17.5997</code></pre>
 </div>
 </div>
 <p><strong>A safety check is recommended</strong> Note that in both examples, we implement a safety check: an integer counter is incremented every time we resimulated. The resimulation process stops if we don’t reach the desired condition within 100 replicates. You might also consider issuing a message or a flag in the simulated data if you are not able to reach the desired condition.</p>
