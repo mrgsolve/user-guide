@@ -1279,13 +1279,13 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.        ID              time        EWT                   WT       
-.  Min.   :  1.00   Min.   :0   Min.   :-0.1524084   Min.   :60.10  
-.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.0682351   1st Qu.:65.38  
-.  Median : 50.50   Median :0   Median :-0.0090525   Median :69.37  
-.  Mean   : 50.50   Mean   :0   Mean   : 0.0009205   Mean   :70.31  
-.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.0847712   3rd Qu.:76.19  
-.  Max.   :100.00   Max.   :0   Max.   : 0.1318273   Max.   :79.86</code></pre>
+<pre><code>.        ID              time        EWT                 WT       
+.  Min.   :  1.00   Min.   :0   Min.   :-0.15286   Min.   :60.08  
+.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.11194   1st Qu.:62.59  
+.  Median : 50.50   Median :0   Median :-0.04362   Median :67.01  
+.  Mean   : 50.50   Mean   :0   Mean   :-0.03642   Mean   :67.74  
+.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.02800   3rd Qu.:71.99  
+.  Max.   :100.00   Max.   :0   Max.   : 0.12665   Max.   :79.45</code></pre>
 </div>
 </div>
 <p><strong>Call <code>simeps(n)</code> to resimulate <code>EPS</code></strong></p>
@@ -1330,12 +1330,12 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.        ID         time            CENT              CP         
-.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.1533  
-.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.4251  
-.  Median :1   Median :23.50   Median : 29.38   Median : 4.3800  
-.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 6.2113  
-.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 9.7018  
-.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :17.5997</code></pre>
+.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.3556  
+.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.3217  
+.  Median :1   Median :23.50   Median : 29.38   Median : 5.8857  
+.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 6.9155  
+.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 9.1402  
+.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :24.6156</code></pre>
 </div>
 </div>
 <p><strong>A safety check is recommended</strong> Note that in both examples, we implement a safety check: an integer counter is incremented every time we resimulated. The resimulation process stops if we don’t reach the desired condition within 100 replicates. You might also consider issuing a message or a flag in the simulated data if you are not able to reach the desired condition.</p>

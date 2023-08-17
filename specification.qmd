@@ -4,7 +4,7 @@ source("setup.R")
 
 # Model specification {#sec-model-specification}
 
-This chapter details the `mrgsolve` model specification format.  
+This chapter details the mrgsolve model specification format.  
 
 ## How / where to write a model
 
@@ -15,7 +15,7 @@ There are two ways to write your model:
 
 We recommend method `1` (separate file) for any non-trivial modeling work. 
 Method `2` is handy for quickly coding a model and you'll also see us using 
-that approach frequently when demonstrating how to use `mrgsolve`.
+that approach frequently when demonstrating how to use mrgsolve.
 
 ### Separate file {#sec-spec-separate-file}
 
@@ -28,7 +28,7 @@ when you use the `.cpp` extension. We'll show you both here.
 Open a text editor and type the model code into a file with name that has the
 format `<model-name>.cpp`.  This filename format identifies a "name" for your
 model (`<model-name>`, the "stem" of the file name).  Note: this whole file will
-be read and parsed, so everything in it must be valid `mrgsolve` model
+be read and parsed, so everything in it must be valid mrgsolve model
 specification elements.  
 
 Use the `mread()` function to read and parse this file.  For the model 
@@ -43,7 +43,7 @@ mod <- mread("mymodel")
 
 #### Using any file extension
 
-You can use any file extension to save your `mrgsolve` model. Rather 
+You can use any file extension to save your mrgsolve model. Rather 
 than using `.cpp`, you might use `.mod`. When you are using an extension
 other than `.cpp`, pass in the entire file name, both stem and 
 extension. If you have the model code saved in `mymodel.mod` then 
@@ -58,7 +58,7 @@ to load that model.
 #### The model project directory
 
 The second argument to `mread()` is `project`. This is the directory where
-`mrgsolve` will look for your model file (passed as the first argument to
+mrgsolve will look for your model file (passed as the first argument to
 `mread()`). 
 
 If your `myproject.mod` file is located in the `models` directory, then 
@@ -88,7 +88,7 @@ $PKMODEL ncmt=1
 
 Here, we created a character vector of length 1 and saved it to the `R` object
 called `code`.  The name of this object is irrelevant.  But `code` will be 
-passed into `mrgsolve` as the model definition.  When `mrgsolve` gets a model 
+passed into mrgsolve as the model definition.  When mrgsolve gets a model 
 like this along with a "name" for the model, mrgsolve will write the code to a 
 file called `<model-name>.cpp` and read it right back in as if you had typed 
 the code into this file (@sec-spec-separate-file). 
@@ -108,7 +108,7 @@ mod <- mread("mymodel", tempdir(), code)
 ```
 
 For help, see `?mread` , `?mcode` in the `R` help system after loading 
-`mrgsolve`.
+mrgsolve.
 
 ### Comments
 
@@ -264,6 +264,7 @@ list(CL = 1, V = 20, KA = 1.2)
 The following blocks contain both the `@object` and `@as_object` options:
 
 - `$PARAM`
+- `$INPUT`
 - `$THETA`
 - `$CMT`
 - `$INT`
@@ -292,7 +293,7 @@ See the annotated model in @sec-topic-annotated for an example.
 
 __Syntax__: R   
 __Multiple allowed__: yes   
-__Options__: `@annotated`, `@covariates`, `@object`, `@as_object`
+__Options__: `@annotated`, `@covariates`, `@tag`, `@input`, `@object`, `@as_object`
 
 Define the parameter list in the current model. Parameters are names associated
 with values that can be used throughout the model.  A value must be given 
@@ -304,6 +305,11 @@ The `@covariates` option allows you to tag a collection of parameters as
 "covariates".  It does not change the functionality of the model or simulation
 workflow in any way, but allows you to get that list of covariate names out
 of the model object.
+
+The `@input` option adds a tag to the parameters in the block so that input
+data sets will be checked for these parameters when `check_data_names()` is
+called. Use the `@tag` option and supply a user-defined tag that can also be 
+used for checking data sets and parameters. 
 
 Example:
 ```{c, eval=FALSE}
@@ -360,9 +366,24 @@ Notes:
 The `@object` and `@as_object` options should name or return a named list of 
 parameters.
 
-See also:  @sec-block-theta and @sec-block-fixed.
+See also:  @sec-block-input, @sec-block-theta and @sec-block-fixed.
 
-See `?param` in the `R` help system after loading `mrgsolve`.
+See `?param` in the `R` help system after loading mrgsolve.
+
+
+### `$INPUT` \ {#sec-block-input}
+
+__Syntax__: R   
+__Multiple allowed__: yes   
+__Options__: `@annotated`, `@covariates`, `@tag`, `@object`, `@as_object`
+
+This block operates just like $PARAM (@sec-block-param), in that it is a way
+to introduce parameters in to the model. Additionally, the `@input` tag is 
+added to the model parameters and input data sets will be checked for these 
+parameters when `check_data_names()` is called. 
+
+See also:  @sec-block-param, @sec-block-theta,  @sec-block-fixed.
+
 
 ### `$FIXED`  \ {#sec-block-fixed}
 
@@ -450,7 +471,7 @@ The `@object` and `@as_object` options should name or return a named list of
 compartments and initial values when used in `$INIT` and a character vector
 of compartment names when used in `$CMT`.
 
-See `?init` in the `R` help system after loading `mrgsolve`.
+See `?init` in the `R` help system after loading mrgsolve.
 
 ### `$MAIN`  \ {#sec-block-main}
 
@@ -465,7 +486,7 @@ This code block has two main purposes:
 
 For users who are familiar with NONMEM, `$MAIN` is similar to `$PK`.
 
-`$MAIN` is wrapped into a `C++` function and compiled / loaded by `mrgsolve`.  
+`$MAIN` is wrapped into a `C++` function and compiled / loaded by mrgsolve.  
 The `MAIN` function gets called just prior to advancing the system from the 
 current time to the next time for each record in the data set.  `$MAIN` also 
 gets called several times before starting the problem (`NEWIND == 0`) and 
@@ -569,14 +590,14 @@ double CP = CENT/VC;
 ```
 
 __NOTE__
-`mrgsolve` formerly had a `table()` macro for inserting derived values into
+mrgsolve formerly had a `table()` macro for inserting derived values into
 simulated output. This macro has been deprecated.  The only way to insert
 derived values into the simulated output is via `$CAPTURE`.
 
 __NOTE__
 When variables are marked for capture (see @sec-block-capture), the values of
 those variables are saved at the __end__ of the `$TABLE` function.  This process
-is carried out automatically by `mrgsolve` and therefore requires no user
+is carried out automatically by mrgsolve and therefore requires no user
 intervention.
 
 ### `$ERROR` \ {#sec-block-error}
@@ -708,7 +729,7 @@ In this example, the names of the captured data items will be
 `WEIGHT,TVCL,CL,ETA_1`.
 
 Users can use the `capture` type to declare variables in `$MAIN` and `$TABLE`. 
-`capture` types are really `double`s, but using that type will signal `mrgsolve`
+`capture` types are really `double`s, but using that type will signal mrgsolve
 to automatically capture that value.  For example:
 
 ```{c,eval=FALSE}
@@ -813,7 +834,7 @@ $OMEGA @correlation
 0.1 0.67 0.3
 ```
 
-Here, the correlation is 0.67. `mrgsolve` will calculate the covariances and 
+Here, the correlation is 0.67. mrgsolve will calculate the covariances and 
 substitute these values.  The matrix will be stored and used with these 
 covariances, not the correlation.
 
@@ -988,7 +1009,7 @@ __Syntax__: R
 __Multiple allowed__: no   
 
 This code block implements a one- or two-compartment PK model where the system 
-is calculated by algebraic equations, not ODEs.  `mrgsolve` handles the 
+is calculated by algebraic equations, not ODEs.  mrgsolve handles the 
 calculations and an error is generated if both `$PKMODEL` and `$ODE` blocks are 
 included in the same model specification file.
 
@@ -1023,9 +1044,9 @@ separate `$CMT` block is not appropriate when `cmt` is specified in `$PKMODEL`.
 __Syntax__: text   
 __Multiple allowed__: no   
 
-Plugins are a way to add extensions to your `mrgsolve` model. Plugins can either 
+Plugins are a way to add extensions to your mrgsolve model. Plugins can either 
 link your model to external libraries (like `boost` or `Rcpp`) or they can 
-open up access to additional functionality provided by `mrgsolve` itself. 
+open up access to additional functionality provided by mrgsolve itself. 
 
 Plugins are listed and discussed in more detail in @sec-plugins.
 
@@ -1200,7 +1221,7 @@ __Syntax__: R
 __Multiple allowed__: yes   
 
 The `$NMXML` block lets you read and incorporate results from a NONMEM run into 
-your `mrgsolve` model. For example
+your mrgsolve model. For example
 
 ```{r}
 #| eval: false
@@ -1236,18 +1257,18 @@ as.list(mod)$nm_import
 ```
 
 For help on the arguments / options for `$NMXML`, please see the `?nmxml` 
-help topic in your `R` session after loading the `mrgsolve` package.
+help topic in your `R` session after loading the mrgsolve package.
 
 __An example__
 
-There is a NONMEM run embedded in the `mrgsolve` package 
+There is a NONMEM run embedded in the mrgsolve package 
 ```{r}
 path <- file.path(path.package("mrgsolve"),"nonmem")
 list.files(path, recursive=TRUE)
 
 ```
 
-We can create a `mrgsolve` control stream that will import `THETA`, `OMEGA` and 
+We can create a mrgsolve control stream that will import `THETA`, `OMEGA` and 
 `SIGMA` from that run using the `$NMXML` code block.
 
 
@@ -1467,7 +1488,7 @@ $INCLUDE
 mystuff.h,  otherstuff.h
 ```
 
-`mrgsolve` will insert proper `#include` preprocessor directives into the `C++` 
+mrgsolve will insert proper `#include` preprocessor directives into the `C++` 
 code that gets compiled.
 
 __Requirements__
@@ -1477,7 +1498,7 @@ __Requirements__
     any other location
   - An error is generated if the header file does not exist
   - An error is generated if any quotation marks are found in the file name 
-    (don't use quotes around the file name; `mrgsolve` will take care of that)
+    (don't use quotes around the file name; mrgsolve will take care of that)
   - A warning is issued if the header file does not end in `.h`
   - When the header file is changed (MD5 checksum changes), the model will be 
     forced to be rebuilt (recompiled) when `mread()` or `mcode()` (but not 
@@ -1618,7 +1639,7 @@ to `SOLVERTIME` inside `$ODE`  when you invoke the `nm-vars` plugin
 Only provided when the `nm-vars` plugin is invoked; see `SOLVERTIME`.
 
 ### `EVID`
-`EVID` is an event id indicator.  `mrgsolve` recognized the following event IDs:
+`EVID` is an event id indicator.  mrgsolve recognized the following event IDs:
 
 * 0 = an observation record
 * 1 = a bolus or infusion dose
@@ -1680,7 +1701,7 @@ if(NEWIND <=1) {
 ### `SS_ADVANCE`
 
 This is a `bool` data item (either `true` or `false`) which is always `false` 
-unless `mrgsolve` is currently advancing the system to steady state
+unless mrgsolve is currently advancing the system to steady state
 (@sec-steady-state); then it will be `true`. This variable is only 
 available in the `$ODE` (or `$DES`) block. 
 
@@ -2096,9 +2117,10 @@ N_CENT
 
 
 ## Derive new variables {#sec-new-variables}
+
 New `C++` variables may be derived in `$GLOBAL`, `$PREAMBLE` `$MAIN`, `$ODE` and
 `$TABLE`. Because these are `C++` variables, the type of variable being used
-must be declared.  For the vast majority of applications, the `double` type is
+must be declared. For the vast majority of applications, the `double` type is
 used (double-precision numeric value).
 
 ```{c,eval=FALSE}
@@ -2146,6 +2168,7 @@ That is, `CLi` is declared in `$GLOBAL` in an unnamed namespace so that variable
 like this are global variables within the model file only.  
 
 This way, we can still read the `CLi` variable in `$TABLE`:
+
 ```{c,eval=FALSE}
 $MAIN
 double CLi = TVCL*exp(ETA(1));
@@ -2165,9 +2188,20 @@ $MAIN
 localdouble CLi = TVCL*exp(ETA(1));
 ```
 
-The `localdouble` type is still just a double-precision variable.  The difference
-is that it is protected from this re-declaration process and the variable 
-will be local to (in this case) the `$MAIN` block. 
+The `localdouble` type is still just a double-precision variable.  The
+difference is that it is protected from this re-declaration process and the
+variable will be local to (in this case) the `$MAIN` block.
+
+### Initializing and resetting 
+
+mrgsolve takes a hands-off approach to variables created by the user; it will
+not initialize or reset variables from record to record or from individual to
+individual. Failing to properly initialize or reset user variables can have 
+unintended consequences, especially when conditional logic is used. 
+
+Generally, a default value for all variables should be set prior to 
+conditional assignment based on some test condition. 
+
 
 ### Using other types globally
 
@@ -2252,6 +2286,7 @@ http://dirk.eddelbuettel.com/code/rcpp/html/namespaceR.html
 
 
 ## Examples
+
 The following sections show example model specification.  The intention is to 
 show how the different blocks, macros and variables can work together to make 
 a functional model.  Some models are given purely for illustrative purpose and 

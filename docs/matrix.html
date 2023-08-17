@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Model matrices include <code>$OMEGA</code> (for subject-level variability) and <code>$SIGMA</code> (for residual unexplained variability). These matrices are coded into the model file (see <a href="specification.html#sec-block-omega"><span>Section&nbsp;2.2.16</span></a> and <a href="specification.html#sec-block-sigma"><span>Section&nbsp;2.2.17</span></a>) and can be manipulated in different ways via the model object. Because, <code>$OMEGA</code> and <code>$SIGMA</code> matrices are handled using identical approach (only the names of the functions change), we will focus on working with <code>$OMEGA</code> in the following examples with references to the equivalent functions that can be used to work on <code>$SIGMA</code>. Also note that, for simplicity, we will not compile the examples presented in this chapter.</p>
+<p>Model matrices include <code>$OMEGA</code> (for subject-level variability) and <code>$SIGMA</code> (for residual unexplained variability). These matrices are coded into the model file (see <a href="specification.html#sec-block-omega"><span>Section&nbsp;2.2.17</span></a> and <a href="specification.html#sec-block-sigma"><span>Section&nbsp;2.2.18</span></a>) and can be manipulated in different ways via the model object. Because, <code>$OMEGA</code> and <code>$SIGMA</code> matrices are handled using identical approach (only the names of the functions change), we will focus on working with <code>$OMEGA</code> in the following examples with references to the equivalent functions that can be used to work on <code>$SIGMA</code>. Also note that, for simplicity, we will not compile the examples presented in this chapter.</p>
 <section id="basics" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="basics"><span class="header-section-number">5.1</span> Basics</h2>
 <section id="simple-matrix-lists" class="level3" data-number="5.1.1">
@@ -291,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 . ----------------  source: popex.cpp  ----------------
 . 
 .   project: /Users/kyleb/Rli...gsolve/models
-.   shared object: popex-so-b92e6e367caa &lt;not loaded&gt;
+.   shared object: popex-so-f0f3bbca0dd &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 240 delta: 0.5
 .                  add: &lt;none&gt;
@@ -445,7 +445,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 . ----------  source: multiple-matrices.cpp  ----------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: multiple-matrices.cpp-so-b92e6400575f 
+.   shared object: multiple-matrices.cpp-so-f0f44e8102b 
 . 
 .   time:          start: 0 end: 24 delta: 1
 .                  add: &lt;none&gt;
@@ -650,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Like the values of parameters in the parameter list, we may want to update the values in <code>$OMEGA</code> and <code>$SIGMA</code> matrices. We can do so without re-compiling the model.</p>
 <section id="matrix-helper-functions" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="matrix-helper-functions"><span class="header-section-number">5.3.1</span> Matrix helper functions</h3>
-<p><code>mrgsolve</code> keeps <code>$OMEGA</code> and <code>$SIGMA</code> in block matrices (regardless of whether the off-diagonal elements are zeros or not). Recall that in the model specification file we can enter data for <code>$OMEGA</code> and <code>$SIGMA</code> as the lower triangle of the matrix (see <a href="specification.html#sec-block-omega"><span>Section&nbsp;2.2.16</span></a>). In <code>R</code>, we need to provide a matrix (as an <code>R</code> object). <code>mrgsolve</code> provides some convenience functions to help … allowing the user to enter lower diagonals instead of the full matrix.</p>
+<p><code>mrgsolve</code> keeps <code>$OMEGA</code> and <code>$SIGMA</code> in block matrices (regardless of whether the off-diagonal elements are zeros or not). Recall that in the model specification file we can enter data for <code>$OMEGA</code> and <code>$SIGMA</code> as the lower triangle of the matrix (see <a href="specification.html#sec-block-omega"><span>Section&nbsp;2.2.17</span></a>). In <code>R</code>, we need to provide a matrix (as an <code>R</code> object). <code>mrgsolve</code> provides some convenience functions to help … allowing the user to enter lower diagonals instead of the full matrix.</p>
 <p><code>dmat()</code> for diagonal matrix</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmat</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

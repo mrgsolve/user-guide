@@ -340,30 +340,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. # A tibble: 6 × 8
-.      ID  time expos        T         I         V  logV logChange
-.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-. 1     1  95    1000 5187630. -2.74e-10 -1.79e-12   NaN       NaN
-. 2     1  97.5  1000 5298189. -3.18e-10 -2.09e-12   NaN       NaN
-. 3     1 120    1000 6252828. -1.55e-10 -1.01e-12   NaN       NaN
-. 4     1 122.   1000 6354547. -2.90e-10 -1.90e-12   NaN       NaN
-. 5     1 125    1000 6455422. -1.97e-10 -1.30e-12   NaN       NaN
-. 6     1 128.   1000 6555459. -7.81e-11 -5.21e-13   NaN       NaN</code></pre>
+<pre><code>. # A tibble: 12 × 8
+.       ID  time expos        T         I         V  logV logChange
+.    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+.  1     1  95    1000 5187630. -1.79e-11 -1.16e-13   NaN       NaN
+.  2     1  97.5  1000 5298189. -1.92e-10 -1.26e-12   NaN       NaN
+.  3     1 100    1000 5407830. -2.44e-10 -1.60e-12   NaN       NaN
+.  4     1 102.   1000 5516561. -2.75e-10 -1.80e-12   NaN       NaN
+.  5     1 105    1000 5624390. -1.78e-10 -1.17e-12   NaN       NaN
+.  6     1 108.   1000 5731324. -8.56e-11 -5.60e-13   NaN       NaN
+.  7     1 110    1000 5837370. -1.24e-11 -8.12e-14   NaN       NaN
+.  8     1 122.   1000 6354547. -1.67e-11 -1.10e-13   NaN       NaN
+.  9     1 125    1000 6455421. -1.91e-11 -1.25e-13   NaN       NaN
+. 10     1 128.   1000 6555459. -2.11e-11 -1.38e-13   NaN       NaN
+. 11     1 130    1000 6654666. -1.23e-11 -8.07e-14   NaN       NaN
+. 12     1 132.   1000 6753050. -2.75e-12 -1.82e-14   NaN       NaN</code></pre>
 </div>
 </div>
 <p>Adjusting <code>atol</code> to <code>1E-20</code> or <code>1E-30</code> will prevent this.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="at">atol =</span> <span class="fl">1E-20</span>)  <span class="sc">%&gt;%</span> <span class="fu">filter</span>(time <span class="sc">%in%</span> out<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. # A tibble: 6 × 8
-.      ID  time expos        T        I        V  logV logChange
-.   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-. 1     1  95    1000 5187630. 1.33e-11 8.72e-14 -13.1     -18.7
-. 2     1  97.5  1000 5298189. 5.13e-12 3.36e-14 -13.5     -19.2
-. 3     1 120    1000 6252828. 1.01e-15 6.62e-18 -17.2     -22.9
-. 4     1 122.   1000 6354547. 3.94e-16 2.58e-18 -17.6     -23.3
-. 5     1 125    1000 6455422. 1.54e-16 1.01e-18 -18.0     -23.7
-. 6     1 128.   1000 6555459. 5.99e-17 3.92e-19 -18.4     -24.1</code></pre>
+<pre><code>. # A tibble: 12 × 8
+.       ID  time expos        T        I        V  logV logChange
+.    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+.  1     1  95    1000 5187630. 1.33e-11 8.72e-14 -13.1     -18.7
+.  2     1  97.5  1000 5298189. 5.13e-12 3.36e-14 -13.5     -19.2
+.  3     1 100    1000 5407830. 1.98e-12 1.30e-14 -13.9     -19.6
+.  4     1 102.   1000 5516561. 7.66e-13 5.01e-15 -14.3     -20.0
+.  5     1 105    1000 5624390. 2.96e-13 1.94e-15 -14.7     -20.4
+.  6     1 108.   1000 5731324. 1.15e-13 7.51e-16 -15.1     -20.8
+.  7     1 110    1000 5837370. 4.44e-14 2.91e-16 -15.5     -21.2
+.  8     1 122.   1000 6354547. 3.94e-16 2.58e-18 -17.6     -23.3
+.  9     1 125    1000 6455422. 1.54e-16 1.01e-18 -18.0     -23.7
+. 10     1 128.   1000 6555459. 5.99e-17 3.92e-19 -18.4     -24.1
+. 11     1 130    1000 6654666. 2.34e-17 1.53e-19 -18.8     -24.5
+. 12     1 132.   1000 6753050. 9.14e-18 5.98e-20 -19.2     -24.9</code></pre>
 </div>
 </div>
 </section>
@@ -424,7 +436,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="the-preamble-function" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="the-preamble-function"><span class="header-section-number">1.5.1</span> The <code>$PREAMBLE</code> function</h3>
 <p>The <code>PREAMBLE</code> function gets called only once, just prior to processing the first record of the data set. This function is composed of <code>C++</code> code and is used to initialize variables and get them set up prior to starting on the problem.</p>
-<p>See <a href="specification.html#sec-block-preamble"><span>Section&nbsp;2.2.13</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-preamble"><span>Section&nbsp;2.2.14</span></a> for details.</p>
 </section>
 <section id="the-main-function" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="the-main-function"><span class="header-section-number">1.5.2</span> The <code>$MAIN</code> function</h3>
@@ -438,19 +450,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In addition to getting called once per record, the <code>MAIN</code> function may be called several times prior to starting the simulation run. The <code>MAIN</code> function is also called whenever the user queries the compartment list.</p>
 <p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<a href="#sec-model-functions"><span>Section&nbsp;1.5</span></a>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
 <p>The <code>MAIN</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$PK</code> block. You can use either <code>$MAIN</code> or <code>$PK</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-main"><span>Section&nbsp;2.2.7</span></a> and <a href="specification.html#sec-block-pk"><span>Section&nbsp;2.2.8</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-main"><span>Section&nbsp;2.2.8</span></a> and <a href="specification.html#sec-block-pk"><span>Section&nbsp;2.2.9</span></a> for details.</p>
 </section>
 <section id="the-ode-function" class="level3" data-number="1.5.3">
 <h3 data-number="1.5.3" class="anchored" data-anchor-id="the-ode-function"><span class="header-section-number">1.5.3</span> The <code>$ODE</code> function</h3>
 <p>The <code>ODE</code> function is where the user writes the model differential equations. Any derived quantity that depends on a state variable and is used to advanced the system must be calculated inside <code>$ODE</code>. But, this function is called repeatedly during the simulation run, so any calculation that <strong>can</strong> be moved out of <code>$ODE</code> (for example: to <code>$MAIN</code>) should be.</p>
 <p>The <code>ODE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$DES</code> block. You can use either <code>$ODE</code> or <code>$DES</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-ode"><span>Section&nbsp;2.2.9</span></a> and <a href="specification.html#sec-block-des"><span>Section&nbsp;2.2.10</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-ode"><span>Section&nbsp;2.2.10</span></a> and <a href="specification.html#sec-block-des"><span>Section&nbsp;2.2.11</span></a> for details.</p>
 </section>
 <section id="the-table-function" class="level3" data-number="1.5.4">
 <h3 data-number="1.5.4" class="anchored" data-anchor-id="the-table-function"><span class="header-section-number">1.5.4</span> The <code>$TABLE</code> function</h3>
 <p>The <code>TABLE</code> function is called <strong>after</strong> the solver advances in time. The purpose of <code>TABLE</code> is to allow the user to interact with the values of the state variables after advancing, potentially derive new variables, and to insert different outputs into the table of simulated results.</p>
 <p>The <code>TABLE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$ERROR</code> block. You can use either <code>$TABLE</code> or <code>$ERROR</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-table"><span>Section&nbsp;2.2.11</span></a> and <a href="specification.html#sec-block-error"><span>Section&nbsp;2.2.12</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-table"><span>Section&nbsp;2.2.12</span></a> and <a href="specification.html#sec-block-error"><span>Section&nbsp;2.2.13</span></a> for details.</p>
 </section>
 </section>
 <section id="random-effect-variances" class="level2" data-number="1.6">
