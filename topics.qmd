@@ -918,10 +918,10 @@ __Note__:
 ## Resimulate `ETA` and `EPS`
 
 
-__Call `simeps(n)` to resimulate `ETA`__
+__Call `simeta()` to resimulate `ETA`__
 
 - No `$PLUGIN` is required
-- `simeta(n)` takes a single argument (`n`), the ETA number to resimulate
+- `simeta()` takes no arguments; all `ETA` values are resimulated
 
 For example, we can simulate individual-level covariates
 within a certain range:
@@ -937,7 +937,7 @@ int i = 0;
 
 while((WT < 60) || (WT > 80)) {
   if(++i > 100) break;
-  simeta(1);
+  simeta();
   WT = TVWT*exp(EWT);
 }
 
@@ -957,10 +957,10 @@ sum
 ```
 
 
-__Call `simeps(n)` to resimulate `EPS`__
+__Call `simeps()` to resimulate `EPS`__
 
 - No `$PLUGIN` is required
-- `simeps()` takes a single argument (`n`), the EPS number to resimulate
+- `simeps()` takes no arguments; all `EPS` values are resimulated
 
 For example, we can resimulate until all 
 concentrations are greater than zero:
@@ -981,7 +981,7 @@ capture CP = CENT/V + EPS(1);
 int i = 0;
 
 while(CP < 0 && i < 100) {
-  simeps(1);
+  simeps();
   CP = CENT/V + EPS(1);
   ++i;
 }

@@ -1239,10 +1239,10 @@ However, it is required to become familiar with some of the basics and certainly
 </section>
 <section id="resimulate-eta-and-eps" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="resimulate-eta-and-eps"><span class="header-section-number">11.7</span> Resimulate <code>ETA</code> and <code>EPS</code></h2>
-<p><strong>Call <code>simeps(n)</code> to resimulate <code>ETA</code></strong></p>
+<p><strong>Call <code>simeta()</code> to resimulate <code>ETA</code></strong></p>
 <ul>
 <li>No <code>$PLUGIN</code> is required</li>
-<li><code>simeta(n)</code> takes a single argument (<code>n</code>), the ETA number to resimulate</li>
+<li><code>simeta()</code> takes no arguments; all <code>ETA</code> values are resimulated</li>
 </ul>
 <p>For example, we can simulate individual-level covariates within a certain range:</p>
 <div class="cell">
@@ -1256,7 +1256,7 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="st">while((WT &lt; 60) || (WT &gt; 80)) {</span></span>
 <span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a><span class="st">  if(++i &gt; 100) break;</span></span>
-<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="st">  simeta(1);</span></span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="st">  simeta();</span></span>
 <span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="st">  WT = TVWT*exp(EWT);</span></span>
 <span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
 <span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a></span>
@@ -1266,76 +1266,66 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="st">$CAPTURE EWT WT</span></span>
 <span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
 <span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"simeta"</span>, code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>. Warning in check_sim_eta_eps_n(x, spec): simeta(n) was requested; resimulating
-. single ETA values is now discouraged and will soon be deprecated; use simeta()
-. to resimulate all ETA; silence this warning by setting MRGSOLVE_RESIM_N_WARN to
-. FALSE in $ENV.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> mod <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">nid=</span><span class="dv">100</span>, <span class="at">end=</span><span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"simeta"</span>, code)</span>
+<span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> mod <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">nid=</span><span class="dv">100</span>, <span class="at">end=</span><span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb117-24"><a href="#cb117-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-25"><a href="#cb117-25" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
+<span id="cb117-26"><a href="#cb117-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-27"><a href="#cb117-27" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.        ID              time        EWT                 WT       
-.  Min.   :  1.00   Min.   :0   Min.   :-0.15286   Min.   :60.08  
-.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.11194   1st Qu.:62.59  
-.  Median : 50.50   Median :0   Median :-0.04362   Median :67.01  
-.  Mean   : 50.50   Mean   :0   Mean   :-0.03642   Mean   :67.74  
-.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.02800   3rd Qu.:71.99  
-.  Max.   :100.00   Max.   :0   Max.   : 0.12665   Max.   :79.45</code></pre>
+<pre><code>.        ID              time        EWT                  WT       
+.  Min.   :  1.00   Min.   :0   Min.   :-0.152052   Min.   :60.13  
+.  1st Qu.: 25.75   1st Qu.:0   1st Qu.:-0.084192   1st Qu.:64.35  
+.  Median : 50.50   Median :0   Median : 0.002724   Median :70.19  
+.  Mean   : 50.50   Mean   :0   Mean   :-0.008335   Mean   :69.68  
+.  3rd Qu.: 75.25   3rd Qu.:0   3rd Qu.: 0.059169   3rd Qu.:74.27  
+.  Max.   :100.00   Max.   :0   Max.   : 0.133370   Max.   :79.99</code></pre>
 </div>
 </div>
-<p><strong>Call <code>simeps(n)</code> to resimulate <code>EPS</code></strong></p>
+<p><strong>Call <code>simeps()</code> to resimulate <code>EPS</code></strong></p>
 <ul>
 <li>No <code>$PLUGIN</code> is required</li>
-<li><code>simeps()</code> takes a single argument (<code>n</code>), the EPS number to resimulate</li>
+<li><code>simeps()</code> takes no arguments; all <code>EPS</code> values are resimulated</li>
 </ul>
 <p>For example, we can resimulate until all concentrations are greater than zero:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20,</span></span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="st">$CMT CENT</span></span>
-<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="st">$SIGMA 50</span></span>
-<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL ncmt=1</span></span>
-<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="st">$TABLE</span></span>
-<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="st">capture CP = CENT/V + EPS(1);</span></span>
-<span id="cb121-12"><a href="#cb121-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-13"><a href="#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="st">int i = 0;</span></span>
-<span id="cb121-14"><a href="#cb121-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-15"><a href="#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="st">while(CP &lt; 0 &amp;&amp; i &lt; 100) {</span></span>
-<span id="cb121-16"><a href="#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="st">  simeps(1);</span></span>
-<span id="cb121-17"><a href="#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="st">  CP = CENT/V + EPS(1);</span></span>
-<span id="cb121-18"><a href="#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="st">  ++i;</span></span>
-<span id="cb121-19"><a href="#cb121-19" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb121-20"><a href="#cb121-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-21"><a href="#cb121-21" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb121-22"><a href="#cb121-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-23"><a href="#cb121-23" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"simeps"</span>, code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>. Warning in check_sim_eta_eps_n(x, spec): simeps(n) was requested; resimulating
-. single EPS values is now discouraged and will soon be deprecated; use simeps()
-. to resimulate all EPS; silence this warning by setting MRGSOLVE_RESIM_N_WARN to
-. FALSE in $ENV.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> mod <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">48</span>)</span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20,</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="st">$CMT CENT</span></span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="st">$SIGMA 50</span></span>
+<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL ncmt=1</span></span>
+<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="st">$TABLE</span></span>
+<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="st">capture CP = CENT/V + EPS(1);</span></span>
+<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-13"><a href="#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="st">int i = 0;</span></span>
+<span id="cb119-14"><a href="#cb119-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-15"><a href="#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="st">while(CP &lt; 0 &amp;&amp; i &lt; 100) {</span></span>
+<span id="cb119-16"><a href="#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="st">  simeps();</span></span>
+<span id="cb119-17"><a href="#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="st">  CP = CENT/V + EPS(1);</span></span>
+<span id="cb119-18"><a href="#cb119-18" aria-hidden="true" tabindex="-1"></a><span class="st">  ++i;</span></span>
+<span id="cb119-19"><a href="#cb119-19" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb119-20"><a href="#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-21"><a href="#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb119-22"><a href="#cb119-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-23"><a href="#cb119-23" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"simeps"</span>, code)</span>
+<span id="cb119-24"><a href="#cb119-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-25"><a href="#cb119-25" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> mod <span class="sc">%&gt;%</span> <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">48</span>)</span>
+<span id="cb119-26"><a href="#cb119-26" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(out)</span>
+<span id="cb119-27"><a href="#cb119-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-28"><a href="#cb119-28" aria-hidden="true" tabindex="-1"></a>sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.        ID         time            CENT              CP         
-.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.3556  
-.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.3217  
-.  Median :1   Median :23.50   Median : 29.38   Median : 5.8857  
-.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 6.9155  
-.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 9.1402  
-.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :24.6156</code></pre>
+.  Min.   :1   Min.   : 0.00   Min.   :  0.00   Min.   : 0.3681  
+.  1st Qu.:1   1st Qu.:11.25   1st Qu.: 15.93   1st Qu.: 2.8067  
+.  Median :1   Median :23.50   Median : 29.38   Median : 4.5036  
+.  Mean   :1   Mean   :23.52   Mean   : 37.47   Mean   : 5.7805  
+.  3rd Qu.:1   3rd Qu.:35.75   3rd Qu.: 54.21   3rd Qu.: 8.8972  
+.  Max.   :1   Max.   :48.00   Max.   :100.00   Max.   :15.3570</code></pre>
 </div>
 </div>
 <p><strong>A safety check is recommended</strong> Note that in both examples, we implement a safety check: an integer counter is incremented every time we resimulated. The resimulation process stops if we don’t reach the desired condition within 100 replicates. You might also consider issuing a message or a flag in the simulated data if you are not able to reach the desired condition.</p>
@@ -1346,7 +1336,7 @@ However, it is required to become familiar with some of the basics and certainly
 <p>By default, <code>mrgsolve</code> performs next observation carried backward (<code>nocb</code>) when processing time-varying covariates. That is, when the system advances from <code>TIME1</code> to <code>TIME2</code>, and the advance is a function of a covariate found in the data set, the system advances using the covariate value <code>COV2</code> rather than the covariate <code>COV1</code>.</p>
 <p>The user can change the behavior to last observation carried forward (<code>locf</code>), so that the system uses the value of <code>COV1</code> to advance from <code>TIME1</code> to <code>TIME2</code>. To use <code>locf</code> advance, set <code>nocb</code> to <code>FALSE</code> when calling <code>mrgsim</code>. For example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">nocb =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">nocb =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There is additional information about the sequence of events that takes place during system advance in <a href="sequence.html"><span>Chapter&nbsp;7</span></a>.</p>
 
