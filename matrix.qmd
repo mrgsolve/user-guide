@@ -223,6 +223,29 @@ Also, the function `collapse_matrix()` can be called on a `omegalist` or
 omat(mod) %>% collapse_matrix(range = c(2,NA))
 ```
 
+### Collapse on load
+
+You can also collapse `$OMEGA` or `$SIGMA` from within the model specification 
+file so that the matrices are collapsed on load. 
+
+In the `$SET` set block (@sec-block-set), pass either `collapse_omega` or 
+`collapse_sigma` set to `TRUE`
+
+```{r}
+#| eval: false
+$SET collapse_omega = TRUE
+```
+
+or 
+
+```{r}
+#| eval: false
+$SET collapse_sigma = TRUE
+```
+
+This will produce a model object with collapsed matrices when the model is 
+loaded via `mread()`.
+
 
 ## Updating `$OMEGA` and `$SIGMA` \  {#sec-matrix-update}
 

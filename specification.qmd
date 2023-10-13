@@ -914,7 +914,7 @@ form labels for the realized EPS values.
 
 The `$SIGMA` block functions like the `$OMEGA` block.  See `$OMEGA` for details. 
 
-### `$SET`
+### `$SET` {#sec-block-set}
 
 __Syntax__: R   
 __Multiple allowed__: no   
