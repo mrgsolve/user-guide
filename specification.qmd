@@ -323,7 +323,7 @@ interpreter and the evaluation will happen inside the environment which is
 defined by the `$ENV` block. For example
 
 ```{c, eval = FALSE}
-$ENV NWT = 1.2
+$ENV MWT = 1.2
 
 $PARAM 
 WT = 80 * 2.2
