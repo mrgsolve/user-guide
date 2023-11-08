@@ -1221,15 +1221,38 @@ __Syntax__: R
 __Multiple allowed__: yes   
 
 The `$NMXML` block lets you read and incorporate results from a NONMEM run into 
-your mrgsolve model. For example
+your mrgsolve model.
+
+
+#### Syntax {.unnumbered}
+
+If your model run is 1000 and the `.xml` file is located in `1000/1000.xml`, 
+use this syntax
 
 ```{r}
 #| eval: false
 $NMXML 
-run = 1001
+run = 1000
 project = "../model/nonmem"
 root = "cppfile"
 ```
+
+If your model run is 1000 and the `.xml` file is located in some other 
+location use the `path` argument to specify the _complete_ path to the `.xml`
+file
+
+```{r}
+#| eval: false
+$NMXML 
+path = "../<path>/<to>/<output>/<files>/1000.xml"
+root = "cppfile"
+```
+
+This latter syntax may be needed when using PsN and output files are organized
+in a way different from the previous example.
+
+
+#### Details {.unnumbered}
 
 From the NONMEM run, `THETA` will be imported into your
 parameter list (see @sec-block-param and @sec-component-param), `OMEGA` will 
@@ -1242,7 +1265,7 @@ estimates are read from from the file `project/run/run.xml`.  That is, it is
 assumed that there is a directory named `run` that is inside the `project` 
 directory where `$NMXML` will find `run.xml`.  Your NONMEM run directories may
 not be organized in a way that is compatible with this default.  In that case, 
-you will need to provide the `file` argument, which should be the path to the 
+you will need to provide the `path` argument, which should be the path to the 
 `run.xml` file, either as a full path or as a path relative to the current 
 working directory.
 
@@ -1270,7 +1293,6 @@ list.files(path, recursive=TRUE)
 
 We can create a mrgsolve control stream that will import `THETA`, `OMEGA` and 
 `SIGMA` from that run using the `$NMXML` code block.
-
 
 
 ```{mread, stem = "nmxml-1", annot = TRUE}
@@ -1364,48 +1386,47 @@ the `.ext` file output. `$NMEXT` is able to import the NONMEM estimates much
 faster than `$NMXML` when loading from sampling based methods (mainly 
 `METHOD=BAYES`). 
 
-We can load the same mode as the `$NMXML` example above with the following 
-code:
+#### Syntax {.unnumbered}
 
-```{mread, stem = "nmext-1", annot = TRUE}
-$NMEXT
-run = 1005
-project = file.path(path.package("mrgsolve"),"nonmem")
+If your model run is 1000 and the `.ext` file is located in `1000/1000.ext`, 
+use this syntax
+
+```{r}
+#| eval: false
+$NMEXT 
+run = 1000
+project = "../model/nonmem"
 root = "cppfile"
-
-olabels = c("ECL", "EVC", "EKA")
-slabels = c("PROP", "ADD")
-
-$MAIN
-double CL = THETA1*exp(ECL);
-double V2 = THETA2*exp(EVC);
-double KA = THETA3*exp(EKA);
-double Q = THETA4;
-double V3 = THETA5;
-
-$PKMODEL ncmt=2, depot=TRUE
-
-$CMT GUT CENT PERIPH
-
-$TABLE
-double CP = (CENT/V2)*(1+PROP) + ADD/5;
-
-$CAPTURE CP
-
-$SET delta = 4, end = 96
 ```
 
+If your model run is 1000 and the `.ext` file is located in some other 
+location use the `path` argument to specify the _complete_ path to the `.ext`
+file
 
-```{r, message = FALSE}
-mod <- mread("inline/nmext-1.cpp", quiet=TRUE)
-
-param(mod)
+```{r}
+#| eval: false
+$NMEXT 
+path = "../<path>/<to>/<output>/<files>/1000.ext"
+root = "cppfile"
 ```
+
+This latter syntax may be needed when using PsN and output files are organized
+in a way different from the previous example.
+
+### Details {.unnumbered}
 
 Once the model object is obtained, the path to the `ext` file that formed 
 the source for imported parameters can be retrieved by coercing the 
-model object to list and looking for `nm_import`. See the `$NMXML` topic 
-in @sec-block-nmxml for an example of equivalent functionality.
+model object to list and looking for `nm_import`. 
+
+```{r, eval = FALSE}
+mod <- modlib("1005", compile = FALSE)
+
+as.list(mod)$nm_import
+```
+
+See the `$NMXML` topic in @sec-block-nmxml for an example of equivalent 
+functionality.
 
 
 __IMPORTANT__: while `$NMEXT` works very similarly to `$NMXML`, there is one 

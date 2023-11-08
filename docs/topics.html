@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -131,11 +103,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topics.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -143,124 +120,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">mrgsolve user guide</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./components.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Model components</span></a>
+  <a href="./components.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Model components</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./specification.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></a>
+  <a href="./specification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datasets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></a>
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./event.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></a>
+  <a href="./event.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./matrix.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></a>
+  <a href="./matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./output.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></a>
+  <a href="./output.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sequence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></a>
+  <a href="./sequence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./steady-state.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></a>
+  <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plugins.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></a>
+  <a href="./plugins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mtime.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></a>
+  <a href="./mtime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></a>
+  <a href="./topics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./q-and-a.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></a>
+  <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></a>
+  <a href="./install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-topic-annotated" id="toc-sec-topic-annotated" class="nav-link active" data-scroll-target="#sec-topic-annotated"><span class="toc-section-number">11.1</span>  Annotated model specification</a></li>
-  <li><a href="#sec-topic-init" id="toc-sec-topic-init" class="nav-link" data-scroll-target="#sec-topic-init"><span class="toc-section-number">11.2</span>  Set initial conditions</a>
+  <li><a href="#sec-topic-annotated" id="toc-sec-topic-annotated" class="nav-link active" data-scroll-target="#sec-topic-annotated"><span class="header-section-number">11.1</span> Annotated model specification</a></li>
+  <li><a href="#sec-topic-init" id="toc-sec-topic-init" class="nav-link" data-scroll-target="#sec-topic-init"><span class="header-section-number">11.2</span> Set initial conditions</a>
   <ul class="collapse">
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">11.2.1</span>  Summary</a></li>
-  <li><a href="#make-a-model-only-to-examine-init-behavior" id="toc-make-a-model-only-to-examine-init-behavior" class="nav-link" data-scroll-target="#make-a-model-only-to-examine-init-behavior"><span class="toc-section-number">11.2.2</span>  Make a model only to examine <code>init</code> behavior</a></li>
-  <li><a href="#example-pkpd-model-with-initial-condition" id="toc-example-pkpd-model-with-initial-condition" class="nav-link" data-scroll-target="#example-pkpd-model-with-initial-condition"><span class="toc-section-number">11.2.3</span>  Example PK/PD model with initial condition</a></li>
-  <li><a href="#remember-calling-init-will-let-you-check-to-see-what-is-going-on" id="toc-remember-calling-init-will-let-you-check-to-see-what-is-going-on" class="nav-link" data-scroll-target="#remember-calling-init-will-let-you-check-to-see-what-is-going-on"><span class="toc-section-number">11.2.4</span>  Remember: calling <code>init</code> will let you check to see what is going on</a></li>
-  <li><a href="#set-initial-conditions-via-idata" id="toc-set-initial-conditions-via-idata" class="nav-link" data-scroll-target="#set-initial-conditions-via-idata"><span class="toc-section-number">11.2.5</span>  Set initial conditions via <code>idata</code></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">11.2.1</span> Summary</a></li>
+  <li><a href="#make-a-model-only-to-examine-init-behavior" id="toc-make-a-model-only-to-examine-init-behavior" class="nav-link" data-scroll-target="#make-a-model-only-to-examine-init-behavior"><span class="header-section-number">11.2.2</span> Make a model only to examine <code>init</code> behavior</a></li>
+  <li><a href="#example-pkpd-model-with-initial-condition" id="toc-example-pkpd-model-with-initial-condition" class="nav-link" data-scroll-target="#example-pkpd-model-with-initial-condition"><span class="header-section-number">11.2.3</span> Example PK/PD model with initial condition</a></li>
+  <li><a href="#remember-calling-init-will-let-you-check-to-see-what-is-going-on" id="toc-remember-calling-init-will-let-you-check-to-see-what-is-going-on" class="nav-link" data-scroll-target="#remember-calling-init-will-let-you-check-to-see-what-is-going-on"><span class="header-section-number">11.2.4</span> Remember: calling <code>init</code> will let you check to see what is going on</a></li>
+  <li><a href="#set-initial-conditions-via-idata" id="toc-set-initial-conditions-via-idata" class="nav-link" data-scroll-target="#set-initial-conditions-via-idata"><span class="header-section-number">11.2.5</span> Set initial conditions via <code>idata</code></a></li>
   </ul></li>
-  <li><a href="#sec-topic-parameter-update" id="toc-sec-topic-parameter-update" class="nav-link" data-scroll-target="#sec-topic-parameter-update"><span class="toc-section-number">11.3</span>  Updating parameters</a>
+  <li><a href="#sec-topic-parameter-update" id="toc-sec-topic-parameter-update" class="nav-link" data-scroll-target="#sec-topic-parameter-update"><span class="header-section-number">11.3</span> Updating parameters</a>
   <ul class="collapse">
-  <li><a href="#parameter-update-hierarchy" id="toc-parameter-update-hierarchy" class="nav-link" data-scroll-target="#parameter-update-hierarchy"><span class="toc-section-number">11.3.1</span>  Parameter update hierarchy</a></li>
-  <li><a href="#sec-topic-parameter-update-base" id="toc-sec-topic-parameter-update-base" class="nav-link" data-scroll-target="#sec-topic-parameter-update-base"><span class="toc-section-number">11.3.2</span>  Updating the base parameter list</a></li>
+  <li><a href="#parameter-update-hierarchy" id="toc-parameter-update-hierarchy" class="nav-link" data-scroll-target="#parameter-update-hierarchy"><span class="header-section-number">11.3.1</span> Parameter update hierarchy</a></li>
+  <li><a href="#sec-topic-parameter-update-base" id="toc-sec-topic-parameter-update-base" class="nav-link" data-scroll-target="#sec-topic-parameter-update-base"><span class="header-section-number">11.3.2</span> Updating the base parameter list</a></li>
   </ul></li>
-  <li><a href="#sec-topic-tgrid" id="toc-sec-topic-tgrid" class="nav-link" data-scroll-target="#sec-topic-tgrid"><span class="toc-section-number">11.4</span>  Time grid objects</a></li>
-  <li><a href="#sec-topic-designs" id="toc-sec-topic-designs" class="nav-link" data-scroll-target="#sec-topic-designs"><span class="toc-section-number">11.5</span>  Individualized sampling designs</a></li>
-  <li><a href="#some-helpful-c" id="toc-some-helpful-c" class="nav-link" data-scroll-target="#some-helpful-c"><span class="toc-section-number">11.6</span>  Some helpful <code>C++</code></a>
+  <li><a href="#sec-topic-tgrid" id="toc-sec-topic-tgrid" class="nav-link" data-scroll-target="#sec-topic-tgrid"><span class="header-section-number">11.4</span> Time grid objects</a></li>
+  <li><a href="#sec-topic-designs" id="toc-sec-topic-designs" class="nav-link" data-scroll-target="#sec-topic-designs"><span class="header-section-number">11.5</span> Individualized sampling designs</a></li>
+  <li><a href="#some-helpful-c" id="toc-some-helpful-c" class="nav-link" data-scroll-target="#some-helpful-c"><span class="header-section-number">11.6</span> Some helpful <code>C++</code></a>
   <ul class="collapse">
-  <li><a href="#semi-colons" id="toc-semi-colons" class="nav-link" data-scroll-target="#semi-colons"><span class="toc-section-number">11.6.1</span>  Semi-colons</a></li>
-  <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="toc-section-number">11.6.2</span>  if-else</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="toc-section-number">11.6.3</span>  Functions</a></li>
-  <li><a href="#integer-division" id="toc-integer-division" class="nav-link" data-scroll-target="#integer-division"><span class="toc-section-number">11.6.4</span>  Integer division</a></li>
-  <li><a href="#pre-processor-directives" id="toc-pre-processor-directives" class="nav-link" data-scroll-target="#pre-processor-directives"><span class="toc-section-number">11.6.5</span>  Pre-processor directives</a></li>
+  <li><a href="#semi-colons" id="toc-semi-colons" class="nav-link" data-scroll-target="#semi-colons"><span class="header-section-number">11.6.1</span> Semi-colons</a></li>
+  <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="header-section-number">11.6.2</span> if-else</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">11.6.3</span> Functions</a></li>
+  <li><a href="#integer-division" id="toc-integer-division" class="nav-link" data-scroll-target="#integer-division"><span class="header-section-number">11.6.4</span> Integer division</a></li>
+  <li><a href="#pre-processor-directives" id="toc-pre-processor-directives" class="nav-link" data-scroll-target="#pre-processor-directives"><span class="header-section-number">11.6.5</span> Pre-processor directives</a></li>
   </ul></li>
-  <li><a href="#resimulate-eta-and-eps" id="toc-resimulate-eta-and-eps" class="nav-link" data-scroll-target="#resimulate-eta-and-eps"><span class="toc-section-number">11.7</span>  Resimulate <code>ETA</code> and <code>EPS</code></a></li>
-  <li><a href="#sec-topics-time-varying" id="toc-sec-topics-time-varying" class="nav-link" data-scroll-target="#sec-topics-time-varying"><span class="toc-section-number">11.8</span>  Time varying covariates</a></li>
+  <li><a href="#resimulate-eta-and-eps" id="toc-resimulate-eta-and-eps" class="nav-link" data-scroll-target="#resimulate-eta-and-eps"><span class="header-section-number">11.7</span> Resimulate <code>ETA</code> and <code>EPS</code></a></li>
+  <li><a href="#sec-topics-time-varying" id="toc-sec-topics-time-varying" class="nav-link" data-scroll-target="#sec-topics-time-varying"><span class="header-section-number">11.8</span> Time varying covariates</a></li>
   </ul>
 </nav>
     </div>
@@ -269,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-topics" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></h1>
+<h1 class="title"><span id="sec-topics" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></h1>
 </div>
 
 
@@ -356,9 +348,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mrgsolve)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-
 </div>
 <section id="summary" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">11.2.1</span> Summary</h3>
@@ -1132,12 +1121,12 @@ However, it is required to become familiar with some of the basics and certainly
 <h3 data-number="11.6.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">11.6.3</span> Functions</h3>
 <p>The following functions are hopefully understandable based on the function name. Consult https://cppreference.com for further details.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="er"># base^exponent</span></span>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="pp"># </span><span class="er">base^exponent</span></span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> d <span class="op">=</span> pow<span class="op">(</span>base<span class="op">,</span>exponent<span class="op">);</span></span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> e <span class="op">=</span> exp<span class="op">(</span><span class="dv">3</span><span class="op">);</span></span>
 <span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="er"># absolute value</span></span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="pp"># </span><span class="er">absolute value</span></span>
 <span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> f <span class="op">=</span> fabs<span class="op">(-</span><span class="dv">4</span><span class="op">);</span></span>
 <span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> g <span class="op">=</span> sqrt<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
@@ -1150,9 +1139,9 @@ However, it is required to become familiar with some of the basics and certainly
 <span id="cb107-16"><a href="#cb107-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-17"><a href="#cb107-17" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> k <span class="op">=</span> ceil<span class="op">(</span><span class="fl">4.2</span><span class="op">);</span></span>
 <span id="cb107-18"><a href="#cb107-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-19"><a href="#cb107-19" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> l <span class="op">=</span> std<span class="op">::</span>max<span class="op">(</span><span class="fl">0.0</span><span class="op">,</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">);</span></span>
+<span id="cb107-19"><a href="#cb107-19" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> l <span class="op">=</span> std<span class="op">::</span>max<span class="op">(</span><span class="dv">0</span><span class="er">.0</span><span class="op">,</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">);</span></span>
 <span id="cb107-20"><a href="#cb107-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-21"><a href="#cb107-21" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> m <span class="op">=</span> std<span class="op">::</span>min<span class="op">(</span><span class="fl">0.0</span><span class="op">,</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb107-21"><a href="#cb107-21" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> m <span class="op">=</span> std<span class="op">::</span>min<span class="op">(</span><span class="dv">0</span><span class="er">.0</span><span class="op">,</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="integer-division" class="level3" data-number="11.6.4">
@@ -1226,7 +1215,7 @@ However, it is required to become familiar with some of the basics and certainly
 <div class="cell">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>$GLOBAL </span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CP (CENT/VC)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CP </span><span class="op">(</span><span class="pp">CENT</span><span class="op">/</span><span class="pp">VC</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you write this into your model, the pre-processor will find every instance of <code>CP</code> and <strong>replace</strong> it with <code>(CENT/VC)</code>. This substitution happens right as the model is compiled; you won’t see this substitution happen anywhere, but think of it as literal replacement of <code>CP</code> with <code>(CENT/VC)</code>.</p>
 <p><strong>Note</strong>:</p>
@@ -1371,9 +1360,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1438,6 +1441,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
