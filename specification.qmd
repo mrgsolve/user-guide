@@ -782,7 +782,7 @@ through the `$ENV` block (@sec-block-env).
 
 
 ::: {.callout-tip}
-In addition to listing model variables for otput in the `$CAPTURE` block,
+In addition to listing model variables for output in the `$CAPTURE` block,
 users can "dynamically" capture model variables through the `capture` 
 argument to [`mread()`](https://mrgsolve.org/docs/reference/mread.html). These
 may be model parameters (listed in `$PARAM`) or user-defined model variables.
