@@ -76,7 +76,7 @@ if(EVID==33) {
 
 This is similar in functionality to `self.mevent()`.
 
-## Modeled doses
+## Modeled doses {#sec-modeled-doses}
 
 The previous examples showed you how to get the simulation to stop so you 
 can do something in `$MAIN`. In this section, we show you how to schedule 
@@ -112,6 +112,8 @@ Once the object is created, you can modify the following public members
 - `cmt`: the compartment number (`int`)
 - `rate`: the rate to infuse `amt` (`double`)
 - `now`: should the dose be given immediately? (`bool`)
+- `check_unique`: should the event log be checked for identical events? 
+  see @sec-event-log (`bool`)
 
 If you are using this (lower-level) interface, chances are you will want to 
 set at least `amt` and `cmt`.  As an example, we will dose 100 mg into 
@@ -139,3 +141,54 @@ self.mevector.push_back(ev);
 Again, this sequence should get called in either `$MAIN` or `$TABLE`. When that 
 code block finishes running (for the current record), `mrgsolve` will find the 
 event record and add that event to the simulation sequence. 
+
+## Event log - tracking duplicate events {#sec-event-log}
+
+The way modeled events are implemented in mrgsolve, it is possible to 
+inadvertently ask to execute the same event a large number of times. 
+
+For example, when we have the following code
+
+```{c, eval = FALSE}
+$PK
+double mt = self.mtime(244, 33);
+```
+
+mrgsolve only needs to know once to stop the model at `time = 244` with 
+`evid = 33`. Once that event is processed, we don't need more records piling up 
+at `time = 244` with that evid. 
+
+To make sure we only get one record with `evid = 33` at `time = 244`, mrgsolve
+keeps a log of modeled events and checks that log whenever a new  event comes 
+back from the model code. If there is already a record with `time = 244` and 
+`evid = 33`, it declines to schedule an additional / identical record in the 
+record stack; only one is needed. Once mrgsolve starts working on a new 
+individual, the event log is reset to allow events to get scheduled at any time
+for that individual. 
+
+Currently mrgsolve checks the following event attributes for uniqueness
+
+- `time` - event time
+- `evid` - event id
+- `amt` - dose amount
+- `cmt` - dose compartment
+
+An exception to this check for uniqueness is when the `now` attribute is set
+on modeled events (@sec-modeled-doses); this most commonly happens with doses
+that the user wants to trigger immediately. Because these events happen "now", 
+we assume that you really want this event to happen; that is, we assume that 
+some code is in place that has checked to make sure it is the right `time` to 
+execute this event. A similar argument could be made for _any_ dosing event, 
+but for the time being, doses that are scheduled for the future (even doses
+that we want to happen at the current time but are not marked with the `now`
+attribute). 
+
+I think this is the behavior we want _most of the time_. In case you do want 
+multiple doses into the same compartment with the same amount at the same time, 
+there is a `check_unique` attribute that you can set to `false`. This will 
+bypass the check of the event log and execute that event without checking 
+for duplicates. The `check_unique` attribute is only needed for events 
+scheduled for the future (not `now`). Using the `check_unique` attribute to 
+bypass the check of the event log could theoretically help simulation speed 
+when a large number of events are added to the log. I don't expect a huge 
+speed difference, but it might be worth a try.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.507">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -72,12 +78,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -87,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">mrgsolve user guide</a> 
@@ -187,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -233,29 +239,31 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Introduction</h1>
-<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html"><span>Chapter&nbsp;2</span></a> on model specification, <a href="components.html"><span>Chapter&nbsp;1</span></a> on model components and <a href="sequence.html"><span>Chapter&nbsp;7</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
+<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a> on model specification, <a href="components.html" class="quarto-xref"><span>Chapter&nbsp;1</span></a> on model components and <a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
 <p>Please feel free to ask questions about anything mrgsolve-related on the issue tracker on the main github repo: https://github.com/metrumresearchgroup/mrgsolve/issues.</p>
 <section id="overview" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="overview">Overview</h2>
 <p>If you are accessing the user guide via html, you should be able to see a table of contents on the left. That has a lot of detail in there so I’m going to give you high-level overview of what is here (the high-level should be pretty clear in the pdfbook).</p>
 <ul>
-<li><a href="components.html"><span>Chapter&nbsp;1</span></a> tells you about what is in the mrgsolve model object (like parameters, compartments, C++ functions and the like)</li>
-<li><a href="specification.html"><span>Chapter&nbsp;2</span></a> tells you about model specification. There are two main sections to this chapter: <a href="specification.html#sec-code-blocks"><span>Section&nbsp;2.2</span></a>) lists the different model code blocks and <a href="specification.html#sec-variables-macros"><span>Section&nbsp;2.3</span></a>) lists the different variables that you can get (or set) in the different code blocks</li>
-<li><a href="datasets.html"><span>Chapter&nbsp;3</span></a> shows you how to format input data sets</li>
-<li><a href="event.html"><span>Chapter&nbsp;4</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
-<li><a href="matrix.html"><span>Chapter&nbsp;5</span></a> shows how to work with model matrices</li>
-<li><a href="output.html"><span>Chapter&nbsp;6</span></a> tells you about the simulated output object and how you can work with it</li>
-<li><a href="sequence.html"><span>Chapter&nbsp;7</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
-<li><a href="steady-state.html"><span>Chapter&nbsp;8</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
-<li><a href="plugins.html"><span>Chapter&nbsp;9</span></a> talks about different plugins you can use for more advanced modeling</li>
-<li><a href="mtime.html"><span>Chapter&nbsp;10</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
-<li><a href="topics.html"><span>Chapter&nbsp;11</span></a> is a collection of applied examples on different topics</li>
-<li><a href="q-and-a.html"><span>Chapter&nbsp;12</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
-<li><a href="install.html"><span>Chapter&nbsp;13</span></a> provides links to some Wiki pages that can help with installation</li>
+<li><a href="components.html" class="quarto-xref"><span>Chapter&nbsp;1</span></a> tells you about what is in the mrgsolve model object (like parameters, compartments, C++ functions and the like)</li>
+<li><a href="specification.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a> tells you about model specification. There are two main sections to this chapter: <a href="specification.html#sec-code-blocks" class="quarto-xref"><span>Section&nbsp;2.2</span></a>) lists the different model code blocks and <a href="specification.html#sec-variables-macros" class="quarto-xref"><span>Section&nbsp;2.3</span></a>) lists the different variables that you can get (or set) in the different code blocks</li>
+<li><a href="datasets.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a> shows you how to format input data sets</li>
+<li><a href="event.html" class="quarto-xref"><span>Chapter&nbsp;4</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
+<li><a href="matrix.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a> shows how to work with model matrices</li>
+<li><a href="output.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a> tells you about the simulated output object and how you can work with it</li>
+<li><a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
+<li><a href="steady-state.html" class="quarto-xref"><span>Chapter&nbsp;8</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
+<li><a href="plugins.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a> talks about different plugins you can use for more advanced modeling</li>
+<li><a href="mtime.html" class="quarto-xref"><span>Chapter&nbsp;10</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
+<li><a href="topics.html" class="quarto-xref"><span>Chapter&nbsp;11</span></a> is a collection of applied examples on different topics</li>
+<li><a href="q-and-a.html" class="quarto-xref"><span>Chapter&nbsp;12</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
+<li><a href="install.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> provides links to some Wiki pages that can help with installation</li>
 </ul>
 </section>
 <section id="pdf-version" class="level2 unnumbered">
@@ -271,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Gallery: <a href="https://github.com/mrgsolve/gallery">github.com/mrgsolve/gallery</a></li>
 </ul>
 <hr>
-<p>This book was assembled on Thu Aug 17 16:12:29 2023 with mrgsolve version 1.1.1.</p>
+<p>This book was assembled on Sun Nov 19 22:22:24 2023 with mrgsolve version 1.2.0.9000.</p>
 
 
 </section>
@@ -357,10 +365,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -370,8 +377,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -384,6 +400,135 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -427,6 +572,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -452,6 +598,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -515,12 +687,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./components.html" class="pagination-link">
+      <a href="./components.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Model components</span>">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Model components</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
