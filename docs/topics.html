@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -600,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-topic-parameter-update" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="sec-topic-parameter-update"><span class="header-section-number">11.3</span> Updating parameters</h2>
-<p>The parameter list was introduced in <a href="components.html#sec-component-param" class="quarto-xref"><span>Section&nbsp;1.1</span></a> and the <code>$PARAM</code> code block was shown in <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>. Once a model is compiled, the names and number of parameters in a model is fixed. However, the values of parameters can be changed: parameters may be updated either by the user (in <code>R</code>) or by <code>mrgsolve</code> (in the <code>C++</code> simulation engine, as the simulation proceeds).</p>
+<p>The parameter list was introduced in <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a> and the <code>$PARAM</code> code block was shown in <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>. Once a model is compiled, the names and number of parameters in a model is fixed. However, the values of parameters can be changed: parameters may be updated either by the user (in <code>R</code>) or by <code>mrgsolve</code> (in the <code>C++</code> simulation engine, as the simulation proceeds).</p>
 <ul>
 <li>To update in <code>R</code>, use the <code>param()</code> function (see examples below)</li>
 <li>To have <code>mrgsolve</code> update the parameters, attach columns to your data set (either <code>data_set</code> or <code>idata_set</code>) with the same name as items in the parameter list</li>
@@ -664,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 .  KA   1.7   | VC   23.1</code></pre>
 </div>
 </div>
-<p>But whatever you’ve done in <code>R</code>, there is a base set (with values) to use. See <a href="#sec-topic-parameter-update-base" class="quarto-xref"><span>Section&nbsp;11.3.2</span></a> for a more detailed discussion of using <code>param()</code> to updated the base list.</p>
+<p>But whatever you’ve done in <code>R</code>, there is a base set (with values) to use. See <a href="#sec-topic-parameter-update-base" class="quarto-xref"><span>Section 11.3.2</span></a> for a more detailed discussion of using <code>param()</code> to updated the base list.</p>
 <p><strong>Parameters can also be updated during the simulation run</strong></p>
 <p>Parameters can be updated by putting columns in <code>idata</code> set or <code>data_set</code> that have the same name as one of the parameters in the parameter list. But there is no changing values in the base parameter set once the simulation starts.<br>
 That is, the following model specification will not compile:</p>
@@ -782,7 +783,7 @@ Let <code>mrgsolve</code> do the updating.</p>
 . 5:   1    4    0  5 23.1 1.7 10</code></pre>
 </div>
 </div>
-<p>For more information on time-varying covariates (parameters), see <a href="#sec-topics-time-varying" class="quarto-xref"><span>Section&nbsp;11.8</span></a> and <a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>.</p>
+<p>For more information on time-varying covariates (parameters), see <a href="#sec-topics-time-varying" class="quarto-xref"><span>Section 11.8</span></a> and <a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a>.</p>
 <p><strong>Parameters are carried back when first record isn’t at <code>time == 0</code></strong></p>
 <p>What about this?</p>
 <div class="cell">
@@ -1375,7 +1376,7 @@ However, it is required to become familiar with some of the basics and certainly
 <div class="cell">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> <span class="fu">mrgsim</span>(<span class="at">nocb =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>There is additional information about the sequence of events that takes place during system advance in <a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>.</p>
+<p>There is additional information about the sequence of events that takes place during system advance in <a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a>.</p>
 
 
 </section>
@@ -1509,27 +1510,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1544,10 +1524,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1556,8 +1540,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

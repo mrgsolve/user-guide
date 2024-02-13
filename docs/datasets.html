@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -278,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Please see the mrgsolve help topic <code>?exdatasets</code> for examples of all of the data sets discussed in this chapter. The example data sets are embedded in the mrgsolve package and may be used at any time.</p>
 <section id="sec-datasets" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-datasets"><span class="header-section-number">3.1</span> Overview</h2>
-<p>Data sets are the primary mechanism for establishing the scope of your simulations in <code>mrsolve</code>, including individuals, interventions, observation times, and parameter values. For both <code>data_set</code> and <code>idata_set</code> (see below), you may include columns in the data sets that have the same names as the parameters in your model (<a href="components.html#sec-component-param" class="quarto-xref"><span>Section&nbsp;1.1</span></a>, <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>). mrgsolve can recognize these columns and update the parameter list as the simulation proceeds. This process is of key importance when planning and executing complex simulations and is further discussed in section <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section&nbsp;11.3</span></a>.</p>
+<p>Data sets are the primary mechanism for establishing the scope of your simulations in <code>mrsolve</code>, including individuals, interventions, observation times, and parameter values. For both <code>data_set</code> and <code>idata_set</code> (see below), you may include columns in the data sets that have the same names as the parameters in your model (<a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>, <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>). mrgsolve can recognize these columns and update the parameter list as the simulation proceeds. This process is of key importance when planning and executing complex simulations and is further discussed in section <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 11.3</span></a>.</p>
 </section>
 <section id="sec-data-set" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-data-set"><span class="header-section-number">3.2</span> Event data sets (<code>data</code>)</h2>
@@ -300,19 +301,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>cmt</code> or <code>CMT</code>: the dosing compartment number. This may also be a character value naming the compartment name. The compartment number must be consistent with the number of compartments in the model for dosing records (<code>evid</code>==1).<br>
 For observation records, a <code>cmt</code> value of 0 is acceptable. Use a negative compartment number with <code>evid</code> 2 to turn a compartment off.<br>
 </p></li>
-<li><p><code>rate</code> or <code>RATE</code>: if non-zero and <code>evid=1</code> or <code>evid=4</code>, implements a zero-order infusion of duration <code>F_CMT*amt/rate</code>, where <code>F_CMT</code> is the bioavailability fraction for the dosing compartment. Use <code>rate = -1</code> to model the infusion rate and <code>rate = -2</code> to model the infusion duration, both in <code>$MAIN</code> (see <a href="specification.html#sec-block-main" class="quarto-xref"><span>Section&nbsp;2.2.8</span></a>, <a href="specification.html#sec-spec-f" class="quarto-xref"><span>Section&nbsp;2.3.32</span></a>, <a href="specification.html#sec-spec-r" class="quarto-xref"><span>Section&nbsp;2.3.34</span></a>, <a href="specification.html#sec-spec-d" class="quarto-xref"><span>Section&nbsp;2.3.36</span></a>).</p></li>
+<li><p><code>rate</code> or <code>RATE</code>: if non-zero and <code>evid=1</code> or <code>evid=4</code>, implements a zero-order infusion of duration <code>F_CMT*amt/rate</code>, where <code>F_CMT</code> is the bioavailability fraction for the dosing compartment. Use <code>rate = -1</code> to model the infusion rate and <code>rate = -2</code> to model the infusion duration, both in <code>$MAIN</code> (see <a href="specification.html#sec-block-main" class="quarto-xref"><span>Section 2.2.8</span></a>, <a href="specification.html#sec-spec-f" class="quarto-xref"><span>Section 2.3.32</span></a>, <a href="specification.html#sec-spec-r" class="quarto-xref"><span>Section 2.3.34</span></a>, <a href="specification.html#sec-spec-d" class="quarto-xref"><span>Section 2.3.36</span></a>).</p></li>
 <li><p><code>ii</code> or <code>II</code>: inter-dose interval; <code>ii=24</code> means daily dosing when the model time unit is hours</p></li>
 <li><p><code>addl</code> or <code>ADDL</code>: additional doses; a non-zero value in <code>addl</code> requires non-zero <code>ii</code> on the same record</p></li>
 <li><p><code>ss</code> or <code>SS</code> steady state indicator; use 1 to implement steady-state dosing; 0 otherwise. mrgsolve also recognizes dosing records where <code>ss=2</code>. This allows combination of different steady state dosing regimens under linear kinetics (e.g.&nbsp;10 mg QAM and 20 mg QPM daily to steady state).</p></li>
 </ul>
 <p>The column names in the preceding list were written either as lower case form (e.g.&nbsp;<code>amt</code>) or upper case form (e.g.&nbsp;<code>AMT</code>). Either may be used, however the data set will be checked for consistency of usage. An error will be issued in case a mixture of lower and upper case names are found.</p>
-<p>In addition to these special column names, mrgsolve will recognize columns in <code>data_set</code> that have the same name as items in the parameter list (see <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section&nbsp;1.1</span></a>). When mrgsolve sees that the names match up, it will update the values of those matching names based on what it finds as it moves through the data set (see <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section&nbsp;11.3</span></a>).</p>
+<p>In addition to these special column names, mrgsolve will recognize columns in <code>data_set</code> that have the same name as items in the parameter list (see <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>). When mrgsolve sees that the names match up, it will update the values of those matching names based on what it finds as it moves through the data set (see <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 11.3</span></a>).</p>
 <section id="two-types-of-data_set" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="two-types-of-data_set"><span class="header-section-number">3.2.1</span> Two types of <code>data_set</code></h3>
 <p>mrgsolve distinguishes between two types of data sets: data sets that have <em>at least one observation record</em> (<code>evid=0</code>) and data sets that have <em>no records with <code>evid=0</code></em>.</p>
 <ul>
-<li><strong>Full data sets</strong> have a mix of observations and dosing events (likely, but not required). When mrgsolve finds one record with <code>evid=0</code>, it assumes that <strong>ALL</strong> output observation times are to come from the data set. In this case the simulation output time grid discussed in <a href="components.html#sec-component-stime" class="quarto-xref"><span>Section&nbsp;1.3</span></a> is ignored and only observations found in the data set appear in the simulated output. Use full data sets when you want a highly customized sampling schedule or you are working with a clinical data set.</li>
-<li><strong>Condensed data sets</strong> have no records with <code>evid=0</code>. In this case, mrgsolve will fill the simulated output with observations at times specified by the output time grid (<a href="components.html#sec-component-stime" class="quarto-xref"><span>Section&nbsp;1.3</span></a> and see <a href="topics.html#sec-topic-designs" class="quarto-xref"><span>Section&nbsp;11.5</span></a> too). These are very convenient to use because there is less data assembly burden and output data sets can easily be created with very dense sampling scheme or highly customized sampling schemes with very little work. Use a condensed data set when you want a uniform set of sampling times for all subjects in the data set.</li>
+<li><strong>Full data sets</strong> have a mix of observations and dosing events (likely, but not required). When mrgsolve finds one record with <code>evid=0</code>, it assumes that <strong>ALL</strong> output observation times are to come from the data set. In this case the simulation output time grid discussed in <a href="components.html#sec-component-stime" class="quarto-xref"><span>Section 1.3</span></a> is ignored and only observations found in the data set appear in the simulated output. Use full data sets when you want a highly customized sampling schedule or you are working with a clinical data set.</li>
+<li><strong>Condensed data sets</strong> have no records with <code>evid=0</code>. In this case, mrgsolve will fill the simulated output with observations at times specified by the output time grid (<a href="components.html#sec-component-stime" class="quarto-xref"><span>Section 1.3</span></a> and see <a href="topics.html#sec-topic-designs" class="quarto-xref"><span>Section 11.5</span></a> too). These are very convenient to use because there is less data assembly burden and output data sets can easily be created with very dense sampling scheme or highly customized sampling schemes with very little work. Use a condensed data set when you want a uniform set of sampling times for all subjects in the data set.</li>
 </ul>
 <p><strong>Example of condensed data set</strong></p>
 <div class="cell">
@@ -444,9 +445,9 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <ul>
 <li><strong>Individual-level parameters</strong>: Just prior to simulating any individual, mrgsolve checks the appropriate row in <code>idata</code> (if supplied) for any columns with parameter names. If parameter names are found, the parameter list is updated and that update remains in effect for the duration of that individual’s data records.</li>
 <li><strong>Individual- or group-level designs</strong>: Each individual or group of individual may be assigned a different sampling design. For example, individuals in arm 1 may need to be simulated for 4 weeks whereas individuals in arm 2 may need to be simulated for 8 weeks. <code>idata</code> may be used to identify one of several sampling designs for each individual or group of individuals.</li>
-<li><strong>Individual-level compartment initialization</strong>: if a model has a compartment called <code>CMT</code> and mrgsolve finds a column in <code>idata</code> called <code>CMT_0</code>, the value of <code>CMT_0</code> will be used to initialize that compartment with, potentially a different value for each individual. Note that there are several other ways to initialize compartments detailed in <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section&nbsp;11.2</span></a>.</li>
+<li><strong>Individual-level compartment initialization</strong>: if a model has a compartment called <code>CMT</code> and mrgsolve finds a column in <code>idata</code> called <code>CMT_0</code>, the value of <code>CMT_0</code> will be used to initialize that compartment with, potentially a different value for each individual. Note that there are several other ways to initialize compartments detailed in <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section 11.2</span></a>.</li>
 </ul>
-<p><code>idata_set</code> are entered as <code>data.frame</code> with one unique <code>ID</code> per row. In mrgsolve documentation, we refer to individual data sets <code>idata</code> or <code>idata_set</code> to distinguish them from event data sets (see <a href="#sec-data-set" class="quarto-xref"><span>Section&nbsp;3.2</span></a>).</p>
+<p><code>idata_set</code> are entered as <code>data.frame</code> with one unique <code>ID</code> per row. In mrgsolve documentation, we refer to individual data sets <code>idata</code> or <code>idata_set</code> to distinguish them from event data sets (see <a href="#sec-data-set" class="quarto-xref"><span>Section 3.2</span></a>).</p>
 <p>An <code>idata_set</code> looks like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(exidata)</span>
@@ -695,27 +696,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -730,10 +710,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -742,8 +726,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

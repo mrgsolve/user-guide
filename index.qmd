@@ -1,4 +1,6 @@
-
+---
+freeze: false
+---
 
 ```{r, include = FALSE}
 source("setup.R")

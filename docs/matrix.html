@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -275,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Model matrices include <code>$OMEGA</code> (for subject-level variability) and <code>$SIGMA</code> (for residual unexplained variability). These matrices are coded into the model file (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section&nbsp;2.2.17</span></a> and <a href="specification.html#sec-block-sigma" class="quarto-xref"><span>Section&nbsp;2.2.18</span></a>) and can be manipulated in different ways via the model object. Because, <code>$OMEGA</code> and <code>$SIGMA</code> matrices are handled using identical approach (only the names of the functions change), we will focus on working with <code>$OMEGA</code> in the following examples with references to the equivalent functions that can be used to work on <code>$SIGMA</code>. Also note that, for simplicity, we will not compile the examples presented in this chapter.</p>
+<p>Model matrices include <code>$OMEGA</code> (for subject-level variability) and <code>$SIGMA</code> (for residual unexplained variability). These matrices are coded into the model file (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section 2.2.17</span></a> and <a href="specification.html#sec-block-sigma" class="quarto-xref"><span>Section 2.2.18</span></a>) and can be manipulated in different ways via the model object. Because, <code>$OMEGA</code> and <code>$SIGMA</code> matrices are handled using identical approach (only the names of the functions change), we will focus on working with <code>$OMEGA</code> in the following examples with references to the equivalent functions that can be used to work on <code>$SIGMA</code>. Also note that, for simplicity, we will not compile the examples presented in this chapter.</p>
 <section id="basics" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="basics"><span class="header-section-number">5.1</span> Basics</h2>
 <section id="simple-matrix-lists" class="level3" data-number="5.1.1">
@@ -650,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="collapse-on-load" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="collapse-on-load"><span class="header-section-number">5.2.1</span> Collapse on load</h3>
 <p>You can also collapse <code>$OMEGA</code> or <code>$SIGMA</code> from within the model specification file so that the matrices are collapsed on load.</p>
-<p>In the <code>$SET</code> set block (<a href="specification.html#sec-block-set" class="quarto-xref"><span>Section&nbsp;2.2.19</span></a>), pass either <code>collapse_omega</code> or <code>collapse_sigma</code> set to <code>TRUE</code></p>
+<p>In the <code>$SET</code> set block (<a href="specification.html#sec-block-set" class="quarto-xref"><span>Section 2.2.19</span></a>), pass either <code>collapse_omega</code> or <code>collapse_sigma</code> set to <code>TRUE</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>SET collapse_omega <span class="ot">=</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -666,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Like the values of parameters in the parameter list, we may want to update the values in <code>$OMEGA</code> and <code>$SIGMA</code> matrices. We can do so without re-compiling the model.</p>
 <section id="matrix-helper-functions" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="matrix-helper-functions"><span class="header-section-number">5.3.1</span> Matrix helper functions</h3>
-<p><code>mrgsolve</code> keeps <code>$OMEGA</code> and <code>$SIGMA</code> in block matrices (regardless of whether the off-diagonal elements are zeros or not). Recall that in the model specification file we can enter data for <code>$OMEGA</code> and <code>$SIGMA</code> as the lower triangle of the matrix (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section&nbsp;2.2.17</span></a>). In <code>R</code>, we need to provide a matrix (as an <code>R</code> object). <code>mrgsolve</code> provides some convenience functions to help … allowing the user to enter lower diagonals instead of the full matrix.</p>
+<p><code>mrgsolve</code> keeps <code>$OMEGA</code> and <code>$SIGMA</code> in block matrices (regardless of whether the off-diagonal elements are zeros or not). Recall that in the model specification file we can enter data for <code>$OMEGA</code> and <code>$SIGMA</code> as the lower triangle of the matrix (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section 2.2.17</span></a>). In <code>R</code>, we need to provide a matrix (as an <code>R</code> object). <code>mrgsolve</code> provides some convenience functions to help … allowing the user to enter lower diagonals instead of the full matrix.</p>
 <p><code>dmat()</code> for diagonal matrix</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmat</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1085,27 +1086,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -1120,10 +1100,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1132,8 +1116,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

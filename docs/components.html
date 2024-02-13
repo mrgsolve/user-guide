@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -295,31 +296,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The parameter list is an updatable set of name-value pairs. Referencing the name of an item in the parameter list will substitute the current value associated with that name. While the name “parameter” may have a certain connotation in the modeling world, in <code>mrgsolve</code> a “parameter” could be any category of numeric data: covariates (e.g.&nbsp;<code>WT</code>, <code>AGE</code>, <code>SEX</code>), flags, other numeric data that we commonly call “parameter” (e.g.&nbsp;<code>CL</code> or <code>VC</code>).</p>
 <p>The parameter list is declared in the code block <code>$PARAM</code>. While there may be multiple <code>$PARAM</code> blocks in a model, these are condensed to a single parameter list stored in the model object. The names and numbers of all parameters in the model must be declared at the time that the model is compiled. Also, a default value for each parameter must be declared at model compile time, but the value of each parameter may be updated in one of several ways.</p>
 <p>The parameters in a model object can be queried or updated with the <code>param()</code> function.</p>
-<p>See also: <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>, <code>?param</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
+<p>See also: <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>, <code>?param</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 <section id="central-role-of-parameters-in-planning-simulations" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="central-role-of-parameters-in-planning-simulations"><span class="header-section-number">1.1.1</span> Central role of parameters in planning simulations</h3>
 <p>The data items in the parameter list are more than just values associated with a name. When an name is added to the parameter list, that name becomes a key word that <code>mrgsolve</code> will start to recognize in input data sets or when manipulating the model object.</p>
 <p>For example, when you want to include a covariate in the model, say weight (<code>WT</code>), you’ll include a column in the data set called <code>WT</code> that will indicate the weight of this or that patient. It is crucial that you also list <code>WT</code> in <code>$PARAM</code> with some default value. It helps if that value is sensible too. When <code>mrgsolve</code> receives the data set prior to simulating, the <code>WT</code> column is matched up with the <code>WT</code> parameter name. As <code>mrgsolve</code> works its way through the input data set (from person to person or from time to time), the value of <code>WT</code> is updated so that the symbol <code>WT</code> in <code>$MAIN</code> or <code>$ODE</code> or <code>$TABLE</code> always points to the value of <code>WT</code>. If the <code>WT</code> name is not in the parameter list, it won’t matter if it is in the data set or not. Only listing a name in <code>$PARAM</code> gets it “into the game”.</p>
-<p>Understanding the parameter update mechanism is very important for planning complicated simulations with <code>mrgsolve</code>. Please see the information in <a href="datasets.html#sec-datasets" class="quarto-xref"><span>Section&nbsp;3.1</span></a> and in <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section&nbsp;11.3</span></a>.</p>
+<p>Understanding the parameter update mechanism is very important for planning complicated simulations with <code>mrgsolve</code>. Please see the information in <a href="datasets.html#sec-datasets" class="quarto-xref"><span>Section 3.1</span></a> and in <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 11.3</span></a>.</p>
 </section>
 </section>
 <section id="sec-component-init" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-component-init"><span class="header-section-number">1.2</span> Compartment list</h2>
 <p>Like the parameter list, the compartment list is a series of name-value pairs. The compartment list defines the number, names, and initial values of each compartment in the model. The names, numbers, and order of the compartment in a model is established at the time of model compile and changes to the compartment list require re-compilation of the model.</p>
 <p>Compartments are declared in one of two code blocks: <code>$INIT</code> and <code>$CMT</code>. Nominal initial values must be supplied for each compartment. The main difference between <code>$INIT</code> and <code>$CMT</code> is that <code>$CMT</code> assumes a default initial value of 0 for each compartment; thus only compartment names are entered. When using <code>$INIT</code>, both names and values must be explicitly stated for each compartment.</p>
-<p>The initial values for each compartment can be queried with the <code>init()</code> function. There are several different ways to set the initial conditions in a model; <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section&nbsp;11.2</span></a> illustrates several of these.</p>
-<p>See also: <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section&nbsp;11.2</span></a> and <code>?init</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
+<p>The initial values for each compartment can be queried with the <code>init()</code> function. There are several different ways to set the initial conditions in a model; <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section 11.2</span></a> illustrates several of these.</p>
+<p>See also: <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section 11.2</span></a> and <code>?init</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
 <section id="sec-component-stime" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="sec-component-stime"><span class="header-section-number">1.3</span> Simulation time grid</h2>
 <p>The <code>mrgsolve</code> model object stores the parameters for the series of time points to be output for a a simulation. This is the default output time grid that will be used if not over-ridden by another mechanism.</p>
 <p>The elements of the simulation time grid are: <code>start</code>, <code>end</code>, <code>delta</code> and <code>add</code>. <code>start</code>, <code>end</code>, <code>delta</code> are passed to <code>seq()</code> as <code>from</code>, <code>to</code>, and <code>by</code>, respectively. <code>add</code> is any arbitrary vector of additional times to simulate.</p>
 <p>The simulation time grid in a model object may be queried with the <code>stime()</code> function or by printing the model object to the <code>R</code> console.</p>
-<p>See also <a href="datasets.html#sec-data-set" class="quarto-xref"><span>Section&nbsp;3.2</span></a> for discussion of the simulation time grid and input data sets and <a href="#sec-component-tgrid" class="quarto-xref"><span>Section&nbsp;1.3.1</span></a> and <a href="topics.html#sec-topic-tgrid" class="quarto-xref"><span>Section&nbsp;11.4</span></a> for using time grid objects .</p>
+<p>See also <a href="datasets.html#sec-data-set" class="quarto-xref"><span>Section 3.2</span></a> for discussion of the simulation time grid and input data sets and <a href="#sec-component-tgrid" class="quarto-xref"><span>Section 1.3.1</span></a> and <a href="topics.html#sec-topic-tgrid" class="quarto-xref"><span>Section 11.4</span></a> for using time grid objects .</p>
 <section id="sec-component-tgrid" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-component-tgrid"><span class="header-section-number">1.3.1</span> <code>tgrid</code> objects</h3>
 <p>A <code>tgrid</code> object has <code>start</code>, <code>end</code>, <code>delta</code> and <code>add</code> attributes. This object is independent of the model object. <code>tgrid</code> objects may be created and combined to create complex sampling designs.</p>
-<p>See <a href="topics.html#sec-topic-tgrid" class="quarto-xref"><span>Section&nbsp;11.4</span></a> for examples and usage.</p>
+<p>See <a href="topics.html#sec-topic-tgrid" class="quarto-xref"><span>Section 11.4</span></a> for examples and usage.</p>
 </section>
 </section>
 <section id="solver-settings" class="level2" data-number="1.4">
@@ -436,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-preamble-function" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="the-preamble-function"><span class="header-section-number">1.5.1</span> The <code>$PREAMBLE</code> function</h3>
 <p>The <code>PREAMBLE</code> function gets called only once, just prior to processing the first record of the data set. This function is composed of <code>C++</code> code and is used to initialize variables and get them set up prior to starting on the problem.</p>
-<p>See <a href="specification.html#sec-block-preamble" class="quarto-xref"><span>Section&nbsp;2.2.14</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-preamble" class="quarto-xref"><span>Section 2.2.14</span></a> for details.</p>
 </section>
 <section id="the-main-function" class="level3" data-number="1.5.2">
 <h3 data-number="1.5.2" class="anchored" data-anchor-id="the-main-function"><span class="header-section-number">1.5.2</span> The <code>$MAIN</code> function</h3>
@@ -448,27 +449,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Add between-subject variability to quantities to structural model parameters (e.g.&nbsp;<code>CL</code> or <code>VC</code>).</li>
 </ul>
 <p>In addition to getting called once per record, the <code>MAIN</code> function may be called several times prior to starting the simulation run. The <code>MAIN</code> function is also called whenever the user queries the compartment list.</p>
-<p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<a href="#sec-model-functions" class="quarto-xref"><span>Section&nbsp;1.5</span></a>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
+<p>mrgsolve allows you access compartment amounts in the <code>MAIN</code> function. But it is important to remember the calling order of these model functions (<a href="#sec-model-functions" class="quarto-xref"><span>Section 1.5</span></a>): because <code>MAIN</code> is called <em>before</em> the system advances, the compartment amounts inside this function will reflect the pre-advance values. This is in contrast to accessing compartment amounts inside the <code>TABLE</code> function, which will reflect the values <em>after</em> the system advances. While there are some use cases where it is useful to check the pre-advance compartment amounts in <code>MAIN</code>, most applications should interact with compartment amounts after the system advances in <code>TABLE</code>.</p>
 <p>The <code>MAIN</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$PK</code> block. You can use either <code>$MAIN</code> or <code>$PK</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-main" class="quarto-xref"><span>Section&nbsp;2.2.8</span></a> and <a href="specification.html#sec-block-pk" class="quarto-xref"><span>Section&nbsp;2.2.9</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-main" class="quarto-xref"><span>Section 2.2.8</span></a> and <a href="specification.html#sec-block-pk" class="quarto-xref"><span>Section 2.2.9</span></a> for details.</p>
 </section>
 <section id="the-ode-function" class="level3" data-number="1.5.3">
 <h3 data-number="1.5.3" class="anchored" data-anchor-id="the-ode-function"><span class="header-section-number">1.5.3</span> The <code>$ODE</code> function</h3>
 <p>The <code>ODE</code> function is where the user writes the model differential equations. Any derived quantity that depends on a state variable and is used to advanced the system must be calculated inside <code>$ODE</code>. But, this function is called repeatedly during the simulation run, so any calculation that <strong>can</strong> be moved out of <code>$ODE</code> (for example: to <code>$MAIN</code>) should be.</p>
 <p>The <code>ODE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$DES</code> block. You can use either <code>$ODE</code> or <code>$DES</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-ode" class="quarto-xref"><span>Section&nbsp;2.2.10</span></a> and <a href="specification.html#sec-block-des" class="quarto-xref"><span>Section&nbsp;2.2.11</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-ode" class="quarto-xref"><span>Section 2.2.10</span></a> and <a href="specification.html#sec-block-des" class="quarto-xref"><span>Section 2.2.11</span></a> for details.</p>
 </section>
 <section id="the-table-function" class="level3" data-number="1.5.4">
 <h3 data-number="1.5.4" class="anchored" data-anchor-id="the-table-function"><span class="header-section-number">1.5.4</span> The <code>$TABLE</code> function</h3>
 <p>The <code>TABLE</code> function is called <strong>after</strong> the solver advances in time. The purpose of <code>TABLE</code> is to allow the user to interact with the values of the state variables after advancing, potentially derive new variables, and to insert different outputs into the table of simulated results.</p>
 <p>The <code>TABLE</code> block contains code that is equivalent to the code you’d write in NONMEM’s <code>$ERROR</code> block. You can use either <code>$TABLE</code> or <code>$ERROR</code> in your mrgsolve model.</p>
-<p>See <a href="specification.html#sec-block-table" class="quarto-xref"><span>Section&nbsp;2.2.12</span></a> and <a href="specification.html#sec-block-error" class="quarto-xref"><span>Section&nbsp;2.2.13</span></a> for details.</p>
+<p>See <a href="specification.html#sec-block-table" class="quarto-xref"><span>Section 2.2.12</span></a> and <a href="specification.html#sec-block-error" class="quarto-xref"><span>Section 2.2.13</span></a> for details.</p>
 </section>
 </section>
 <section id="random-effect-variances" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="random-effect-variances"><span class="header-section-number">1.6</span> Random effect variances</h2>
 <p>The <code>mrgsolve</code> model object keeps track of a arbitrary number of block matrices that are used to simulate variates from multivariate normal distributions. Users can specify <code>OMEGA</code> matrices for simulating between-subject random effects (one draw per individual) or <code>SIGMA</code> matrices for simulating within-subject random effects (one draw per observation).</p>
-<p>See <a href="matrix.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a> for complete details on how to work with <code>OMEGA</code> and <code>SIGMA</code> in your mrgsolve model.</p>
+<p>See <a href="matrix.html" class="quarto-xref"><span>Chapter 5</span></a> for complete details on how to work with <code>OMEGA</code> and <code>SIGMA</code> in your mrgsolve model.</p>
 <section id="omega" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="omega"><span class="header-section-number">1.6.1</span> <code>OMEGA</code></h3>
 <p>The matrices are specified in <code>$OMEGA</code> blocks in the model specification file.</p>
@@ -612,27 +613,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -647,10 +627,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -659,8 +643,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

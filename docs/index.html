@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -63,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -245,25 +246,25 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Introduction</h1>
-<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a> on model specification, <a href="components.html" class="quarto-xref"><span>Chapter&nbsp;1</span></a> on model components and <a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
+<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html" class="quarto-xref"><span>2&nbsp; Model specification</span></a> on model specification, <a href="components.html" class="quarto-xref"><span>1&nbsp; Model components</span></a> on model components and <a href="sequence.html" class="quarto-xref"><span>7&nbsp; Simulation sequence</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
 <p>Please feel free to ask questions about anything mrgsolve-related on the issue tracker on the main github repo: https://github.com/metrumresearchgroup/mrgsolve/issues.</p>
 <section id="overview" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="overview">Overview</h2>
 <p>If you are accessing the user guide via html, you should be able to see a table of contents on the left. That has a lot of detail in there so I’m going to give you high-level overview of what is here (the high-level should be pretty clear in the pdfbook).</p>
 <ul>
-<li><a href="components.html" class="quarto-xref"><span>Chapter&nbsp;1</span></a> tells you about what is in the mrgsolve model object (like parameters, compartments, C++ functions and the like)</li>
-<li><a href="specification.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a> tells you about model specification. There are two main sections to this chapter: <a href="specification.html#sec-code-blocks" class="quarto-xref"><span>Section&nbsp;2.2</span></a>) lists the different model code blocks and <a href="specification.html#sec-variables-macros" class="quarto-xref"><span>Section&nbsp;2.3</span></a>) lists the different variables that you can get (or set) in the different code blocks</li>
-<li><a href="datasets.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a> shows you how to format input data sets</li>
-<li><a href="event.html" class="quarto-xref"><span>Chapter&nbsp;4</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
-<li><a href="matrix.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a> shows how to work with model matrices</li>
-<li><a href="output.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a> tells you about the simulated output object and how you can work with it</li>
-<li><a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
-<li><a href="steady-state.html" class="quarto-xref"><span>Chapter&nbsp;8</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
-<li><a href="plugins.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a> talks about different plugins you can use for more advanced modeling</li>
-<li><a href="mtime.html" class="quarto-xref"><span>Chapter&nbsp;10</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
-<li><a href="topics.html" class="quarto-xref"><span>Chapter&nbsp;11</span></a> is a collection of applied examples on different topics</li>
-<li><a href="q-and-a.html" class="quarto-xref"><span>Chapter&nbsp;12</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
-<li><a href="install.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> provides links to some Wiki pages that can help with installation</li>
+<li><a href="components.html" class="quarto-xref"><span>1&nbsp; Model components</span></a> tells you about what is in the mrgsolve model object (like parameters, compartments, C++ functions and the like)</li>
+<li><a href="specification.html" class="quarto-xref"><span>2&nbsp; Model specification</span></a> tells you about model specification. There are two main sections to this chapter: <a href="specification.html#sec-code-blocks" class="quarto-xref"><span>2.2 Code blocks</span></a>) lists the different model code blocks and <a href="specification.html#sec-variables-macros" class="quarto-xref"><span>2.3 Variables and Macros</span></a>) lists the different variables that you can get (or set) in the different code blocks</li>
+<li><a href="datasets.html" class="quarto-xref"><span>3&nbsp; Input data sets</span></a> shows you how to format input data sets</li>
+<li><a href="event.html" class="quarto-xref"><span>4&nbsp; Event objects</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
+<li><a href="matrix.html" class="quarto-xref"><span>5&nbsp; Model Matrices</span></a> shows how to work with model matrices</li>
+<li><a href="output.html" class="quarto-xref"><span>6&nbsp; Simulated output</span></a> tells you about the simulated output object and how you can work with it</li>
+<li><a href="sequence.html" class="quarto-xref"><span>7&nbsp; Simulation sequence</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
+<li><a href="steady-state.html" class="quarto-xref"><span>8&nbsp; Steady state</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
+<li><a href="plugins.html" class="quarto-xref"><span>9&nbsp; Plugins</span></a> talks about different plugins you can use for more advanced modeling</li>
+<li><a href="mtime.html" class="quarto-xref"><span>10&nbsp; Modeled events</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
+<li><a href="topics.html" class="quarto-xref"><span>11&nbsp; Topics</span></a> is a collection of applied examples on different topics</li>
+<li><a href="q-and-a.html" class="quarto-xref"><span>12&nbsp; Questions and Answers</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
+<li><a href="install.html" class="quarto-xref"><span>13&nbsp; Installation</span></a> provides links to some Wiki pages that can help with installation</li>
 </ul>
 </section>
 <section id="pdf-version" class="level2 unnumbered">
@@ -279,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Gallery: <a href="https://github.com/mrgsolve/gallery">github.com/mrgsolve/gallery</a></li>
 </ul>
 <hr>
-<p>This book was assembled on Sat Dec 9 23:45:05 2023 with mrgsolve version 1.3.0.</p>
+<p>This book was assembled on Tue Feb 13 08:09:40 2024 with mrgsolve version 1.4.1.</p>
 
 
 </section>
@@ -414,27 +415,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -449,10 +429,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -461,8 +445,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

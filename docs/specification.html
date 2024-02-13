@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.507">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,6 +105,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -402,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL ncmt=1</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, we created a character vector of length 1 and saved it to the <code>R</code> object called <code>code</code>. The name of this object is irrelevant. But <code>code</code> will be passed into mrgsolve as the model definition. When mrgsolve gets a model like this along with a “name” for the model, mrgsolve will write the code to a file called <code>&lt;model-name&gt;.cpp</code> and read it right back in as if you had typed the code into this file (<a href="#sec-spec-separate-file" class="quarto-xref"><span>Section&nbsp;2.1.1</span></a>).</p>
+<p>Here, we created a character vector of length 1 and saved it to the <code>R</code> object called <code>code</code>. The name of this object is irrelevant. But <code>code</code> will be passed into mrgsolve as the model definition. When mrgsolve gets a model like this along with a “name” for the model, mrgsolve will write the code to a file called <code>&lt;model-name&gt;.cpp</code> and read it right back in as if you had typed the code into this file (<a href="#sec-spec-separate-file" class="quarto-xref"><span>Section 2.1.1</span></a>).</p>
 <p>To parse and load this model, use the <code>mcode()</code> command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"mymodel"</span>, code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,7 +540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code></p>
 <p>Use this block to make notes about the model. There are no restrictions on the text that gets entered here. mrgsolve does not routinely process the text in any way, except when rendering the model as a document. Frequently, we write the text here in markdown format so that it will render nicely in the model document. But this is completely optional.</p>
-<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section&nbsp;11.1</span></a> for an example.</p>
+<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section 11.1</span></a> for an example.</p>
 </section>
 <section id="sec-block-param" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-block-param"><span class="header-section-number">2.2.4</span> <code>$PARAM</code> &nbsp;</h3>
@@ -573,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Values are evaluated by the <code>R</code> interpreter</li>
 </ul>
 <p>The <code>@object</code> and <code>@as_object</code> options should name or return a named list of parameters.</p>
-<p>See also: <a href="#sec-block-input" class="quarto-xref"><span>Section&nbsp;2.2.5</span></a>, <a href="#sec-block-theta" class="quarto-xref"><span>Section&nbsp;2.2.23</span></a> and <a href="#sec-block-fixed" class="quarto-xref"><span>Section&nbsp;2.2.6</span></a>.</p>
+<p>See also: <a href="#sec-block-input" class="quarto-xref"><span>Section 2.2.5</span></a>, <a href="#sec-block-theta" class="quarto-xref"><span>Section 2.2.23</span></a> and <a href="#sec-block-fixed" class="quarto-xref"><span>Section 2.2.6</span></a>.</p>
 <p>See <code>?param</code> in the <code>R</code> help system after loading mrgsolve.</p>
 </section>
 <section id="sec-block-input" class="level3" data-number="2.2.5">
@@ -581,8 +609,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Syntax</strong>: R<br>
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code>, <code>@tag</code>, <code>@object</code>, <code>@as_object</code></p>
-<p>This block operates just like $PARAM (<a href="#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>), in that it is a way to introduce parameters in to the model. Additionally, the <code>@input</code> tag is added to the model parameters and input data sets will be checked for these parameters when <code>check_data_names()</code> is called.</p>
-<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>, <a href="#sec-block-theta" class="quarto-xref"><span>Section&nbsp;2.2.23</span></a>, <a href="#sec-block-fixed" class="quarto-xref"><span>Section&nbsp;2.2.6</span></a>.</p>
+<p>This block operates just like $PARAM (<a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>), in that it is a way to introduce parameters in to the model. Additionally, the <code>@input</code> tag is added to the model parameters and input data sets will be checked for these parameters when <code>check_data_names()</code> is called.</p>
+<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>, <a href="#sec-block-theta" class="quarto-xref"><span>Section 2.2.23</span></a>, <a href="#sec-block-fixed" class="quarto-xref"><span>Section 2.2.6</span></a>.</p>
 </section>
 <section id="sec-block-fixed" class="level3" data-number="2.2.6">
 <h3 data-number="2.2.6" class="anchored" data-anchor-id="sec-block-fixed"><span class="header-section-number">2.2.6</span> <code>$FIXED</code> &nbsp;</h3>
@@ -605,7 +633,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>$FIXED @annotated</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">:</span> <span class="fl">9.8</span> <span class="op">:</span> Acceleration due to gravity <span class="op">(</span>m<span class="op">/</span>s<span class="op">^</span><span class="dv">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a> and <a href="#sec-block-theta" class="quarto-xref"><span>Section&nbsp;2.2.23</span></a>.</p>
+<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="#sec-block-theta" class="quarto-xref"><span>Section 2.2.23</span></a>.</p>
 <p>Notes:</p>
 <ul>
 <li>Multiple blocks are allowed</li>
@@ -658,7 +686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For users who are familiar with NONMEM, <code>$MAIN</code> is similar to <code>$PK</code>.</p>
 <p><code>$MAIN</code> is wrapped into a <code>C++</code> function and compiled / loaded by mrgsolve.<br>
 The <code>MAIN</code> function gets called just prior to advancing the system from the current time to the next time for each record in the data set. <code>$MAIN</code> also gets called several times before starting the problem (<code>NEWIND == 0</code>) and just prior to simulating each individual (<code>NEWIND == 1</code>). Finally, <code>$MAIN</code> gets called every time the model initial conditions are queried with <code>init()</code>.</p>
-<p>New variables may be declared in <code>$MAIN</code>. See <a href="#sec-new-variables" class="quarto-xref"><span>Section&nbsp;2.5</span></a> for details.</p>
+<p>New variables may be declared in <code>$MAIN</code>. See <a href="#sec-new-variables" class="quarto-xref"><span>Section 2.5</span></a> for details.</p>
 <p>Examples:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> CMT <span class="op">]</span> CENT RESP</span>
@@ -692,7 +720,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 </div>
 <p>It is important to make sure that there is a <code>dxdt_</code> expression defined for every compartment listed in <code>$CMT</code> or <code>$INIT</code>, even if it is <code>dxdt_CMT = 0;</code></p>
 <p>The <code>$ODE</code> function is called repeatedly during a simulation run. So it is wise to do as many calculations as possible outside of <code>$ODE</code>, usually in <code>$MAIN</code>. But remember that any calculation that depends on an amount in a compartment and helps determine the <code>dxdt_</code> expression in a model must be written in <code>$ODE</code>.</p>
-<p>New variables may be declared in <code>$ODE</code>. See <a href="#sec-new-variables" class="quarto-xref"><span>Section&nbsp;2.5</span></a> for details.</p>
+<p>New variables may be declared in <code>$ODE</code>. See <a href="#sec-new-variables" class="quarto-xref"><span>Section 2.5</span></a> for details.</p>
 <p>For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>$CMT CENT RESP</span>
@@ -726,7 +754,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>NOTE</strong> mrgsolve formerly had a <code>table()</code> macro for inserting derived values into simulated output. This macro has been deprecated. The only way to insert derived values into the simulated output is via <code>$CAPTURE</code>.</p>
-<p><strong>NOTE</strong> When variables are marked for capture (see <a href="#sec-block-capture" class="quarto-xref"><span>Section&nbsp;2.2.16</span></a>), the values of those variables are saved at the <strong>end</strong> of the <code>$TABLE</code> function. This process is carried out automatically by mrgsolve and therefore requires no user intervention.</p>
+<p><strong>NOTE</strong> When variables are marked for capture (see <a href="#sec-block-capture" class="quarto-xref"><span>Section 2.2.16</span></a>), the values of those variables are saved at the <strong>end</strong> of the <code>$TABLE</code> function. This process is carried out automatically by mrgsolve and therefore requires no user intervention.</p>
 </section>
 <section id="sec-block-error" class="level3" data-number="2.2.13">
 <h3 data-number="2.2.13" class="anchored" data-anchor-id="sec-block-error"><span class="header-section-number">2.2.13</span> <code>$ERROR</code> &nbsp;</h3>
@@ -736,7 +764,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <h3 data-number="2.2.14" class="anchored" data-anchor-id="sec-block-preamble"><span class="header-section-number">2.2.14</span> <code>$PREAMBLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
-<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>):</p>
+<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a>):</p>
 <ol type="1">
 <li>Immediately prior to starting the simulation run</li>
 <li>Immediately prior to calling <code>$MAIN</code> when calculating initial conditions</li>
@@ -766,7 +794,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>There may be only one <code>$PREAMBLE</code> block in a model</li>
 <li>Like <code>$MAIN</code>, <code>$ODE</code> and <code>$TABLE</code>, <code>double</code>, <code>int</code> and <code>bool</code> variables initialized in <code>$PREAMBLE</code> are actually initialized for global (within the model file)</li>
 </ul>
-<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section&nbsp;2.2.22</span></a>.</p>
+<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.22</span></a>.</p>
 </section>
 <section id="sec-block-pred" class="level3" data-number="2.2.15">
 <h3 data-number="2.2.15" class="anchored" data-anchor-id="sec-block-pred"><span class="header-section-number">2.2.15</span> <code>$PRED</code> &nbsp;</h3>
@@ -783,7 +811,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> RESP <span class="op">=</span> E0 <span class="op">-</span> IMAX<span class="op">*</span>AUC<span class="op">/(</span>AUC50<span class="op">+</span>AUC<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example, the entire model is written in the <code>$PRED</code> block. It is an error to include the following blocks when <code>$PRED</code> is being used: <code>$MAIN</code>, <code>$TABLE</code>, <code>$PKMODEL</code>, <code>$ODE</code>, <code>$CMT</code>, <code>$INIT</code>.</p>
-<p>See <a href="datasets.html#sec-pred-data" class="quarto-xref"><span>Section&nbsp;3.7</span></a> for additional information regarding data sets in use with <code>$PRED</code> block.</p>
+<p>See <a href="datasets.html#sec-pred-data" class="quarto-xref"><span>Section 3.7</span></a> for additional information regarding data sets in use with <code>$PRED</code> block.</p>
 </section>
 <section id="sec-block-capture" class="level3" data-number="2.2.16">
 <h3 data-number="2.2.16" class="anchored" data-anchor-id="sec-block-capture"><span class="header-section-number">2.2.16</span> <code>$CAPTURE</code> &nbsp;</h3>
@@ -843,7 +871,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>$CAPTURE @etas <span class="dv">1</span><span class="op">:</span>LAST</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>CL DV</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Will capture all three <code>ETA</code>s into the simulation outputs. NONMEM-style names will be used (e.g.&nbsp;<code>ETA1</code>). This is in contrast to the names that are generated when <code>ETA(1)</code> is captured; in this case, the parens are removed and replaced with <code>_</code> so the output name is <code>ETA_1</code>. mrgsolve will provide <code>LAST</code> (and <code>last</code>) which will evaluate to the maximum number of <code>ETAs</code> in the problem (in this case, 3). You can write any valid expression in <code>@etas</code>. When the expression is evaluated, it will be evaluated in the model environment created through the <code>$ENV</code> block (<a href="#sec-block-env" class="quarto-xref"><span>Section&nbsp;2.2.27</span></a>).</p>
+<p>Will capture all three <code>ETA</code>s into the simulation outputs. NONMEM-style names will be used (e.g.&nbsp;<code>ETA1</code>). This is in contrast to the names that are generated when <code>ETA(1)</code> is captured; in this case, the parens are removed and replaced with <code>_</code> so the output name is <code>ETA_1</code>. mrgsolve will provide <code>LAST</code> (and <code>last</code>) which will evaluate to the maximum number of <code>ETAs</code> in the problem (in this case, 3). You can write any valid expression in <code>@etas</code>. When the expression is evaluated, it will be evaluated in the model environment created through the <code>$ENV</code> block (<a href="#sec-block-env" class="quarto-xref"><span>Section 2.2.27</span></a>).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -924,7 +952,7 @@ Tip
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>lbl <span class="op">&lt;-</span> paste0<span class="op">(</span><span class="st">"ETA_"</span><span class="op">,</span> LETTERS<span class="op">[</span><span class="dv">1</span><span class="op">:</span>n<span class="op">])</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>matrix<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> dimnames <span class="op">=</span> list<span class="op">(</span>lbl<span class="op">,</span> lbl<span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a>).</p>
+<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter 5</span></a>).</p>
 </section>
 <section id="sec-block-sigma" class="level3" data-number="2.2.18">
 <h3 data-number="2.2.18" class="anchored" data-anchor-id="sec-block-sigma"><span class="header-section-number">2.2.18</span> <code>$SIGMA</code> &nbsp;</h3>
@@ -957,7 +985,7 @@ Tip
 However there are two more-common uses:</p>
 <ol type="1">
 <li>Write <code>#define</code> preprocessor statements</li>
-<li>Define global variables, usually variables other than <code>double</code>, <code>bool</code>, <code>int</code> (see <a href="#sec-new-variables" class="quarto-xref"><span>Section&nbsp;2.5</span></a>)</li>
+<li>Define global variables, usually variables other than <code>double</code>, <code>bool</code>, <code>int</code> (see <a href="#sec-new-variables" class="quarto-xref"><span>Section 2.5</span></a>)</li>
 </ol>
 <p><strong>Preprocessor directives</strong> Preprocessor <code>#define</code> directives are direct substitutions that the <code>C++</code> preprocessor makes prior to compiling your code.</p>
 <p>For example:</p>
@@ -1012,7 +1040,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>Plugins are a way to add extensions to your mrgsolve model. Plugins can either link your model to external libraries (like <code>boost</code> or <code>Rcpp</code>) or they can open up access to additional functionality provided by mrgsolve itself.</p>
-<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a>.</p>
+<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 <p><strong>Usage</strong></p>
 <p>To invoke a plugin, list the plugin name in the code block. For requesting <code>Rcpp</code> headers in your model, call</p>
 <div class="cell">
@@ -1109,7 +1137,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> WT <span class="op">=</span> mrgx<span class="op">::</span>rnorm<span class="op">(</span><span class="dv">80</span><span class="op">,</span><span class="dv">20</span><span class="op">,</span><span class="dv">40</span><span class="op">,</span><span class="dv">140</span><span class="op">);</span></span>
 <span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See also: <a href="#sec-block-preamble" class="quarto-xref"><span>Section&nbsp;2.2.14</span></a>.</p>
+<p>See also: <a href="#sec-block-preamble" class="quarto-xref"><span>Section 2.2.14</span></a>.</p>
 </section>
 </section>
 <section id="sec-block-theta" class="level3" data-number="2.2.23">
@@ -1144,7 +1172,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PARAM <span class="op">]</span> theta1 <span class="op">=</span> <span class="fl">0.1</span><span class="op">,</span> theta2 <span class="op">=</span> <span class="fl">0.2</span><span class="op">,</span> theta3 <span class="op">=</span> <span class="fl">0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>@object</code> and <code>@as_object</code> options should name or return an unnamed vector of parameter values (names are ignored).</p>
-<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a>.</p>
+<p>See also: <a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>.</p>
 </section>
 <section id="sec-block-nmxml" class="level3" data-number="2.2.24">
 <h3 data-number="2.2.24" class="anchored" data-anchor-id="sec-block-nmxml"><span class="header-section-number">2.2.24</span> <code>$NMXML</code> &nbsp;</h3>
@@ -1170,7 +1198,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="details" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="details">Details</h4>
-<p>From the NONMEM run, <code>THETA</code> will be imported into your parameter list (see <a href="#sec-block-param" class="quarto-xref"><span>Section&nbsp;2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section&nbsp;1.1</span></a>), <code>OMEGA</code> will be captured as an <code>$OMEGA</code> block (<a href="#sec-block-omega" class="quarto-xref"><span>Section&nbsp;2.2.17</span></a>) and <code>SIGMA</code> will be captured as a <code>$SIGMA</code> block (<a href="#sec-block-sigma" class="quarto-xref"><span>Section&nbsp;2.2.18</span></a>). Users may optionally omit any one of these from being imported.</p>
+<p>From the NONMEM run, <code>THETA</code> will be imported into your parameter list (see <a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>), <code>OMEGA</code> will be captured as an <code>$OMEGA</code> block (<a href="#sec-block-omega" class="quarto-xref"><span>Section 2.2.17</span></a>) and <code>SIGMA</code> will be captured as a <code>$SIGMA</code> block (<a href="#sec-block-sigma" class="quarto-xref"><span>Section 2.2.18</span></a>). Users may optionally omit any one of these from being imported.</p>
 <p><code>$NMXML</code> contains a <code>project</code> argument and a <code>run</code> argument. By default, the estimates are read from from the file <code>project/run/run.xml</code>. That is, it is assumed that there is a directory named <code>run</code> that is inside the <code>project</code> directory where <code>$NMXML</code> will find <code>run.xml</code>. Your NONMEM run directories may not be organized in a way that is compatible with this default. In that case, you will need to provide the <code>path</code> argument, which should be the path to the <code>run.xml</code> file, either as a full path or as a path relative to the current working directory.</p>
 <p>Once the model object is obtained, the path to the <code>xml</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>:</p>
 <div class="cell">
@@ -1276,7 +1304,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 </div>
 <p><strong>root argument</strong>: please use the <code>root = "cppfile"</code> argument going forward.</p>
-<p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMXML</code> that tells mrgsolve the location where it should read the <code>xml</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>xml</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>xml</code> file in a directory that is relative to <strong>where the model source code file is located</strong>. Please take a look at <a href="#sec-block-nmext" class="quarto-xref"><span>Section&nbsp;2.2.25</span></a> for more discussion and examples.</p>
+<p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMXML</code> that tells mrgsolve the location where it should read the <code>xml</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>xml</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>xml</code> file in a directory that is relative to <strong>where the model source code file is located</strong>. Please take a look at <a href="#sec-block-nmext" class="quarto-xref"><span>Section 2.2.25</span></a> for more discussion and examples.</p>
 <p>Starting with version 1.0.8, when the NONMEM run is found using the <code>run</code> + <code>project</code> arguments, you can pass <code>run = "@cppstem"</code> and mrgsolve will look for the NONMEM run number that matches the stem of the current mrgsolve file. For example, if you are coding a model to match NONMEM run <code>101.ctl</code>, then call your mrgsolve model file <code>101.cpp</code> or <code>101.mod</code>; just match the file stem. Then write</p>
 <div class="cell">
 <div class="code-with-filename">
@@ -1293,7 +1321,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>nonmem<span class="sc">-</span>run<span class="sc">-</span>directory<span class="sc">&gt;</span><span class="er">/</span><span class="dv">101</span><span class="sc">/</span><span class="fl">101.</span>xml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please see the <code>?nmxml</code> help topic for more information on arguments that can be passed to <code>$NMXML</code>.</p>
-<p>See also: <a href="#sec-block-nmext" class="quarto-xref"><span>Section&nbsp;2.2.25</span></a>.</p>
+<p>See also: <a href="#sec-block-nmext" class="quarto-xref"><span>Section 2.2.25</span></a>.</p>
 </section>
 </section>
 <section id="sec-block-nmext" class="level3" data-number="2.2.25">
@@ -1327,7 +1355,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(mod)<span class="sc">$</span>nm_import</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See the <code>$NMXML</code> topic in <a href="#sec-block-nmxml" class="quarto-xref"><span>Section&nbsp;2.2.24</span></a> for an example of equivalent functionality.</p>
+<p>See the <code>$NMXML</code> topic in <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.24</span></a> for an example of equivalent functionality.</p>
 <p><strong>IMPORTANT</strong>: while <code>$NMEXT</code> works very similarly to <code>$NMXML</code>, there is one key difference between the two: when using <code>$NMEXT</code>, you will always get one <code>$OMEGA</code> matrix and one <code>$SIGMA</code> matrix, regardless of the block structure used in the NONMEM control stream. When using <code>$NMXML</code>, you get the same block structure in the mrgsolve model as the NONMEM model. For example: in the NONMEM control stream, <code>$OMEGA</code> is one 2x2 matrix and one 3x3 matrix. Importing those estimates with <code>$NMEXT</code> will give you one 5x5 matrix, while importing the estimates with <code>$NMXML</code> will give you a list of one 2x2 and one 3x3 matrix.</p>
 <p><strong>root argument</strong>: please use the <code>root = "cppfile"</code> argument going forward.</p>
 <p>As of mrgsolve <code>0.11.0</code>, we added an argument called <code>root</code> to <code>$NMEXT</code> that tells mrgsolve the location where it should read the <code>ext</code> file from. The default behavior is the <code>"working"</code> directory. When this is the case, mrgsolve assumes that the the <code>ext</code> file can be found relative to the “working” directory. The only other value that <code>root</code> can take is <code>"cppfile"</code>. When <code>root = "cppfile"</code>, then mrgsolve will look for the <code>ext</code> file in a directory that is relative to <strong>where the model source code file is located</strong>.</p>
@@ -1346,9 +1374,9 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>project <span class="op">=</span> here<span class="op">::</span>here<span class="op">(</span><span class="st">"model/pk"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When used in the proper context, <code>here()</code> will generate an absolute path from your projects root directory to the nonmem project directory. Please refer to the <code>here::here()</code> documentation for proper use of this function.</p>
-<p>Starting with version 1.0.8, when the NONMEM run is found using the <code>run</code> + <code>project</code> arguments, you can pass <code>run = "@cppstem"</code> and mrgsolve will look for the NONMEM run number that matches the stem of the current mrgsolve file. See details and example in <a href="#sec-block-nmxml" class="quarto-xref"><span>Section&nbsp;2.2.24</span></a>.</p>
+<p>Starting with version 1.0.8, when the NONMEM run is found using the <code>run</code> + <code>project</code> arguments, you can pass <code>run = "@cppstem"</code> and mrgsolve will look for the NONMEM run number that matches the stem of the current mrgsolve file. See details and example in <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.24</span></a>.</p>
 <p>See the <code>?nmext</code> R help topic for arguments that can be passed to <code>$NMEXT</code> block. Notably, the user can select the function to read in the ext file.By default, mrgsolve will try to load data.table and use the <code>fread</code> function. If data.table can’t be loaded, then mrgsolve will use <code>utils::read.table</code>.</p>
-<p>See also: <a href="#sec-block-nmxml" class="quarto-xref"><span>Section&nbsp;2.2.24</span></a>.</p>
+<p>See also: <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.24</span></a>.</p>
 </section>
 <section id="sec-block-include" class="level3" data-number="2.2.26">
 <h3 data-number="2.2.26" class="anchored" data-anchor-id="sec-block-include"><span class="header-section-number">2.2.26</span> <code>$INCLUDE</code> &nbsp;</h3>
@@ -1401,7 +1429,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb89-10"><a href="#cb89-10" aria-hidden="true" tabindex="-1"></a>    mrgsim<span class="op">(</span>obsonly<span class="op">=</span>TRUE<span class="op">,</span>end<span class="op">=</span><span class="dv">120</span><span class="op">)</span></span>
 <span id="cb89-11"><a href="#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Objects inside <code>$ENV</code> can be utilized in different C++ functions (see <a href="#sec-block-plugin" class="quarto-xref"><span>Section&nbsp;2.2.22</span></a>) or other parts of the simulation process.</p>
+<p>Objects inside <code>$ENV</code> can be utilized in different C++ functions (see <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.22</span></a>) or other parts of the simulation process.</p>
 <p>Objects inside <code>$ENV</code> will also be made available when parsing different parts of the model specification file. For example, we can initialize an <code>$OMEGA</code> block with the <code>Sigma</code> object in the <code>$ENV</code> block example above:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>$OMEGA @object Sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1456,7 +1484,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <section id="solvertime" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="solvertime"><span class="header-section-number">2.3.3</span> <code>SOLVERTIME</code></h3>
 <p>Gives the time of the current timestep taken by the solver. <em>This is can only be used in <code>$ODE</code></em>. Contrast with <code>TIME</code>.</p>
-<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section&nbsp;9.2</span></a>).</p>
+<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 9.2</span></a>).</p>
 </section>
 <section id="t" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="t"><span class="header-section-number">2.3.4</span> <code>T</code></h3>
@@ -1517,7 +1545,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="ss_advance" class="level3" data-number="2.3.9">
 <h3 data-number="2.3.9" class="anchored" data-anchor-id="ss_advance"><span class="header-section-number">2.3.9</span> <code>SS_ADVANCE</code></h3>
-<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter&nbsp;8</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
+<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter 8</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
 <p>Use this variable to modify the calculation of your model differential equations while the system is advancing to steady state. One use case is when you have an accumulation compartment to calculate <code>AUC</code> but you want to halt accumulation while the system is working toward steady state</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>$ODE</span>
@@ -1629,7 +1657,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.envir" class="level3" data-number="2.3.20">
 <h3 data-number="2.3.20" class="anchored" data-anchor-id="self.envir"><span class="header-section-number">2.3.20</span> <code>self.envir</code></h3>
-<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section&nbsp;9.5</span></a>).</p>
+<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.5</span></a>).</p>
 <p>For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp mrgx</span>
@@ -1669,7 +1697,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.meventtime-evid" class="level3" data-number="2.3.23">
 <h3 data-number="2.3.23" class="anchored" data-anchor-id="self.meventtime-evid"><span class="header-section-number">2.3.23</span> <code>self.mevent(&lt;time&gt;, &lt;evid&gt;)</code></h3>
-<p>Related to <code>self.mtime()</code> (<a href="#sec-self.mtime" class="quarto-xref"><span>Section&nbsp;2.3.22</span></a>), except you can set a specific <code>EVID</code> for this intervention and you track the change time via <code>EVID</code> rather than the time. You’d use this if you want to anchor several events in the future and be sure you can distinguish between them. For example</p>
+<p>Related to <code>self.mtime()</code> (<a href="#sec-self.mtime" class="quarto-xref"><span>Section 2.3.22</span></a>), except you can set a specific <code>EVID</code> for this intervention and you track the change time via <code>EVID</code> rather than the time. You’d use this if you want to anchor several events in the future and be sure you can distinguish between them. For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>mevent<span class="op">(</span>change_point1<span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span>
@@ -1696,7 +1724,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="thetan" class="level3" data-number="2.3.27">
 <h3 data-number="2.3.27" class="anchored" data-anchor-id="thetan"><span class="header-section-number">2.3.27</span> <code>THETA(n)</code></h3>
-<p><code>THETA(n)</code> is ubiquitous in NONMEM control streams, representing estimated fixed effect parameters. mrgsolve does not attach any special meaning to <code>THETA(n)</code> but starting with version 1.0.0 it will translate <code>THETA(n)</code> to <code>THETAn</code>. This is useful when importing NONMEM estimates using <code>$NMXML</code> or <code>$NMEXT</code>, where <code>THETA</code>s are imported as parameters with names <code>THETA1</code>, <code>THETA2</code>, <code>THETA3</code> and so on (see <a href="#sec-block-nmxml" class="quarto-xref"><span>Section&nbsp;2.2.24</span></a> and <a href="#sec-block-nmext" class="quarto-xref"><span>Section&nbsp;2.2.25</span></a>). <code>THETA(n)</code> is simply a NONMEM-oriented style for referring to <code>THETAn</code>.</p>
+<p><code>THETA(n)</code> is ubiquitous in NONMEM control streams, representing estimated fixed effect parameters. mrgsolve does not attach any special meaning to <code>THETA(n)</code> but starting with version 1.0.0 it will translate <code>THETA(n)</code> to <code>THETAn</code>. This is useful when importing NONMEM estimates using <code>$NMXML</code> or <code>$NMEXT</code>, where <code>THETA</code>s are imported as parameters with names <code>THETA1</code>, <code>THETA2</code>, <code>THETA3</code> and so on (see <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.24</span></a> and <a href="#sec-block-nmext" class="quarto-xref"><span>Section 2.2.25</span></a>). <code>THETA(n)</code> is simply a NONMEM-oriented style for referring to <code>THETAn</code>.</p>
 </section>
 <section id="etan" class="level3" data-number="2.3.28">
 <h3 data-number="2.3.28" class="anchored" data-anchor-id="etan"><span class="header-section-number">2.3.28</span> <code>ETA(n)</code></h3>
@@ -1753,7 +1781,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>$CAPTURE CP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>See: <a href="#sec-block-table" class="quarto-xref"><span>Section&nbsp;2.2.12</span></a> and also <a href="#sec-block-capture" class="quarto-xref"><span>Section&nbsp;2.2.16</span></a>.</p>
+<p>See: <a href="#sec-block-table" class="quarto-xref"><span>Section 2.2.12</span></a> and also <a href="#sec-block-capture" class="quarto-xref"><span>Section 2.2.16</span></a>.</p>
 </section>
 <section id="sec-spec-f" class="level3" data-number="2.3.32">
 <h3 data-number="2.3.32" class="anchored" data-anchor-id="sec-spec-f"><span class="header-section-number">2.3.32</span> <code>F_CMT</code> &nbsp;</h3>
@@ -1799,7 +1827,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <section id="nonmem-like-syntax" class="level3" data-number="2.3.37">
 <h3 data-number="2.3.37" class="anchored" data-anchor-id="nonmem-like-syntax"><span class="header-section-number">2.3.37</span> NONMEM-like syntax</h3>
 <p>There is a NONMEM-like syntax that lets you write <code>F1</code> rather than <code>F_GUT</code>, <code>D2</code> rather than <code>D_CENT</code> as well as other variables that are commonly used in a NONMEM control stream. To make this syntax available, the <code>nm-vars</code> plugin must be invoked.</p>
-<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section&nbsp;9.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
+<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 9.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
 </section>
 </section>
 <section id="reserved-words" class="level2" data-number="2.4">
@@ -1953,7 +1981,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="random-number-generation"><span class="header-section-number">2.6</span> Random number generation</h2>
-<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section&nbsp;9.5</span></a>).</p>
+<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.5</span></a>).</p>
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">
@@ -2054,7 +2082,7 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>There are two <code>$OMEGA</code> matrices; we name them <code>IIV</code> and <code>IOV</code></li>
 <li>The IIV “etas” are labeled as <code>ECL/EVC/EKA</code>; these are aliases to <code>ETA(1)/ETA(2)/ETA(3)</code>. The <code>IOV</code> matrix is unlabeled; we must refer to <code>ETA(4)/ETA(5)</code> for this</li>
 <li>Because <code>ETA(1)</code> and <code>ETA(2)</code> are labeled, we can “capture” them as <code>ECL</code> and <code>EVC</code></li>
-<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section&nbsp;5.3</span></a>)</li>
+<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 5.3</span></a>)</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>
@@ -2222,27 +2250,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -2257,10 +2264,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -2269,8 +2280,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
