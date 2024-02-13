@@ -6,7 +6,8 @@ execute:
 book:
   title: "mrgsolve user guide"
   author: "Kyle Baron"
-  date: "12/09/2023"
+  date: "today"
+  date-format: long
   chapters:
     - index.qmd
     - components.qmd
