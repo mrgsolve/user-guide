@@ -277,6 +277,238 @@ The `self` object (@sec-self.tad) contains a `tad()` member which
 will track time after dose. Note that this needs to be called every record. 
 
 
+## evtools
+
+__Purpose__
+
+The `evtools` plugin is a set of functions and classes you can use to implement
+dosing regimens from _inside_ your model. It first became available in mrgsolve
+1.4.1. The most common use for this plugin is when you want to implement dynamic
+dosing simulations where the dose amount or the dosing interval is able to
+change based on how the system has advanced up to a certain point. For example,
+you might have a PKPD model for an oncology drug that includes a PK model for
+the drug as well as a dynamic model for platelets where a decline in platelets
+is driven by the drug concentration. In this case you might monitor platelets at
+different clinical visits and reduce the or hold dose or increase the dosing
+interval in response to Grade 3 or Grade 4 thrombocytopenia.
+
+__Usage__
+
+Like all other plugins, you must invoke `evtools` in the `$PLUGIN` block
+
+```{c, eval = FALSE}
+$PLUGIN evtools
+```
+
+### Namespace
+
+All the functionality made available by the `evtools` plugin is located in a 
+namespace called `evt`. So you will need to prefix all functions and classes
+with `evt::`. For example, you can read about a function called `bolus` below; 
+when you call that function, you need to refer to `evt::bolus`, locating that 
+function in the `evt` namespace. 
+
+### Event object type
+
+@sec-mtime introduces a C++ event object called `mrg::evdata`. The `evt` 
+namespace provides an easier to remember `typedef` for that object called
+`evt::ev`. So if a function returns an event object, you can use `evt::ev`
+for that type. For example
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+```
+
+is equivalent to 
+
+```{c}
+#| eval: false
+mrg::evdata dose evt::bolus(100, 1);
+```
+
+### Simple administration of single doses now
+
+The `evt` namespace allows you to easily administer single bolus or infusion
+doses. The functions are
+
+- `void evt::bolus(self, <amt>, <cmt>)` where 
+  - `self` is the the self object, described in @sec-self-object
+  - `<amt>` is the dose amount (type `double`)
+  - `<cmt>` is the dosing compartment (type `double`)
+
+- `void evt::infuse(self, <amt>, <cmt>, <rate>)` where 
+  - `self` is the the self object, described in @sec-self-object
+  - `<amt>` is the dose amount (type `double`)
+  - `<cmt>` is the dosing compartment (type `double`)
+  - `<rate>` is the infusion rate (type `double`)
+
+Note that `self` is passed as the first argument, there is no return value, 
+and there is no `time` specified for the dose. All doses invoked this way are 
+given `now`, as-is; so you should only call these functions when the model 
+code has decided it is time to administer a dose. 
+
+_Important_: Because doses are given `now`, these functions should almost be 
+called in `$TABLE` (i.e., `$ERROR`).
+
+### Customized doses, potentially given later
+
+The `evt` namespace also provides variants of these functions which return 
+the event object to you so you can modify some of the attributes, including 
+potentially scheduling the dose in the future, prior to sending the object
+back to mrgsolve. These functions are 
+
+- `evt::ev evt::bolus(<amt>, <cmt>)` where 
+  - `<amt>` is the dose amount (type `double`)
+  - `<cmt>` is the dosing compartment (type `double`)
+
+- `evt::ev evt::infuse(<amt>, <cmt>, <rate>)` where 
+  - `<amt>` is the dose amount (type `double`)
+  - `<cmt>` is the dosing compartment (type `double`)
+  - `<rate>` is the infusion rate (type `double`)
+
+Note that we _don't_ pass in the `self` object here; just the dose amount, 
+compartment, and rate for infusions. These functions also return and event 
+object (type `evt::ev`) that you can work with. See @sec-modeled-doses
+for documentation of those attributes. 
+
+### API for customizing doses
+
+While @sec-modeled-doses shows you some low-level ways to customize the event 
+object, the `evt` namespace provides some API for making these changes. 
+
+__`evt::retime`__
+
+The `evt::retime` function can be used to set the time attribute. 
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::retime(dose, 24);
+self.push(dose);
+```
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- the new dose time (`<double>`)
+
+**Return**: `void` (or nothing)
+
+When doses are retimed this way, the `now` attribute is forced to be `false`.
+
+__`evt::now`__
+
+Use `evt::now` to set the `now` attribute to `true`
+
+```{c}
+#| eval: false
+evt::now(dose);
+```
+
+**Argument**: 
+
+- an event object (`evt::ev`)
+
+**Return**: `void` (nothing)
+
+__`evt::push`__
+
+The `evt` namespace includes a `push` function to send an event object back 
+to mrgsolve. For example
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::retime(dose, 24);
+evt::push(self, dose);
+```
+
+This function will continue to be available in the `evt` namespace. But note 
+that `self` has a `push()` method as of mrgsolve 1.4.1 to do the same thing
+
+__`evt::near()`__
+
+Use this function to test for equality between floating put numbers. For 
+example, to test if `TIME` is (about) equal to `24.5`, you can call
+
+```{c}
+#| eval: false
+if(evt::near(TIME, 24.5)) { 
+  // do something  
+}
+```
+
+This function is similar to the `dplyr::near()` function.
+
+**Arguments**: 
+
+- a number to test (`double`)
+- another number to test (`double`)
+- optional argument `<eps>`, which is the tolerance for establishing equality
+  between the two test numbers; `<eps>` defaults to `1e-8` 
+
+**Return**: `bool`
+
+### Class to implement a dosing regimen
+
+The `evtools` namespace also includes a class for implementing "automatic" 
+dosing in a regimen. The documentation presented here will be limited to 
+a brief discussion of the constructor and member functions for this class. 
+More is written in @sec-mtime about how you can use this class effectively. 
+
+- The constructor `evt::regimen::regimen()` does not take any arguments, but 
+  it dose call the `reset()` method. 
+- `void init(self)` initializes the object; the argument is the `self` object
+  (see @sec-self-object)
+- `void reset()` resets the object to sensible defaults
+  - dose compartment is set to 1
+  - dose amount is set to 0
+  - infusion rate is set to 0
+  - dosing interval is set to 1e9
+  - dosing duration is set to 1e9
+  - other internal configuration
+
+A series of setter functions let you set different attributes for the dosing 
+regimen. All of the following functions return `void`. In the examples below, 
+`object` refers to an object with class `evt::regimen`. 
+
+- `object.amt(<double>)` sets the dose amount
+- `object.cmt(<int>)` sets the dosing compartment number
+- `object.rate(<double>)` sets the infusion rate
+- `object.ii(<double>)` sets the dosing interval
+- `object.until(<double>)` sets the time of the last dose
+
+Similarly, there are a set of getter functions to return these data members
+
+- `double object.amt()` returns the dose amount
+- `int object.cmt()` returns the dosing compartment number
+- `double object.rate()` returns the infusion rate
+- `double object.ii()` returns the dosing interval
+- `double object.until()` return the time of the last dose
+
+To start the dose regimen, call 
+
+```{c}
+#| eval: false
+object.execute()
+```
+
+This should almost always be called in `$TABLE` (i.e., `$ERROR`).
+
+
+To force the simulation to stop at the time of the next dose with `EVID` set 
+to 3333, use the `flagnext()` member function
+
+```{c}
+#| eval: false
+object.flagnext();
+```
+
+This is usually set once at the start of the problem, either in `$PREAMBLE` or 
+in `$MAIN` when `NEWIND <= 1`.
+
+
 ## CXX11  {#sec-plugin-cxx11}
 
 __Purpose__

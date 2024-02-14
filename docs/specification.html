@@ -1657,7 +1657,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.envir" class="level3" data-number="2.3.20">
 <h3 data-number="2.3.20" class="anchored" data-anchor-id="self.envir"><span class="header-section-number">2.3.20</span> <code>self.envir</code></h3>
-<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.5</span></a>).</p>
+<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.6</span></a>).</p>
 <p>For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp mrgx</span>
@@ -1981,7 +1981,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="random-number-generation"><span class="header-section-number">2.6</span> Random number generation</h2>
-<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.5</span></a>).</p>
+<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.6</span></a>).</p>
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">

@@ -343,6 +343,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>mevector<span class="op">.</span>push_back<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Starting with mrgsolve 1.4.1, you can also push the event object back via the <code>push</code> member</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Again, this sequence should get called in either <code>$MAIN</code> or <code>$TABLE</code>. When that code block finishes running (for the current record), <code>mrgsolve</code> will find the event record and add that event to the simulation sequence.</p>
 </section>
 <section id="sec-event-log" class="level2" data-number="10.4">
@@ -350,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The way modeled events are implemented in mrgsolve, it is possible to inadvertently ask to execute the same event a large number of times.</p>
 <p>For example, when we have the following code</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>$PK</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> mt <span class="op">=</span> self<span class="op">.</span>mtime<span class="op">(</span><span class="dv">244</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> mt <span class="op">=</span> self<span class="op">.</span>mtime<span class="op">(</span><span class="dv">244</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>mrgsolve only needs to know once to stop the model at <code>time = 244</code> with <code>evid = 33</code>. Once that event is processed, we don’t need more records piling up at <code>time = 244</code> with that evid.</p>
 <p>To make sure we only get one record with <code>evid = 33</code> at <code>time = 244</code>, mrgsolve keeps a log of modeled events and checks that log whenever a new event comes back from the model code. If there is already a record with <code>time = 244</code> and <code>evid = 33</code>, it declines to schedule an additional / identical record in the record stack; only one is needed. Once mrgsolve starts working on a new individual, the event log is reset to allow events to get scheduled at any time for that individual.</p>

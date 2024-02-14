@@ -138,6 +138,15 @@ calling `push_back()` on `self.mevector`
 self.mevector.push_back(ev);
 ```
 
+Starting with mrgsolve 1.4.1, you can also push the event object back via 
+the `push` member
+
+```{c}
+#| eval: false
+self.push(ev);
+```
+
+
 Again, this sequence should get called in either `$MAIN` or `$TABLE`. When that 
 code block finishes running (for the current record), `mrgsolve` will find the 
 event record and add that event to the simulation sequence. 

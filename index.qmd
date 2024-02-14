@@ -25,7 +25,7 @@ content over to the vignettes repository or the gallery repository (see
 [below](#other-resources)).
 
 Please feel free to ask questions about anything mrgsolve-related on the 
-issue tracker on the main github repo: https://github.com/metrumresearchgroup/mrgsolve/issues.
+issue tracker on the main github repo: <https://github.com/metrumresearchgroup/mrgsolve/issues>.
 
 
 ## Overview {.unnumbered}
