@@ -277,7 +277,7 @@ The `self` object (@sec-self.tad) contains a `tad()` member which
 will track time after dose. Note that this needs to be called every record. 
 
 
-## evtools
+## evtools {#sec-plugin-evtools}
 
 __Purpose__
 

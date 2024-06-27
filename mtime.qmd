@@ -16,9 +16,13 @@ there is more functionality provided.
 
 Note that there is no way to get additional records in your simulated output.
 Regardless of the approach or level of complexity, you will not see modeled 
-events in your simulated output. These are always executed under the hood and 
-the number of rows in the simulated output and their times will be the same 
-regardless of what modeled events you set up as discussed here.
+events as separate rows in your simulated output. These are always executed 
+under the hood and the number of rows in the simulated output and their times 
+will be the same regardless of what modeled events you set up as discussed here.
+
+## `evtools` plugin 
+
+`evtools` is a plugin that runs on top of the 
 
 ## Simple MTIME
 
@@ -151,6 +155,15 @@ Again, this sequence should get called in either `$MAIN` or `$TABLE`. When that
 code block finishes running (for the current record), `mrgsolve` will find the 
 event record and add that event to the simulation sequence. 
 
+
+### `evtools` plugin 
+
+`evtools` is a plugin for executing modeled doses, running on top of the 
+machinery here. The goal of the plugin is to create simplified workflows for 
+executing doses or other discontinuities from inside your model. See 
+@sec-plugin-evtools for details on how to use this plugin.
+
+
 ## Event log - tracking duplicate events {#sec-event-log}
 
 The way modeled events are implemented in mrgsolve, it is possible to 
@@ -201,3 +214,4 @@ scheduled for the future (not `now`). Using the `check_unique` attribute to
 bypass the check of the event log could theoretically help simulation speed 
 when a large number of events are added to the log. I don't expect a huge 
 speed difference, but it might be worth a try.
+
