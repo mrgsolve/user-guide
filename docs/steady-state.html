@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mrgsolve user guide - 8&nbsp; Steady state</title>
+<title>9&nbsp; Steady state – mrgsolve user guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./steady-state.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./steady-state.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -189,68 +189,74 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./event.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -263,19 +269,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#key-information" id="toc-key-information" class="nav-link active" data-scroll-target="#key-information"><span class="header-section-number">8.1</span> Key information</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">8.2</span> Introduction</a>
+  <li><a href="#key-information" id="toc-key-information" class="nav-link active" data-scroll-target="#key-information"><span class="header-section-number">9.1</span> Key information</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">9.2</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#intermittent-doses" id="toc-intermittent-doses" class="nav-link" data-scroll-target="#intermittent-doses"><span class="header-section-number">8.2.1</span> Intermittent doses</a></li>
-  <li><a href="#continuous-infusion" id="toc-continuous-infusion" class="nav-link" data-scroll-target="#continuous-infusion"><span class="header-section-number">8.2.2</span> Continuous infusion</a></li>
+  <li><a href="#intermittent-doses" id="toc-intermittent-doses" class="nav-link" data-scroll-target="#intermittent-doses"><span class="header-section-number">9.2.1</span> Intermittent doses</a></li>
+  <li><a href="#continuous-infusion" id="toc-continuous-infusion" class="nav-link" data-scroll-target="#continuous-infusion"><span class="header-section-number">9.2.2</span> Continuous infusion</a></li>
   </ul></li>
-  <li><a href="#advance-to-ss" id="toc-advance-to-ss" class="nav-link" data-scroll-target="#advance-to-ss"><span class="header-section-number">8.3</span> Advance to SS</a></li>
-  <li><a href="#control-advance-to-ss" id="toc-control-advance-to-ss" class="nav-link" data-scroll-target="#control-advance-to-ss"><span class="header-section-number">8.4</span> Control advance to SS</a>
+  <li><a href="#advance-to-ss" id="toc-advance-to-ss" class="nav-link" data-scroll-target="#advance-to-ss"><span class="header-section-number">9.3</span> Advance to SS</a></li>
+  <li><a href="#control-advance-to-ss" id="toc-control-advance-to-ss" class="nav-link" data-scroll-target="#control-advance-to-ss"><span class="header-section-number">9.4</span> Control advance to SS</a>
   <ul class="collapse">
-  <li><a href="#tolerances-for-ss" id="toc-tolerances-for-ss" class="nav-link" data-scroll-target="#tolerances-for-ss"><span class="header-section-number">8.4.1</span> Tolerances for SS</a></li>
-  <li><a href="#max-dose-number" id="toc-max-dose-number" class="nav-link" data-scroll-target="#max-dose-number"><span class="header-section-number">8.4.2</span> Max dose number</a></li>
-  <li><a href="#include-exclude-compartments-for-ss" id="toc-include-exclude-compartments-for-ss" class="nav-link" data-scroll-target="#include-exclude-compartments-for-ss"><span class="header-section-number">8.4.3</span> Include / exclude compartments for SS</a></li>
-  <li><a href="#ss_advance-flag" id="toc-ss_advance-flag" class="nav-link" data-scroll-target="#ss_advance-flag"><span class="header-section-number">8.4.4</span> SS_ADVANCE flag</a></li>
+  <li><a href="#tolerances-for-ss" id="toc-tolerances-for-ss" class="nav-link" data-scroll-target="#tolerances-for-ss"><span class="header-section-number">9.4.1</span> Tolerances for SS</a></li>
+  <li><a href="#max-dose-number" id="toc-max-dose-number" class="nav-link" data-scroll-target="#max-dose-number"><span class="header-section-number">9.4.2</span> Max dose number</a></li>
+  <li><a href="#include-exclude-compartments-for-ss" id="toc-include-exclude-compartments-for-ss" class="nav-link" data-scroll-target="#include-exclude-compartments-for-ss"><span class="header-section-number">9.4.3</span> Include / exclude compartments for SS</a></li>
+  <li><a href="#ss_advance-flag" id="toc-ss_advance-flag" class="nav-link" data-scroll-target="#ss_advance-flag"><span class="header-section-number">9.4.4</span> SS_ADVANCE flag</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -285,7 +291,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-steady-state" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></h1>
+<h1 class="title"><span id="sec-steady-state" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></h1>
 </div>
 
 
@@ -302,8 +308,8 @@ window.Quarto = {
 </header>
 
 
-<section id="key-information" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="key-information"><span class="header-section-number">8.1</span> Key information</h2>
+<section id="key-information" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="key-information"><span class="header-section-number">9.1</span> Key information</h2>
 <p>Keep reading for all the details; I’m including this brief list of key items up front for your convenience.</p>
 <ul>
 <li>Use <code>ss_rtol</code> and <code>ss_atol</code> arguments to <code>mrgsim()</code> to control the local error estimate when <code>mrgsolve</code> is finding steady state</li>
@@ -313,11 +319,11 @@ window.Quarto = {
 <li>Use <code>ss_cmt</code> in <code>[ set ]</code> (inside your model) to select the compartments to be considered when finding steady state; you might have better success / efficiency if you focus on key compartments (or exclude unhelpful compartments like a depot compartment)</li>
 </ul>
 </section>
-<section id="introduction" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.2</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="introduction"><span class="header-section-number">9.2</span> Introduction</h2>
 <p>Within mrgsolve, the term “steady state” (<code>SS</code>) applies specifically to the pharmacokinetic dosing system and indicates that the rate of drug administration is equal to the rate of drug elimination. Steady state dosing can take the form of repeated intermittent doses (bolus or infusion, administered intermittently at a given dosing interval) or a continuous infusion administered to steady state.</p>
-<section id="intermittent-doses" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="intermittent-doses"><span class="header-section-number">8.2.1</span> Intermittent doses</h3>
+<section id="intermittent-doses" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="intermittent-doses"><span class="header-section-number">9.2.1</span> Intermittent doses</h3>
 <p>The user can direct mrgsolve to advance the system to steady state for intermittent dosing by including <code>ss=1</code> in an event object or input data set. For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1"</span>, <span class="at">end =</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,8 +343,8 @@ window.Quarto = {
 </div>
 <p>In this example, the <code>ss=1</code> flag tells mrgsolve to advance the system to steady state under a dosing regimen of 100 mg every 12 hours (and then give a total of 5 doses). When using the <code>ss=1</code> flag, the user is required to indicate the dosing interval (here every 12 hours) and additional doses are optional. Similar behavior can be achieved for intermittent infusions by setting the infusion <code>rate</code>.</p>
 </section>
-<section id="continuous-infusion" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="continuous-infusion"><span class="header-section-number">8.2.2</span> Continuous infusion</h3>
+<section id="continuous-infusion" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="continuous-infusion"><span class="header-section-number">9.2.2</span> Continuous infusion</h3>
 <p>A continuous infusion can be dosed to steady state by including the <code>ss=1</code> flag, a value for <code>rate</code> (any positive rate or -1 if the rate is being modeled), and setting the dose amount (<code>amt</code>/<code>AMT</code>) to zero:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>infus <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">0</span>, <span class="at">rate =</span> <span class="dv">5</span>, <span class="at">ss =</span> <span class="dv">1</span>, <span class="at">cmt =</span> <span class="st">"CENT"</span>)</span>
@@ -355,14 +361,14 @@ window.Quarto = {
 <p>Because <code>CL</code> is equal to 1 in this model, we see that the continuous (never-ending) infusion was started at steady state with a value of 5.</p>
 </section>
 </section>
-<section id="advance-to-ss" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="advance-to-ss"><span class="header-section-number">8.3</span> Advance to SS</h2>
+<section id="advance-to-ss" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="advance-to-ss"><span class="header-section-number">9.3</span> Advance to SS</h2>
 <p>It’s important to recognize that <code>SS</code> is related to the PK dosing system; it is finding the state of the system after an infinite number of doses have been administered under a certain regimen. And this is essentially how mrgsolve goes about finding steady state: when the <code>ss=1</code> flag is encountered, mrgsolve starts repeatedly administering doses and advancing the system to the next dose according to the inter-dose interval (<code>ii</code>). Once mrgsolve determines that the amounts in the system at any dose are the same as they were at the preceding dose, mrgsolve declares that <code>SS</code> has been achieved.</p>
 </section>
-<section id="control-advance-to-ss" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="control-advance-to-ss"><span class="header-section-number">8.4</span> Control advance to SS</h2>
-<section id="tolerances-for-ss" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="tolerances-for-ss"><span class="header-section-number">8.4.1</span> Tolerances for SS</h3>
+<section id="control-advance-to-ss" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="control-advance-to-ss"><span class="header-section-number">9.4</span> Control advance to SS</h2>
+<section id="tolerances-for-ss" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="tolerances-for-ss"><span class="header-section-number">9.4.1</span> Tolerances for SS</h3>
 <p>mrgsolve uses a local error estimate to determine the degree to which concentrations are changing or not changing between doses on the way to <code>SS</code>. This is determined by a relative tolerance parameter (<code>ss_rtol</code>) and an absolute tolerance parameter (<code>ss_atol</code>). As of mrgsolve version 0.10.3, these tolerances are distinct from the tolerances used for solving the differential equations (<code>rtol</code> and <code>atol</code>, respectively). Note that when advancing to <code>SS</code> in an ODE model, <code>ss_rtol</code> (the relative tolerance for determining <code>SS</code>) must be larger (less precise) than <code>rtol</code> (the relative tolerance used by the ODE solver). Once the difference between two trough concentrations is less than A<span class="math inline">\(_{trough}\)</span> * <code>ss_rtol</code> + <code>ss_atol</code>, then the system is said to be at steady state. By default, this calculation is done for every single compartment in the model and all compartments have to meet this criteria before the system is said to be at steady state. So, increasing <code>ss_rtol</code> (say from 1e-8 to 1e-3) will also allow us to call it “good” with respect to steady state sooner.</p>
 <p>Both tolerances for steady state are stored in the model object and can be set with the update method. For example,</p>
 <div class="cell">
@@ -371,8 +377,8 @@ window.Quarto = {
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">ss_rtol =</span> <span class="fl">1e-5</span>, <span class="at">ss_atol =</span> <span class="fl">1e-8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="max-dose-number" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="max-dose-number"><span class="header-section-number">8.4.2</span> Max dose number</h3>
+<section id="max-dose-number" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="max-dose-number"><span class="header-section-number">9.4.2</span> Max dose number</h3>
 <p>It was noted above that mrgsolve advances the system to steady state with a brute force approach: doses are repeatedly administered at a regular interval (for intermittent <code>SS</code>) until pre-dose concentrations are the same dose to dose. mrgsolve sets an upper limit (equal to 500) to the number of doses that will be administered before giving up on trying to find steady state. Once this maximum number of doses is exceeded, mrgsolve will issue a warning that steady state was not achieved and continue on with the problem. For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">ii =</span> <span class="dv">12</span>, <span class="at">ss =</span> <span class="dv">1</span>, <span class="at">VC =</span> <span class="dv">800</span>)</span>
@@ -390,8 +396,8 @@ window.Quarto = {
 </div>
 <p>Alternatively, the <code>ss_fixed</code> argument to mrgsim (see <code>?do_mrgsim</code>) can be set to <code>TRUE</code> to silence the warning. In this case, <strong>up to</strong> <code>ss_n</code> doses will be administered and if <code>SS</code> is not achieved with that many doses, the problem will continue with no warning.</p>
 </section>
-<section id="include-exclude-compartments-for-ss" class="level3" data-number="8.4.3">
-<h3 data-number="8.4.3" class="anchored" data-anchor-id="include-exclude-compartments-for-ss"><span class="header-section-number">8.4.3</span> Include / exclude compartments for SS</h3>
+<section id="include-exclude-compartments-for-ss" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="include-exclude-compartments-for-ss"><span class="header-section-number">9.4.3</span> Include / exclude compartments for SS</h3>
 <p>Sometimes it might be sufficient to only consider one compartment when determining <code>SS</code> (e.g.&nbsp;the central compartment in a PK model). Other times, it might be helpful to exclude a compartment when determining <code>SS</code> (e.g.&nbsp;a depot dosing compartment when concentrations can get very small toward the end of the dosing interval).</p>
 <p>mrgsolve allows the user to identify compartments to include or exclude in determining <code>SS</code>. This is done through the <code>ss_cmt</code> option in <code>$SET</code>. To only consider the <code>CENT</code> compartment, write the following in the model file:</p>
 <div class="cell">
@@ -414,8 +420,8 @@ window.Quarto = {
 </div>
 <p>This is just a partial model snippet, but it shows how you might exclude the AUC compartment when determining <code>SS</code>.</p>
 </section>
-<section id="ss_advance-flag" class="level3" data-number="8.4.4">
-<h3 data-number="8.4.4" class="anchored" data-anchor-id="ss_advance-flag"><span class="header-section-number">8.4.4</span> SS_ADVANCE flag</h3>
+<section id="ss_advance-flag" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="ss_advance-flag"><span class="header-section-number">9.4.4</span> SS_ADVANCE flag</h3>
 <p>mrgsolve also provides an <code>SS_ADVANCE</code> indicator that is passed into <code>$ODE</code> and evaluates to <code>true</code> when the system is being advanced to steady state. So a better way to exclude the accumulator compartment from being considered for <code>SS</code> calculation would be this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> ode <span class="op">]</span> </span>
@@ -466,18 +472,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -509,7 +504,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -517,7 +534,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -843,12 +860,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./sequence.html" class="pagination-link" aria-label="Simulation sequence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./plugins.html" class="pagination-link" aria-label="Plugins">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -41,6 +41,9 @@ pretty clear in the pdfbook).
   are two main sections to this chapter: @sec-code-blocks) lists 
   the different model code blocks and @sec-variables-macros) lists
   the different variables that you can get (or set) in the different code blocks
+- @sec-read-write shows some brief examples for how to read in model files as 
+  well as new functionality with mrgsolve 1.5.1 that lets you _write_ a model 
+  back to file
 - @sec-data-set-chapter shows you how to format input data sets
 - @sec-event-chapter shows you how to create and work with simple 
   data set objects called `event` objects

@@ -1,0 +1,124 @@
+# Read and write models {#sec-read-write}
+
+```{r, include = FALSE}
+source("setup.R")
+```
+
+
+## Read in a model file
+
+Use the `mread()` function to read in a model coded in a file on the disk. 
+For example, to read in a model for azithromycin population PK
+
+```{r}
+#| eval: false
+mod <- mread("model/azithro.mod")
+```
+You can use any **extension**, but I'm preferring something like `.mod` or 
+`.txt` to prevent your text editor from trying to reformat the model code. 
+
+You can **update** the model object on the fly by passing arguments 
+to `mread()`. For example, to run the simulation out to one week and only 
+have `CP` appear in the simulated output
+
+```{r}
+#| eval: false
+mod <- mread("model/azithro.mod", end = 168, outvars = "CP")
+```
+
+To do **dynamic capture** on loading the model, pass the `capture` argument. 
+For example, I want to get the clearance (`CL`) and the ETA associated with 
+clearance (`ETACL`) into the simulation output
+
+```{r}
+#| eval: false
+mod <- mread("model/azithro.mod", capture = "CL, ETACL")
+```
+
+To **cache** the compiled model, use `mread_cache()`
+
+```{r}
+#| message: false
+mod <- mread_cache("model/azithro.mod")
+```
+
+When you try to read the model again, it will load from the cache
+
+```{r}
+mod <- mread_cache("model/azithro.mod")
+```
+
+To read in a model from the model library, run `modlib()`. For example, to 
+read in a two-compartment model from the library
+
+```{r}
+#| eval: false
+mod <- modlib("pk2")
+```
+
+To build the model in a specific **location** , use the `soloc` argument
+
+```{r}
+mod <- modlib("irm1", soloc = "build")
+```
+
+This will build the model in the directory `build` off the current _working_ 
+directory. 
+
+You don't have to **compile** the model 
+
+```{r}
+#| eval: false
+mod <- modlib("popex", compile = FALSE)
+```
+
+
+## Write a model to file
+
+With mrgsolve 1.5.1, you can also _write_ a model object back to a file. The 
+format of the file can be either native mrgsolve format or a yaml-formatted
+file. When the model object is written back to file, all of the updates that
+were made to the model object will be written to the file. 
+
+Once we have a model object
+
+```{r}
+#| message: false
+mod <- modlib("popex")
+```
+
+we can update it
+
+```{r}
+mod <- update(mod, end = 72, outvars = "IPRED, CL, DV")
+mod <- param(mod, TVCL = 1.2)
+```
+
+and then write the object out to `yaml` format with `mwrite_yaml()`
+
+```{r}
+mwrite_yaml(mod, file = "popex.yaml")
+```
+
+Now, this model object is in a file called `popex.yaml`. 
+
+To read the model back in, use `mread_yaml()`
+
+```{r}
+#| message: false
+mod2 <- mread_yaml("popex.yaml")
+```
+You'll see that the updated settings are retained in `mod2`
+
+```{r}
+param(mod2)
+mod2@end
+outvars(mod2)
+```
+
+In addition to writing the model object to yaml format, you can also write to 
+native mrgsolve format with the `mwrite_cpp()` function
+
+```{r}
+mwrite_cpp(mod2, file = "popex-updated.mod")
+```

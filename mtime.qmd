@@ -22,7 +22,23 @@ will be the same regardless of what modeled events you set up as discussed here.
 
 ## `evtools` plugin 
 
-`evtools` is a plugin that runs on top of the 
+`evtools` is a plugin that runs on top of the more basic functionality 
+described here. This API can make working with modeled events, including doses, 
+much easier to implement. For example, the plugin allows you to 
+
+- Execute single bolus or infusion doses
+- Replace the amount in a given compartment
+- Work with event objects in C++, including setting a new time for when the 
+  event should happen
+- Execute a regular event regiment
+
+See @sec-plugin-evtools for details on the `evtools` functionality. 
+
+## Note about when events are processed
+
+It's important to note that events are currently _only_ processed after `$ERROR`
+(or `$TABLE`) is called. For this reason, it's very likely that you'll want to 
+write code for implementing model events in `$TABLE`, _not_ `$PK` (or `$MAIN`).
 
 ## Simple MTIME
 

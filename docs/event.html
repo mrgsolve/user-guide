@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mrgsolve user guide - 4&nbsp; Event objects</title>
+<title>5&nbsp; Event objects – mrgsolve user guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -112,13 +112,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./event.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./event.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -160,68 +160,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./event.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -234,29 +240,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#usage" id="toc-usage" class="nav-link active" data-scroll-target="#usage"><span class="header-section-number">4.1</span> Usage</a></li>
-  <li><a href="#construction" id="toc-construction" class="nav-link" data-scroll-target="#construction"><span class="header-section-number">4.2</span> Construction</a></li>
-  <li><a href="#coerce-to-data-set" id="toc-coerce-to-data-set" class="nav-link" data-scroll-target="#coerce-to-data-set"><span class="header-section-number">4.3</span> Coerce to data set</a></li>
-  <li><a href="#extract-information" id="toc-extract-information" class="nav-link" data-scroll-target="#extract-information"><span class="header-section-number">4.4</span> Extract information</a></li>
-  <li><a href="#combining-event-objects" id="toc-combining-event-objects" class="nav-link" data-scroll-target="#combining-event-objects"><span class="header-section-number">4.5</span> Combining event objects</a>
+  <li><a href="#usage" id="toc-usage" class="nav-link active" data-scroll-target="#usage"><span class="header-section-number">5.1</span> Usage</a></li>
+  <li><a href="#construction" id="toc-construction" class="nav-link" data-scroll-target="#construction"><span class="header-section-number">5.2</span> Construction</a></li>
+  <li><a href="#coerce-to-data-set" id="toc-coerce-to-data-set" class="nav-link" data-scroll-target="#coerce-to-data-set"><span class="header-section-number">5.3</span> Coerce to data set</a></li>
+  <li><a href="#extract-information" id="toc-extract-information" class="nav-link" data-scroll-target="#extract-information"><span class="header-section-number">5.4</span> Extract information</a></li>
+  <li><a href="#combining-event-objects" id="toc-combining-event-objects" class="nav-link" data-scroll-target="#combining-event-objects"><span class="header-section-number">5.5</span> Combining event objects</a>
   <ul class="collapse">
-  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">4.5.1</span> Concatenate</a></li>
-  <li><a href="#sequence" id="toc-sequence" class="nav-link" data-scroll-target="#sequence"><span class="header-section-number">4.5.2</span> Sequence</a></li>
-  <li><a href="#repeat" id="toc-repeat" class="nav-link" data-scroll-target="#repeat"><span class="header-section-number">4.5.3</span> repeat</a></li>
-  <li><a href="#create-a-data_set" id="toc-create-a-data_set" class="nav-link" data-scroll-target="#create-a-data_set"><span class="header-section-number">4.5.4</span> Create a “data_set”</a></li>
+  <li><a href="#concatenate" id="toc-concatenate" class="nav-link" data-scroll-target="#concatenate"><span class="header-section-number">5.5.1</span> Concatenate</a></li>
+  <li><a href="#sequence" id="toc-sequence" class="nav-link" data-scroll-target="#sequence"><span class="header-section-number">5.5.2</span> Sequence</a></li>
+  <li><a href="#repeat" id="toc-repeat" class="nav-link" data-scroll-target="#repeat"><span class="header-section-number">5.5.3</span> repeat</a></li>
+  <li><a href="#sec-event-as-data-set" id="toc-sec-event-as-data-set" class="nav-link" data-scroll-target="#sec-event-as-data-set"><span class="header-section-number">5.5.4</span> Create a <code>data_set</code></a></li>
   </ul></li>
-  <li><a href="#modifying-an-event-object" id="toc-modifying-an-event-object" class="nav-link" data-scroll-target="#modifying-an-event-object"><span class="header-section-number">4.6</span> Modifying an event object</a>
+  <li><a href="#modifying-an-event-object" id="toc-modifying-an-event-object" class="nav-link" data-scroll-target="#modifying-an-event-object"><span class="header-section-number">5.6</span> Modifying an event object</a>
   <ul class="collapse">
-  <li><a href="#tidy-like-manipulation" id="toc-tidy-like-manipulation" class="nav-link" data-scroll-target="#tidy-like-manipulation"><span class="header-section-number">4.6.1</span> Tidy-like manipulation</a></li>
-  <li><a href="#realize_addl" id="toc-realize_addl" class="nav-link" data-scroll-target="#realize_addl"><span class="header-section-number">4.6.2</span> realize_addl</a></li>
-  <li><a href="#ev_rep" id="toc-ev_rep" class="nav-link" data-scroll-target="#ev_rep"><span class="header-section-number">4.6.3</span> ev_rep</a></li>
+  <li><a href="#tidy-like-manipulation" id="toc-tidy-like-manipulation" class="nav-link" data-scroll-target="#tidy-like-manipulation"><span class="header-section-number">5.6.1</span> Tidy-like manipulation</a></li>
+  <li><a href="#realize_addl" id="toc-realize_addl" class="nav-link" data-scroll-target="#realize_addl"><span class="header-section-number">5.6.2</span> realize_addl</a></li>
+  <li><a href="#ev_rep" id="toc-ev_rep" class="nav-link" data-scroll-target="#ev_rep"><span class="header-section-number">5.6.3</span> ev_rep</a></li>
   </ul></li>
-  <li><a href="#creative-composition" id="toc-creative-composition" class="nav-link" data-scroll-target="#creative-composition"><span class="header-section-number">4.7</span> Creative composition</a>
+  <li><a href="#creative-composition" id="toc-creative-composition" class="nav-link" data-scroll-target="#creative-composition"><span class="header-section-number">5.7</span> Creative composition</a>
   <ul class="collapse">
-  <li><a href="#ev_days" id="toc-ev_days" class="nav-link" data-scroll-target="#ev_days"><span class="header-section-number">4.7.1</span> ev_days</a></li>
-  <li><a href="#ev_rx" id="toc-ev_rx" class="nav-link" data-scroll-target="#ev_rx"><span class="header-section-number">4.7.2</span> ev_rx</a></li>
+  <li><a href="#ev_days" id="toc-ev_days" class="nav-link" data-scroll-target="#ev_days"><span class="header-section-number">5.7.1</span> ev_days</a></li>
+  <li><a href="#ev_rx" id="toc-ev_rx" class="nav-link" data-scroll-target="#ev_rx"><span class="header-section-number">5.7.2</span> ev_rx</a></li>
   </ul></li>
-  <li><a href="#sec-evd" id="toc-sec-evd" class="nav-link" data-scroll-target="#sec-evd"><span class="header-section-number">4.8</span> Upper case names</a></li>
+  <li><a href="#sec-evd" id="toc-sec-evd" class="nav-link" data-scroll-target="#sec-evd"><span class="header-section-number">5.8</span> Upper case names</a></li>
   </ul>
 </nav>
     </div>
@@ -265,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-event-chapter" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></h1>
+<h1 class="title"><span id="sec-event-chapter" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></h1>
 </div>
 
 
@@ -282,12 +288,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Event objects are similar to the data sets described in <a href="datasets.html" class="quarto-xref"><span>Chapter 3</span></a>, but are simpler and easier to create. This is the fastest way to implement a basic intervention (like dosing) for a single “individual” into your model.</p>
+<p>Event objects are similar to the data sets described in <a href="datasets.html" class="quarto-xref"><span>Chapter 4</span></a>, but are simpler and easier to create. This is the fastest way to implement a basic intervention (like dosing) for a single “individual” into your model.</p>
 <p>Event objects also offer an elegant way to compose complicated dosing regimens. Typically, the different parts of a regimen are composed as individual event objects and then combined to create a multi-faceted dose regiment.</p>
 <p>Finally, once an event object is created (either simple or complex), this object can be “expanded” into multiple individuals to create a population data set for simulation.</p>
 <p>See details in the subsequent sections.</p>
-<section id="usage" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="usage"><span class="header-section-number">4.1</span> Usage</h2>
+<section id="usage" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="usage"><span class="header-section-number">5.1</span> Usage</h2>
 <p>Event objects are frequently used in a pipeline to simulate a dosing regimen. For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>(<span class="at">end =</span> <span class="dv">72</span>) </span>
@@ -320,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>More will be said about how to create and manipulate event objects in the following sections.</p>
 </section>
-<section id="construction" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="construction"><span class="header-section-number">4.2</span> Construction</h2>
+<section id="construction" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="construction"><span class="header-section-number">5.2</span> Construction</h2>
 <p>A new event object can be created with the <code>ev()</code> constructor. For a single, 100 mg dose it would be</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -409,15 +415,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="coerce-to-data-set" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="coerce-to-data-set"><span class="header-section-number">4.3</span> Coerce to data set</h2>
+<section id="coerce-to-data-set" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="coerce-to-data-set"><span class="header-section-number">5.3</span> Coerce to data set</h2>
 <p>As we noted, event objects are very similar to data sets and they are nothing but data sets under the hood. We can take the event objects we created above and coerce them to other objects.</p>
 <p><strong>Using as_data_set</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.   time amt rate cmt evid ID
-. 1    1 100   50   2    1  1</code></pre>
+<pre><code>.   ID time amt rate cmt evid
+. 1  1    1 100   50   2    1</code></pre>
 </div>
 </div>
 <p>This will ensure that there is an <code>ID</code> column in the output and it will be suitable to use for simulation.</p>
@@ -430,10 +436,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Upper case names</strong></p>
-<p>See <a href="#sec-evd" class="quarto-xref"><span>Section 4.8</span></a> for a constructor for an event object that renders with upper case names.</p>
+<p>See <a href="#sec-evd" class="quarto-xref"><span>Section 5.8</span></a> for a constructor for an event object that renders with upper case names.</p>
 </section>
-<section id="extract-information" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="extract-information"><span class="header-section-number">4.4</span> Extract information</h2>
+<section id="extract-information" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="extract-information"><span class="header-section-number">5.4</span> Extract information</h2>
 <p>There is a <code>$</code> operator for event objects</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>e<span class="sc">$</span>amt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -442,10 +448,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="combining-event-objects" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="combining-event-objects"><span class="header-section-number">4.5</span> Combining event objects</h2>
-<section id="concatenate" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">4.5.1</span> Concatenate</h3>
+<section id="combining-event-objects" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="combining-event-objects"><span class="header-section-number">5.5</span> Combining event objects</h2>
+<section id="concatenate" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="concatenate"><span class="header-section-number">5.5.1</span> Concatenate</h3>
 <p>Two or more event objects can be concatenated using the <code>c</code> operator</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>e1 <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span>
@@ -462,8 +468,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This essentially “rbinds” the rows of the individual event objects and sorts the rows by <code>time</code>.</p>
 <p><strong>NOTE</strong>: the result of this manipulation is another event object.</p>
 </section>
-<section id="sequence" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="sequence"><span class="header-section-number">4.5.2</span> Sequence</h3>
+<section id="sequence" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="sequence"><span class="header-section-number">5.5.2</span> Sequence</h3>
 <p>Event objects can also be combined to happen in a sequence. In the previous example, we wanted the 200 mg to happen at 24 hours and we had to code that fact into <code>time</code> accordingly.</p>
 <p>By specifying a dosing interval (<code>ii</code>) we can ask mrgsolve to do that automatically by calling the <code>seq()</code> method.</p>
 <div class="cell">
@@ -536,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="repeat" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="repeat"><span class="header-section-number">4.5.3</span> repeat</h3>
+<section id="repeat" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="repeat"><span class="header-section-number">5.5.3</span> repeat</h3>
 <p>Like the <code>seq()</code> method for event objects, <code>ev_repeat</code> will put an event object into a sequence <code>n</code> times</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev_repeat</span>(e1, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -585,20 +591,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="create-a-data_set" class="level3" data-number="4.5.4">
-<h3 data-number="4.5.4" class="anchored" data-anchor-id="create-a-data_set"><span class="header-section-number">4.5.4</span> Create a “data_set”</h3>
-<p>Use the <code>as_data_set()</code> function to combine multiple event objects into a single data set.</p>
+<section id="sec-event-as-data-set" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="sec-event-as-data-set"><span class="header-section-number">5.5.4</span> Create a <code>data_set</code></h3>
+<p>Use the <code>as_data_set()</code> function to combine multiple event objects or data frames into a single data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(e1, e2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.   ID time cmt evid amt ii addl
-. 1  1    0   1    1 500 24    0
-. 2  2    0   1    1 250 24    5</code></pre>
+<pre><code>.   ID time amt ii addl cmt evid
+. 1  1    0 500 24    0   1    1
+. 2  2    0 250 24    5   1    1</code></pre>
 </div>
 </div>
 <p>It’s important to note that</p>
 <ol type="1">
-<li>The result is a regular old <code>data.frame()</code>; once you call <code>as_data_set()</code>, you exit the event object world</li>
+<li>The result is a regular old data frame; once you call <code>as_data_set()</code>, you exit the event object world</li>
 <li>Each event object is given a different <code>ID</code></li>
 </ol>
 <p>Recall that we can create event objects with multiple <code>IDs</code>; <code>as_data_set()</code> is handy to use with this feature</p>
@@ -609,34 +615,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">300</span>, <span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.   ID time cmt evid amt
-. 1  1    0   1    1 100
-. 2  2    0   1    1 100
-. 3  3    0   1    1 100
-. 4  4    0   1    1 200
-. 5  5    0   1    1 200
-. 6  6    0   1    1 200
-. 7  7    0   1    1 300
-. 8  8    0   1    1 300</code></pre>
+<pre><code>.   ID time amt cmt evid
+. 1  1    0 100   1    1
+. 2  2    0 100   1    1
+. 3  3    0 100   1    1
+. 4  4    0 200   1    1
+. 5  5    0 200   1    1
+. 6  6    0 200   1    1
+. 7  7    0 300   1    1
+. 8  8    0 300   1    1</code></pre>
 </div>
 </div>
-<p>Notice that <code>as_data_set</code> has created unique IDs for the 3 subjects in the 100 mg group, the 3 subjects in the 200 mg group, and the 2 subjects in the 300 mg group.</p>
+<p>Notice that <code>as_data_set()</code> has created unique IDs for the 3 subjects in the 100 mg group, the 3 subjects in the 200 mg group, and the 2 subjects in the 300 mg group.</p>
 <p>We’ll cover a function called <code>ev_rep()</code> below to “expand” an event object to multiple individuals</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  e1 <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>),</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  e2 <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev_rep</span>(e1, <span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>),</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev_rep</span>(e2, <span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>)</span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you want to combine objects with a mixture of lower and upper case names, the output object will be patterned after the first object you pass in. For example, the object created with the following code will have upper case names because we passed in the object created with <code>evd()</code> first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">10</span>), </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID TIME AMT CMT EVID
+. 1  1    0  10   1    1
+. 2  2    0 100   1    1</code></pre>
+</div>
+</div>
+<p>With mrgsolve 1.5.1, we can also combine data frames with upper and lower case names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">ev_rep</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">1000</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">ev_rep</span>(<span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(d1, d2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID time  amt cmt evid
+. 1  1    0 1000   1    1
+. 2  2    0 1000   1    1
+. 3  3    0  100   1    1
+. 4  4    0  100   1    1</code></pre>
+</div>
+</div>
+<p>We can also combine data frames and event objects. Because we are leading with <code>d2</code> (created with <code>evd()</code>), the output will have upper case names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_data_set</span>(d2, e1, d1, e2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.   ID TIME  AMT II ADDL CMT EVID
+. 1  1    0  100  0    0   1    1
+. 2  2    0  100  0    0   1    1
+. 3  3    0  500 24    0   1    1
+. 4  4    0 1000  0    0   1    1
+. 5  5    0 1000  0    0   1    1
+. 6  6    0  250 24    5   1    1</code></pre>
+</div>
 </div>
 </section>
 </section>
-<section id="modifying-an-event-object" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="modifying-an-event-object"><span class="header-section-number">4.6</span> Modifying an event object</h2>
-<section id="tidy-like-manipulation" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="tidy-like-manipulation"><span class="header-section-number">4.6.1</span> Tidy-like manipulation</h3>
+<section id="modifying-an-event-object" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="modifying-an-event-object"><span class="header-section-number">5.6</span> Modifying an event object</h2>
+<section id="tidy-like-manipulation" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="tidy-like-manipulation"><span class="header-section-number">5.6.1</span> Tidy-like manipulation</h3>
 <p>Event objects can be mutated</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(e, <span class="at">amt =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(e, <span class="at">amt =</span> <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt rate cmt evid
@@ -645,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Columns can be removed from event objects</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">WT =</span> <span class="dv">50</span>, <span class="at">AGE =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>WT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">WT =</span> <span class="dv">50</span>, <span class="at">AGE =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>WT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt cmt evid AGE
@@ -654,9 +700,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Rows can be removed from event objects</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>), <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">200</span>, <span class="at">time =</span> <span class="dv">12</span>), <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">300</span>, <span class="at">time =</span> <span class="dv">24</span>))</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(e, time <span class="sc">&lt;=</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>), <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">200</span>, <span class="at">time =</span> <span class="dv">12</span>), <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">300</span>, <span class="at">time =</span> <span class="dv">24</span>))</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(e, time <span class="sc">&lt;=</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt cmt evid
@@ -665,11 +711,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="realize_addl" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="realize_addl"><span class="header-section-number">4.6.2</span> realize_addl</h3>
+<section id="realize_addl" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="realize_addl"><span class="header-section-number">5.6.2</span> realize_addl</h3>
 <p>“Additional” doses can be made explicit in an event object</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">ii =</span> <span class="dv">6</span>, <span class="at">addl =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">realize_addl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">ii =</span> <span class="dv">6</span>, <span class="at">addl =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">realize_addl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt ii addl cmt evid
@@ -680,36 +726,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="ev_rep" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="ev_rep"><span class="header-section-number">4.6.3</span> ev_rep</h3>
+<section id="ev_rep" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="ev_rep"><span class="header-section-number">5.6.3</span> ev_rep</h3>
 <p>Event objects can be “expanded” into multiple IDs to create a population; use the <code>ev_rep()</code> function for this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.     ID time amt cmt evid
-. 1    1    0 100   1    1
-. 1.1  2    0 100   1    1
-. 1.2  3    0 100   1    1
-. 1.3  4    0 100   1    1
-. 1.4  5    0 100   1    1</code></pre>
+<pre><code>.   ID time amt cmt evid
+. 1  1    0 100   1    1
+. 2  2    0 100   1    1
+. 3  3    0 100   1    1
+. 4  4    0 100   1    1
+. 5  5    0 100   1    1</code></pre>
 </div>
 </div>
 <p>By default, <code>ev_rep()</code> returns a regular data frame. You can request that an event object is returned</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">as.ev =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">ev_rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">as.ev =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>ev_rep()</code> can work on an event object with any complexity.</p>
 </section>
 </section>
-<section id="creative-composition" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="creative-composition"><span class="header-section-number">4.7</span> Creative composition</h2>
+<section id="creative-composition" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="creative-composition"><span class="header-section-number">5.7</span> Creative composition</h2>
 <p>mrgsolve has a couple of more creative ways to construct event objects.</p>
-<section id="ev_days" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="ev_days"><span class="header-section-number">4.7.1</span> ev_days</h3>
+<section id="ev_days" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="ev_days"><span class="header-section-number">5.7.1</span> ev_days</h3>
 <p><code>ev_days()</code> will create dosing sequences when dosing are on certain days (of the week). For example, to dose only on Monday, Wednesday, and Friday for on month</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ev_days</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>), <span class="at">ii =</span> <span class="dv">168</span>, <span class="at">addl =</span> <span class="dv">3</span>, <span class="at">days =</span> <span class="st">'m,w,f'</span>)</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ev_days</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>), <span class="at">ii =</span> <span class="dv">168</span>, <span class="at">addl =</span> <span class="dv">3</span>, <span class="at">days =</span> <span class="st">'m,w,f'</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.   time amt cmt evid  ii addl
 . 1    0 100   1    1 168    3
@@ -719,21 +765,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We can see how this works by simulating the regimen</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, e, <span class="at">end =</span> <span class="dv">168</span><span class="sc">*</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>(<span class="st">"CP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim_e</span>(mod, e, <span class="at">end =</span> <span class="dv">168</span><span class="sc">*</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> <span class="fu">plot</span>(<span class="st">"CP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="event_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="event_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ev_rx" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="ev_rx"><span class="header-section-number">4.7.2</span> ev_rx</h3>
+<section id="ev_rx" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="ev_rx"><span class="header-section-number">5.7.2</span> ev_rx</h3>
 <p><code>ev_rx()</code> is a way to write a regimen out with notation similar to what you might see on a prescription. For example, 100 mg twice daily for 3 doses into compartment 2 would be</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev_rx</span>(<span class="st">"100 mg q12h x3 in 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev_rx</span>(<span class="st">"100 mg q12h x3 in 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt ii addl cmt evid
@@ -742,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>To code an infusion</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev_rx</span>(<span class="st">"500 mg over 2 hours q 24 h x3 in 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev_rx</span>(<span class="st">"500 mg over 2 hours q 24 h x3 in 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events:
 .   time amt rate ii addl cmt evid
@@ -752,11 +798,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>See the <code>ev_rx()</code> documentation for more details and limitations.</p>
 </section>
 </section>
-<section id="sec-evd" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="sec-evd"><span class="header-section-number">4.8</span> Upper case names</h2>
+<section id="sec-evd" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="sec-evd"><span class="header-section-number">5.8</span> Upper case names</h2>
 <p>You’ll notice in the previous sections that most of the column names were rendered with lower case letters when we convert the event object to a data set like object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.   time amt cmt evid
 . 1    0 100   1    1</code></pre>
@@ -766,9 +812,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Nevertheless, recent versions of mrgsolve have included similar constructor functions that will render column names in upper case which are commonly seen in analysis data sets.</p>
 <p>The <code>evd()</code> constructor behaves just like <code>ev()</code>, but it will render upper case names when coerced to a data set or used for simulation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events Data:
 .   time amt cmt evid
@@ -778,7 +824,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>d</code> in <code>evd()</code> indicates that the event object will render with names like a Data set and you will see a reminder of the data set like nature of this object when it is printed.</p>
 <p>When this object is rendered to a data frame, you will see the names rendered in upper case</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.   TIME AMT CMT EVID
 . 1    0 100   1    1</code></pre>
@@ -786,7 +832,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You can also coerce an event object created with <code>ev()</code> to one that behaves as if it were created via <code>evd()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.evd</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.evd</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events Data:
 .   time amt cmt evid
@@ -795,7 +841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It is important to note that the case of the column names aren’t made upper case until the data frame is rendered. So, in the previous example, <code>time</code> and <code>amt</code> are in lower case because we have not rendered yet. If you want to work on this object before it is rendered, be sure to lower case names before rendering and upper case after rendering. For example we use <code>rate</code> in the the following example, not <code>RATE</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rate =</span> amt <span class="sc">/</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rate =</span> amt <span class="sc">/</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events Data:
 .   time amt rate cmt evid
@@ -804,7 +850,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>You can coerce a traditional event object to a data like event object with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.evd</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.evd</span>(<span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events Data:
 .   time amt cmt evid
@@ -813,23 +859,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>And finally, there are two utility functions for changing the names of a data like or event object. To convert to upper case use <code>uctran()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">as_data_set</span>() <span class="sc">%&gt;%</span> <span class="fu">uctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">as_data_set</span>() <span class="sc">%&gt;%</span> <span class="fu">uctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.   TIME AMT CMT EVID ID
-. 1    0 100   1    1  1</code></pre>
+<pre><code>.   ID TIME AMT CMT EVID
+. 1  1    0 100   1    1</code></pre>
 </div>
 </div>
 <p>To convert to lower case, use <code>lctran()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">as_data_set</span>() <span class="sc">%&gt;%</span> <span class="fu">lctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">evd</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">as_data_set</span>() <span class="sc">%&gt;%</span> <span class="fu">lctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>.   time amt cmt evid ID
-. 1    0 100   1    1  1</code></pre>
+<pre><code>.   ID time amt cmt evid
+. 1  1    0 100   1    1</code></pre>
 </div>
 </div>
 <p>The utility functions also work on event objects. For example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">uctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">uctran</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. Events Data:
 .   time amt cmt evid
@@ -876,18 +922,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -919,7 +954,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -927,7 +984,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1253,12 +1310,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./datasets.html" class="pagination-link" aria-label="Input data sets">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./matrix.html" class="pagination-link" aria-label="Model Matrices">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

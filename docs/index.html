@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kyle Baron">
-<meta name="dcterms.date" content="2024-06-27">
+<meta name="dcterms.date" content="2024-07-26">
 
 <title>mrgsolve user guide</title>
 <style>
@@ -79,13 +79,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -127,68 +127,74 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./event.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -232,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 27, 2024</p>
+      <p class="date">July 26, 2024</p>
     </div>
   </div>
   
@@ -246,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Introduction</h1>
-<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html" class="quarto-xref"><span>2&nbsp; Model specification</span></a> on model specification, <a href="components.html" class="quarto-xref"><span>1&nbsp; Model components</span></a> on model components and <a href="sequence.html" class="quarto-xref"><span>7&nbsp; Simulation sequence</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
+<p><img src="images/MRG-Solve-Hex.png" align="right" width="200px"> Welcome to the mrgsolve user guide. The user guide is the main documentation source for how mrgsolve works and how to best use mrgsolve in your modeling and simulation project. As with most of the mrgsolve documentation, this is a work in progress. I am currently working to transition this to more of a reference resource, rather than demonstration. So key content in the user guide includes <a href="specification.html" class="quarto-xref"><span>2&nbsp; Model specification</span></a> on model specification, <a href="components.html" class="quarto-xref"><span>1&nbsp; Model components</span></a> on model components and <a href="sequence.html" class="quarto-xref"><span>8&nbsp; Simulation sequence</span></a> on the simulation sequence. Installation is a big topic but we defer to the wiki page for installation help since requirements tend to change frequently with new R releases. The other content is hopefully helpful as well. I’m leaving it all in place for now, but will gradually transition the “how-to” and demo type content over to the vignettes repository or the gallery repository (see <a href="#other-resources">below</a>).</p>
 <p>Please feel free to ask questions about anything mrgsolve-related on the issue tracker on the main github repo: <a href="https://github.com/metrumresearchgroup/mrgsolve/issues" class="uri">https://github.com/metrumresearchgroup/mrgsolve/issues</a>.</p>
 <section id="overview" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="overview">Overview</h2>
@@ -254,17 +260,18 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><a href="components.html" class="quarto-xref"><span>1&nbsp; Model components</span></a> tells you about what is in the mrgsolve model object (like parameters, compartments, C++ functions and the like)</li>
 <li><a href="specification.html" class="quarto-xref"><span>2&nbsp; Model specification</span></a> tells you about model specification. There are two main sections to this chapter: <a href="specification.html#sec-code-blocks" class="quarto-xref"><span>2.2 Code blocks</span></a>) lists the different model code blocks and <a href="specification.html#sec-variables-macros" class="quarto-xref"><span>2.3 Variables and Macros</span></a>) lists the different variables that you can get (or set) in the different code blocks</li>
-<li><a href="datasets.html" class="quarto-xref"><span>3&nbsp; Input data sets</span></a> shows you how to format input data sets</li>
-<li><a href="event.html" class="quarto-xref"><span>4&nbsp; Event objects</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
-<li><a href="matrix.html" class="quarto-xref"><span>5&nbsp; Model Matrices</span></a> shows how to work with model matrices</li>
-<li><a href="output.html" class="quarto-xref"><span>6&nbsp; Simulated output</span></a> tells you about the simulated output object and how you can work with it</li>
-<li><a href="sequence.html" class="quarto-xref"><span>7&nbsp; Simulation sequence</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
-<li><a href="steady-state.html" class="quarto-xref"><span>8&nbsp; Steady state</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
-<li><a href="plugins.html" class="quarto-xref"><span>9&nbsp; Plugins</span></a> talks about different plugins you can use for more advanced modeling</li>
-<li><a href="mtime.html" class="quarto-xref"><span>10&nbsp; Modeled events</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
-<li><a href="topics.html" class="quarto-xref"><span>11&nbsp; Topics</span></a> is a collection of applied examples on different topics</li>
-<li><a href="q-and-a.html" class="quarto-xref"><span>12&nbsp; Questions and Answers</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
-<li><a href="install.html" class="quarto-xref"><span>13&nbsp; Installation</span></a> provides links to some Wiki pages that can help with installation</li>
+<li><a href="read-write.html" class="quarto-xref"><span>3&nbsp; Read and write models</span></a> shows some brief examples for how to read in model files as well as new functionality with mrgsolve 1.5.1 that lets you <em>write</em> a model back to file</li>
+<li><a href="datasets.html" class="quarto-xref"><span>4&nbsp; Input data sets</span></a> shows you how to format input data sets</li>
+<li><a href="event.html" class="quarto-xref"><span>5&nbsp; Event objects</span></a> shows you how to create and work with simple data set objects called <code>event</code> objects</li>
+<li><a href="matrix.html" class="quarto-xref"><span>6&nbsp; Model Matrices</span></a> shows how to work with model matrices</li>
+<li><a href="output.html" class="quarto-xref"><span>7&nbsp; Simulated output</span></a> tells you about the simulated output object and how you can work with it</li>
+<li><a href="sequence.html" class="quarto-xref"><span>8&nbsp; Simulation sequence</span></a> dives into the simulation sequence, showing you the steps that mrgsolve takes to work through a problem</li>
+<li><a href="steady-state.html" class="quarto-xref"><span>9&nbsp; Steady state</span></a> gives the details on how mrgsolve advances the system to a pharmacokinetic steady state</li>
+<li><a href="plugins.html" class="quarto-xref"><span>10&nbsp; Plugins</span></a> talks about different plugins you can use for more advanced modeling</li>
+<li><a href="mtime.html" class="quarto-xref"><span>11&nbsp; Modeled events</span></a> talks about modeled events (discontinuities in the simulation that are triggered from within the model rather than from the data set)</li>
+<li><a href="topics.html" class="quarto-xref"><span>12&nbsp; Topics</span></a> is a collection of applied examples on different topics</li>
+<li><a href="q-and-a.html" class="quarto-xref"><span>13&nbsp; Questions and Answers</span></a> are brief questions and answers providing some bits of information that don’t obviously fit into another chapter</li>
+<li><a href="install.html" class="quarto-xref"><span>14&nbsp; Installation</span></a> provides links to some Wiki pages that can help with installation</li>
 </ul>
 </section>
 <section id="pdf-version" class="level2 unnumbered">
@@ -280,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Gallery: <a href="https://github.com/mrgsolve/gallery">github.com/mrgsolve/gallery</a></li>
 </ul>
 <hr>
-<p>This book was assembled on Thu Jun 27 15:09:26 2024 with mrgsolve version 1.4.2.</p>
+<p>This book was assembled on Fri Jul 26 08:47:15 2024 with mrgsolve version 1.5.1.</p>
 
 
 </section>
@@ -322,18 +329,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -365,7 +361,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -373,7 +391,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

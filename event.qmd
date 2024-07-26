@@ -300,10 +300,10 @@ ev_repeat(e3, n = 3, wait = 7*24)
 ```
 
 
-### Create a "data_set"
+### Create a `data_set` {#sec-event-as-data-set}
 
-Use the `as_data_set()` function to combine multiple event objects into a single
-data set. 
+Use the `as_data_set()` function to combine multiple event objects or data 
+frames into a single data set. 
 
 ```{r}
 as_data_set(e1, e2)
@@ -311,7 +311,7 @@ as_data_set(e1, e2)
 
 It's important to note that 
 
-1. The result is a regular old `data.frame()`; once you call `as_data_set()`, 
+1. The result is a regular old data frame; once you call `as_data_set()`, 
    you exit the event object world
 1. Each event object is given a different `ID`
 
@@ -328,7 +328,7 @@ as_data_set(
 ```
 
 
-Notice that `as_data_set` has created unique IDs for the 3 subjects in 
+Notice that `as_data_set()` has created unique IDs for the 3 subjects in 
 the 100 mg group, the 3 subjects in the 200 mg group, and the 2 subjects in 
 the 300 mg group.
 
@@ -337,9 +337,38 @@ multiple individuals
 
 ```{r, eval = FALSE}
 as_data_set(
-  e1 %>% ev_rep(1:300),
-  e2 %>% ev_rep(1:300)
+  ev_rep(e1, 1:300),
+  ev_rep(e2, 1:300)
 )
+```
+
+If you want to combine objects with a mixture of lower and upper case names, 
+the output object will be patterned after the first object you pass in. For
+example, the object created with the following code will have upper case names
+because we passed in the object created with `evd()` first. 
+
+```{r}
+as_data_set(
+  evd(amt = 10), 
+  ev(amt = 100)
+)
+```
+With mrgsolve 1.5.1, we can also combine data frames with upper and lower 
+case names
+
+```{r}
+d1 <- ev_rep(ev(amt = 1000), 1:2)
+
+d2 <- ev_rep(evd(amt = 100), 1:2)
+
+as_data_set(d1, d2)
+```
+
+We can also combine data frames and event objects. Because we are leading with 
+`d2` (created with `evd()`), the output will have upper case names.
+
+```{r}
+as_data_set(d2, e1, d1, e2)
 ```
 
 
@@ -510,7 +539,6 @@ To convert to lower case, use `lctran()`
 ```{r}
 evd(amt = 100) %>% as_data_set() %>% lctran()
 ```
-
 
 The utility functions also work on event objects. For example, 
 

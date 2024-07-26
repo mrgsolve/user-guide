@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mrgsolve user guide - 5&nbsp; Model Matrices</title>
+<title>6&nbsp; Model Matrices – mrgsolve user guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -112,13 +112,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrix.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./matrix.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -160,68 +160,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./event.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -234,22 +240,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics"><span class="header-section-number">5.1</span> Basics</a>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics"><span class="header-section-number">6.1</span> Basics</a>
   <ul class="collapse">
-  <li><a href="#simple-matrix-lists" id="toc-simple-matrix-lists" class="nav-link" data-scroll-target="#simple-matrix-lists"><span class="header-section-number">5.1.1</span> Simple matrix lists</a></li>
-  <li><a href="#multiple-matrix-lists" id="toc-multiple-matrix-lists" class="nav-link" data-scroll-target="#multiple-matrix-lists"><span class="header-section-number">5.1.2</span> Multiple matrix lists</a></li>
+  <li><a href="#simple-matrix-lists" id="toc-simple-matrix-lists" class="nav-link" data-scroll-target="#simple-matrix-lists"><span class="header-section-number">6.1.1</span> Simple matrix lists</a></li>
+  <li><a href="#multiple-matrix-lists" id="toc-multiple-matrix-lists" class="nav-link" data-scroll-target="#multiple-matrix-lists"><span class="header-section-number">6.1.2</span> Multiple matrix lists</a></li>
   </ul></li>
-  <li><a href="#collapsing-matrices" id="toc-collapsing-matrices" class="nav-link" data-scroll-target="#collapsing-matrices"><span class="header-section-number">5.2</span> Collapsing matrices</a>
+  <li><a href="#collapsing-matrices" id="toc-collapsing-matrices" class="nav-link" data-scroll-target="#collapsing-matrices"><span class="header-section-number">6.2</span> Collapsing matrices</a>
   <ul class="collapse">
-  <li><a href="#collapse-on-load" id="toc-collapse-on-load" class="nav-link" data-scroll-target="#collapse-on-load"><span class="header-section-number">5.2.1</span> Collapse on load</a></li>
+  <li><a href="#collapse-on-load" id="toc-collapse-on-load" class="nav-link" data-scroll-target="#collapse-on-load"><span class="header-section-number">6.2.1</span> Collapse on load</a></li>
   </ul></li>
-  <li><a href="#sec-matrix-update" id="toc-sec-matrix-update" class="nav-link" data-scroll-target="#sec-matrix-update"><span class="header-section-number">5.3</span> Updating <code>$OMEGA</code> and <code>$SIGMA</code> &nbsp;</a>
+  <li><a href="#sec-matrix-update" id="toc-sec-matrix-update" class="nav-link" data-scroll-target="#sec-matrix-update"><span class="header-section-number">6.3</span> Updating <code>$OMEGA</code> and <code>$SIGMA</code> &nbsp;</a>
   <ul class="collapse">
-  <li><a href="#matrix-helper-functions" id="toc-matrix-helper-functions" class="nav-link" data-scroll-target="#matrix-helper-functions"><span class="header-section-number">5.3.1</span> Matrix helper functions</a></li>
-  <li><a href="#fill-a-matrix-with-zeros" id="toc-fill-a-matrix-with-zeros" class="nav-link" data-scroll-target="#fill-a-matrix-with-zeros"><span class="header-section-number">5.3.2</span> Fill a matrix with zeros</a></li>
-  <li><a href="#example-unnamed-matrix" id="toc-example-unnamed-matrix" class="nav-link" data-scroll-target="#example-unnamed-matrix"><span class="header-section-number">5.3.3</span> Example: unnamed matrix</a></li>
-  <li><a href="#example-named-matrices" id="toc-example-named-matrices" class="nav-link" data-scroll-target="#example-named-matrices"><span class="header-section-number">5.3.4</span> Example: named matrices</a></li>
-  <li><a href="#example-unnamed-matrices" id="toc-example-unnamed-matrices" class="nav-link" data-scroll-target="#example-unnamed-matrices"><span class="header-section-number">5.3.5</span> Example: unnamed matrices</a></li>
+  <li><a href="#matrix-helper-functions" id="toc-matrix-helper-functions" class="nav-link" data-scroll-target="#matrix-helper-functions"><span class="header-section-number">6.3.1</span> Matrix helper functions</a></li>
+  <li><a href="#fill-a-matrix-with-zeros" id="toc-fill-a-matrix-with-zeros" class="nav-link" data-scroll-target="#fill-a-matrix-with-zeros"><span class="header-section-number">6.3.2</span> Fill a matrix with zeros</a></li>
+  <li><a href="#example-unnamed-matrix" id="toc-example-unnamed-matrix" class="nav-link" data-scroll-target="#example-unnamed-matrix"><span class="header-section-number">6.3.3</span> Example: unnamed matrix</a></li>
+  <li><a href="#example-named-matrices" id="toc-example-named-matrices" class="nav-link" data-scroll-target="#example-named-matrices"><span class="header-section-number">6.3.4</span> Example: named matrices</a></li>
+  <li><a href="#example-unnamed-matrices" id="toc-example-unnamed-matrices" class="nav-link" data-scroll-target="#example-unnamed-matrices"><span class="header-section-number">6.3.5</span> Example: unnamed matrices</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -259,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-matrix-chapter" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></h1>
+<h1 class="title"><span id="sec-matrix-chapter" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></h1>
 </div>
 
 
@@ -277,10 +283,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Model matrices include <code>$OMEGA</code> (for subject-level variability) and <code>$SIGMA</code> (for residual unexplained variability). These matrices are coded into the model file (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section 2.2.17</span></a> and <a href="specification.html#sec-block-sigma" class="quarto-xref"><span>Section 2.2.18</span></a>) and can be manipulated in different ways via the model object. Because, <code>$OMEGA</code> and <code>$SIGMA</code> matrices are handled using identical approach (only the names of the functions change), we will focus on working with <code>$OMEGA</code> in the following examples with references to the equivalent functions that can be used to work on <code>$SIGMA</code>. Also note that, for simplicity, we will not compile the examples presented in this chapter.</p>
-<section id="basics" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="basics"><span class="header-section-number">5.1</span> Basics</h2>
-<section id="simple-matrix-lists" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="simple-matrix-lists"><span class="header-section-number">5.1.1</span> Simple matrix lists</h3>
+<section id="basics" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="basics"><span class="header-section-number">6.1</span> Basics</h2>
+<section id="simple-matrix-lists" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="simple-matrix-lists"><span class="header-section-number">6.1.1</span> Simple matrix lists</h3>
 <p>We can look at the <code>popex</code> model in the internal library for a starting example to show how model matrices can be seen from the model object.</p>
 <p>Once the model is loaded</p>
 <div class="cell">
@@ -421,8 +427,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="multiple-matrix-lists" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="multiple-matrix-lists"><span class="header-section-number">5.1.2</span> Multiple matrix lists</h3>
+<section id="multiple-matrix-lists" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="multiple-matrix-lists"><span class="header-section-number">6.1.2</span> Multiple matrix lists</h3>
 <p>Let’s look at an example where there is a more complicated <code>$OMEGA</code> structure.</p>
 <div class="cell" data-stem="multiple-matrices" data-annot="true">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode c mrgsolvecode code-with-copy"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">// inline/multiple-matrices.cpp</span></span>
@@ -563,8 +569,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="collapsing-matrices" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="collapsing-matrices"><span class="header-section-number">5.2</span> Collapsing matrices</h2>
+<section id="collapsing-matrices" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="collapsing-matrices"><span class="header-section-number">6.2</span> Collapsing matrices</h2>
 <p>The functionality described in this subsection is new with mrgsolve 1.0.0.</p>
 <p>The structure of the matrices and the order in which they appear in the list matter when updating each matrix (see below). We saw how to create one big matrix out of all the smaller matrices using the <code>as.matrix()</code>. This section describes how to combine matrices within the confines of the <code>matlist</code> object.</p>
 <p>mrgsolve provides functions to collapse (or combine) matrices in a <code>matlist</code> object. We can call <code>collapse_omega()</code>, passing in the model object</p>
@@ -648,8 +654,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 . i:     0    0    0    0    0    9</code></pre>
 </div>
 </div>
-<section id="collapse-on-load" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="collapse-on-load"><span class="header-section-number">5.2.1</span> Collapse on load</h3>
+<section id="collapse-on-load" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="collapse-on-load"><span class="header-section-number">6.2.1</span> Collapse on load</h3>
 <p>You can also collapse <code>$OMEGA</code> or <code>$SIGMA</code> from within the model specification file so that the matrices are collapsed on load.</p>
 <p>In the <code>$SET</code> set block (<a href="specification.html#sec-block-set" class="quarto-xref"><span>Section 2.2.19</span></a>), pass either <code>collapse_omega</code> or <code>collapse_sigma</code> set to <code>TRUE</code></p>
 <div class="cell">
@@ -662,11 +668,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This will produce a model object with collapsed matrices when the model is loaded via <code>mread()</code>.</p>
 </section>
 </section>
-<section id="sec-matrix-update" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="sec-matrix-update"><span class="header-section-number">5.3</span> Updating <code>$OMEGA</code> and <code>$SIGMA</code> &nbsp;</h2>
+<section id="sec-matrix-update" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-matrix-update"><span class="header-section-number">6.3</span> Updating <code>$OMEGA</code> and <code>$SIGMA</code> &nbsp;</h2>
 <p>Like the values of parameters in the parameter list, we may want to update the values in <code>$OMEGA</code> and <code>$SIGMA</code> matrices. We can do so without re-compiling the model.</p>
-<section id="matrix-helper-functions" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="matrix-helper-functions"><span class="header-section-number">5.3.1</span> Matrix helper functions</h3>
+<section id="matrix-helper-functions" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="matrix-helper-functions"><span class="header-section-number">6.3.1</span> Matrix helper functions</h3>
 <p><code>mrgsolve</code> keeps <code>$OMEGA</code> and <code>$SIGMA</code> in block matrices (regardless of whether the off-diagonal elements are zeros or not). Recall that in the model specification file we can enter data for <code>$OMEGA</code> and <code>$SIGMA</code> as the lower triangle of the matrix (see <a href="specification.html#sec-block-omega" class="quarto-xref"><span>Section 2.2.17</span></a>). In <code>R</code>, we need to provide a matrix (as an <code>R</code> object). <code>mrgsolve</code> provides some convenience functions to help … allowing the user to enter lower diagonals instead of the full matrix.</p>
 <p><code>dmat()</code> for diagonal matrix</p>
 <div class="cell">
@@ -767,8 +773,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>to grab the <code>$SIGMA</code> matrices.</p>
 <p>For help on these helper functions, see <code>?dmat</code>, <code>?bmat</code>, <code>?cmat</code>, <code>?as_bmat</code>, <code>?as_dmat</code> in the <code>R</code> help system after loading <code>mrgsolve</code>.</p>
 </section>
-<section id="fill-a-matrix-with-zeros" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="fill-a-matrix-with-zeros"><span class="header-section-number">5.3.2</span> Fill a matrix with zeros</h3>
+<section id="fill-a-matrix-with-zeros" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="fill-a-matrix-with-zeros"><span class="header-section-number">6.3.2</span> Fill a matrix with zeros</h3>
 <p>Sometimes we write a population model that includes random effects, but we would like to simulate from that same model without the random effects implemented. For example, we want to simulate some typical PK profiles from a population PK model that includes IIV on some parameters and / or RUV on the simulated outputs.</p>
 <p>To do this, pass the model through the <code>zero_re()</code> function. By default, this will convert all <code>$OMEGA</code> and <code>$SIGMA</code> matrix elements to zeros. See the R help file (<code>?zero_re</code>) to see some options for selectively zeroing out only one or the other.</p>
 <p>For example we have this population PK model</p>
@@ -804,8 +810,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example-unnamed-matrix" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="example-unnamed-matrix"><span class="header-section-number">5.3.3</span> Example: unnamed matrix</h3>
+<section id="example-unnamed-matrix" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="example-unnamed-matrix"><span class="header-section-number">6.3.3</span> Example: unnamed matrix</h3>
 <p>Here is a model with only a 3x3 <code>$OMEGA</code> matrix</p>
 <div class="cell" data-stem="matrix" data-annot="true">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode c mrgsolvecode code-with-copy"><code class="sourceCode c"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co">// inline/matrix.cpp</span></span>
@@ -854,8 +860,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="example-named-matrices" class="level3" data-number="5.3.4">
-<h3 data-number="5.3.4" class="anchored" data-anchor-id="example-named-matrices"><span class="header-section-number">5.3.4</span> Example: named matrices</h3>
+<section id="example-named-matrices" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="example-named-matrices"><span class="header-section-number">6.3.4</span> Example: named matrices</h3>
 <p>When there are multiple <code>$OMEGA</code> matrices, it can be helpful to assign them names. Here, there are two matrices: one for interindividual variability (<code>IIV</code>) and one for interoccasion variability (<code>IOV</code>).</p>
 <div class="cell" data-stem="iov" data-annot="true">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode c mrgsolvecode code-with-copy"><code class="sourceCode c"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">// inline/iov.cpp</span></span>
@@ -921,8 +927,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="example-unnamed-matrices" class="level3" data-number="5.3.5">
-<h3 data-number="5.3.5" class="anchored" data-anchor-id="example-unnamed-matrices"><span class="header-section-number">5.3.5</span> Example: unnamed matrices</h3>
+<section id="example-unnamed-matrices" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="example-unnamed-matrices"><span class="header-section-number">6.3.5</span> Example: unnamed matrices</h3>
 <p>If we do write the model with unnamed matrices, we can still update them</p>
 <div class="cell" data-stem="multi" data-annot="true">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode c mrgsolvecode code-with-copy"><code class="sourceCode c"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">// inline/multi.cpp</span></span>
@@ -993,18 +999,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1036,7 +1031,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1044,7 +1061,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1370,12 +1387,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./event.html" class="pagination-link" aria-label="Event objects">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./output.html" class="pagination-link" aria-label="Simulated output">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

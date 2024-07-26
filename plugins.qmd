@@ -300,6 +300,12 @@ Like all other plugins, you must invoke `evtools` in the `$PLUGIN` block
 $PLUGIN evtools
 ```
 
+### Note about when events are processed
+
+It's important to note that events are currently _only_ processed after `$ERROR`
+(or `$TABLE`) is called. For this reason, it's very likely that you'll want to 
+write code for implementing model events in `$TABLE`, _not_ `$PK` (or `$MAIN`).
+
 ### Namespace
 
 All the functionality made available by the `evtools` plugin is located in a 
@@ -311,16 +317,16 @@ function in the `evt` namespace.
 ### Event object type
 
 @sec-mtime introduces a C++ event object called `mrg::evdata`. The `evt` 
-namespace provides an easier to remember `typedef` for that object called
+namespace provides an easier-to-remember `typedef` for that object called
 `evt::ev`. So if a function returns an event object, you can use `evt::ev`
-for that type. For example
+for that type. For example, to create an event object for a bolus dose
 
 ```{c}
 #| eval: false
 evt::ev dose = evt::bolus(100, 1);
 ```
 
-is equivalent to 
+which is equivalent to 
 
 ```{c}
 #| eval: false
@@ -335,28 +341,41 @@ doses. The functions are
 - `void evt::bolus(self, <amt>, <cmt>)` where 
   - `self` is the the self object, described in @sec-self-object
   - `<amt>` is the dose amount (type `double`)
-  - `<cmt>` is the dosing compartment (type `double`)
+  - `<cmt>` is the dosing compartment (type `int`)
 
 - `void evt::infuse(self, <amt>, <cmt>, <rate>)` where 
   - `self` is the the self object, described in @sec-self-object
   - `<amt>` is the dose amount (type `double`)
-  - `<cmt>` is the dosing compartment (type `double`)
+  - `<cmt>` is the dosing compartment (type `int`)
   - `<rate>` is the infusion rate (type `double`)
 
-Note that `self` is passed as the first argument, there is no return value, 
-and there is no `time` specified for the dose. All doses invoked this way are 
-given `now`, as-is; so you should only call these functions when the model 
-code has decided it is time to administer a dose. 
+Note that, for all these functions, `self` is passed as the first argument,
+there is no return value, and there is no `time` specified for the dose. All
+doses invoked this way are given `now`, as-is; so you should only call these
+functions when the model code has decided it is time to administer a dose.
 
-_Important_: Because doses are given `now`, these functions should almost be 
+_Important_: Because doses are given `now`, these functions should always be 
 called in `$TABLE` (i.e., `$ERROR`).
 
-### Customized doses, potentially given later
+### Replace amount in a compartment now
 
-The `evt` namespace also provides variants of these functions which return 
-the event object to you so you can modify some of the attributes, including 
-potentially scheduling the dose in the future, prior to sending the object
-back to mrgsolve. These functions are 
+With mrgsolve version 1.5.1, there is also a function to replace the amount 
+in a given compartment 
+
+- `void evt::replace(self, <amt>, <cmt>)` where
+  - `self` is the the self object, described in @sec-self-object
+  - `<amt>` is the replacement amount (type `double`)
+  - `<cmt>` is the replacement compartment (type `int`)
+
+The replace functionality works just like `evt::bolus()` described above, but
+the compartment is reset prior to adding `<amt>`.
+
+### Customized dosing or replacement, potentially given later
+
+The `evt` namespace also provides variants of these functions which return the
+event object to you so you can modify some of the attributes (e.g., schedule the
+dose in the future) prior to sending the object back to mrgsolve for processing.
+These functions are
 
 - `evt::ev evt::bolus(<amt>, <cmt>)` where 
   - `<amt>` is the dose amount (type `double`)
@@ -366,16 +385,44 @@ back to mrgsolve. These functions are
   - `<amt>` is the dose amount (type `double`)
   - `<cmt>` is the dosing compartment (type `double`)
   - `<rate>` is the infusion rate (type `double`)
+  
+- `evt::ev evt::replace(<amt>, <cmt>)` where 
+  - `<amt>` is the new amount (type `double`)
+  - `<cmt>` is the replacement compartment (type `double`)
+  
+For example, if I want to give a dose of 100 mg infused over 2 hours, getting
+the object back prior to sending to mrgsolve
+
+```{c}
+#| eval: false
+evt::ev dose = evt::infuse(100, 100.0/2.0, 2); 
+```
 
 Note that we _don't_ pass in the `self` object here; just the dose amount, 
 compartment, and rate for infusions. These functions also return and event 
 object (type `evt::ev`) that you can work with. See @sec-modeled-doses
 for documentation of those attributes. 
 
+To send the event back to mrgsolve, you'll have to push it with 
+
+```{c}
+#| eval: false
+self.push(dose);
+```
+
+or 
+
+```{c}
+#| eval: false
+evt::push(self, dose);
+```
+
+More about `push()` below. 
+
 ### API for customizing doses
 
-While @sec-modeled-doses shows you some low-level ways to customize the event 
-object, the `evt` namespace provides some API for making these changes. 
+@sec-modeled-doses shows you some low-level ways to customize the event 
+object the `evt` namespace provides some API for making these changes. 
 
 __`evt::retime`__
 
@@ -403,7 +450,9 @@ Use `evt::now` to set the `now` attribute to `true`
 
 ```{c}
 #| eval: false
+evt::ev dose = evt::bolus(100, 1);
 evt::now(dose);
+self.push(dose);
 ```
 
 **Argument**: 
@@ -425,7 +474,7 @@ evt::push(self, dose);
 ```
 
 This function will continue to be available in the `evt` namespace. But note 
-that `self` has a `push()` method as of mrgsolve 1.4.1 to do the same thing
+that `self` has a `push()` method as of mrgsolve 1.4.1 to do the same thing.
 
 __`evt::near()`__
 

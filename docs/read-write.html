@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Simulated output – mrgsolve user guide</title>
+<title>3&nbsp; Read and write models – mrgsolve user guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sequence.html" rel="next">
-<link href="./matrix.html" rel="prev">
+<link href="./datasets.html" rel="next">
+<link href="./specification.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./output.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./read-write.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
   </div>
 </li>
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./output.html" class="sidebar-item-text sidebar-link active">
+  <a href="./output.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
@@ -240,21 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#output-types" id="toc-output-types" class="nav-link active" data-scroll-target="#output-types"><span class="header-section-number">7.1</span> Output types</a></li>
-  <li><a href="#methods-for-mrgsim-output" id="toc-methods-for-mrgsim-output" class="nav-link" data-scroll-target="#methods-for-mrgsim-output"><span class="header-section-number">7.2</span> Methods for mrgsim output</a>
-  <ul class="collapse">
-  <li><a href="#coercion-methods" id="toc-coercion-methods" class="nav-link" data-scroll-target="#coercion-methods"><span class="header-section-number">7.2.1</span> Coercion methods</a></li>
-  <li><a href="#query-methods" id="toc-query-methods" class="nav-link" data-scroll-target="#query-methods"><span class="header-section-number">7.2.2</span> Query methods</a></li>
-  <li><a href="#graphical-methods" id="toc-graphical-methods" class="nav-link" data-scroll-target="#graphical-methods"><span class="header-section-number">7.2.3</span> Graphical methods</a></li>
-  <li><a href="#methods-for-dplyr-verbs" id="toc-methods-for-dplyr-verbs" class="nav-link" data-scroll-target="#methods-for-dplyr-verbs"><span class="header-section-number">7.2.4</span> Methods for <code>dplyr</code> verbs</a></li>
-  <li><a href="#modify-methods" id="toc-modify-methods" class="nav-link" data-scroll-target="#modify-methods"><span class="header-section-number">7.2.5</span> Modify methods</a></li>
-  </ul></li>
-  <li><a href="#controlling-output-scope" id="toc-controlling-output-scope" class="nav-link" data-scroll-target="#controlling-output-scope"><span class="header-section-number">7.3</span> Controlling output scope</a>
-  <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">7.3.1</span> Background</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation"><span class="header-section-number">7.3.2</span> Implementation</a></li>
-  <li><a href="#copy-items-from-data-to-simulated-output" id="toc-copy-items-from-data-to-simulated-output" class="nav-link" data-scroll-target="#copy-items-from-data-to-simulated-output"><span class="header-section-number">7.3.3</span> Copy items from data to simulated output</a></li>
-  </ul></li>
+  <li><a href="#read-in-a-model-file" id="toc-read-in-a-model-file" class="nav-link active" data-scroll-target="#read-in-a-model-file"><span class="header-section-number">3.1</span> Read in a model file</a></li>
+  <li><a href="#write-a-model-to-file" id="toc-write-a-model-to-file" class="nav-link" data-scroll-target="#write-a-model-to-file"><span class="header-section-number">3.2</span> Write a model to file</a></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-simulated-output" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></h1>
+<h1 class="title"><span id="sec-read-write" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></h1>
 </div>
 
 
@@ -280,153 +267,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="output-types" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="output-types"><span class="header-section-number">7.1</span> Output types</h2>
-<p>When <code>mrgsim()</code> is used to simulate from a model, it by default returns an object with class <code>mrgsims</code>. This is an S4 object containing a data.frame of simulated output and a handful of other pieces of data related to the simulation run that can be coerced to other types (like <code>data.frame</code> or <code>tibble</code>).</p>
-<p>For simulations with large outputs or extremely brief simulations where efficiency is important, users can request the output be returned as a data frame. This is most efficient when the features provided by the <code>mrgsims</code> object are not needed. To do this, pass the <code>output</code> argument to <code>mrgsim()</code></p>
+<section id="read-in-a-model-file" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="read-in-a-model-file"><span class="header-section-number">3.1</span> Read in a model file</h2>
+<p>Use the <code>mread()</code> function to read in a model coded in a file on the disk. For example, to read in a model for azithromycin population PK</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, ..., <span class="at">output =</span> <span class="st">"df"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"model/azithro.mod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>or use <code>mrgsim_df()</code></p>
+<p>You can use any <strong>extension</strong>, but I’m preferring something like <code>.mod</code> or <code>.txt</code> to prevent your text editor from trying to reformat the model code.</p>
+<p>You can <strong>update</strong> the model object on the fly by passing arguments to <code>mread()</code>. For example, to run the simulation out to one week and only have <code>CP</code> appear in the simulated output</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_df</span>(mod, ....)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"model/azithro.mod"</span>, <span class="at">end =</span> <span class="dv">168</span>, <span class="at">outvars =</span> <span class="st">"CP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="methods-for-mrgsim-output" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="methods-for-mrgsim-output"><span class="header-section-number">7.2</span> Methods for mrgsim output</h2>
-<p><code>mrgsolve</code> provides several methods for working with <code>mrgsims</code> objects or coercing the simulation matrix into other <code>R</code> objects. Note the discussion in the following subsections all refer to working with <code>mrgsims</code> objects, not data.frame output.</p>
-<section id="coercion-methods" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="coercion-methods"><span class="header-section-number">7.2.1</span> Coercion methods</h3>
-<ul>
-<li><code>as_tibble()</code>: convert to <code>tibble</code></li>
-<li><code>as.data.frame()</code>: convert to <code>data.frame</code></li>
-<li><code>as.matrix()</code>: convert to <code>matrix</code></li>
-</ul>
-</section>
-<section id="query-methods" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="query-methods"><span class="header-section-number">7.2.2</span> Query methods</h3>
-<ul>
-<li><code>head()</code>: shows the first <code>n = 5</code> rows</li>
-<li><code>tail()</code>: shows the last <code>n = 5</code> rows</li>
-<li><code>names()</code>: shows the column names</li>
-<li><code>dim()</code>: shows the number of rows and columns</li>
-<li><code>summary()</code>: shows a numeric summary of all columns</li>
-<li><code>$</code>: extracts a column</li>
-</ul>
-</section>
-<section id="graphical-methods" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="graphical-methods"><span class="header-section-number">7.2.3</span> Graphical methods</h3>
-<p>There is a <code>plot()</code> methods for simulated output that is aware of independent and dependent variables from the simulation. If <code>out</code> is the simulated output (an <code>mrgsims</code> object)</p>
+<p>To do <strong>dynamic capture</strong> on loading the model, pass the <code>capture</code> argument. For example, I want to get the clearance (<code>CL</code>) and the ETA associated with clearance (<code>ETACL</code>) into the simulation output</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread</span>(<span class="st">"model/azithro.mod"</span>, <span class="at">capture =</span> <span class="st">"CL, ETACL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Plot with a formula; the following example selects only the <code>CP</code> and <code>RESPONSE</code> outputs and plots them versus <code>time</code></p>
+<p>To <strong>cache</strong> the compiled model, use <code>mread_cache()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, CP <span class="sc">+</span> RESPONSE <span class="sc">~</span> time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread_cache</span>(<span class="st">"model/azithro.mod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To select a large number of responses to plot, pass a character vector or comma-separated character data containing output columns to plot</p>
+<p>When you try to read the model again, it will load from the cache</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, <span class="st">"CP, RESPONSE, WT, DOSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mread_cache</span>(<span class="st">"model/azithro.mod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>. Loading model from cache.</code></pre>
+</div>
+</div>
+<p>To read in a model from the model library, run <code>modlib()</code>. For example, to read in a two-compartment model from the library</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To build the model in a specific <strong>location</strong> , use the <code>soloc</code> argument</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"irm1"</span>, <span class="at">soloc =</span> <span class="st">"build"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>. Loading model from cache.</code></pre>
+</div>
+</div>
+<p>This will build the model in the directory <code>build</code> off the current <em>working</em> directory.</p>
+<p>You don’t have to <strong>compile</strong> the model</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"popex"</span>, <span class="at">compile =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="methods-for-dplyr-verbs" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="methods-for-dplyr-verbs"><span class="header-section-number">7.2.4</span> Methods for <code>dplyr</code> verbs</h3>
-<p><code>mrgsolve</code> provides several S3 methods to make it possible to include <code>dplyr</code> verbs in your simulation pipeline.</p>
-<p>For example</p>
+<section id="write-a-model-to-file" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="write-a-model-to-file"><span class="header-section-number">3.2</span> Write a model to file</h2>
+<p>With mrgsolve 1.5.1, you can also <em>write</em> a model object back to a file. The format of the file can be either native mrgsolve format or a yaml-formatted file. When the model object is written back to file, all of the updates that were made to the model object will be written to the file.</p>
+<p>Once we have a model object</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mrgsolve)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ev</span>(<span class="at">amt=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"popex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, <code>mrgsim()</code> returns an <code>mrgsims</code> object. When <code>dplyr</code> is also loaded, this object can be piped directly to <code>dplyr::filter()</code> or <code>dplyr::mutate()</code> etc.</p>
-<p>It is important to note that when <code>mrgsims</code> output is piped to <code>dplyr</code> functionality, it is coerced to <code>tibble</code> (<code>data.frame</code>) and there is no way to get the data back to <code>mrgsims</code> object. Most of the time, this is desirable and there is no need to explicitly coerce to <code>tibble()</code> when calling <code>dplyr</code> verbs on simulated output.</p>
-<p>Other <code>dplyr</code> functions that can be used with <code>mrgsims</code> objects</p>
-<ul>
-<li><code>group_by()</code></li>
-<li><code>mutate()</code></li>
-<li><code>filter()</code></li>
-<li><code>summarise()</code></li>
-<li><code>select()</code></li>
-<li><code>slice()</code></li>
-<li><code>pull()</code></li>
-<li><code>distinct()</code></li>
-<li><code>slice()</code></li>
-</ul>
-</section>
-<section id="modify-methods" class="level3" data-number="7.2.5">
-<h3 data-number="7.2.5" class="anchored" data-anchor-id="modify-methods"><span class="header-section-number">7.2.5</span> Modify methods</h3>
-<p>You can modify the underlying data in the <code>mrgsims</code> object and keep it as an <code>mrgsims</code> object.</p>
-<ul>
-<li><code>filter_sims()</code>: calls <code>dplyr::filter()</code> to pick rows to keep or discard</li>
-<li><code>select_sims()</code>: calls <code>dplyr::select()</code>; note that <code>ID</code> and <code>time</code> columns are always retained</li>
-<li><code>mutate_sims()</code>: calls <code>dplyr::mutate()</code> to add or modify columns</li>
-</ul>
-</section>
-</section>
-<section id="controlling-output-scope" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="controlling-output-scope"><span class="header-section-number">7.3</span> Controlling output scope</h2>
-<section id="background" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="background"><span class="header-section-number">7.3.1</span> Background</h3>
-<p>Limiting the volume of simulated data can have a major impact on simulation efficiency, memory footprint, and ease (or lack of ease) in reviewing and dealing with the output. For any large simulation or any simulation from a large model, the user should consider selecting what gets returned when the simulation is performed.</p>
-<p>By default, <code>mrgsim()</code> returns a data.frame with the following</p>
-<ol type="1">
-<li><code>ID</code>: regardless of whether you simulated a population or not</li>
-<li><code>time</code> / <code>TIME</code>: the independent variable</li>
-<li>Simulated values for all model compartments</li>
-<li>Simulated values for derived outputs listed in <code>$CAPTURE</code></li>
-</ol>
-<p>You will always get <code>ID</code> and <code>time</code> and the compartments and any captured items must be written into the model file. This defines the list of data items that <strong>could (possibly)</strong> get returned under items 3 and 4 above. Again: this must be written into the model file and is locked at the time the model is compiled.</p>
-<p>However, <code>mrgsolve</code> allows the user to pick what is actually returned at run time. Because this is done at run time, different runs can return different data items. And (importantly) <code>mrgsim()</code> only allocates space in the output for data items that are requested. So, opting <strong>out</strong> of unneeded outputs will decrease memory consumption and increase efficiency.</p>
-</section>
-<section id="implementation" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="implementation"><span class="header-section-number">7.3.2</span> Implementation</h3>
-<p>The mrgsolve model object tracks compartments and captures that are currently being requested. This can be queried using <code>outvars()</code></p>
+<p>we can update it</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">house</span>()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">outvars</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">outvars =</span> <span class="st">"IPRED, CL, DV"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">param</span>(mod, <span class="at">TVCL =</span> <span class="fl">1.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and then write the object out to <code>yaml</code> format with <code>mwrite_yaml()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mwrite_yaml</span>(mod, <span class="at">file =</span> <span class="st">"popex.yaml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, this model object is in a file called <code>popex.yaml</code>.</p>
+<p>To read the model back in, use <code>mread_yaml()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">mread_yaml</span>(<span class="st">"popex.yaml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll see that the updated settings are retained in <code>mod2</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">param</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. 
+.  Model parameters (N=4):
+.  name value . name value
+.  TVCL 1.2   | TVV  24   
+.  TVKA 0.5   | WT   70</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod2<span class="sc">@</span>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 72</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outvars</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. $cmt
-. [1] "GUT"  "CENT" "RESP"
+. character(0)
 . 
 . $capture
-. [1] "DV" "CP"</code></pre>
+. [1] "CL"    "IPRED" "DV"</code></pre>
 </div>
 </div>
-<p>Items are listed under <code>cmt</code> and <code>capture</code>. The user can update the model object with the names of columns that are being requested by passing <code>outvars</code> to <code>update()</code></p>
+<p>In addition to writing the model object to yaml format, you can also write to native mrgsolve format with the <code>mwrite_cpp()</code> function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">outvars =</span> <span class="st">"CP, RESP"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">outvars</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>. $cmt
-. [1] "RESP"
-. 
-. $capture
-. [1] "CP"</code></pre>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mwrite_cpp</span>(mod2, <span class="at">file =</span> <span class="st">"popex-updated.mod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>This will exclude anything that isn’t named in the update. The <code>outvars</code> list can be reset by passing <code>(all)</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">update</span>(mod, <span class="at">outvars =</span> <span class="st">"(all)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Remember that <code>...</code> passed to <code>mrgsim()</code> are also passed to <code>update()</code> so it is possible to select outputs right in your <code>mrgsim()</code> call</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim</span>(mod, <span class="at">outvars =</span> <span class="st">"CP, RESP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="copy-items-from-data-to-simulated-output" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="copy-items-from-data-to-simulated-output"><span class="header-section-number">7.3.3</span> Copy items from data to simulated output</h3>
-<p>Users can also use <code>carry_out</code> and <code>recover</code> to copy items from the input data into the output. This is covered in a different chapter.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -852,13 +785,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./matrix.html" class="pagination-link" aria-label="Model Matrices">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span>
+      <a href="./specification.html" class="pagination-link" aria-label="Model specification">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sequence.html" class="pagination-link" aria-label="Simulation sequence">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./datasets.html" class="pagination-link" aria-label="Input data sets">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

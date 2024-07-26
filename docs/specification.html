@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mrgsolve user guide - 2&nbsp; Model specification</title>
+<title>2&nbsp; Model specification – mrgsolve user guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./datasets.html" rel="next">
+<link href="./read-write.html" rel="next">
 <link href="./components.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./specification.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Model specification</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -189,68 +189,74 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./read-write.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Input data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./event.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Event objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -540,7 +546,7 @@ window.Quarto = {
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code></p>
 <p>Use this block to make notes about the model. There are no restrictions on the text that gets entered here. mrgsolve does not routinely process the text in any way, except when rendering the model as a document. Frequently, we write the text here in markdown format so that it will render nicely in the model document. But this is completely optional.</p>
-<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section 11.1</span></a> for an example.</p>
+<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section 12.1</span></a> for an example.</p>
 </section>
 <section id="sec-block-param" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-block-param"><span class="header-section-number">2.2.4</span> <code>$PARAM</code> &nbsp;</h3>
@@ -764,7 +770,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <h3 data-number="2.2.14" class="anchored" data-anchor-id="sec-block-preamble"><span class="header-section-number">2.2.14</span> <code>$PREAMBLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
-<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a>):</p>
+<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter 8</span></a>):</p>
 <ol type="1">
 <li>Immediately prior to starting the simulation run</li>
 <li>Immediately prior to calling <code>$MAIN</code> when calculating initial conditions</li>
@@ -794,7 +800,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>There may be only one <code>$PREAMBLE</code> block in a model</li>
 <li>Like <code>$MAIN</code>, <code>$ODE</code> and <code>$TABLE</code>, <code>double</code>, <code>int</code> and <code>bool</code> variables initialized in <code>$PREAMBLE</code> are actually initialized for global (within the model file)</li>
 </ul>
-<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.22</span></a>.</p>
+<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter 8</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.22</span></a>.</p>
 </section>
 <section id="sec-block-pred" class="level3" data-number="2.2.15">
 <h3 data-number="2.2.15" class="anchored" data-anchor-id="sec-block-pred"><span class="header-section-number">2.2.15</span> <code>$PRED</code> &nbsp;</h3>
@@ -811,7 +817,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> RESP <span class="op">=</span> E0 <span class="op">-</span> IMAX<span class="op">*</span>AUC<span class="op">/(</span>AUC50<span class="op">+</span>AUC<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this example, the entire model is written in the <code>$PRED</code> block. It is an error to include the following blocks when <code>$PRED</code> is being used: <code>$MAIN</code>, <code>$TABLE</code>, <code>$PKMODEL</code>, <code>$ODE</code>, <code>$CMT</code>, <code>$INIT</code>.</p>
-<p>See <a href="datasets.html#sec-pred-data" class="quarto-xref"><span>Section 3.7</span></a> for additional information regarding data sets in use with <code>$PRED</code> block.</p>
+<p>See <a href="datasets.html#sec-pred-data" class="quarto-xref"><span>Section 4.7</span></a> for additional information regarding data sets in use with <code>$PRED</code> block.</p>
 </section>
 <section id="sec-block-capture" class="level3" data-number="2.2.16">
 <h3 data-number="2.2.16" class="anchored" data-anchor-id="sec-block-capture"><span class="header-section-number">2.2.16</span> <code>$CAPTURE</code> &nbsp;</h3>
@@ -952,7 +958,7 @@ Tip
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>lbl <span class="op">&lt;-</span> paste0<span class="op">(</span><span class="st">"ETA_"</span><span class="op">,</span> LETTERS<span class="op">[</span><span class="dv">1</span><span class="op">:</span>n<span class="op">])</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>matrix<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> dimnames <span class="op">=</span> list<span class="op">(</span>lbl<span class="op">,</span> lbl<span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter 5</span></a>).</p>
+<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter 6</span></a>).</p>
 </section>
 <section id="sec-block-sigma" class="level3" data-number="2.2.18">
 <h3 data-number="2.2.18" class="anchored" data-anchor-id="sec-block-sigma"><span class="header-section-number">2.2.18</span> <code>$SIGMA</code> &nbsp;</h3>
@@ -1040,7 +1046,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: no</p>
 <p>Plugins are a way to add extensions to your mrgsolve model. Plugins can either link your model to external libraries (like <code>boost</code> or <code>Rcpp</code>) or they can open up access to additional functionality provided by mrgsolve itself.</p>
-<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
+<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
 <p><strong>Usage</strong></p>
 <p>To invoke a plugin, list the plugin name in the code block. For requesting <code>Rcpp</code> headers in your model, call</p>
 <div class="cell">
@@ -1484,7 +1490,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <section id="solvertime" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="solvertime"><span class="header-section-number">2.3.3</span> <code>SOLVERTIME</code></h3>
 <p>Gives the time of the current timestep taken by the solver. <em>This is can only be used in <code>$ODE</code></em>. Contrast with <code>TIME</code>.</p>
-<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 9.2</span></a>).</p>
+<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>).</p>
 </section>
 <section id="t" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="t"><span class="header-section-number">2.3.4</span> <code>T</code></h3>
@@ -1545,7 +1551,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="ss_advance" class="level3" data-number="2.3.9">
 <h3 data-number="2.3.9" class="anchored" data-anchor-id="ss_advance"><span class="header-section-number">2.3.9</span> <code>SS_ADVANCE</code></h3>
-<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter 8</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
+<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter 9</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
 <p>Use this variable to modify the calculation of your model differential equations while the system is advancing to steady state. One use case is when you have an accumulation compartment to calculate <code>AUC</code> but you want to halt accumulation while the system is working toward steady state</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>$ODE</span>
@@ -1657,7 +1663,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.envir" class="level3" data-number="2.3.20">
 <h3 data-number="2.3.20" class="anchored" data-anchor-id="self.envir"><span class="header-section-number">2.3.20</span> <code>self.envir</code></h3>
-<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.6</span></a>).</p>
+<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 10.6</span></a>).</p>
 <p>For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp mrgx</span>
@@ -1827,7 +1833,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <section id="nonmem-like-syntax" class="level3" data-number="2.3.37">
 <h3 data-number="2.3.37" class="anchored" data-anchor-id="nonmem-like-syntax"><span class="header-section-number">2.3.37</span> NONMEM-like syntax</h3>
 <p>There is a NONMEM-like syntax that lets you write <code>F1</code> rather than <code>F_GUT</code>, <code>D2</code> rather than <code>D_CENT</code> as well as other variables that are commonly used in a NONMEM control stream. To make this syntax available, the <code>nm-vars</code> plugin must be invoked.</p>
-<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 9.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
+<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
 </section>
 </section>
 <section id="reserved-words" class="level2" data-number="2.4">
@@ -1981,7 +1987,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="random-number-generation"><span class="header-section-number">2.6</span> Random number generation</h2>
-<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 9</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 9.6</span></a>).</p>
+<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 10</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 10.6</span></a>).</p>
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">
@@ -2082,7 +2088,7 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>There are two <code>$OMEGA</code> matrices; we name them <code>IIV</code> and <code>IOV</code></li>
 <li>The IIV “etas” are labeled as <code>ECL/EVC/EKA</code>; these are aliases to <code>ETA(1)/ETA(2)/ETA(3)</code>. The <code>IOV</code> matrix is unlabeled; we must refer to <code>ETA(4)/ETA(5)</code> for this</li>
 <li>Because <code>ETA(1)</code> and <code>ETA(2)</code> are labeled, we can “capture” them as <code>ECL</code> and <code>EVC</code></li>
-<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 5.3</span></a>)</li>
+<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 6.3</span></a>)</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>
@@ -2157,18 +2163,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2200,7 +2195,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2208,7 +2225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -2538,8 +2555,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./datasets.html" class="pagination-link" aria-label="Input data sets">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Input data sets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./read-write.html" class="pagination-link" aria-label="Read and write models">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Read and write models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

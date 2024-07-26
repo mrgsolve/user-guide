@@ -156,19 +156,22 @@ within any `ID`.
 
 
 ### Creating data sets
-The `expand.ev` function is provided by mrgsolve to help in creating data sets
-of a certain style.  But any `R` code that produces a valid data set is fine to
-use.
 
+There are several convenience functions provided to help you create data set 
+inputs for your simulation. 
 
-### Example
-To create a data set of 3 people each receiving __250 mg every 8 hours for 12 total doses__:
+#### `expand.ev()`
+
+The `expand.ev` function will create a data set with all combinations of your
+inputs. For example, to create a data set of 3 people receiving 250 mg 
+and 3 individuals receiving 500 mg, with each dose administered every 8 hours 
+for 12 total doses
+
 ```{r}
-data <- expand.ev(ID=1:3, amt=250, ii=8, addl=11)
+data <- expand.ev(ID = 1:3, amt = c(250, 500), ii = 8, addl = 11)
 
 data
 ```
-
 
 Notice that `expand.ev` assumes that `time` is 0 and `cmt` is 1.  To dose as a
 2-hour infusion into the second compartment use:
@@ -177,12 +180,38 @@ Notice that `expand.ev` assumes that `time` is 0 and `cmt` is 1.  To dose as a
 data <- expand.ev(ID=1:3, amt=250, rate=125, ii=8, addl=11, cmt=2)
 
 data
-
 ```
 
-Use `data_set` to pass the data into the problem.
 
-For example:
+#### `as_data_set()`
+
+You can use the `as_data_set()` function to combine event objects or data 
+frames into a single data set input. 
+
+```{r}
+e1 <- evd(amt = 250, rate = 10, ii = 24, addl = 5) %>% ev_rep(1:2)
+e2 <- evd(amt = 10, ii = 12, addl = 10) %>% ev_rep(1:3)
+
+as_data_set(e1, e2)
+```
+
+More examples of the `as_data_set()` pattern are provided in 
+@sec-event-as-data-set.
+
+#### `ev_days()`
+
+The `ev_days()` function will help you schedule events on certain days of the 
+week. For example, to give doses on Monday, Wednesday, and Friday only
+
+```{r}
+e1 <- ev(amt = 100, rate = 20)
+
+ev_days(e1, days = "m,w,f")
+```
+
+### Pass a data set into your simulation
+
+You can use `data_set()` in a pipeline to pass the data into the problem.
 
 ```{r data_set-1}
 #| fig-height: 3.5
@@ -192,6 +221,12 @@ mod %>%
   data_set(data) %>%
   mrgsim(end=240) %>%
   plot(CP~time|factor(ID))
+```
+
+Alternatively, just pass the data set to `mrgsim()`. 
+
+```{r}
+mod %>% mrgsim(data)
 ```
 
 

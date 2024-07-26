@@ -12,6 +12,7 @@ book:
     - index.qmd
     - components.qmd
     - specification.qmd
+    - read-write.qmd
     - datasets.qmd
     - event.qmd
     - matrix.qmd
