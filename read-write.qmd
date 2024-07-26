@@ -122,3 +122,10 @@ native mrgsolve format with the `mwrite_cpp()` function
 ```{r}
 mwrite_cpp(mod2, file = "popex-updated.mod")
 ```
+
+```{r}
+#| include: false
+unlink("popex-updated.mod")
+unlink("popex.yaml")
+```
+
