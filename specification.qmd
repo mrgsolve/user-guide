@@ -518,7 +518,7 @@ This is an alias for `$MAIN`.
 ### `$ODE` \ {#sec-block-ode}
 
 __Syntax__: C++   
-__Multiple allowed__: no  
+__Multiple allowed__: yes
 __Options__: `@param`
 
 Use `$ODE` to define model differential equations.  For all compartments assign 
@@ -578,7 +578,7 @@ This is an alias for `$ODE`.
 ### `$TABLE` \ {#sec-block-table}
 
 __Syntax__: C++   
-__Multiple allowed__: no   
+__Multiple allowed__: yes 
 
 Use `$TABLE` to interact with parameters, compartment values, and other
 user-defined variables __after__ the system advances to the next time.

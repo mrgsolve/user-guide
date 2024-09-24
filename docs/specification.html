@@ -713,8 +713,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <section id="sec-block-ode" class="level3" data-number="2.2.10">
 <h3 data-number="2.2.10" class="anchored" data-anchor-id="sec-block-ode"><span class="header-section-number">2.2.10</span> <code>$ODE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
-<strong>Multiple allowed</strong>: no<br>
-<strong>Options</strong>: <code>@param</code></p>
+<strong>Multiple allowed</strong>: yes <strong>Options</strong>: <code>@param</code></p>
 <p>Use <code>$ODE</code> to define model differential equations. For all compartments assign the value of the differential equation to <code>dxdt_CMT</code> where <code>CMT</code> is the name of the compartment. The <code>dxdt_</code> equation may be a function of model parameters (via <code>$PARAM</code>), the current value of any compartment (<code>CMT</code>) or any user-derived variable.</p>
 <p>For example:</p>
 <div class="cell">
@@ -752,7 +751,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <section id="sec-block-table" class="level3" data-number="2.2.12">
 <h3 data-number="2.2.12" class="anchored" data-anchor-id="sec-block-table"><span class="header-section-number">2.2.12</span> <code>$TABLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
-<strong>Multiple allowed</strong>: no</p>
+<strong>Multiple allowed</strong>: yes</p>
 <p>Use <code>$TABLE</code> to interact with parameters, compartment values, and other user-defined variables <strong>after</strong> the system advances to the next time.</p>
 <p>For example:</p>
 <div class="cell">
@@ -1267,7 +1266,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 . ---------------  source: nmxml-1.cpp  ---------------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: nmxml-1.cpp-so-a7b16cd2deb7 &lt;not loaded&gt;
+.   shared object: nmxml-1.cpp-so-6aea237f0384 &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;
@@ -1893,7 +1892,9 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <span id="cb116-51"><a href="#cb116-51" aria-hidden="true" tabindex="-1"></a>double</span>
 <span id="cb116-52"><a href="#cb116-52" aria-hidden="true" tabindex="-1"></a>int</span>
 <span id="cb116-53"><a href="#cb116-53" aria-hidden="true" tabindex="-1"></a>bool</span>
-<span id="cb116-54"><a href="#cb116-54" aria-hidden="true" tabindex="-1"></a>capture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb116-54"><a href="#cb116-54" aria-hidden="true" tabindex="-1"></a>capture</span>
+<span id="cb116-55"><a href="#cb116-55" aria-hidden="true" tabindex="-1"></a>until</span>
+<span id="cb116-56"><a href="#cb116-56" aria-hidden="true" tabindex="-1"></a>now</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Other reserved words depend on the compartment names in your model. For example, if you have a compartment called <code>CENT</code> in the model, then the the following will be reserved</p>
 <div class="cell">
