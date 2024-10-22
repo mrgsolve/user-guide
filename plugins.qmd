@@ -455,9 +455,94 @@ More about `push()` below.
 @sec-modeled-doses shows you some low-level ways to customize the event 
 object the `evt` namespace provides some API for making these changes. 
 
-__`evt::retime`__
+#### Set dose interval
 
-The `evt::retime` function can be used to set the time attribute. 
+Use `evt::ii()` to set a dosing interval
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::ii(dose, 12);
+self.push(dose);
+```
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- a dosing interval (`<double>`)
+
+**Return**: `void` (or nothing)
+
+
+#### Dose to steady state
+
+Use `evt::ss()` to give the dose after advancing to steady state
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::ii(dose, 12);
+evt::ss(dose, 1);
+self.push(dose);
+```
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- steady state flag (`<int>`)
+
+**Return**: `void` (or nothing)
+
+
+#### Give additional doses
+
+Use `evt::addl()` to give additional doses
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::ii(dose, 12);
+evt::ss(dose, 1);
+evt::addl(dose, 9);
+self.push(dose);
+```
+
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- number of additional doses (`<int>`)
+
+**Return**: `void` (or nothing)
+
+
+#### Set attributes for the dose
+
+For example, update the dose amount, infusion rate, compartment
+
+```{c}
+#| eval: false
+evt::ev dose = evt::bolus(100, 1);
+evt::cmt(dose, 2);
+evt::amt(dose, 200);
+evt::rate(dose, 100);
+self.push(dose);
+```
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- compartment number (`<int>`) or 
+- dose amount (`<double>`) or 
+- infusion rate (`<double>`)
+
+**Return**: `void` (or nothing)
+
+
+
+#### Retime
+
+The `evt::retime()` function can be used to set the time attribute. 
 
 ```{c}
 #| eval: false
@@ -475,9 +560,9 @@ self.push(dose);
 
 When doses are retimed this way, the `now` attribute is forced to be `false`.
 
-__`evt::now`__
+#### Set `now` attribute
 
-Use `evt::now` to set the `now` attribute to `true`
+Use `evt::now()` to set the `now` attribute to `true`
 
 ```{c}
 #| eval: false
@@ -492,7 +577,7 @@ self.push(dose);
 
 **Return**: `void` (nothing)
 
-__`evt::push`__
+#### Push an event back for execution 
 
 The `evt` namespace includes a `push` function to send an event object back 
 to mrgsolve. For example
@@ -507,9 +592,9 @@ evt::push(self, dose);
 This function will continue to be available in the `evt` namespace. But note 
 that `self` has a `push()` method as of mrgsolve 1.4.1 to do the same thing.
 
-__`evt::near()`__
+#### Compare floating point numbers
 
-Use this function to test for equality between floating put numbers. For 
+Use `evt::near()` to test for equality between floating put numbers. For 
 example, to test if `TIME` is (about) equal to `24.5`, you can call
 
 ```{c}

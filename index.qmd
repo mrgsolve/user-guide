@@ -55,7 +55,15 @@ pretty clear in the pdfbook).
 - @sec-steady-state gives the details on how mrgsolve advances the 
   system to a pharmacokinetic steady state
 - @sec-plugins talks about different plugins you can use for more 
-  advanced modeling
+  advanced modeling; to highlight a few here:
+  - Subsection @sec-plugin-evtools shows you syntax for doing dynamic dosing 
+    and other events via the `evtools` plugin
+  - Subsection @sec-plugin-nm-vars shows you an alternate model specification 
+    syntax that lets your model code look more like NONMEM (`nm-vars` plugin)
+  - Subsection @sec-plugin-autodec shows how you can have mrgsolve declare 
+    variables for you (`autodec` plugin)
+  - Subsection @sec-plugin-rcpp shows how you can use functions from `Rcpp` 
+    to generate random numbers (`Rcpp` plugin)
 - @sec-mtime talks about modeled events (discontinuities in the 
   simulation that are triggered from within the model rather than from the 
   data set)
