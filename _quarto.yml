@@ -24,7 +24,6 @@ book:
     - topics.qmd
     - q-and-a.qmd
     - install.qmd
-#    - references.qmd
 
 bibliography: references.bib
 

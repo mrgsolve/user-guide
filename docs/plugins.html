@@ -253,9 +253,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#event-object-type" id="toc-event-object-type" class="nav-link" data-scroll-target="#event-object-type"><span class="header-section-number">10.4.3</span> Event object type</a></li>
   <li><a href="#simple-administration-of-single-doses-now" id="toc-simple-administration-of-single-doses-now" class="nav-link" data-scroll-target="#simple-administration-of-single-doses-now"><span class="header-section-number">10.4.4</span> Simple administration of single doses now</a></li>
   <li><a href="#replace-amount-in-a-compartment-now" id="toc-replace-amount-in-a-compartment-now" class="nav-link" data-scroll-target="#replace-amount-in-a-compartment-now"><span class="header-section-number">10.4.5</span> Replace amount in a compartment now</a></li>
-  <li><a href="#customized-dosing-or-replacement-potentially-given-later" id="toc-customized-dosing-or-replacement-potentially-given-later" class="nav-link" data-scroll-target="#customized-dosing-or-replacement-potentially-given-later"><span class="header-section-number">10.4.6</span> Customized dosing or replacement, potentially given later</a></li>
-  <li><a href="#api-for-customizing-doses" id="toc-api-for-customizing-doses" class="nav-link" data-scroll-target="#api-for-customizing-doses"><span class="header-section-number">10.4.7</span> API for customizing doses</a></li>
-  <li><a href="#class-to-implement-a-dosing-regimen" id="toc-class-to-implement-a-dosing-regimen" class="nav-link" data-scroll-target="#class-to-implement-a-dosing-regimen"><span class="header-section-number">10.4.8</span> Class to implement a dosing regimen</a></li>
+  <li><a href="#reset-ths-system-now" id="toc-reset-ths-system-now" class="nav-link" data-scroll-target="#reset-ths-system-now"><span class="header-section-number">10.4.6</span> Reset ths system now</a></li>
+  <li><a href="#customized-dosing-replacement-or-reset-potentially-given-later" id="toc-customized-dosing-replacement-or-reset-potentially-given-later" class="nav-link" data-scroll-target="#customized-dosing-replacement-or-reset-potentially-given-later"><span class="header-section-number">10.4.7</span> Customized dosing, replacement, or reset potentially given later</a></li>
+  <li><a href="#api-for-customizing-doses" id="toc-api-for-customizing-doses" class="nav-link" data-scroll-target="#api-for-customizing-doses"><span class="header-section-number">10.4.8</span> API for customizing doses</a></li>
+  <li><a href="#class-to-implement-a-dosing-regimen" id="toc-class-to-implement-a-dosing-regimen" class="nav-link" data-scroll-target="#class-to-implement-a-dosing-regimen"><span class="header-section-number">10.4.9</span> Class to implement a dosing regimen</a></li>
   </ul></li>
   <li><a href="#sec-plugin-cxx11" id="toc-sec-plugin-cxx11" class="nav-link" data-scroll-target="#sec-plugin-cxx11"><span class="header-section-number">10.5</span> CXX11</a></li>
   <li><a href="#sec-plugin-rcpp" id="toc-sec-plugin-rcpp" class="nav-link" data-scroll-target="#sec-plugin-rcpp"><span class="header-section-number">10.6</span> Rcpp</a></li>
@@ -508,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sec-plugin-evtools" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="sec-plugin-evtools"><span class="header-section-number">10.4</span> evtools</h2>
 <p><strong>Purpose</strong></p>
-<p>The <code>evtools</code> plugin is a set of functions and classes you can use to implement dosing regimens from <em>inside</em> your model. It first became available in mrgsolve 1.4.1. The most common use for this plugin is when you want to implement dynamic dosing simulations where the dose amount or the dosing interval is able to change based on how the system has advanced up to a certain point. For example, you might have a PKPD model for an oncology drug that includes a PK model for the drug as well as a dynamic model for platelets where a decline in platelets is driven by the drug concentration. In this case you might monitor platelets at different clinical visits and reduce the or hold dose or increase the dosing interval in response to Grade 3 or Grade 4 thrombocytopenia.</p>
+<p>The <code>evtools</code> plugin is a set of functions and classes you can use to implement dosing regimens from <em>inside</em> your model. It first became available in mrgsolve 1.4.1. The most common use for this plugin is when you want to implement dynamic dosing simulations where the dose amount or the dosing interval is able to change based on how the system has advanced up to a certain point. For example, you might have a PKPD model for an oncology drug that includes a PK model for the drug as well as a dynamic model for platelets where a decline in platelets is driven by the drug concentration. In this case you might monitor platelets at different clinical visits and reduce the or hold dose or increase the dosing interval in response to Grade 3 or Grade 4 thrombocytopenia. For a real-world example, see <a href="https://ascpt.onlinelibrary.wiley.com/doi/10.1002/psp4.13201">this paper</a> that we puublished in 2024.</p>
 <p><strong>Usage</strong></p>
 <p>Like all other plugins, you must invoke <code>evtools</code> in the <code>$PLUGIN</code> block</p>
 <div class="cell">
@@ -552,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>Note that, for all these functions, <code>self</code> is passed as the first argument, there is no return value, and there is no <code>time</code> specified for the dose. All doses invoked this way are given <code>now</code>, as-is; so you should only call these functions when the model code has decided it is time to administer a dose.</p>
-<p><em>Important</em>: Because doses are given <code>now</code>, these functions should always be called in <code>$TABLE</code> (i.e., <code>$ERROR</code>).</p>
+<p><em>Important</em>: Because doses are given <code>now</code>, these functions should always be called in <code>$TABLE</code> (i.e., <code>$ERROR</code>) or <code>$EVENT</code>.</p>
 </section>
 <section id="replace-amount-in-a-compartment-now" class="level3" data-number="10.4.5">
 <h3 data-number="10.4.5" class="anchored" data-anchor-id="replace-amount-in-a-compartment-now"><span class="header-section-number">10.4.5</span> Replace amount in a compartment now</h3>
@@ -567,25 +568,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The replace functionality works just like <code>evt::bolus()</code> described above, but the compartment is reset prior to adding <code>&lt;amt&gt;</code>.</p>
 </section>
-<section id="customized-dosing-or-replacement-potentially-given-later" class="level3" data-number="10.4.6">
-<h3 data-number="10.4.6" class="anchored" data-anchor-id="customized-dosing-or-replacement-potentially-given-later"><span class="header-section-number">10.4.6</span> Customized dosing or replacement, potentially given later</h3>
+<section id="reset-ths-system-now" class="level3" data-number="10.4.6">
+<h3 data-number="10.4.6" class="anchored" data-anchor-id="reset-ths-system-now"><span class="header-section-number">10.4.6</span> Reset ths system now</h3>
+<p>System reset is accomplished with <code>EVID 3</code>. Starting with mrgsolve 1.5.2, a function is provided to do this</p>
+<ul>
+<li><code>void evt::reset(self)</code> where
+<ul>
+<li><code>self</code> is the self object, described in <a href="specification.html#sec-self-object" class="quarto-xref"><span>Section 2.3.12</span></a></li>
+</ul></li>
+</ul>
+<p>You can also reset and dose, which is accomplishd with <code>EVID 4</code> as a bolus</p>
+<ul>
+<li><code>void evt::reset(self, &lt;amt&gt;, &lt;cmt&gt;)</code> where
+<ul>
+<li><code>self</code> is the self object, described in <a href="specification.html#sec-self-object" class="quarto-xref"><span>Section 2.3.12</span></a></li>
+<li><code>&lt;amt&gt;</code> is the bolus dose amount</li>
+<li><code>&lt;cmt&gt;</code> is the dosing compartment</li>
+</ul></li>
+</ul>
+<p>or an infusion</p>
+<ul>
+<li><code>void evt::reset(self, &lt;amt&gt;, &lt;cmt&gt;, &lt;rate&gt;)</code> where
+<ul>
+<li><code>self</code> is the self object, described in <a href="specification.html#sec-self-object" class="quarto-xref"><span>Section 2.3.12</span></a></li>
+<li><code>&lt;amt&gt;</code> is the infusion dose amount</li>
+<li><code>&lt;cmt&gt;</code> is the dosing compartment</li>
+<li><code>&lt;rate&gt;</code> is the infusion rate</li>
+</ul></li>
+</ul>
+</section>
+<section id="customized-dosing-replacement-or-reset-potentially-given-later" class="level3" data-number="10.4.7">
+<h3 data-number="10.4.7" class="anchored" data-anchor-id="customized-dosing-replacement-or-reset-potentially-given-later"><span class="header-section-number">10.4.7</span> Customized dosing, replacement, or reset potentially given later</h3>
 <p>The <code>evt</code> namespace also provides variants of these functions which return the event object to you so you can modify some of the attributes (e.g., schedule the dose in the future) prior to sending the object back to mrgsolve for processing. These functions are</p>
 <ul>
-<li><code>evt::ev evt::bolus(&lt;amt&gt;, &lt;cmt&gt;)</code> where
+<li><p><code>evt::ev evt::bolus(&lt;amt&gt;, &lt;cmt&gt;)</code> where</p>
 <ul>
 <li><code>&lt;amt&gt;</code> is the dose amount (type <code>double</code>)</li>
 <li><code>&lt;cmt&gt;</code> is the dosing compartment (type <code>double</code>)</li>
 </ul></li>
-<li><code>evt::ev evt::infuse(&lt;amt&gt;, &lt;cmt&gt;, &lt;rate&gt;)</code> where
+<li><p><code>evt::ev evt::infuse(&lt;amt&gt;, &lt;cmt&gt;, &lt;rate&gt;)</code> where</p>
 <ul>
 <li><code>&lt;amt&gt;</code> is the dose amount (type <code>double</code>)</li>
 <li><code>&lt;cmt&gt;</code> is the dosing compartment (type <code>double</code>)</li>
 <li><code>&lt;rate&gt;</code> is the infusion rate (type <code>double</code>)</li>
 </ul></li>
-<li><code>evt::ev evt::replace(&lt;amt&gt;, &lt;cmt&gt;)</code> where
+<li><p><code>evt::ev evt::replace(&lt;amt&gt;, &lt;cmt&gt;)</code> where</p>
 <ul>
 <li><code>&lt;amt&gt;</code> is the new amount (type <code>double</code>)</li>
 <li><code>&lt;cmt&gt;</code> is the replacement compartment (type <code>double</code>)</li>
+</ul></li>
+<li><p><code>evt::ev evt::reset()</code></p></li>
+<li><p><code>evt::ev evt::reset(&lt;amt&gt;, &lt;cmt&gt;)</code> where</p>
+<ul>
+<li><code>&lt;amt&gt;</code> is a dose amount (type <code>double</code>)</li>
+<li><code>&lt;cmt&gt;</code> is the dosing compartment (type <code>double</code>)</li>
 </ul></li>
 </ul>
 <p>For example, if I want to give a dose of 100 mg infused over 2 hours, getting the object back prior to sending to mrgsolve</p>
@@ -603,8 +639,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>More about <code>push()</code> below.</p>
 </section>
-<section id="api-for-customizing-doses" class="level3" data-number="10.4.7">
-<h3 data-number="10.4.7" class="anchored" data-anchor-id="api-for-customizing-doses"><span class="header-section-number">10.4.7</span> API for customizing doses</h3>
+<section id="api-for-customizing-doses" class="level3" data-number="10.4.8">
+<h3 data-number="10.4.8" class="anchored" data-anchor-id="api-for-customizing-doses"><span class="header-section-number">10.4.8</span> API for customizing doses</h3>
 <p><a href="mtime.html#sec-modeled-doses" class="quarto-xref"><span>Section 11.5</span></a> shows you some low-level ways to customize the event object the <code>evt</code> namespace provides some API for making these changes.</p>
 <p><strong><code>evt::retime</code></strong></p>
 <p>The <code>evt::retime</code> function can be used to set the time attribute.</p>
@@ -656,8 +692,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Return</strong>: <code>bool</code></p>
 </section>
-<section id="class-to-implement-a-dosing-regimen" class="level3" data-number="10.4.8">
-<h3 data-number="10.4.8" class="anchored" data-anchor-id="class-to-implement-a-dosing-regimen"><span class="header-section-number">10.4.8</span> Class to implement a dosing regimen</h3>
+<section id="class-to-implement-a-dosing-regimen" class="level3" data-number="10.4.9">
+<h3 data-number="10.4.9" class="anchored" data-anchor-id="class-to-implement-a-dosing-regimen"><span class="header-section-number">10.4.9</span> Class to implement a dosing regimen</h3>
 <p>The <code>evtools</code> namespace also includes a class for implementing “automatic” dosing in a regimen. The documentation presented here will be limited to a brief discussion of the constructor and member functions for this class. More is written in <a href="mtime.html" class="quarto-xref"><span>Chapter 11</span></a> about how you can use this class effectively.</p>
 <ul>
 <li>The constructor <code>evt::regimen::regimen()</code> does not take any arguments, but it dose call the <code>reset()</code> method.</li>
@@ -692,7 +728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>execute<span class="op">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This should almost always be called in <code>$TABLE</code> (i.e., <code>$ERROR</code>).</p>
+<p>This should almost always be called in <code>$TABLE</code> (i.e., <code>$ERROR</code>) or <code>$EVENT</code> (new with mrgsolve 1.5 2).</p>
 <p>To force the simulation to stop at the time of the next dose with <code>EVID</code> set to 3333, use the <code>flagnext()</code> member function</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>flagnext<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -738,10 +774,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. &lt;environment: 0x1075fdcf8&gt;</code></pre>
+<pre><code>. &lt;environment: 0x1067df998&gt;</code></pre>
 </div>
 </div>
-<p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see <a href="specification.html#sec-block-env" class="quarto-xref"><span>Section 2.2.27</span></a>);</p>
+<p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see <a href="specification.html#sec-block-env" class="quarto-xref"><span>Section 2.2.28</span></a>);</p>
 <p>To access this environment in your model, call</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

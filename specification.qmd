@@ -604,6 +604,58 @@ intervention.
 
 This is an alias for `$TABLE`.
 
+### `$EVENT` \ {#sec-block-event}
+
+__Syntax__: C++   
+__Multiple allowed__: no 
+
+Use the `$EVENT` block to write code to implement doses or other modeled events
+inside your model file. `$EVENT` functions just like `$ERROR` (or `$TABLE`),
+but it gets called just prior to `$ERROR`. This lets you set up modeled doses
+or events for execution "now" and also seem them in the simulated output on 
+that same record. For example
+
+
+```{r}
+#| eval: false
+$EVENT 
+if(NEWIND > 1) return;
+
+evt::ev dose = evt::bolus(250, 2);
+evt::ii(dose, 12);
+evt::ss(dose, 1); 
+evt::addl(dose, 9)
+
+self.push(dose);
+```
+
+**A subtle difference between `$ERROR` and `$EVENT`**
+
+Coding modeled events in `$EVENT` rather than `$TABLE` will give a very limited
+and subtle difference in output that you will most likely see when you
+administer a bolus dose to a compartment you are watching (e.g. a bolus to the
+central compartment). Using `$EVENT` will let you see the result of the dose
+immediately - on the record where the dose code is executed; when `$TABLE` is
+used, you will only see the result of that dose on subsequent output records.
+You'd see a difference between `$TABLE` and `$EVENT` behavior when you bolus
+into a depot compartment too, but you probably aren't noticing because you are
+likely monitoring the central compartment, not the depot. Regardless, the
+`$TABLE` / `$EVENT` difference is just bookkeeping for the current record; you
+might see that bookkeeping difference on the current record, but the difference
+will not factor into how the system advances beyond that record.
+
+**The key point for using `$EVENT`**
+
+For the time being, the important thing to remember when you want to dose
+"now" (not some time in the future) is those interventions should be coded into 
+`$EVENT` (or `$ERROR`) and they will happen right after the system advances 
+in time on the current record, not prior to advancing in time for the next 
+record. I recommend you always use `$EVENT` or `$TABLE` to execute doses or 
+other events from inside your model. This distinction only applies to doses
+happening "now"; there is no difference in behavior when the dose is scheduled
+to happen at a future time.
+
+
 ### `$PREAMBLE` \ {#sec-block-preamble}
 
 __Syntax__: C++   
@@ -1042,7 +1094,7 @@ separate `$CMT` block is not appropriate when `cmt` is specified in `$PKMODEL`.
 ### `$PLUGIN` \ {#sec-block-plugin}
 
 __Syntax__: text   
-__Multiple allowed__: no   
+__Multiple allowed__: yes   
 
 Plugins are a way to add extensions to your mrgsolve model. Plugins can either 
 link your model to external libraries (like `boost` or `Rcpp`) or they can 
