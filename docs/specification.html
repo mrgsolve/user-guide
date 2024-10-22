@@ -303,7 +303,7 @@ window.Quarto = {
   <li><a href="#sec-block-theta" id="toc-sec-block-theta" class="nav-link" data-scroll-target="#sec-block-theta"><span class="header-section-number">2.2.24</span> <code>$THETA</code> &nbsp;</a></li>
   <li><a href="#sec-block-nmxml" id="toc-sec-block-nmxml" class="nav-link" data-scroll-target="#sec-block-nmxml"><span class="header-section-number">2.2.25</span> <code>$NMXML</code> &nbsp;</a></li>
   <li><a href="#sec-block-nmext" id="toc-sec-block-nmext" class="nav-link" data-scroll-target="#sec-block-nmext"><span class="header-section-number">2.2.26</span> <code>$NMEXT</code> &nbsp;</a></li>
-  <li><a href="#details-1" id="toc-details-1" class="nav-link" data-scroll-target="#details-1">Details</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
   <li><a href="#sec-block-include" id="toc-sec-block-include" class="nav-link" data-scroll-target="#sec-block-include"><span class="header-section-number">2.2.27</span> <code>$INCLUDE</code> &nbsp;</a></li>
   <li><a href="#sec-block-env" id="toc-sec-block-env" class="nav-link" data-scroll-target="#sec-block-env"><span class="header-section-number">2.2.28</span> <code>$ENV</code> &nbsp;</a></li>
   </ul></li>
@@ -353,6 +353,7 @@ window.Quarto = {
   <li><a href="#special-handling-for-double-int-bool" id="toc-special-handling-for-double-int-bool" class="nav-link" data-scroll-target="#special-handling-for-double-int-bool"><span class="header-section-number">2.5.1</span> Special handling for <code>double</code>, <code>int</code>, <code>bool</code></a></li>
   <li><a href="#initializing-and-resetting" id="toc-initializing-and-resetting" class="nav-link" data-scroll-target="#initializing-and-resetting"><span class="header-section-number">2.5.2</span> Initializing and resetting</a></li>
   <li><a href="#using-other-types-globally" id="toc-using-other-types-globally" class="nav-link" data-scroll-target="#using-other-types-globally"><span class="header-section-number">2.5.3</span> Using other types globally</a></li>
+  <li><a href="#automatic-declaration" id="toc-automatic-declaration" class="nav-link" data-scroll-target="#automatic-declaration"><span class="header-section-number">2.5.4</span> Automatic declaration</a></li>
   </ul></li>
   <li><a href="#random-number-generation" id="toc-random-number-generation" class="nav-link" data-scroll-target="#random-number-generation"><span class="header-section-number">2.6</span> Random number generation</a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">2.7</span> Examples</a>
@@ -1222,9 +1223,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>root <span class="ot">=</span> <span class="st">"cppfile"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This latter syntax may be needed when using PsN and output files are organized in a way different from the previous example.</p>
-</section>
-<section id="details" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="details">Details</h4>
+<p><strong>Details</strong></p>
 <p>From the NONMEM run, <code>THETA</code> will be imported into your parameter list (see <a href="#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>), <code>OMEGA</code> will be captured as an <code>$OMEGA</code> block (<a href="#sec-block-omega" class="quarto-xref"><span>Section 2.2.18</span></a>) and <code>SIGMA</code> will be captured as a <code>$SIGMA</code> block (<a href="#sec-block-sigma" class="quarto-xref"><span>Section 2.2.19</span></a>). Users may optionally omit any one of these from being imported.</p>
 <p><code>$NMXML</code> contains a <code>project</code> argument and a <code>run</code> argument. By default, the estimates are read from from the file <code>project/run/run.xml</code>. That is, it is assumed that there is a directory named <code>run</code> that is inside the <code>project</code> directory where <code>$NMXML</code> will find <code>run.xml</code>. Your NONMEM run directories may not be organized in a way that is compatible with this default. In that case, you will need to provide the <code>path</code> argument, which should be the path to the <code>run.xml</code> file, either as a full path or as a path relative to the current working directory.</p>
 <p>Once the model object is obtained, the path to the <code>xml</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>:</p>
@@ -1288,7 +1287,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 . ---------------  source: nmxml-1.cpp  ---------------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: nmxml-1.cpp-so-8a311d2aa3ef &lt;not loaded&gt;
+.   shared object: nmxml-1.cpp-so-ce77483bfa37 &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;
@@ -1374,8 +1373,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 <p>This latter syntax may be needed when using PsN and output files are organized in a way different from the previous example.</p>
 </section>
 </section>
-<section id="details-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="details-1">Details</h3>
+<section id="details" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="details">Details</h3>
 <p>Once the model object is obtained, the path to the <code>ext</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"1005"</span>, <span class="at">compile =</span> <span class="cn">FALSE</span>)</span>
@@ -1933,50 +1932,58 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CLi <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CL <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We want <code>CLi</code> to be a numeric value, so we use <code>double</code>. To initialize a <code>boolean</code> variable (true / false), write</p>
+<p>We want <code>CL</code> to be a numeric value, so we use <code>double</code>. To initialize a <code>boolean</code> variable (true / false), write</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> cure <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="special-handling-for-double-int-bool" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="special-handling-for-double-int-bool"><span class="header-section-number">2.5.1</span> Special handling for <code>double</code>, <code>int</code>, <code>bool</code></h3>
-<p>When variables of the type <code>double</code>, <code>int</code>, and <code>bool</code> are declared and initialized in <code>$PREAMBLE</code>, <code>$MAIN</code>, <code>$ODE</code>, <code>$TABLE</code>, mrgsolve will detect those declarations, and modify the code so that the variables are actually declared once in <code>$GLOBAL</code> not in <code>$MAIN</code>, <code>$ODE</code>, or <code>$TABLE</code>. This is done so that variables declared in one code block (e.g.&nbsp;<code>$MAIN</code>) can be read and modified in another code block (e.g.&nbsp;<code>$TABLE</code>).</p>
+<p>When variables of the type <code>double</code>, <code>int</code>, and <code>bool</code> are declared and initialized in <code>$PREAMBLE</code>, <code>$MAIN</code>, <code>$ODE</code>, <code>$TABLE</code> or <code>$EVENT</code>, mrgsolve will detect those declarations, and modify the code so that the variables are actually declared once in <code>$GLOBAL</code> not in <code>$MAIN</code>, <code>$ODE</code>, or <code>$TABLE</code>. This is done so that variables declared in one code block (e.g.&nbsp;<code>$MAIN</code>) can be read and modified in another code block (e.g.&nbsp;<code>$TABLE</code>).</p>
 <p>For example, in the following code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CLi <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CL <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>a double-precision numeric variable is created (<code>CLi</code>) in the <code>$MAIN</code> block. When mrgsolve parses the model file, this code gets translated to</p>
+<p>a double-precision numeric variable is created (<code>CL</code>) in the <code>$MAIN</code> block. When mrgsolve parses the model file, this code gets translated to</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>$GLOBAL</span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>namespace <span class="op">{</span></span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> CLi<span class="op">;</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">double</span> CL<span class="op">;</span></span>
 <span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
-<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>CLi <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>CL <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>That is, <code>CLi</code> is declared in <code>$GLOBAL</code> in an unnamed namespace so that variables like this are global variables within the model file only.</p>
-<p>This way, we can still read the <code>CLi</code> variable in <code>$TABLE</code>:</p>
+<p>That is, <code>CL</code> is declared in <code>$GLOBAL</code> in an unnamed namespace so that variables like this are global variables within the model file only.</p>
+<p>This way, we can still read the <code>CL</code> variable in <code>$TABLE</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CLi <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> VCi <span class="op">=</span> TVVC<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">2</span><span class="op">));</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CL <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> V2 <span class="op">=</span> TVV2<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">2</span><span class="op">));</span></span>
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> KEi <span class="op">=</span> CLi<span class="op">/</span>VCi<span class="op">;</span></span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> KE <span class="op">=</span> CL<span class="op">/</span>V2<span class="op">;</span></span>
 <span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a>$CAPTURE KEi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a>$CAPTURE KE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To declare a variable that is local to a particular code block:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>localdouble CLi <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>local_double CL <span class="op">=</span> TVCL<span class="op">*</span>exp<span class="op">(</span>ETA<span class="op">(</span><span class="dv">1</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>localdouble</code> type is still just a double-precision variable. The difference is that it is protected from this re-declaration process and the variable will be local to (in this case) the <code>$MAIN</code> block.</p>
+<p>The <code>local_double</code> type is still just a double-precision variable. The difference is that it is protected from this re-declaration process and the variable will be local to (in this case) the <code>$MAIN</code> block.</p>
+<p>Similarly, use <code>local_int</code> or <code>local_bool</code> to declare a variable that will <em>not</em> be made global by mrgsolve. One common application of <code>local_int</code> is when you need to write a for-loop</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>$TABLE </span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span><span class="op">(</span>local_int i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">9</span><span class="op">;</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{}.</span> </span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// do something with i</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we we want <code>i</code> declared locally for use in that for-loop and we use <code>local_int</code> to make that happen.</p>
 </section>
 <section id="initializing-and-resetting" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="initializing-and-resetting"><span class="header-section-number">2.5.2</span> Initializing and resetting</h3>
@@ -1988,24 +1995,28 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <p>As we noted in the previous section, <code>double</code>, <code>int</code>, and <code>bool</code> are processed in a special way so that they are by default global to the file. Many times we want to work with other variable types in a global manner. Whenever you want a data structure to be accessible across functions (e.g.&nbsp;<code>$MAIN</code>, <code>$TABLE</code>, etc.) they should be declared in <code>$GLOBAL</code>, optionally in an unnamed namespace.</p>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>namespace <span class="op">{</span></span>
-<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>  std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span>
-<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>namespace <span class="op">{</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>  std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In case that object needs some configuration prior to starting the problem, use <code>$PREAMBLE</code> to do that work</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PREAMBLE <span class="op">]</span> </span>
-<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>myvec<span class="op">.</span>assign<span class="op">(</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> GLOBAL <span class="op">]</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>std<span class="op">::</span>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> myvec<span class="op">;</span></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PREAMBLE <span class="op">]</span> </span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>myvec<span class="op">.</span>assign<span class="op">(</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="automatic-declaration" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="automatic-declaration"><span class="header-section-number">2.5.4</span> Automatic declaration</h3>
+<p>There is a plugin you can invoke which will instruct mrgsolve to scan your code and discover variables to be declared with type <code>double</code>. See the autodec plugin in <a href="plugins.html#sec-plugin-autodec" class="quarto-xref"><span>Section 10.1</span></a> for details.</p>
 </section>
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
@@ -2014,19 +2025,19 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp</span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> error <span class="op">]</span> </span>
-<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> draw <span class="op">=</span> R<span class="op">::</span>runif<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> error <span class="op">]</span> </span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> draw <span class="op">=</span> R<span class="op">::</span>runif<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the <code>0</code> gets used as <code>min</code> and the <code>1</code> gets used as <code>max</code>;<br>
 we didn’t pass <code>n</code> here and <code>draw</code> is a single number (not a vector like you’d get from (<code>runif(100, 0, 1)</code> on your R console). So in general, these functions work like their <code>R</code> counterparts, but without the <code>n</code> argument.</p>
 <p>Another example showing how to draw from binomial distribution with probability 0.5</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp</span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> error <span class="op">]</span> </span>
-<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> draw <span class="op">=</span> R<span class="op">::</span>rbinom<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp</span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> error <span class="op">]</span> </span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> draw <span class="op">=</span> R<span class="op">::</span>rbinom<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="fl">0.5</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, the <code>1</code> is used as <code>size</code> (not <code>n</code>) and <code>0.5</code> is used as <code>prob</code>.</p>
 <p>Other helpful functions could be <code>R::rnorm()</code> or <code>R::rlnorm()</code> but you can call any of the <code>r</code> functions as well as the corresponding <code>dpq</code> functions through this <code>R</code> namespace.</p>
@@ -2048,26 +2059,26 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>We derive a variable called <code>CP</code> in <code>$TABLE</code> that has type <code>capture</code>; mrgsolve will enter the <code>CP</code> name into the <code>$CAPTURE</code> block list</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>$PARAM CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT</span>
-<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a>$ODE</span>
-<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KA<span class="op">*</span>GUT<span class="op">;</span></span>
-<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KA<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CL<span class="op">/</span>VC<span class="op">)*</span>CENT<span class="op">;</span></span>
-<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-10"><a href="#cb130-10" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
-<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>$PARAM CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT</span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>$ODE</span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-7"><a href="#cb131-7" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KA<span class="op">*</span>GUT<span class="op">;</span></span>
+<span id="cb131-8"><a href="#cb131-8" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KA<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CL<span class="op">/</span>VC<span class="op">)*</span>CENT<span class="op">;</span></span>
+<span id="cb131-9"><a href="#cb131-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-10"><a href="#cb131-10" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
+<span id="cb131-11"><a href="#cb131-11" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This model can also be written without differential equations</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PARAM <span class="op">]</span> CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PKMODEL <span class="op">]</span> cmt <span class="op">=</span> <span class="st">"CMT GUT CENT"</span><span class="op">,</span> depot <span class="op">=</span> TRUE</span>
-<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
-<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PARAM <span class="op">]</span> CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> PKMODEL <span class="op">]</span> cmt <span class="op">=</span> <span class="st">"CMT GUT CENT"</span><span class="op">,</span> depot <span class="op">=</span> TRUE</span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VC<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="pkpd-model" class="level3" data-number="2.7.2">
@@ -2081,26 +2092,26 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>Both <code>$MAIN</code> and <code>$ODE</code> are <code>C++</code> code blocks; don’t forget to add the <code>;</code> at the end of each statement</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>$PARAM CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>KIN <span class="op">=</span> <span class="dv">100</span><span class="op">,</span> KOUT <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> IC50 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>$GLOBAL</span>
-<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CP </span><span class="op">(</span><span class="pp">CENT</span><span class="op">/</span><span class="pp">VC</span><span class="op">)</span></span>
-<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT RESP</span>
-<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-9"><a href="#cb132-9" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
-<span id="cb132-10"><a href="#cb132-10" aria-hidden="true" tabindex="-1"></a>RESP_0 <span class="op">=</span> KIN<span class="op">/</span>KOUT<span class="op">;</span></span>
-<span id="cb132-11"><a href="#cb132-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-12"><a href="#cb132-12" aria-hidden="true" tabindex="-1"></a>$ODE</span>
-<span id="cb132-13"><a href="#cb132-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-14"><a href="#cb132-14" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> INH <span class="op">=</span> CP<span class="op">/(</span>IC50<span class="op">+</span>CP<span class="op">);</span></span>
-<span id="cb132-15"><a href="#cb132-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-16"><a href="#cb132-16" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KA<span class="op">*</span>GUT<span class="op">;</span></span>
-<span id="cb132-17"><a href="#cb132-17" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KA<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CL<span class="op">/</span>VC<span class="op">)*</span>CENT<span class="op">;</span></span>
-<span id="cb132-18"><a href="#cb132-18" aria-hidden="true" tabindex="-1"></a>dxdt_RESP <span class="op">=</span> KIN<span class="op">*(</span><span class="dv">1</span><span class="op">-</span>INH<span class="op">)</span> <span class="op">-</span> KOUT<span class="op">*</span>RESP<span class="op">;</span></span>
-<span id="cb132-19"><a href="#cb132-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-20"><a href="#cb132-20" aria-hidden="true" tabindex="-1"></a>$CAPTURE CP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>$PARAM CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> VC <span class="op">=</span> <span class="dv">30</span><span class="op">,</span> KA <span class="op">=</span> <span class="fl">1.3</span></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>KIN <span class="op">=</span> <span class="dv">100</span><span class="op">,</span> KOUT <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> IC50 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>$GLOBAL</span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CP </span><span class="op">(</span><span class="pp">CENT</span><span class="op">/</span><span class="pp">VC</span><span class="op">)</span></span>
+<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT RESP</span>
+<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-9"><a href="#cb133-9" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
+<span id="cb133-10"><a href="#cb133-10" aria-hidden="true" tabindex="-1"></a>RESP_0 <span class="op">=</span> KIN<span class="op">/</span>KOUT<span class="op">;</span></span>
+<span id="cb133-11"><a href="#cb133-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-12"><a href="#cb133-12" aria-hidden="true" tabindex="-1"></a>$ODE</span>
+<span id="cb133-13"><a href="#cb133-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-14"><a href="#cb133-14" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> INH <span class="op">=</span> CP<span class="op">/(</span>IC50<span class="op">+</span>CP<span class="op">);</span></span>
+<span id="cb133-15"><a href="#cb133-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-16"><a href="#cb133-16" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KA<span class="op">*</span>GUT<span class="op">;</span></span>
+<span id="cb133-17"><a href="#cb133-17" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KA<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CL<span class="op">/</span>VC<span class="op">)*</span>CENT<span class="op">;</span></span>
+<span id="cb133-18"><a href="#cb133-18" aria-hidden="true" tabindex="-1"></a>dxdt_RESP <span class="op">=</span> KIN<span class="op">*(</span><span class="dv">1</span><span class="op">-</span>INH<span class="op">)</span> <span class="op">-</span> KOUT<span class="op">*</span>RESP<span class="op">;</span></span>
+<span id="cb133-19"><a href="#cb133-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-20"><a href="#cb133-20" aria-hidden="true" tabindex="-1"></a>$CAPTURE CP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="population-pk-model-with-covariates-and-iov" class="level3" data-number="2.7.3">
@@ -2114,36 +2125,36 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 6.3</span></a>)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>$SET delta<span class="op">=</span><span class="fl">0.1</span><span class="op">,</span> end<span class="op">=</span><span class="dv">240</span></span>
-<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT</span>
-<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
-<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-9"><a href="#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> IOV <span class="op">=</span> IOV1</span>
-<span id="cb133-10"><a href="#cb133-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>OCC<span class="op">==</span><span class="dv">2</span><span class="op">)</span> IOV <span class="op">=</span> IOV2<span class="op">;</span></span>
-<span id="cb133-11"><a href="#cb133-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-12"><a href="#cb133-12" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CLi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVCL<span class="op">)</span> <span class="op">+</span> <span class="fl">0.75</span><span class="op">*</span>log<span class="op">(</span>WT<span class="op">/</span><span class="dv">70</span><span class="op">)</span> <span class="op">+</span> ECL <span class="op">+</span> IOV<span class="op">);</span></span>
-<span id="cb133-13"><a href="#cb133-13" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> VCi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVVC<span class="op">)</span> <span class="op">+</span> EVC<span class="op">);</span></span>
-<span id="cb133-14"><a href="#cb133-14" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> KAi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVKA<span class="op">)</span> <span class="op">+</span> EKA<span class="op">);</span></span>
-<span id="cb133-15"><a href="#cb133-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-16"><a href="#cb133-16" aria-hidden="true" tabindex="-1"></a>$OMEGA @name IIV @labels ECL EVC EKA</span>
-<span id="cb133-17"><a href="#cb133-17" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
-<span id="cb133-18"><a href="#cb133-18" aria-hidden="true" tabindex="-1"></a>$OMEGA @name IOV @labels IOV1 IOV2</span>
-<span id="cb133-19"><a href="#cb133-19" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="dv">0</span></span>
-<span id="cb133-20"><a href="#cb133-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-21"><a href="#cb133-21" aria-hidden="true" tabindex="-1"></a>$SIGMA <span class="dv">0</span></span>
-<span id="cb133-22"><a href="#cb133-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-23"><a href="#cb133-23" aria-hidden="true" tabindex="-1"></a>$ODE</span>
-<span id="cb133-24"><a href="#cb133-24" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KAi<span class="op">*</span>GUT<span class="op">;</span></span>
-<span id="cb133-25"><a href="#cb133-25" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KAi<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CLi<span class="op">/</span>VCi<span class="op">)*</span>CENT<span class="op">;</span></span>
-<span id="cb133-26"><a href="#cb133-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-27"><a href="#cb133-27" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
-<span id="cb133-28"><a href="#cb133-28" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VCi<span class="op">;</span></span>
-<span id="cb133-29"><a href="#cb133-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-30"><a href="#cb133-30" aria-hidden="true" tabindex="-1"></a>$CAPTURE IOV ECL EVC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>$SET delta<span class="op">=</span><span class="fl">0.1</span><span class="op">,</span> end<span class="op">=</span><span class="dv">240</span></span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>$CMT GUT CENT</span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a>$MAIN</span>
+<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> IOV <span class="op">=</span> IOV1</span>
+<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>OCC<span class="op">==</span><span class="dv">2</span><span class="op">)</span> IOV <span class="op">=</span> IOV2<span class="op">;</span></span>
+<span id="cb134-11"><a href="#cb134-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-12"><a href="#cb134-12" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> CLi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVCL<span class="op">)</span> <span class="op">+</span> <span class="fl">0.75</span><span class="op">*</span>log<span class="op">(</span>WT<span class="op">/</span><span class="dv">70</span><span class="op">)</span> <span class="op">+</span> ECL <span class="op">+</span> IOV<span class="op">);</span></span>
+<span id="cb134-13"><a href="#cb134-13" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> VCi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVVC<span class="op">)</span> <span class="op">+</span> EVC<span class="op">);</span></span>
+<span id="cb134-14"><a href="#cb134-14" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> KAi <span class="op">=</span> exp<span class="op">(</span>log<span class="op">(</span>TVKA<span class="op">)</span> <span class="op">+</span> EKA<span class="op">);</span></span>
+<span id="cb134-15"><a href="#cb134-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-16"><a href="#cb134-16" aria-hidden="true" tabindex="-1"></a>$OMEGA @name IIV @labels ECL EVC EKA</span>
+<span id="cb134-17"><a href="#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span></span>
+<span id="cb134-18"><a href="#cb134-18" aria-hidden="true" tabindex="-1"></a>$OMEGA @name IOV @labels IOV1 IOV2</span>
+<span id="cb134-19"><a href="#cb134-19" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="dv">0</span></span>
+<span id="cb134-20"><a href="#cb134-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-21"><a href="#cb134-21" aria-hidden="true" tabindex="-1"></a>$SIGMA <span class="dv">0</span></span>
+<span id="cb134-22"><a href="#cb134-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-23"><a href="#cb134-23" aria-hidden="true" tabindex="-1"></a>$ODE</span>
+<span id="cb134-24"><a href="#cb134-24" aria-hidden="true" tabindex="-1"></a>dxdt_GUT <span class="op">=</span> <span class="op">-</span>KAi<span class="op">*</span>GUT<span class="op">;</span></span>
+<span id="cb134-25"><a href="#cb134-25" aria-hidden="true" tabindex="-1"></a>dxdt_CENT <span class="op">=</span> KAi<span class="op">*</span>GUT <span class="op">-</span> <span class="op">(</span>CLi<span class="op">/</span>VCi<span class="op">)*</span>CENT<span class="op">;</span></span>
+<span id="cb134-26"><a href="#cb134-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-27"><a href="#cb134-27" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
+<span id="cb134-28"><a href="#cb134-28" aria-hidden="true" tabindex="-1"></a>capture CP <span class="op">=</span> CENT<span class="op">/</span>VCi<span class="op">;</span></span>
+<span id="cb134-29"><a href="#cb134-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-30"><a href="#cb134-30" aria-hidden="true" tabindex="-1"></a>$CAPTURE IOV ECL EVC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

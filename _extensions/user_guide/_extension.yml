@@ -1,0 +1,15 @@
+title: mrgsolve-user-guide
+author: Kyle Baron
+version: 0.0.1
+contributes:
+  formats: 
+    pdf:
+      include-in-header: 
+       - "user_guide.tex"
+      include-before-body:
+       - "pagestyle.tex"
+      toc: false
+      code-block-bg: codebg
+      linkcolor: highlight
+      urlcolor: highlight
+  

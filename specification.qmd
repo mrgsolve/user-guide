@@ -1304,7 +1304,7 @@ This latter syntax may be needed when using PsN and output files are organized
 in a way different from the previous example.
 
 
-#### Details {.unnumbered}
+**Details**
 
 From the NONMEM run, `THETA` will be imported into your
 parameter list (see @sec-block-param and @sec-component-param), `OMEGA` will 
@@ -2199,10 +2199,10 @@ used (double-precision numeric value).
 ```{c,eval=FALSE}
 $MAIN
 
-double CLi = TVCL*exp(ETA(1));
+double CL = TVCL*exp(ETA(1));
 ```
 
-We want `CLi` to be a numeric value, so we use `double`.  To initialize a `boolean` 
+We want `CL` to be a numeric value, so we use `double`.  To initialize a `boolean` 
 variable (true / false), write
 ```{c,eval=FALSE}
 $MAIN
@@ -2212,8 +2212,8 @@ bool cure = false;
 ### Special handling for `double`, `int`, `bool`
 
 When variables of the type `double`, `int`, and `bool` are declared and
-initialized in `$PREAMBLE`, `$MAIN`, `$ODE`, `$TABLE`, mrgsolve will detect
-those declarations, and modify the code so that the variables are actually
+initialized in `$PREAMBLE`, `$MAIN`, `$ODE`, `$TABLE` or `$EVENT`, mrgsolve will 
+detect those declarations, and modify the code so that the variables are actually
 declared once in `$GLOBAL` not in `$MAIN`, `$ODE`, or `$TABLE`.  This is done so
 that variables declared in one code block (e.g. `$MAIN`) can be read and
 modified in another code block (e.g. `$TABLE`).
@@ -2221,36 +2221,36 @@ modified in another code block (e.g. `$TABLE`).
 For example, in the following code:
 ```{c,eval=FALSE}
 $MAIN
-double CLi = TVCL*exp(ETA(1));
+double CL = TVCL*exp(ETA(1));
 ```
 
-a double-precision numeric variable is created (`CLi`) in the `$MAIN` block. 
+a double-precision numeric variable is created (`CL`) in the `$MAIN` block. 
 When mrgsolve parses the model file, this code gets translated to
 
 ```{c,eval=FALSE}
 $GLOBAL
 namespace {
-  double CLi;
+  double CL;
 }
 
 $MAIN
-CLi = TVCL*exp(ETA(1));
+CL = TVCL*exp(ETA(1));
 ```
 
-That is, `CLi` is declared in `$GLOBAL` in an unnamed namespace so that variables
+That is, `CL` is declared in `$GLOBAL` in an unnamed namespace so that variables
 like this are global variables within the model file only.  
 
-This way, we can still read the `CLi` variable in `$TABLE`:
+This way, we can still read the `CL` variable in `$TABLE`:
 
 ```{c,eval=FALSE}
 $MAIN
-double CLi = TVCL*exp(ETA(1));
-double VCi = TVVC*exp(ETA(2));
+double CL = TVCL*exp(ETA(1));
+double V2 = TVV2*exp(ETA(2));
 
 $TABLE
-double KEi = CLi/VCi;
+double KE = CL/V2;
 
-$CAPTURE KEi
+$CAPTURE KE
 ```
 
 To declare a variable that is local to a particular code block:
@@ -2258,12 +2258,26 @@ To declare a variable that is local to a particular code block:
 ```{c,eval=FALSE}
 $MAIN
 
-localdouble CLi = TVCL*exp(ETA(1));
+local_double CL = TVCL*exp(ETA(1));
 ```
 
-The `localdouble` type is still just a double-precision variable.  The
+The `local_double` type is still just a double-precision variable.  The
 difference is that it is protected from this re-declaration process and the
 variable will be local to (in this case) the `$MAIN` block.
+
+Similarly, use `local_int` or `local_bool` to declare a variable that will _not_
+be made global by mrgsolve. One common application of `local_int` is when 
+you need to write a for-loop
+
+```{c,eval=FALSE}
+$TABLE 
+for(local_int i = 0; i < 9; ++i) {}. 
+  // do something with i
+}
+```
+
+Here, we we want `i` declared locally for use in that for-loop and we use 
+`local_int` to make that happen.
 
 ### Initializing and resetting 
 
@@ -2310,6 +2324,12 @@ std::vector<double> myvec;
 [ PREAMBLE ] 
 myvec.assign(3,1);
 ```
+
+### Automatic declaration
+
+There is a plugin you can invoke which will instruct mrgsolve to scan your
+code and discover variables to be declared with type `double`. See the 
+autodec plugin in @sec-plugin-autodec for details.
 
 ## Random number generation
 
