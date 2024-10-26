@@ -246,7 +246,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mtime-with-specific-evid" id="toc-mtime-with-specific-evid" class="nav-link" data-scroll-target="#mtime-with-specific-evid"><span class="header-section-number">11.4</span> MTIME with specific EVID</a></li>
   <li><a href="#sec-modeled-doses" id="toc-sec-modeled-doses" class="nav-link" data-scroll-target="#sec-modeled-doses"><span class="header-section-number">11.5</span> Modeled doses</a>
   <ul class="collapse">
-  <li><a href="#evtools-plugin-1" id="toc-evtools-plugin-1" class="nav-link" data-scroll-target="#evtools-plugin-1"><span class="header-section-number">11.5.1</span> <code>evtools</code> plugin</a></li>
+  <li><a href="#create-an-evdata-object" id="toc-create-an-evdata-object" class="nav-link" data-scroll-target="#create-an-evdata-object"><span class="header-section-number">11.5.1</span> Create an evdata object</a></li>
+  <li><a href="#sec-event-members" id="toc-sec-event-members" class="nav-link" data-scroll-target="#sec-event-members"><span class="header-section-number">11.5.2</span> Event object public members</a></li>
+  <li><a href="#push-the-evdata-object-back-to-mrgsolve" id="toc-push-the-evdata-object-back-to-mrgsolve" class="nav-link" data-scroll-target="#push-the-evdata-object-back-to-mrgsolve"><span class="header-section-number">11.5.3</span> Push the evdata object back to mrgsolve</a></li>
+  <li><a href="#evtools-plugin-1" id="toc-evtools-plugin-1" class="nav-link" data-scroll-target="#evtools-plugin-1"><span class="header-section-number">11.5.4</span> <code>evtools</code> plugin</a></li>
   </ul></li>
   <li><a href="#sec-event-log" id="toc-sec-event-log" class="nav-link" data-scroll-target="#sec-event-log"><span class="header-section-number">11.6</span> Event log - tracking duplicate events</a></li>
   </ul>
@@ -334,9 +337,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sec-modeled-doses" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="sec-modeled-doses"><span class="header-section-number">11.5</span> Modeled doses</h2>
+<p><strong>Note</strong>: This user guide section provides some low-level information on working with event objects to issue doses from inside your model code. The <code>evtools</code> plugin described in <a href="plugins.html#sec-plugin-evtools" class="quarto-xref"><span>Section 10.4</span></a> provides a higher-level interface to these objects and should be used whenever possible.</p>
 <p>The previous examples showed you how to get the simulation to stop so you can do something in <code>$MAIN</code>. In this section, we show you how to schedule doses in a similar way. This will take some extra coding and will also serve to uncover how <code>self.mtime()</code> and <code>self.mevent()</code> work.</p>
-<p>You can set up the following code in either <code>$MAIN</code> or <code>$TABLE</code>.</p>
-<p><strong><em>Create an evdata object</em></strong></p>
+<p>You can set up the following code in either <code>$EVENT</code> or <code>$ERROR</code>.</p>
+<section id="create-an-evdata-object" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="create-an-evdata-object"><span class="header-section-number">11.5.1</span> Create an evdata object</h3>
 <p>Once you know when you want the dose, create an <code>evdata</code> object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>evdata ev<span class="op">(</span><span class="fl">14.2</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,13 +352,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the <code>EVID</code> for the event</li>
 </ol>
 <p>This is the only available constructor for <code>evdata</code> objects. You can browse the source code for the <code>evdata</code> object <a href="https://github.com/metrumresearchgroup/mrgsolve/blob/develop/inst/base/mrgsolv.h">here</a>.</p>
-<p><strong>Modify the evdata object</strong> Once the object is created, you can modify the following public members</p>
+</section>
+<section id="sec-event-members" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="sec-event-members"><span class="header-section-number">11.5.2</span> Event object public members</h3>
+<p>Once the object is created, you can modify or access the following public members</p>
 <ul>
 <li><code>time</code>: the event time (<code>double</code>)</li>
 <li><code>evid</code>: the event ID (<code>int</code>)</li>
 <li><code>amt</code>: the dose amount (<code>double</code>)</li>
 <li><code>cmt</code>: the compartment number (<code>int</code>)</li>
 <li><code>rate</code>: the rate to infuse <code>amt</code> (<code>double</code>)</li>
+<li><code>ii</code>: the dosing interval (<code>double</code>)</li>
+<li><code>addl</code>: additional doses to give (<code>int</code>)</li>
+<li><code>ss</code>: steady state flag (<code>int</code>)</li>
 <li><code>now</code>: should the dose be given immediately? (<code>bool</code>)</li>
 <li><code>check_unique</code>: should the event log be checked for identical events? see <a href="#sec-event-log" class="quarto-xref"><span>Section 11.6</span></a> (<code>bool</code>)</li>
 </ul>
@@ -363,19 +374,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ev<span class="op">.</span>cmt <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ev<span class="op">.</span>now <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The other members are set in a similar way.</p>
-<p><strong>Push the evdata object into the self object</strong></p>
+<p>A similar syntax is used to access the public members in these objects</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(ev.amt <span class="sc">&gt;</span> <span class="dv">50</span>) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">/</span><span class="er">/</span> Do something   </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>evtools</code> plugin described in <a href="plugins.html#sec-plugin-evtools" class="quarto-xref"><span>Section 10.4</span></a> provides a higher-level interface to these objects. We recommend using the <code>evtools</code> interface whenever possible.</p>
+</section>
+<section id="push-the-evdata-object-back-to-mrgsolve" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="push-the-evdata-object-back-to-mrgsolve"><span class="header-section-number">11.5.3</span> Push the evdata object back to mrgsolve</h3>
 <p>After the object has been created and modified, you have to attach this object to the <code>self</code> object in order to make it available to mrgsolve. Do this by calling <code>push_back()</code> on <code>self.mevector</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>mevector<span class="op">.</span>push_back<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>mevector<span class="op">.</span>push_back<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Starting with mrgsolve 1.4.1, you can also push the event object back via the <code>push</code> member</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>ev<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Again, this sequence should get called in either <code>$MAIN</code> or <code>$TABLE</code>. When that code block finishes running (for the current record), <code>mrgsolve</code> will find the event record and add that event to the simulation sequence.</p>
-<section id="evtools-plugin-1" class="level3" data-number="11.5.1">
-<h3 data-number="11.5.1" class="anchored" data-anchor-id="evtools-plugin-1"><span class="header-section-number">11.5.1</span> <code>evtools</code> plugin</h3>
+<p>Again, this sequence should get called in either <code>$EVENT</code> or <code>$ERROR</code>. When that code block finishes running (for the current record), <code>mrgsolve</code> will find the event record and add that event to the simulation sequence.</p>
+</section>
+<section id="evtools-plugin-1" class="level3" data-number="11.5.4">
+<h3 data-number="11.5.4" class="anchored" data-anchor-id="evtools-plugin-1"><span class="header-section-number">11.5.4</span> <code>evtools</code> plugin</h3>
 <p><code>evtools</code> is a plugin for executing modeled doses, running on top of the machinery here. The goal of the plugin is to create simplified workflows for executing doses or other discontinuities from inside your model. See <a href="plugins.html#sec-plugin-evtools" class="quarto-xref"><span>Section 10.4</span></a> for details on how to use this plugin.</p>
 </section>
 </section>
@@ -384,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The way modeled events are implemented in mrgsolve, it is possible to inadvertently ask to execute the same event a large number of times.</p>
 <p>For example, when we have the following code</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>$PK</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> mt <span class="op">=</span> self<span class="op">.</span>mtime<span class="op">(</span><span class="dv">244</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>$PK</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> mt <span class="op">=</span> self<span class="op">.</span>mtime<span class="op">(</span><span class="dv">244</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>mrgsolve only needs to know once to stop the model at <code>time = 244</code> with <code>evid = 33</code>. Once that event is processed, we don’t need more records piling up at <code>time = 244</code> with that evid.</p>
 <p>To make sure we only get one record with <code>evid = 33</code> at <code>time = 244</code>, mrgsolve keeps a log of modeled events and checks that log whenever a new event comes back from the model code. If there is already a record with <code>time = 244</code> and <code>evid = 33</code>, it declines to schedule an additional / identical record in the record stack; only one is needed. Once mrgsolve starts working on a new individual, the event log is reset to allow events to get scheduled at any time for that individual.</p>

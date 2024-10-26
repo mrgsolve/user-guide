@@ -98,14 +98,19 @@ This is similar in functionality to `self.mevent()`.
 
 ## Modeled doses {#sec-modeled-doses}
 
+__Note__: This user guide section provides some low-level information on working
+with event objects to issue doses from inside your model code. The `evtools` 
+plugin described in @sec-plugin-evtools provides a higher-level interface
+to these objects and should be used whenever possible. 
+
 The previous examples showed you how to get the simulation to stop so you 
 can do something in `$MAIN`. In this section, we show you how to schedule 
 doses in a similar way. This will take some extra coding and will also serve
 to uncover how `self.mtime()` and `self.mevent()` work.
 
-You can set up the following code in either `$MAIN` or `$TABLE`.
+You can set up the following code in either `$EVENT` or `$ERROR`.
 
-___Create an evdata object___
+### Create an evdata object
 
 Once you know when you want the dose, create an `evdata` object. 
 
@@ -123,14 +128,19 @@ This is the only available constructor for `evdata` objects. You can browse
 the source code for the `evdata` object
 [here](https://github.com/metrumresearchgroup/mrgsolve/blob/develop/inst/base/mrgsolv.h).
 
-__Modify the evdata object__
-Once the object is created, you can modify the following public members
+### Event object public members {#sec-event-members}
+
+Once the object is created, you can modify or access the following public 
+members
 
 - `time`: the event time (`double`)
 - `evid`: the event ID (`int`)
 - `amt`: the dose amount (`double`)
 - `cmt`: the compartment number (`int`)
 - `rate`: the rate to infuse `amt` (`double`)
+- `ii`: the dosing interval (`double`)
+- `addl`: additional doses to give (`int`)
+- `ss`: steady state flag (`int`)
 - `now`: should the dose be given immediately? (`bool`)
 - `check_unique`: should the event log be checked for identical events? 
   see @sec-event-log (`bool`)
@@ -145,10 +155,20 @@ ev.cmt = 2;
 ev.now = true;
 ```
 
-The other members are set in a similar way.
+A similar syntax is used to access the public members in these objects
+
+```{r, eval = FALSE}
+if(ev.amt > 50) {
+  // Do something   
+}
+```
+
+The `evtools` plugin described in @sec-plugin-evtools provides a higher-level
+interface to these objects. We recommend using the `evtools` interface whenever
+possible.
 
 
-__Push the evdata object into the self object__
+### Push the evdata object back to mrgsolve
 
 After the object has been created and modified, you have to attach this object
 to the `self` object in order to make it available to mrgsolve. Do this by 
@@ -166,8 +186,7 @@ the `push` member
 self.push(ev);
 ```
 
-
-Again, this sequence should get called in either `$MAIN` or `$TABLE`. When that 
+Again, this sequence should get called in either `$EVENT` or `$ERROR`. When that 
 code block finishes running (for the current record), `mrgsolve` will find the 
 event record and add that event to the simulation sequence. 
 

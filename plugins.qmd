@@ -292,7 +292,7 @@ is driven by the drug concentration. In this case you might monitor platelets at
 different clinical visits and reduce the or hold dose or increase the dosing
 interval in response to Grade 3 or Grade 4 thrombocytopenia. For a real-world
 example, see [this paper](https://ascpt.onlinelibrary.wiley.com/doi/10.1002/psp4.13201)
-that we puublished in 2024. 
+that we published in 2024. 
 
 __Usage__
 
@@ -372,7 +372,7 @@ in a given compartment
 The replace functionality works just like `evt::bolus()` described above, but
 the compartment is reset prior to adding `<amt>`.
 
-### Reset ths system now
+### Reset the system now
 
 System reset is accomplished with `EVID 3`. Starting with mrgsolve 1.5.2, a 
 function is provided to do this
@@ -380,7 +380,7 @@ function is provided to do this
 - `void evt::reset(self)` where
   - `self` is the self object, described in @sec-self-object
   
-You can also reset and dose, which is accomplishd with `EVID 4` as a bolus
+You can also reset and dose, which is accomplished with `EVID 4` as a bolus
 
 - `void evt::reset(self, <amt>, <cmt>)` where
   - `self` is the self object, described in @sec-self-object
@@ -540,7 +540,7 @@ self.push(dose);
 
 
 
-#### Retime
+#### Retime a dose
 
 The `evt::retime()` function can be used to set the time attribute. 
 

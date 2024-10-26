@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#event-object-type" id="toc-event-object-type" class="nav-link" data-scroll-target="#event-object-type"><span class="header-section-number">10.4.3</span> Event object type</a></li>
   <li><a href="#simple-administration-of-single-doses-now" id="toc-simple-administration-of-single-doses-now" class="nav-link" data-scroll-target="#simple-administration-of-single-doses-now"><span class="header-section-number">10.4.4</span> Simple administration of single doses now</a></li>
   <li><a href="#replace-amount-in-a-compartment-now" id="toc-replace-amount-in-a-compartment-now" class="nav-link" data-scroll-target="#replace-amount-in-a-compartment-now"><span class="header-section-number">10.4.5</span> Replace amount in a compartment now</a></li>
-  <li><a href="#reset-ths-system-now" id="toc-reset-ths-system-now" class="nav-link" data-scroll-target="#reset-ths-system-now"><span class="header-section-number">10.4.6</span> Reset ths system now</a></li>
+  <li><a href="#reset-the-system-now" id="toc-reset-the-system-now" class="nav-link" data-scroll-target="#reset-the-system-now"><span class="header-section-number">10.4.6</span> Reset the system now</a></li>
   <li><a href="#customized-dosing-replacement-or-reset-potentially-given-later" id="toc-customized-dosing-replacement-or-reset-potentially-given-later" class="nav-link" data-scroll-target="#customized-dosing-replacement-or-reset-potentially-given-later"><span class="header-section-number">10.4.7</span> Customized dosing, replacement, or reset potentially given later</a></li>
   <li><a href="#api-for-customizing-doses" id="toc-api-for-customizing-doses" class="nav-link" data-scroll-target="#api-for-customizing-doses"><span class="header-section-number">10.4.8</span> API for customizing doses</a></li>
   <li><a href="#class-to-implement-a-dosing-regimen" id="toc-class-to-implement-a-dosing-regimen" class="nav-link" data-scroll-target="#class-to-implement-a-dosing-regimen"><span class="header-section-number">10.4.9</span> Class to implement a dosing regimen</a></li>
@@ -409,6 +409,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">see</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>. Creating build directory: build</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. 
 . Model file:  nm-like.cpp 
@@ -450,15 +453,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Usage</strong></p>
 <p>First, tell <code>mrgsolve</code> that you want to use the <code>tad</code> plugin</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN tad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN tad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The create <code>tadose</code> objects, one for each compartment where you want to track time after dose. One approach is to do this in <code>[ global ]</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice that we pass the compartment number that we want to track in each case and also that we refer to the <code>mrg::</code> namespace for the <code>tadose</code> class.</p>
 <p>The <code>tadose</code> objects contain the following (public) members</p>
@@ -475,24 +478,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>As an example, you can call the <code>reset()</code> method on one of the <code>tadose</code> objects</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tad_cmt_1<span class="op">.</span>reset<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tad_cmt_1<span class="op">.</span>reset<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can find the source code for this object <a href="https://github.com/metrumresearchgroup/mrgsolve/blob/master/inst/base/mrgsolve-tad.h">here</a>.</p>
 <p>A working example model that tracks doses in compartments <code>1</code> and <code>2</code> is provided here</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> pkmodel <span class="op">]</span> cmt <span class="op">=</span> <span class="st">"GUT,CENT"</span><span class="op">,</span> depot <span class="op">=</span> TRUE</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> param <span class="op">]</span> CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> V <span class="op">=</span> <span class="dv">20</span><span class="op">,</span> KA <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>capture tad1 <span class="op">=</span> tad_cmt_1<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span> </span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>capture tad2 <span class="op">=</span> tad_cmt_2<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>plugin<span class="op">]</span> tad</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> global <span class="op">]</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_1<span class="op">(</span><span class="dv">1</span><span class="op">);</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>tadose tad_cmt_2<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> pkmodel <span class="op">]</span> cmt <span class="op">=</span> <span class="st">"GUT,CENT"</span><span class="op">,</span> depot <span class="op">=</span> TRUE</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> param <span class="op">]</span> CL <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> V <span class="op">=</span> <span class="dv">20</span><span class="op">,</span> KA <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>capture tad1 <span class="op">=</span> tad_cmt_1<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>capture tad2 <span class="op">=</span> tad_cmt_2<span class="op">.</span>tad<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Static approach</strong></p>
 <p>Another approach would be to make these static in <code>[ main ]</code> but this approach would only work if you only use these in <code>[ main ]</code>; the <code>[ global ]</code> approach is preferable since then you can access the object in any block (function).</p>
@@ -500,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="note"><span class="header-section-number">10.3.1</span> Note</h3>
 <p>Note there is a simpler way to calculate time after dose when only dosing into a single compartment</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> tad <span class="op">=</span> self<span class="op">.</span>tad<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> main <span class="op">]</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> tad <span class="op">=</span> self<span class="op">.</span>tad<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>self</code> object (<a href="specification.html#sec-self.tad" class="quarto-xref"><span>Section 2.3.21</span></a>) contains a <code>tad()</code> member which will track time after dose. Note that this needs to be called every record.</p>
 </section>
@@ -509,11 +512,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sec-plugin-evtools" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="sec-plugin-evtools"><span class="header-section-number">10.4</span> evtools</h2>
 <p><strong>Purpose</strong></p>
-<p>The <code>evtools</code> plugin is a set of functions and classes you can use to implement dosing regimens from <em>inside</em> your model. It first became available in mrgsolve 1.4.1. The most common use for this plugin is when you want to implement dynamic dosing simulations where the dose amount or the dosing interval is able to change based on how the system has advanced up to a certain point. For example, you might have a PKPD model for an oncology drug that includes a PK model for the drug as well as a dynamic model for platelets where a decline in platelets is driven by the drug concentration. In this case you might monitor platelets at different clinical visits and reduce the or hold dose or increase the dosing interval in response to Grade 3 or Grade 4 thrombocytopenia. For a real-world example, see <a href="https://ascpt.onlinelibrary.wiley.com/doi/10.1002/psp4.13201">this paper</a> that we puublished in 2024.</p>
+<p>The <code>evtools</code> plugin is a set of functions and classes you can use to implement dosing regimens from <em>inside</em> your model. It first became available in mrgsolve 1.4.1. The most common use for this plugin is when you want to implement dynamic dosing simulations where the dose amount or the dosing interval is able to change based on how the system has advanced up to a certain point. For example, you might have a PKPD model for an oncology drug that includes a PK model for the drug as well as a dynamic model for platelets where a decline in platelets is driven by the drug concentration. In this case you might monitor platelets at different clinical visits and reduce the or hold dose or increase the dosing interval in response to Grade 3 or Grade 4 thrombocytopenia. For a real-world example, see <a href="https://ascpt.onlinelibrary.wiley.com/doi/10.1002/psp4.13201">this paper</a> that we published in 2024.</p>
 <p><strong>Usage</strong></p>
 <p>Like all other plugins, you must invoke <code>evtools</code> in the <code>$PLUGIN</code> block</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN evtools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN evtools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="note-about-when-events-are-processed" class="level3" data-number="10.4.1">
 <h3 data-number="10.4.1" class="anchored" data-anchor-id="note-about-when-events-are-processed"><span class="header-section-number">10.4.1</span> Note about when events are processed</h3>
@@ -527,11 +530,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.4.3" class="anchored" data-anchor-id="event-object-type"><span class="header-section-number">10.4.3</span> Event object type</h3>
 <p><a href="mtime.html" class="quarto-xref"><span>Chapter 11</span></a> introduces a C++ event object called <code>mrg::evdata</code>. The <code>evt</code> namespace provides an easier-to-remember <code>typedef</code> for that object called <code>evt::ev</code>. So if a function returns an event object, you can use <code>evt::ev</code> for that type. For example, to create an event object for a bolus dose</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which is equivalent to</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>evdata dose evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mrg<span class="op">::</span>evdata dose evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="simple-administration-of-single-doses-now" class="level3" data-number="10.4.4">
@@ -568,8 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The replace functionality works just like <code>evt::bolus()</code> described above, but the compartment is reset prior to adding <code>&lt;amt&gt;</code>.</p>
 </section>
-<section id="reset-ths-system-now" class="level3" data-number="10.4.6">
-<h3 data-number="10.4.6" class="anchored" data-anchor-id="reset-ths-system-now"><span class="header-section-number">10.4.6</span> Reset ths system now</h3>
+<section id="reset-the-system-now" class="level3" data-number="10.4.6">
+<h3 data-number="10.4.6" class="anchored" data-anchor-id="reset-the-system-now"><span class="header-section-number">10.4.6</span> Reset the system now</h3>
 <p>System reset is accomplished with <code>EVID 3</code>. Starting with mrgsolve 1.5.2, a function is provided to do this</p>
 <ul>
 <li><code>void evt::reset(self)</code> where
@@ -577,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>self</code> is the self object, described in <a href="specification.html#sec-self-object" class="quarto-xref"><span>Section 2.3.12</span></a></li>
 </ul></li>
 </ul>
-<p>You can also reset and dose, which is accomplishd with <code>EVID 4</code> as a bolus</p>
+<p>You can also reset and dose, which is accomplished with <code>EVID 4</code> as a bolus</p>
 <ul>
 <li><code>void evt::reset(self, &lt;amt&gt;, &lt;cmt&gt;)</code> where
 <ul>
@@ -626,16 +629,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>For example, if I want to give a dose of 100 mg infused over 2 hours, getting the object back prior to sending to mrgsolve</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>infuse<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="fl">100.0</span><span class="op">/</span><span class="fl">2.0</span><span class="op">,</span> <span class="dv">2</span><span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>infuse<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="fl">100.0</span><span class="op">/</span><span class="fl">2.0</span><span class="op">,</span> <span class="dv">2</span><span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that we <em>don’t</em> pass in the <code>self</code> object here; just the dose amount, compartment, and rate for infusions. These functions also return and event object (type <code>evt::ev</code>) that you can work with. See <a href="mtime.html#sec-modeled-doses" class="quarto-xref"><span>Section 11.5</span></a> for documentation of those attributes.</p>
 <p>To send the event back to mrgsolve, you’ll have to push it with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>push<span class="op">(</span>self<span class="op">,</span> dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>push<span class="op">(</span>self<span class="op">,</span> dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>More about <code>push()</code> below.</p>
 </section>
@@ -646,9 +649,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.1" class="anchored" data-anchor-id="set-dose-interval"><span class="header-section-number">10.4.8.1</span> Set dose interval</h4>
 <p>Use <code>evt::ii()</code> to set a dosing interval</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -661,10 +664,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.2" class="anchored" data-anchor-id="dose-to-steady-state"><span class="header-section-number">10.4.8.2</span> Dose to steady state</h4>
 <p>Use <code>evt::ss()</code> to give the dose after advancing to steady state</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ss<span class="op">(</span>dose<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ss<span class="op">(</span>dose<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -677,11 +680,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.3" class="anchored" data-anchor-id="give-additional-doses"><span class="header-section-number">10.4.8.3</span> Give additional doses</h4>
 <p>Use <code>evt::addl()</code> to give additional doses</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ss<span class="op">(</span>dose<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>addl<span class="op">(</span>dose<span class="op">,</span> <span class="dv">9</span><span class="op">);</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ii<span class="op">(</span>dose<span class="op">,</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ss<span class="op">(</span>dose<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>addl<span class="op">(</span>dose<span class="op">,</span> <span class="dv">9</span><span class="op">);</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -694,11 +697,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.4" class="anchored" data-anchor-id="set-attributes-for-the-dose"><span class="header-section-number">10.4.8.4</span> Set attributes for the dose</h4>
 <p>For example, update the dose amount, infusion rate, compartment</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>cmt<span class="op">(</span>dose<span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>amt<span class="op">(</span>dose<span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>rate<span class="op">(</span>dose<span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>cmt<span class="op">(</span>dose<span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>amt<span class="op">(</span>dose<span class="op">,</span> <span class="dv">200</span><span class="op">);</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>rate<span class="op">(</span>dose<span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -709,13 +712,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Return</strong>: <code>void</code> (or nothing)</p>
 </section>
-<section id="retime" class="level4" data-number="10.4.8.5">
-<h4 data-number="10.4.8.5" class="anchored" data-anchor-id="retime"><span class="header-section-number">10.4.8.5</span> Retime</h4>
+<section id="retime-a-dose" class="level4" data-number="10.4.8.5">
+<h4 data-number="10.4.8.5" class="anchored" data-anchor-id="retime-a-dose"><span class="header-section-number">10.4.8.5</span> Retime a dose</h4>
 <p>The <code>evt::retime()</code> function can be used to set the time attribute.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>retime<span class="op">(</span>dose<span class="op">,</span> <span class="dv">24</span><span class="op">);</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>retime<span class="op">(</span>dose<span class="op">,</span> <span class="dv">24</span><span class="op">);</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -729,9 +732,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.6" class="anchored" data-anchor-id="set-now-attribute"><span class="header-section-number">10.4.8.6</span> Set <code>now</code> attribute</h4>
 <p>Use <code>evt::now()</code> to set the <code>now</code> attribute to <code>true</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>now<span class="op">(</span>dose<span class="op">);</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>now<span class="op">(</span>dose<span class="op">);</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>self<span class="op">.</span>push<span class="op">(</span>dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Argument</strong>:</p>
 <ul>
@@ -743,9 +746,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.7" class="anchored" data-anchor-id="push-an-event-back-for-execution"><span class="header-section-number">10.4.8.7</span> Push an event back for execution</h4>
 <p>The <code>evt</code> namespace includes a <code>push</code> function to send an event object back to mrgsolve. For example</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>retime<span class="op">(</span>dose<span class="op">,</span> <span class="dv">24</span><span class="op">);</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>push<span class="op">(</span>self<span class="op">,</span> dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>ev dose <span class="op">=</span> evt<span class="op">::</span>bolus<span class="op">(</span><span class="dv">100</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>retime<span class="op">(</span>dose<span class="op">,</span> <span class="dv">24</span><span class="op">);</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>evt<span class="op">::</span>push<span class="op">(</span>self<span class="op">,</span> dose<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function will continue to be available in the <code>evt</code> namespace. But note that <code>self</code> has a <code>push()</code> method as of mrgsolve 1.4.1 to do the same thing.</p>
 </section>
@@ -753,9 +756,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="10.4.8.8" class="anchored" data-anchor-id="compare-floating-point-numbers"><span class="header-section-number">10.4.8.8</span> Compare floating point numbers</h4>
 <p>Use <code>evt::near()</code> to test for equality between floating put numbers. For example, to test if <code>TIME</code> is (about) equal to <code>24.5</code>, you can call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>evt<span class="op">::</span>near<span class="op">(</span>TIME<span class="op">,</span> <span class="fl">24.5</span><span class="op">))</span> <span class="op">{</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// do something  </span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>evt<span class="op">::</span>near<span class="op">(</span>TIME<span class="op">,</span> <span class="fl">24.5</span><span class="op">))</span> <span class="op">{</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// do something  </span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function is similar to the <code>dplyr::near()</code> function.</p>
 <p><strong>Arguments</strong>:</p>
@@ -801,12 +804,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>To start the dose regimen, call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>execute<span class="op">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>execute<span class="op">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This should almost always be called in <code>$TABLE</code> (i.e., <code>$ERROR</code>) or <code>$EVENT</code> (new with mrgsolve 1.5 2).</p>
 <p>To force the simulation to stop at the time of the next dose with <code>EVID</code> set to 3333, use the <code>flagnext()</code> member function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>flagnext<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>object<span class="op">.</span>flagnext<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is usually set once at the start of the problem, either in <code>$PREAMBLE</code> or in <code>$MAIN</code> when <code>NEWIND &lt;= 1</code>.</p>
 </section>
@@ -817,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Compile your model file with <code>C++11</code> standard.</p>
 <p><strong>Usage</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN CXX11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN CXX11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sec-plugin-rcpp" class="level2" data-number="10.6">
@@ -826,15 +829,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Link to <code>Rcpp</code> headers into your model.</p>
 <p><strong>Usage</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that once your model is linked to <code>Rcpp</code>, you can start using that functionality immediately (without including <code>Rcpp.h</code>).</p>
 <p>A very useful feature provided by <code>Rcpp</code> is that it exposes all of the <code>dpqr</code> functions that you normally use in R (e.g.&nbsp;<code>rnorm()</code> or <code>runif()</code>). So, if you want to simulate a number from Uniform (0,1) you can write</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> uni <span class="op">=</span> R<span class="op">::</span>runif<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN Rcpp</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>$TABLE</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> uni <span class="op">=</span> R<span class="op">::</span>runif<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that the arguments are the same as the R version (<code>?runif</code>) <strong>except</strong> there is no <code>n</code> argument; you always only get one draw.</p>
 <p>Information about <code>Rcpp</code> can be found here: https://github.com/RcppCore/Rcpp</p>
@@ -847,15 +850,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.7.1" class="anchored" data-anchor-id="get-the-model-environment"><span class="header-section-number">10.7.1</span> Get the model environment</h3>
 <p>Note that your model object (<code>mod</code>) contains an R environment. For example</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. &lt;environment: 0x1044acf70&gt;</code></pre>
+<pre><code>. &lt;environment: 0x12da57ae0&gt;</code></pre>
 </div>
 </div>
 <p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see <a href="specification.html#sec-block-env" class="quarto-xref"><span>Section 2.2.28</span></a>);</p>
 <p>To access this environment in your model, call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>Environment env <span class="op">=</span> mrgx<span class="op">::</span>get_envir<span class="op">(</span>self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -863,13 +866,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="10.8" class="anchored" data-anchor-id="extract-an-object-from-the-model-environment"><span class="header-section-number">10.8</span> Extract an object from the model environment</h2>
 <p>When you have an object created in <code>$ENV</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> env <span class="op">]</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>rand <span class="op">&lt;-</span> rnorm<span class="op">(</span><span class="dv">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> env <span class="op">]</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>rand <span class="op">&lt;-</span> rnorm<span class="op">(</span><span class="dv">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can extract this object with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> preamble <span class="op">]</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>NumericVector draw <span class="op">=</span> mrgx<span class="op">::</span>get<span class="op">(</span><span class="st">"rand"</span><span class="op">,</span> self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> preamble <span class="op">]</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>Rcpp<span class="op">::</span>NumericVector draw <span class="op">=</span> mrgx<span class="op">::</span>get<span class="op">(</span><span class="st">"rand"</span><span class="op">,</span> self<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="rcpparmadillo" class="level2" data-number="10.9">
@@ -878,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Link to <code>RcppArmadillo</code> headers into your model.</p>
 <p><strong>Usage</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN RcppArmadillo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN RcppArmadillo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Information about <code>armadillo</code> can be found here: http://arma.sourceforge.net/ Information about <code>RcppArmadillo</code> can be found here: https://github.com/RcppCore/RcppArmadillo</p>
 </section>
@@ -888,7 +891,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Link to <code>boost</code> headers into your model.</p>
 <p><strong>Usage</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN BH</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>$PLUGIN BH</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that once your model is linked to <code>BH</code> (<code>boost</code>), you will be able to include the <code>boost</code> header file that you need. You have to include the header file that contains the <code>boost</code> function you want to use.</p>
 <p>Information about <code>boost</code> can be found here: https://boost.org. Information about <code>BH</code> can be found here: https://github.com/eddelbuettel/bh</p>
