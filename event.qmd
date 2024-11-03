@@ -25,9 +25,14 @@ For example
 
 ```{r}
 #| fig-height: 4
+#| label: event-usage-example
+#| fig-cap: Example simulation output from an event object. 
 mod <- house(end = 72) 
 
-mod %>% ev(amt = 100, ii = 24, addl = 1) %>% mrgsim() %>% plot("CP")
+mod %>% 
+  ev(amt = 100, ii = 24, addl = 1) %>% 
+  mrgsim() %>% 
+  plot("CP")
 ```
 
 This used the `ev()` constructor to  make an event object for two 100 mg doses 
@@ -312,7 +317,7 @@ as_data_set(e1, e2)
 It's important to note that 
 
 1. The result is a regular old data frame; once you call `as_data_set()`, 
-   you exit the event object world
+you exit the event object world
 1. Each event object is given a different `ID`
 
 
@@ -374,24 +379,28 @@ as_data_set(d2, e1, d1, e2)
 
 ## Modifying an event object
 
-### Tidy-like manipulation
+### Manipulate with dplyr verbs
 
-Event objects can be mutated
+Event objects can be **mutated**
 
 ```{r}
 mutate(e, amt = 200)
 ```
 
-Columns can be removed from event objects
+Columns can be removed from event objects using `select()`
 
 ```{r}
 ev(amt = 100, WT = 50, AGE = 12) %>% select(-WT)
 ```
 
-Rows can be removed from event objects
+Rows can be removed from event objects with `filter()`
 
 ```{r}
-e <- c(ev(amt = 100), ev(amt = 200, time = 12), ev(amt = 300, time = 24))
+e <- c(
+  ev(amt = 100), 
+  ev(amt = 200, time = 12), 
+  ev(amt = 300, time = 24)
+)
 
 filter(e, time <= 12)
 ```
@@ -434,7 +443,7 @@ mrgsolve has a couple of more creative ways to construct event objects.
 week). For example, to dose only on Monday, Wednesday, and Friday for on month
 
 ```{r}
-e <- ev_days(ev(amt = 100), ii = 168, addl = 3, days = 'm,w,f')
+e <- ev_days(ev(amt = 100), ii = 168, addl = 3, days = "m,w,f")
 e
 ```
 

@@ -215,12 +215,14 @@ You can use `data_set()` in a pipeline to pass the data into the problem.
 
 ```{r data_set-1}
 #| fig-height: 3.5
+#| label: example-data-set
+#| fig-cap: Example simulation output from a data set. 
 mod <- house()
 
 mod %>%
   data_set(data) %>%
-  mrgsim(end=240) %>%
-  plot(CP~time|factor(ID))
+  mrgsim(end = 240) %>%
+  plot(CP ~ time | factor(ID))
 ```
 
 Alternatively, just pass the data set to `mrgsim()`. 
@@ -278,6 +280,8 @@ Use the `idata_set` function to pass the data set into the problem.
 For example:
 
 ```{r idata_set-1}
+#| label: example-idata-set
+#| fig-cap: Example simulation from an idata set.
 mod <- house()
 
 mod %>%

@@ -472,12 +472,13 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">%&gt;%</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_set</span>(data) <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end=</span><span class="dv">240</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(CP<span class="sc">~</span>time<span class="sc">|</span><span class="fu">factor</span>(ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>(<span class="at">end =</span> <span class="dv">240</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(CP <span class="sc">~</span> time <span class="sc">|</span> <span class="fu">factor</span>(ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="datasets_files/figure-html/data_set-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="datasets_files/figure-html/example-data-set-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Example simulation output from a data set.</figcaption>
 </figure>
 </div>
 </div>
@@ -547,9 +548,10 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mrgsim</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="datasets_files/figure-html/idata_set-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="datasets_files/figure-html/example-idata-set-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Example simulation from an idata set.</figcaption>
 </figure>
 </div>
 </div>
