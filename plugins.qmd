@@ -8,9 +8,9 @@ source("setup.R")
 
 Available as of mrgsolve version 1.0.0.
 
-When this plugin is invoked, mrgsolve will search your model code for assignments
-and automatically declare them as `double` precision numbers. The following 
-blocks are searched
+When this plugin is invoked, mrgsolve will search your model code for
+assignments and automatically declare them as `double` precision numbers. The
+following blocks are searched
 
 - `$PREAMBLE`
 - `$MAIN` (or `$PK`)
@@ -304,9 +304,28 @@ $PLUGIN evtools
 
 ### Note about when events are processed
 
-It's important to note that events are currently _only_ processed after `$ERROR`
-(or `$TABLE`) is called. For this reason, it's very likely that you'll want to 
-write code for implementing model events in `$TABLE`, _not_ `$PK` (or `$MAIN`).
+The syntax detailed below will show you how to trigger doses or other events
+from within your model. We frequently want to dose as soon as a certain
+condition is met; for example a compartment gets driven to a critical value or
+maybe we just get to a certain time. If we only dose when these conditions are
+met, the doses are said to happen "now" ... at that specific time in the
+simulation when the condition is met. In contrast, your simulation might need to
+give the dose at some future time. Those doses are given "later" or in the
+future rather than now. If you are executing doses "now", it can be important
+_where_ in the model (which block) you write this code.
+
+We recommend you write the code required for doses or events triggered from
+within your model in the `$EVENT` block that was first made available in
+mrgsolve version 1.5.2. The `$EVENT` block gets processed after the system
+advances in time, but _immediately before_ the `$TABLE` block. An alternative is
+putting this code in `$ERROR` (or `$TABLE`). These are very similar options in
+that the events happen after advancing, but there is a very subtle difference in
+what you'll see in the output at the time the event or dose happens but no
+difference in subsequent records. We recommend that you don't put the actual
+dose execution in `$PK` (or `$MAIN`); this is particularly important for events
+happening "now" (see discussion above). While there may be some configuration of
+a `regimen` object there, we recommend any dose execution happens in `$EVENT`
+(or `$ERROR`).
 
 ### Namespace
 
