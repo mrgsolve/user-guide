@@ -770,7 +770,8 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <section id="sec-block-event" class="level3" data-number="2.2.14">
 <h3 data-number="2.2.14" class="anchored" data-anchor-id="sec-block-event"><span class="header-section-number">2.2.14</span> <code>$EVENT</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
-<strong>Multiple allowed</strong>: no</p>
+<strong>Multiple allowed</strong>: no<br>
+<strong>mrgsolve version</strong>: &gt;= 1.5.2</p>
 <p>Use the <code>$EVENT</code> block to write code to implement doses or other modeled events inside your model file. <code>$EVENT</code> functions just like <code>$ERROR</code> (or <code>$TABLE</code>), but it gets called just prior to <code>$ERROR</code>. This lets you set up modeled doses or events for execution “now” and also seem them in the simulated output on that same record. For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>EVENT </span>
@@ -1287,7 +1288,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 . ---------------  source: nmxml-1.cpp  ---------------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: nmxml-1.cpp-so-ce77483bfa37 &lt;not loaded&gt;
+.   shared object: nmxml-1.cpp-so-455b1da05dc8 &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;

@@ -606,8 +606,9 @@ This is an alias for `$TABLE`.
 
 ### `$EVENT` \ {#sec-block-event}
 
-__Syntax__: C++   
-__Multiple allowed__: no 
+__Syntax__: C++     
+__Multiple allowed__: no      
+__mrgsolve version__: >= 1.5.2   
 
 Use the `$EVENT` block to write code to implement doses or other modeled events
 inside your model file. `$EVENT` functions just like `$ERROR` (or `$TABLE`),
