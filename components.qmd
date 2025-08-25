@@ -150,7 +150,8 @@ Setting `rtol` in this way will apply to _every_ compartment in the model.
 ### Custom `rtol` and `atol`
 
 Starting with mrgsolve 1.6.1, each compartment can have a customized `rtol` or
-`atol` value. 
+`atol` value. These customized `rtol` and `atol` values are _only_ used when 
+advancing the ODE system.
 
 See the following functions for an overview of the interface for setting these
 values:

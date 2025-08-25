@@ -397,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="custom-rtol-and-atol" class="level3" data-number="1.4.3">
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="custom-rtol-and-atol"><span class="header-section-number">1.4.3</span> Custom <code>rtol</code> and <code>atol</code></h3>
-<p>Starting with mrgsolve 1.6.1, each compartment can have a customized <code>rtol</code> or <code>atol</code> value.</p>
+<p>Starting with mrgsolve 1.6.1, each compartment can have a customized <code>rtol</code> or <code>atol</code> value. These customized <code>rtol</code> and <code>atol</code> values are <em>only</em> used when advancing the ODE system.</p>
 <p>See the following functions for an overview of the interface for setting these values:</p>
 <ul>
 <li><code>custom_tol()</code>, <code>custom_rtol()</code>, <code>custom_atol()</code></li>
