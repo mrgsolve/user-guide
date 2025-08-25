@@ -40,12 +40,23 @@ unique `ID`.
 * `time` or `TIME`: states the time of the data record
 * `evid` or `EVID`: the event id indicator.  `evid` can take the values:
 
-    - __0__ = observation record
+    - __0__ = observation record; the ODE solver is not reset
     - __1__ = dosing event (bolus or infusion)
-    - __2__ = other type event, with solver stop and restart
+    - __2__ = other type event, with solver reset (stop and restart)
     - __3__ = system reset
     - __4__ = reset and dose
     - __8__ = replace the amount in the compartment with `amt`
+    - Other values for `EVID` are allowed; usually these are chosen to
+      identify specific landmark times in a simulation to enable 
+      internal decision-making.
+      - `EVID` less than 100 is processed just like `EVID` 2: the record
+        is treated like a dosing record with a reset of the ODE solver  
+        inserting a hard discontinuity in the simulation, but no actual dose; this is associated with a small performance hit identical to what you 
+        get when there's a dose, so use this only when needed. 
+      - `EVID` 100 or greater is processed like like `EVID` 2, but there is 
+        not a restart of the ODE solver; use these `EVID` when you need the 
+        model to pass through certain times so you can monitor the system
+        internally but you don't need ODE solver reset.
 
 * `amt` or `AMT`: the dose amount (if `evid==1`)
 * `cmt` or `CMT`: the dosing compartment number.  This may also be a character

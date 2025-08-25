@@ -1803,6 +1803,9 @@ simeta();
 
 will re-simulate all `ETA(n)`. 
 
+Starting with mrgsolve version 1.6.1, `simeta()` is available in `$MAIN`
+(`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
+
 
 ### `simeps()`
 
@@ -2112,6 +2115,19 @@ $CAPTURE CP
 
 See: @sec-block-table and also @sec-block-capture.
 
+### `END_OF_INFUSION` \ {#sec-spec-end-of-infusion}
+
+This is a boolean variable indicating if the current record
+terminates an infusion. 
+
+```{c}
+#| eval: false
+$ERROR
+
+if(END_OF_INFUSION) {
+  // Do something ... 
+}
+```
 
 ### `F_CMT` \ {#sec-spec-f}
 For the `CMT` compartment, sets the bioavailability fraction for that compartment. 
@@ -2130,6 +2146,9 @@ Example:
 $MAIN
 ALAG_GUT = 0.25;
 ```
+
+Starting with mrgsolve version 1.6.1, `ALAG_CMT` is available in `$MAIN`
+(`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
 
 ### `R_CMT` \ {#sec-spec-r}
 For the `CMT` compartment, sets the infusion rate for that compartment.  The
@@ -2155,6 +2174,9 @@ Example:
 $MAIN
 D_CENT = 2;
 ```
+
+Starting with mrgsolve version 1.6.1, `D_CMT` is available in `$MAIN`
+(`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
 
 ### NONMEM-like syntax
 

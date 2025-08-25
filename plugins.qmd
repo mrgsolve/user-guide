@@ -469,6 +469,54 @@ evt::push(self, dose);
 
 More about `push()` below. 
 
+### Insert non-dosing event or observation records
+
+These records will never appear in the simulated output, but will 
+ensure the model "stops" at these times so, for example, monitoring
+can take place and decisions made about future behavior or 
+events in the simulation.
+
+To request a time grid over a week of simulation (168 hours), stopping
+every hour with `EVID` set to `33`, the workflow looks like:
+
+```{c}
+#| eval: false
+$EVENT
+
+evt::ev obs = evt::tgrid(0, 168, 1);
+evt::evid(obs, 33);
+self.push(obs);
+```
+
+The default `EVID` for the `obs` object above is 0, but we've changed that to 33
+using `evt::evid()`. The 33 `EVID` doesn't mean anything specific to mrgsolve,
+but it could function as a signal to the modeler that one of these special time
+stops has been encountered in the simulation
+
+
+```{c}
+#| eval: false
+$EVENT
+
+if(EVID==33) {
+  // Do something ...
+}
+
+```
+
+Note that, starting with mrgsolve version 1.6.1, `EVID` values less than 100
+(but not EVID 0) will always trigger the ODE solver to restart, creating a
+discontinuity in the simulation. There's always a small performance hit when 
+the ODE solver resets, so just use these wisely. If you need to monitor 
+something with an internal time grid  but you _don't_ need a hard discontinuity
+in the simulation, use `EVID` OF 100 or more; these _function_ just like 
+observation records (`EVID` 0) with no ODE solver reset, but also do 
+not have special handling in mrgsolve.
+
+Whether you choose to introduce a discontinuity or not, you should consider 
+specifying a "custom" `EVID` for these new records in the simulation to be
+able to distinguish these records from other records in the simulation. 
+
 ### API for customizing doses
 
 @sec-modeled-doses shows you some low-level ways to customize the event 
@@ -489,6 +537,25 @@ self.push(dose);
 
 - an event object (`evt::ev`)
 - a dosing interval (`<double>`)
+
+**Return**: `void` (or nothing)
+
+
+#### Set the event id
+
+Use `evt::evid()` to set the event id for the object
+
+```{c}
+#| eval: false
+evt::ev dose = evt::tgrid(0, 168, 1);
+evt::evid(dose, 33);
+self.push(dose);
+```
+
+**Arguments**: 
+
+- an event object (`evt::ev`)
+- an event id (`<integer>`)
 
 **Return**: `void` (or nothing)
 
@@ -642,10 +709,12 @@ a brief discussion of the constructor and member functions for this class.
 More is written in @sec-mtime about how you can use this class effectively. 
 
 - The constructor `evt::regimen::regimen()` does not take any arguments, but 
-  it dose call the `reset()` method. 
+  it does call the `reset()` method. 
 - `void init(self)` initializes the object; the argument is the `self` object
-  (see @sec-self-object)
+  (see @sec-self-object).
 - `void reset()` resets the object to sensible defaults
+  - dose time is set to the current model simulation time if the object has
+    been initialized; otherwise, time is set to 0
   - dose compartment is set to 1
   - dose amount is set to 0
   - infusion rate is set to 0
@@ -657,6 +726,7 @@ A series of setter functions let you set different attributes for the dosing
 regimen. All of the following functions return `void`. In the examples below, 
 `object` refers to an object with class `evt::regimen`. 
 
+- `object.time_next(<double>)` sets the time of the next dose
 - `object.amt(<double>)` sets the dose amount
 - `object.cmt(<int>)` sets the dosing compartment number
 - `object.rate(<double>)` sets the infusion rate
@@ -665,6 +735,7 @@ regimen. All of the following functions return `void`. In the examples below,
 
 Similarly, there are a set of getter functions to return these data members
 
+- `double object.time_next()` returns the time of the next dose
 - `double object.amt()` returns the dose amount
 - `int object.cmt()` returns the dosing compartment number
 - `double object.rate()` returns the infusion rate

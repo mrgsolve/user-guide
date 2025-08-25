@@ -138,11 +138,29 @@ Adjusting `atol` to `1E-20` or `1E-30` will prevent this.
 mrgsim_e(mod, ev(amt = 1000), atol = 1E-20)  %>% filter(time %in% out$time)
 ```
 
+Setting `atol` in this way will apply to _every_ compartment in the model.
 
 ### `rtol` 
 
 Relative tolerance parameter.  Adjust this value lower when you want more 
 precision around the calculation of state variables as the system advances.  
+
+Setting `rtol` in this way will apply to _every_ compartment in the model.
+
+### Custom `rtol` and `atol`
+
+Starting with mrgsolve 1.6.1, each compartment can have a customized `rtol` or
+`atol` value. 
+
+See the following functions for an overview of the interface for setting these
+values:
+
+- `custom_tol()`, `custom_rtol()`, `custom_atol()`
+- `reset_tol()` `reset_rtol()`, `reset_atol()`
+- `use_custom_tol()`, `use_scalar_tol()`
+- `get_tol()`, `get_tol_list()`
+
+Release notes are here: [https://github.com/metrumresearchgroup/mrgsolve/releases/tag/1.6.0](https://github.com/metrumresearchgroup/mrgsolve/releases/tag/1.6.0)
 
 ### `maxsteps`
 
