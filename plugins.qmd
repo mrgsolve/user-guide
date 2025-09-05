@@ -476,10 +476,10 @@ ensure the model "stops" at these times so, for example, monitoring
 can take place and decisions made about future behavior or 
 events in the simulation. The function is:
 
-- `ev::evt evt::tgrid(<start>, <end>, <delta>)`
-  - `<start>` time when the grid is to start (type `double`)
-  - `<end>` time when the grid is to end (type `double`)
-  - `<delta>` time steps between `<start>` and `<end>` (type `double`)
+- `ev::evt evt::tgrid(<start>, <end>, <delta>)` where
+  - `<start>` is the time when the grid is to start (type `double`)
+  - `<end>` is the time when the grid is to end (type `double`)
+  - `<delta>` is the time step between `<start>` and `<end>` (type `double`)
 
 To request a time grid over a week of simulation (168 hours), stopping
 every hour with `EVID` set to `33`, the workflow looks like:
