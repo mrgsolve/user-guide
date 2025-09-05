@@ -645,7 +645,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="insert-non-dosing-event-or-observation-records" class="level3" data-number="10.4.8">
 <h3 data-number="10.4.8" class="anchored" data-anchor-id="insert-non-dosing-event-or-observation-records"><span class="header-section-number">10.4.8</span> Insert non-dosing event or observation records</h3>
-<p>These records will never appear in the simulated output, but will ensure the model “stops” at these times so, for example, monitoring can take place and decisions made about future behavior or events in the simulation.</p>
+<p>These records will never appear in the simulated output, but will ensure the model “stops” at these times so, for example, monitoring can take place and decisions made about future behavior or events in the simulation. The function is:</p>
+<ul>
+<li><code>ev::evt evt::tgrid(&lt;start&gt;, &lt;end&gt;, &lt;delta&gt;)</code>
+<ul>
+<li><code>&lt;start&gt;</code> time when the grid is to start (type <code>double</code>)</li>
+<li><code>&lt;end&gt;</code> time when the grid is to end (type <code>double</code>)</li>
+<li><code>&lt;delta&gt;</code> time steps between <code>&lt;start&gt;</code> and <code>&lt;end&gt;</code> (type <code>double</code>)</li>
+</ul></li>
+</ul>
 <p>To request a time grid over a week of simulation (168 hours), stopping every hour with <code>EVID</code> set to <code>33</code>, the workflow looks like:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>$EVENT</span>
@@ -893,7 +901,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>mrgsolve<span class="sc">::</span><span class="fu">house</span>()<span class="sc">@</span>envir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. &lt;environment: 0x105f3c058&gt;</code></pre>
+<pre><code>. &lt;environment: 0x114d0f218&gt;</code></pre>
 </div>
 </div>
 <p>The objects in this environment are created by a block called <code>$ENV</code> in your model code (see <a href="specification.html#sec-block-env" class="quarto-xref"><span>Section 2.2.28</span></a>);</p>
