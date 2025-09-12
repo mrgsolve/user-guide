@@ -815,6 +815,8 @@ Information about `Rcpp` can be found here: https://github.com/RcppCore/Rcpp
 
 ## mrgx {#sec-plugin-mrgx}
 
+__Purpose__
+
 Compile in extra C++ / Rcpp functions that can be helpful to you 
 for more advanced model coding. The `mrgx` plugin is dependent on the
 `Rcpp` plugin. 
@@ -822,6 +824,11 @@ for more advanced model coding. The `mrgx` plugin is dependent on the
 The functions provided by `mrgx` are in a namespace of the same name, 
 so to invoke these functions, you always prepend `mrgx::`. 
 
+__Usage__ 
+
+```{c, eval = FALSE}
+$PLUGIN mrgx
+```
 
 ### Get the model environment
 
@@ -847,6 +854,8 @@ Rcpp::Environment env = mrgx::get_envir(self);
 When you have an object created in `$ENV`
 
 ```{c, eval = FALSE}
+[ plugin ] mrgx
+
 [ env ] 
 rand <- rnorm(100)
 ```
@@ -854,10 +863,37 @@ rand <- rnorm(100)
 You can extract this object with
 
 ```{c, eval = FALSE}
+[ plugin ] mrgx
+
+[ env ] 
+rand <- rnorm(100)
+
 [ preamble ]
-Rcpp::NumericVector draw = mrgx::get("rand", self);
+Rcpp::NumericVector draw = mrgx::get<Rcpp::NumericVector>("rand", self);
 ```
 
+To write and use an R function in the model environment
+
+```{c, eval = FALSE}
+[ plugin ] mrgx
+
+[ env ] 
+hello <- function() message("Hello")
+```
+
+You can extract this object with
+
+```{c, eval = FALSE}
+[ plugin ] mrgx
+
+[ env ] 
+hello <- function() message("Hello")
+
+[ main ]
+Rcpp::Function draw = mrgx::get<Rcpp::Function>("hello", self);
+
+if(NEWIND<=1) hello();
+```
 
 
 ## RcppArmadillo
