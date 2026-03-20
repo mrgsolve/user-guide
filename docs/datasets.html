@@ -183,56 +183,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./dose-events.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dose events</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -290,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Please see the mrgsolve help topic <code>?exdatasets</code> for examples of all of the data sets discussed in this chapter. The example data sets are embedded in the mrgsolve package and may be used at any time.</p>
 <section id="sec-datasets" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-datasets"><span class="header-section-number">4.1</span> Overview</h2>
-<p>Data sets are the primary mechanism for establishing the scope of your simulations in <code>mrsolve</code>, including individuals, interventions, observation times, and parameter values. For both <code>data_set</code> and <code>idata_set</code> (see below), you may include columns in the data sets that have the same names as the parameters in your model (<a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>, <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>). mrgsolve can recognize these columns and update the parameter list as the simulation proceeds. This process is of key importance when planning and executing complex simulations and is further discussed in section <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 12.3</span></a>.</p>
+<p>Data sets are the primary mechanism for establishing the scope of your simulations in <code>mrsolve</code>, including individuals, interventions, observation times, and parameter values. For both <code>data_set</code> and <code>idata_set</code> (see below), you may include columns in the data sets that have the same names as the parameters in your model (<a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>, <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a>). mrgsolve can recognize these columns and update the parameter list as the simulation proceeds. This process is of key importance when planning and executing complex simulations and is further discussed in section <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 13.3</span></a>.</p>
 </section>
 <section id="sec-data-set" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="sec-data-set"><span class="header-section-number">4.2</span> Event data sets (<code>data</code>)</h2>
@@ -324,13 +330,13 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <li><p><code>ss</code> or <code>SS</code> steady state indicator; use 1 to implement steady-state dosing; 0 otherwise. mrgsolve also recognizes dosing records where <code>ss=2</code>. This allows combination of different steady state dosing regimens under linear kinetics (e.g.&nbsp;10 mg QAM and 20 mg QPM daily to steady state).</p></li>
 </ul>
 <p>The column names in the preceding list were written either as lower case form (e.g.&nbsp;<code>amt</code>) or upper case form (e.g.&nbsp;<code>AMT</code>). Either may be used, however the data set will be checked for consistency of usage. An error will be issued in case a mixture of lower and upper case names are found.</p>
-<p>In addition to these special column names, mrgsolve will recognize columns in <code>data_set</code> that have the same name as items in the parameter list (see <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>). When mrgsolve sees that the names match up, it will update the values of those matching names based on what it finds as it moves through the data set (see <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 12.3</span></a>).</p>
+<p>In addition to these special column names, mrgsolve will recognize columns in <code>data_set</code> that have the same name as items in the parameter list (see <a href="specification.html#sec-block-param" class="quarto-xref"><span>Section 2.2.4</span></a> and <a href="components.html#sec-component-param" class="quarto-xref"><span>Section 1.1</span></a>). When mrgsolve sees that the names match up, it will update the values of those matching names based on what it finds as it moves through the data set (see <a href="topics.html#sec-topic-parameter-update" class="quarto-xref"><span>Section 13.3</span></a>).</p>
 <section id="two-types-of-data_set" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="two-types-of-data_set"><span class="header-section-number">4.2.1</span> Two types of <code>data_set</code></h3>
 <p>mrgsolve distinguishes between two types of data sets: data sets that have <em>at least one observation record</em> (<code>evid=0</code>) and data sets that have <em>no records with <code>evid=0</code></em>.</p>
 <ul>
 <li><strong>Full data sets</strong> have a mix of observations and dosing events (likely, but not required). When mrgsolve finds one record with <code>evid=0</code>, it assumes that <strong>ALL</strong> output observation times are to come from the data set. In this case the simulation output time grid discussed in <a href="components.html#sec-component-stime" class="quarto-xref"><span>Section 1.3</span></a> is ignored and only observations found in the data set appear in the simulated output. Use full data sets when you want a highly customized sampling schedule or you are working with a clinical data set.</li>
-<li><strong>Condensed data sets</strong> have no records with <code>evid=0</code>. In this case, mrgsolve will fill the simulated output with observations at times specified by the output time grid (<a href="components.html#sec-component-stime" class="quarto-xref"><span>Section 1.3</span></a> and see <a href="topics.html#sec-topic-designs" class="quarto-xref"><span>Section 12.5</span></a> too). These are very convenient to use because there is less data assembly burden and output data sets can easily be created with very dense sampling scheme or highly customized sampling schemes with very little work. Use a condensed data set when you want a uniform set of sampling times for all subjects in the data set.</li>
+<li><strong>Condensed data sets</strong> have no records with <code>evid=0</code>. In this case, mrgsolve will fill the simulated output with observations at times specified by the output time grid (<a href="components.html#sec-component-stime" class="quarto-xref"><span>Section 1.3</span></a> and see <a href="topics.html#sec-topic-designs" class="quarto-xref"><span>Section 13.5</span></a> too). These are very convenient to use because there is less data assembly burden and output data sets can easily be created with very dense sampling scheme or highly customized sampling schemes with very little work. Use a condensed data set when you want a uniform set of sampling times for all subjects in the data set.</li>
 </ul>
 <p><strong>Example of condensed data set</strong></p>
 <div class="cell">
@@ -521,7 +527,7 @@ For observation records, a <code>cmt</code> value of 0 is acceptable. Use a nega
 <ul>
 <li><strong>Individual-level parameters</strong>: Just prior to simulating any individual, mrgsolve checks the appropriate row in <code>idata</code> (if supplied) for any columns with parameter names. If parameter names are found, the parameter list is updated and that update remains in effect for the duration of that individual’s data records.</li>
 <li><strong>Individual- or group-level designs</strong>: Each individual or group of individual may be assigned a different sampling design. For example, individuals in arm 1 may need to be simulated for 4 weeks whereas individuals in arm 2 may need to be simulated for 8 weeks. <code>idata</code> may be used to identify one of several sampling designs for each individual or group of individuals.</li>
-<li><strong>Individual-level compartment initialization</strong>: if a model has a compartment called <code>CMT</code> and mrgsolve finds a column in <code>idata</code> called <code>CMT_0</code>, the value of <code>CMT_0</code> will be used to initialize that compartment with, potentially a different value for each individual. Note that there are several other ways to initialize compartments detailed in <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section 12.2</span></a>.</li>
+<li><strong>Individual-level compartment initialization</strong>: if a model has a compartment called <code>CMT</code> and mrgsolve finds a column in <code>idata</code> called <code>CMT_0</code>, the value of <code>CMT_0</code> will be used to initialize that compartment with, potentially a different value for each individual. Note that there are several other ways to initialize compartments detailed in <a href="topics.html#sec-topic-init" class="quarto-xref"><span>Section 13.2</span></a>.</li>
 </ul>
 <p><code>idata_set</code> are entered as <code>data.frame</code> with one unique <code>ID</code> per row. In mrgsolve documentation, we refer to individual data sets <code>idata</code> or <code>idata_set</code> to distinguish them from event data sets (see <a href="#sec-data-set" class="quarto-xref"><span>Section 4.2</span></a>).</p>
 <p>An <code>idata_set</code> looks like this:</p>

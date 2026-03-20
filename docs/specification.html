@@ -212,56 +212,62 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./dose-events.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dose events</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./matrix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Model Matrices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./output.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulated output</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sequence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Simulation sequence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steady-state.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Steady state</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./plugins.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Plugins</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mtime.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Modeled events</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Topics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./q-and-a.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Questions and Answers</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Installation</span></span></a>
   </div>
 </li>
     </ul>
@@ -308,7 +314,6 @@ window.Quarto = {
   <li><a href="#sec-block-theta" id="toc-sec-block-theta" class="nav-link" data-scroll-target="#sec-block-theta"><span class="header-section-number">2.2.24</span> <code>$THETA</code> &nbsp;</a></li>
   <li><a href="#sec-block-nmxml" id="toc-sec-block-nmxml" class="nav-link" data-scroll-target="#sec-block-nmxml"><span class="header-section-number">2.2.25</span> <code>$NMXML</code> &nbsp;</a></li>
   <li><a href="#sec-block-nmext" id="toc-sec-block-nmext" class="nav-link" data-scroll-target="#sec-block-nmext"><span class="header-section-number">2.2.26</span> <code>$NMEXT</code> &nbsp;</a></li>
-  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
   <li><a href="#sec-block-include" id="toc-sec-block-include" class="nav-link" data-scroll-target="#sec-block-include"><span class="header-section-number">2.2.27</span> <code>$INCLUDE</code> &nbsp;</a></li>
   <li><a href="#sec-block-env" id="toc-sec-block-env" class="nav-link" data-scroll-target="#sec-block-env"><span class="header-section-number">2.2.28</span> <code>$ENV</code> &nbsp;</a></li>
   </ul></li>
@@ -557,7 +562,7 @@ window.Quarto = {
 <strong>Multiple allowed</strong>: yes<br>
 <strong>Options</strong>: <code>@annotated</code>, <code>@covariates</code></p>
 <p>Use this block to make notes about the model. There are no restrictions on the text that gets entered here. mrgsolve does not routinely process the text in any way, except when rendering the model as a document. Frequently, we write the text here in markdown format so that it will render nicely in the model document. But this is completely optional.</p>
-<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section 12.1</span></a> for an example.</p>
+<p>See the annotated model in <a href="topics.html#sec-topic-annotated" class="quarto-xref"><span>Section 13.1</span></a> for an example.</p>
 </section>
 <section id="sec-block-param" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-block-param"><span class="header-section-number">2.2.4</span> <code>$PARAM</code> &nbsp;</h3>
@@ -694,7 +699,8 @@ window.Quarto = {
 <section id="sec-block-main" class="level3" data-number="2.2.8">
 <h3 data-number="2.2.8" class="anchored" data-anchor-id="sec-block-main"><span class="header-section-number">2.2.8</span> <code>$MAIN</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
-<strong>Multiple allowed</strong>: no</p>
+<strong>Multiple allowed</strong>: no<br>
+<strong>Options</strong>: <code>@check_modeled_infusions</code></p>
 <p>This code block has two main purposes:</p>
 <ul>
 <li>Derive new algebraic relationships between parameters, random, effects and other derived variables</li>
@@ -716,6 +722,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> ke <span class="op">=</span> CL<span class="op">/</span>VC<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Note that <code>@check_modeled_infusions</code> block option defaults to true. To turn off warnings from mrgsolve when checking modeled infusions against the data set <code>RATE</code>, use the negation: <code>@!check_modeled_infusions</code>. mrgsolve will always error when an infusion resolves to a negative rate or duration.</p>
 </section>
 <section id="sec-block-pk" class="level3" data-number="2.2.9">
 <h3 data-number="2.2.9" class="anchored" data-anchor-id="sec-block-pk"><span class="header-section-number">2.2.9</span> <code>$PK</code> &nbsp;</h3>
@@ -802,7 +809,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <h3 data-number="2.2.15" class="anchored" data-anchor-id="sec-block-preamble"><span class="header-section-number">2.2.15</span> <code>$PREAMBLE</code> &nbsp;</h3>
 <p><strong>Syntax</strong>: C++<br>
 <strong>Multiple allowed</strong>: no</p>
-<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter 8</span></a>):</p>
+<p>This is the fourth C++ code block. It is called once in two different settings (<a href="sequence.html" class="quarto-xref"><span>Chapter 9</span></a>):</p>
 <ol type="1">
 <li>Immediately prior to starting the simulation run</li>
 <li>Immediately prior to calling <code>$MAIN</code> when calculating initial conditions</li>
@@ -832,7 +839,7 @@ The <code>MAIN</code> function gets called just prior to advancing the system fr
 <li>There may be only one <code>$PREAMBLE</code> block in a model</li>
 <li>Like <code>$MAIN</code>, <code>$ODE</code> and <code>$TABLE</code>, <code>double</code>, <code>int</code> and <code>bool</code> variables initialized in <code>$PREAMBLE</code> are actually initialized for global (within the model file)</li>
 </ul>
-<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter 8</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.23</span></a>.</p>
+<p>See also: <a href="sequence.html" class="quarto-xref"><span>Chapter 9</span></a> and <a href="#sec-block-plugin" class="quarto-xref"><span>Section 2.2.23</span></a>.</p>
 </section>
 <section id="sec-block-pred" class="level3" data-number="2.2.16">
 <h3 data-number="2.2.16" class="anchored" data-anchor-id="sec-block-pred"><span class="header-section-number">2.2.16</span> <code>$PRED</code> &nbsp;</h3>
@@ -990,7 +997,7 @@ Tip
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>lbl <span class="op">&lt;-</span> paste0<span class="op">(</span><span class="st">"ETA_"</span><span class="op">,</span> LETTERS<span class="op">[</span><span class="dv">1</span><span class="op">:</span>n<span class="op">])</span></span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>matrix<span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> dimnames <span class="op">=</span> list<span class="op">(</span>lbl<span class="op">,</span> lbl<span class="op">))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter 6</span></a>).</p>
+<p>Note: this only initializes the matrix; you will (likely) need to update it with meaningful values after the model is loaded (<a href="matrix.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
 </section>
 <section id="sec-block-sigma" class="level3" data-number="2.2.19">
 <h3 data-number="2.2.19" class="anchored" data-anchor-id="sec-block-sigma"><span class="header-section-number">2.2.19</span> <code>$SIGMA</code> &nbsp;</h3>
@@ -1078,7 +1085,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <p><strong>Syntax</strong>: text<br>
 <strong>Multiple allowed</strong>: yes</p>
 <p>Plugins are a way to add extensions to your mrgsolve model. Plugins can either link your model to external libraries (like <code>boost</code> or <code>Rcpp</code>) or they can open up access to additional functionality provided by mrgsolve itself.</p>
-<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
+<p>Plugins are listed and discussed in more detail in <a href="plugins.html" class="quarto-xref"><span>Chapter 11</span></a>.</p>
 <p><strong>Usage</strong></p>
 <p>To invoke a plugin, list the plugin name in the code block. For requesting <code>Rcpp</code> headers in your model, call</p>
 <div class="cell">
@@ -1297,7 +1304,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 . ---------------  source: nmxml-1.cpp  ---------------
 . 
 .   project: /Users/kyleb/git...-guide/inline
-.   shared object: nmxml-1.cpp-so-1758a666c1a8d &lt;not loaded&gt;
+.   shared object: nmxml-1.cpp-so-98219c9a579 &lt;not loaded&gt;
 . 
 .   time:          start: 0 end: 96 delta: 4
 .                  add: &lt;none&gt;
@@ -1381,9 +1388,8 @@ This makes sure the ratio between the two is taken first, before any other opera
 </div>
 <p>This latter syntax may be needed when using PsN and output files are organized in a way different from the previous example.</p>
 </section>
-</section>
-<section id="details" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="details">Details</h3>
+<section id="details" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="details">Details</h4>
 <p>Once the model object is obtained, the path to the <code>ext</code> file that formed the source for imported parameters can be retrieved by coercing the model object to list and looking for <code>nm_import</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"1005"</span>, <span class="at">compile =</span> <span class="cn">FALSE</span>)</span>
@@ -1412,6 +1418,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <p>Starting with version 1.0.8, when the NONMEM run is found using the <code>run</code> + <code>project</code> arguments, you can pass <code>run = "@cppstem"</code> and mrgsolve will look for the NONMEM run number that matches the stem of the current mrgsolve file. See details and example in <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.25</span></a>.</p>
 <p>See the <code>?nmext</code> R help topic for arguments that can be passed to <code>$NMEXT</code> block. Notably, the user can select the function to read in the ext file.By default, mrgsolve will try to load data.table and use the <code>fread</code> function. If data.table can’t be loaded, then mrgsolve will use <code>utils::read.table</code>.</p>
 <p>See also: <a href="#sec-block-nmxml" class="quarto-xref"><span>Section 2.2.25</span></a>.</p>
+</section>
 </section>
 <section id="sec-block-include" class="level3" data-number="2.2.27">
 <h3 data-number="2.2.27" class="anchored" data-anchor-id="sec-block-include"><span class="header-section-number">2.2.27</span> <code>$INCLUDE</code> &nbsp;</h3>
@@ -1519,7 +1526,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 <section id="solvertime" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="solvertime"><span class="header-section-number">2.3.3</span> <code>SOLVERTIME</code></h3>
 <p>Gives the time of the current timestep taken by the solver. <em>This is can only be used in <code>$ODE</code></em>. Contrast with <code>TIME</code>.</p>
-<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>).</p>
+<p>Starting with mrgsolve version 1.0.0, the variable <code>T</code> is provided as a synonym to <code>SOLVERTIME</code> inside <code>$ODE</code> when you invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>).</p>
 </section>
 <section id="t" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="t"><span class="header-section-number">2.3.4</span> <code>T</code></h3>
@@ -1580,7 +1587,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="ss_advance" class="level3" data-number="2.3.9">
 <h3 data-number="2.3.9" class="anchored" data-anchor-id="ss_advance"><span class="header-section-number">2.3.9</span> <code>SS_ADVANCE</code></h3>
-<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter 9</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
+<p>This is a <code>bool</code> data item (either <code>true</code> or <code>false</code>) which is always <code>false</code> unless mrgsolve is currently advancing the system to steady state (<a href="steady-state.html" class="quarto-xref"><span>Chapter 10</span></a>); then it will be <code>true</code>. This variable is only available in the <code>$ODE</code> (or <code>$DES</code>) block.</p>
 <p>Use this variable to modify the calculation of your model differential equations while the system is advancing to steady state. One use case is when you have an accumulation compartment to calculate <code>AUC</code> but you want to halt accumulation while the system is working toward steady state</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>$ODE</span>
@@ -1693,7 +1700,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="self.envir" class="level3" data-number="2.3.20">
 <h3 data-number="2.3.20" class="anchored" data-anchor-id="self.envir"><span class="header-section-number">2.3.20</span> <code>self.envir</code></h3>
-<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 10.6</span></a>).</p>
+<p>This item is a null pointer that can be cast to an <code>Rcpp::Environment</code> only when the <code>Rcpp</code> plugin is invoked (see <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 11.6</span></a>).</p>
 <p>For example</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span> plugin <span class="op">]</span> Rcpp mrgx</span>
@@ -1841,7 +1848,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="fn" class="level3" data-number="2.3.34">
 <h3 data-number="2.3.34" class="anchored" data-anchor-id="fn"><span class="header-section-number">2.3.34</span> <code>Fn</code></h3>
-<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>) is invoked; see <code>F_CMT</code>.</p>
+<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>) is invoked; see <code>F_CMT</code>.</p>
 </section>
 <section id="sec-spec-r" class="level3" data-number="2.3.35">
 <h3 data-number="2.3.35" class="anchored" data-anchor-id="sec-spec-r"><span class="header-section-number">2.3.35</span> <code>R_CMT</code> &nbsp;</h3>
@@ -1854,7 +1861,7 @@ This makes sure the ratio between the two is taken first, before any other opera
 </section>
 <section id="rn" class="level3" data-number="2.3.36">
 <h3 data-number="2.3.36" class="anchored" data-anchor-id="rn"><span class="header-section-number">2.3.36</span> <code>Rn</code></h3>
-<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>) is invoked; see <code>R_CMT</code>.</p>
+<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>) is invoked; see <code>R_CMT</code>.</p>
 </section>
 <section id="sec-spec-d" class="level3" data-number="2.3.37">
 <h3 data-number="2.3.37" class="anchored" data-anchor-id="sec-spec-d"><span class="header-section-number">2.3.37</span> <code>D_CMT</code> &nbsp;</h3>
@@ -1869,7 +1876,7 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="dn" class="level3" data-number="2.3.38">
 <h3 data-number="2.3.38" class="anchored" data-anchor-id="dn"><span class="header-section-number">2.3.38</span> <code>Dn</code></h3>
-<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>) is invoked; see <code>D_CMT</code>.</p>
+<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>) is invoked; see <code>D_CMT</code>.</p>
 </section>
 <section id="sec-spec-alag" class="level3" data-number="2.3.39">
 <h3 data-number="2.3.39" class="anchored" data-anchor-id="sec-spec-alag"><span class="header-section-number">2.3.39</span> <code>ALAG_CMT</code> &nbsp;</h3>
@@ -1883,12 +1890,12 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="alagn" class="level3" data-number="2.3.40">
 <h3 data-number="2.3.40" class="anchored" data-anchor-id="alagn"><span class="header-section-number">2.3.40</span> <code>ALAGn</code></h3>
-<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a>) is invoked; see <code>ALAG_CMT</code>.</p>
+<p>Only available when the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>) is invoked; see <code>ALAG_CMT</code>.</p>
 </section>
 <section id="nonmem-like-syntax" class="level3" data-number="2.3.41">
 <h3 data-number="2.3.41" class="anchored" data-anchor-id="nonmem-like-syntax"><span class="header-section-number">2.3.41</span> NONMEM-like syntax</h3>
 <p>There is a NONMEM-like syntax that lets you write <code>F1</code> rather than <code>F_GUT</code>, <code>D2</code> rather than <code>D_CENT</code> as well as other variables that are commonly used in a NONMEM control stream. To make this syntax available, the <code>nm-vars</code> plugin must be invoked.</p>
-<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 10.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
+<p>See <a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a> on the <code>nm-vars</code> plugin for details.</p>
 </section>
 </section>
 <section id="reserved-words" class="level2" data-number="2.4">
@@ -2053,12 +2060,12 @@ The infusion duration is only set via <code>D_CMT</code> when <code>rate</code> 
 </section>
 <section id="automatic-declaration" class="level3" data-number="2.5.4">
 <h3 data-number="2.5.4" class="anchored" data-anchor-id="automatic-declaration"><span class="header-section-number">2.5.4</span> Automatic declaration</h3>
-<p>There is a plugin you can invoke which will instruct mrgsolve to scan your code and discover variables to be declared with type <code>double</code>. See the autodec plugin in <a href="plugins.html#sec-plugin-autodec" class="quarto-xref"><span>Section 10.1</span></a> for details.</p>
+<p>There is a plugin you can invoke which will instruct mrgsolve to scan your code and discover variables to be declared with type <code>double</code>. See the autodec plugin in <a href="plugins.html#sec-plugin-autodec" class="quarto-xref"><span>Section 11.1</span></a> for details.</p>
 </section>
 </section>
 <section id="random-number-generation" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="random-number-generation"><span class="header-section-number">2.6</span> Random number generation</h2>
-<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 10</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 10.6</span></a>).</p>
+<p>Users can simulate random numbers inside a model file using functions that are similar to the functions you’d normally use in R (e.g.&nbsp;<code>rnorm()</code> and <code>runif()</code>). This functionality is provided by <code>Rcpp</code> and therefore requires using the <code>Rcpp</code> plugin (see <a href="plugins.html" class="quarto-xref"><span>Chapter 11</span></a> and <a href="plugins.html#sec-plugin-rcpp" class="quarto-xref"><span>Section 11.6</span></a>).</p>
 <p><code>Rcpp</code> provides these functions inside the <code>R</code> namespace so you will have to prefix the function call with <code>R::</code>.</p>
 <p>As an example, to make a draw from Uniform (0,1)</p>
 <div class="cell">
@@ -2159,7 +2166,7 @@ we didn’t pass <code>n</code> here and <code>draw</code> is a single number (n
 <li>There are two <code>$OMEGA</code> matrices; we name them <code>IIV</code> and <code>IOV</code></li>
 <li>The IIV “etas” are labeled as <code>ECL/EVC/EKA</code>; these are aliases to <code>ETA(1)/ETA(2)/ETA(3)</code>. The <code>IOV</code> matrix is unlabeled; we must refer to <code>ETA(4)/ETA(5)</code> for this</li>
 <li>Because <code>ETA(1)</code> and <code>ETA(2)</code> are labeled, we can “capture” them as <code>ECL</code> and <code>EVC</code></li>
-<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 6.3</span></a>)</li>
+<li>We added zeros for both <code>$OMEGA</code> matrices; all the etas will be zero until we populate those matrices (<a href="matrix.html#sec-matrix-update" class="quarto-xref"><span>Section 7.3</span></a>)</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>$PARAM TVCL <span class="op">=</span> <span class="fl">1.3</span><span class="op">,</span> TVVC<span class="op">=</span><span class="dv">28</span><span class="op">,</span> TVKA<span class="op">=</span><span class="fl">0.6</span><span class="op">,</span> WT<span class="op">=</span><span class="dv">70</span><span class="op">,</span> OCC<span class="op">=</span><span class="dv">1</span></span>

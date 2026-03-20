@@ -15,9 +15,7 @@ spelling:
 	Rscript _spelling.R
 
 html: 
-	make render
-	rm -rf docs/*
-	cp -r _book/* docs/
+	quarto render --to html
 	make spelling
 
 publish:

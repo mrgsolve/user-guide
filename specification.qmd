@@ -477,6 +477,7 @@ See `?init` in the `R` help system after loading mrgsolve.
 
 __Syntax__: C++   
 __Multiple allowed__: no   
+__Options__: `@check_modeled_infusions`
 
 This code block has two main purposes:
 
@@ -509,6 +510,13 @@ RESP_0 = KIN/KOUT;
 double ke = CL/VC;
 
 ```
+
+
+Note that `@check_modeled_infusions` block option defaults to true. To turn off
+warnings from mrgsolve when checking modeled infusions against the data set 
+`RATE`, use the negation: `@!check_modeled_infusions`. mrgsolve will always 
+error when an infusion resolves to a negative rate or duration.
+
 
 ### `$PK` \ {#sec-block-pk}
 
@@ -1463,7 +1471,7 @@ root = "cppfile"
 This latter syntax may be needed when using PsN and output files are organized
 in a way different from the previous example.
 
-### Details {.unnumbered}
+#### Details {.unnumbered}
 
 Once the model object is obtained, the path to the `ext` file that formed 
 the source for imported parameters can be retrieved by coercing the 

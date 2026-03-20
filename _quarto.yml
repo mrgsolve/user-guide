@@ -15,6 +15,7 @@ book:
     - read-write.qmd
     - datasets.qmd
     - event.qmd
+    - dose-events.qmd
     - matrix.qmd
     - output.qmd
     - sequence.qmd
