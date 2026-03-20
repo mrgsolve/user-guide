@@ -2,3 +2,5 @@
 .Rproj.user
 popex-updated.mod
 popex.yaml
+
+**/*.quarto_ipynb

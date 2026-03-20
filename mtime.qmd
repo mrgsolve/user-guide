@@ -182,7 +182,7 @@ Starting with mrgsolve 1.4.1, you can also push the event object back via
 the `push` member
 
 ```{c}
-#| eval: false
+/*| eval: false */
 self.push(ev);
 ```
 

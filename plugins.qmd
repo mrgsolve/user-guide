@@ -106,6 +106,17 @@ R2 = 2.25;    // equivalent to R_CENT = 2.25;
 ALAG3 = 0.25; // equivalent to ALAG_GUT2 = 0.25; 
 ```
 
+
+
+::: {.callout-important}
+## Reserved words
+When `nm-vars` is invoked, `Fn`, `Dn`, `Rn`, and `ALAGn` become reserved symbols
+in the model, where `n` is any integer (like `1` or `12` or `9876`). 
+Specifically, this means you cannot use `D1` or `F12` as a parameter and you 
+cannot declare them as C++ variables.
+:::
+
+
 __A, A_0, DADT__
 
 - To refer to the amount in the nth compartment, use `A(n)`
@@ -156,7 +167,8 @@ There are some additional reserved words when the `nm-vars` plugin is invoked
 - `T`
 
 It is an error to use one of these symbols as the name of a parameter or 
-compartment or to try to declare them as variables. 
+compartment or to try to declare them as variables. Note that `Fn`, `Rn`, `Dn`
+and `ALAGn` also become reserved when using `nm-vars`.
 
 __mrgsolve syntax that is still required__
 
@@ -343,14 +355,14 @@ namespace provides an easier-to-remember `typedef` for that object called
 for that type. For example, to create an event object for a bolus dose
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 ```
 
 which is equivalent to 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 mrg::evdata dose evt::bolus(100, 1);
 ```
 
@@ -444,7 +456,7 @@ For example, if I want to give a dose of 100 mg infused over 2 hours, getting
 the object back prior to sending to mrgsolve
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::infuse(100, 100.0/2.0, 2); 
 ```
 
@@ -456,14 +468,14 @@ for documentation of those attributes.
 To send the event back to mrgsolve, you'll have to push it with 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 self.push(dose);
 ```
 
 or 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::push(self, dose);
 ```
 
@@ -485,7 +497,7 @@ To request a time grid over a week of simulation (168 hours), stopping
 every hour with `EVID` set to `33`, the workflow looks like:
 
 ```{c}
-#| eval: false
+/*| eval: false */
 $EVENT
 
 evt::ev obs = evt::tgrid(0, 168, 1);
@@ -500,7 +512,7 @@ stops has been encountered in the simulation
 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 $EVENT
 
 if(EVID==33) {
@@ -532,7 +544,7 @@ object the `evt` namespace provides some API for making these changes.
 Use `evt::ii()` to set a dosing interval
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::ii(dose, 12);
 self.push(dose);
@@ -551,7 +563,7 @@ self.push(dose);
 Use `evt::evid()` to set the event id for the object
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::tgrid(0, 168, 1);
 evt::evid(dose, 33);
 self.push(dose);
@@ -570,7 +582,7 @@ self.push(dose);
 Use `evt::ss()` to give the dose after advancing to steady state
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::ii(dose, 12);
 evt::ss(dose, 1);
@@ -590,7 +602,7 @@ self.push(dose);
 Use `evt::addl()` to give additional doses
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::ii(dose, 12);
 evt::ss(dose, 1);
@@ -612,7 +624,7 @@ self.push(dose);
 For example, update the dose amount, infusion rate, compartment
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::cmt(dose, 2);
 evt::amt(dose, 200);
@@ -636,7 +648,7 @@ self.push(dose);
 The `evt::retime()` function can be used to set the time attribute. 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::retime(dose, 24);
 self.push(dose);
@@ -656,7 +668,7 @@ When doses are retimed this way, the `now` attribute is forced to be `false`.
 Use `evt::now()` to set the `now` attribute to `true`
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::now(dose);
 self.push(dose);
@@ -674,7 +686,7 @@ The `evt` namespace includes a `push` function to send an event object back
 to mrgsolve. For example
 
 ```{c}
-#| eval: false
+/*| eval: false */
 evt::ev dose = evt::bolus(100, 1);
 evt::retime(dose, 24);
 evt::push(self, dose);
@@ -689,7 +701,7 @@ Use `evt::near()` to test for equality between floating put numbers. For
 example, to test if `TIME` is (about) equal to `24.5`, you can call
 
 ```{c}
-#| eval: false
+/*| eval: false */
 if(evt::near(TIME, 24.5)) { 
   // do something  
 }
@@ -750,7 +762,7 @@ Similarly, there are a set of getter functions to return these data members
 To start the dose regimen, call 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 object.execute()
 ```
 
@@ -762,7 +774,7 @@ To force the simulation to stop at the time of the next dose with `EVID` set
 to 3333, use the `flagnext()` member function
 
 ```{c}
-#| eval: false
+/*| eval: false */
 object.flagnext();
 ```
 

@@ -831,9 +831,6 @@ expression is evaluated, it will be evaluated in the model environment created
 through the `$ENV` block (@sec-block-env).
 
 
-
-
-
 ::: {.callout-tip}
 In addition to listing model variables for output in the `$CAPTURE` block,
 users can "dynamically" capture model variables through the `capture` 
@@ -2121,7 +2118,7 @@ This is a boolean variable indicating if the current record
 terminates an infusion. 
 
 ```{c}
-#| eval: false
+/*| eval: false */
 $ERROR
 
 if(END_OF_INFUSION) {
@@ -2130,7 +2127,8 @@ if(END_OF_INFUSION) {
 ```
 
 ### `F_CMT` \ {#sec-spec-f}
-For the `CMT` compartment, sets the bioavailability fraction for that compartment. 
+For the `CMT` compartment, sets the bioavailability fraction for that 
+compartment. 
 
 Example:
 ```{c,eval=FALSE}
@@ -2138,17 +2136,10 @@ $MAIN
 F_CENT = 0.7;
 ```
 
-### `ALAG_CMT` \ {#sec-spec-alag}
-For the `CMT` compartment, sets the lag time for doses into that compartment. 
+### `Fn`
+Only available when the `nm-vars` plugin (@sec-plugin-nm-vars) is invoked; 
+see `F_CMT`.
 
-Example:
-```{c,eval=FALSE}
-$MAIN
-ALAG_GUT = 0.25;
-```
-
-Starting with mrgsolve version 1.6.1, `ALAG_CMT` is available in `$MAIN`
-(`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
 
 ### `R_CMT` \ {#sec-spec-r}
 For the `CMT` compartment, sets the infusion rate for that compartment.  The
@@ -2162,7 +2153,9 @@ R_CENT = 100;
 ```
 
 ### `Rn`
-Only available when the `nm-vars` plugin is invoked; see `R_CMT`.
+Only available when the `nm-vars` plugin (@sec-plugin-nm-vars) is invoked; 
+see `R_CMT`.
+
 
 ### `D_CMT` \ {#sec-spec-d}
 For the `CMT` compartment, sets the infusion duration for that compartment.  
@@ -2177,6 +2170,28 @@ D_CENT = 2;
 
 Starting with mrgsolve version 1.6.1, `D_CMT` is available in `$MAIN`
 (`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
+
+### `Dn`
+Only available when the `nm-vars` plugin (@sec-plugin-nm-vars) is invoked; 
+see `D_CMT`.
+
+### `ALAG_CMT` \ {#sec-spec-alag}
+For the `CMT` compartment, sets the lag time for doses into that compartment. 
+
+Example:
+```{c,eval=FALSE}
+$MAIN
+ALAG_GUT = 0.25;
+```
+
+Starting with mrgsolve version 1.6.1, `ALAG_CMT` is available in `$MAIN`
+(`$PK)`, `$TABLE` (`$ERROR`), `$EVENT` and `$PRED` blocks. 
+
+
+### `ALAGn`
+Only available when the `nm-vars` plugin (@sec-plugin-nm-vars) is invoked; 
+see `ALAG_CMT`.
+
 
 ### NONMEM-like syntax
 
