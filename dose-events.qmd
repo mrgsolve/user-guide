@@ -1,0 +1,140 @@
+
+# Dose events {#dose-events-chapter}
+
+```{r, include = FALSE}
+source("setup.R")
+```
+
+mrgsolve can implement both bolus and infusion doses. Ordinarily, this is 
+accomplished through an input data set (@sec-data-set-chapter and 
+@sec-event-chapter). Doses can also be implemented from within the model 
+itself (@sec-plugin-evtools). 
+
+
+## Bolus dose
+
+A bolus dose is implemented by adding the dose amount to the indicated 
+compartment. To implement a bolus dose, use event ID `1`. 
+
+```{r}
+#| message: false
+mod <- modlib("pk1cmt", end = 72, delta = 0.1)
+
+dose <- ev(time = 10, evid = 1, amt = 100, cmt = 1)
+
+mrgsim(mod, dose) %>% plot()
+  
+```
+
+In this example, to give the dose at 10 hours, the system is advanced to the 
+time of the dose record and the 100 unit dose amount is added to the first 
+compartment. Before the problem continues, the ODE solver is reset, creating 
+a discontinuity in the simulation. Specifically, the solver restarts with a 
+new initial value (the amount already in `EV` at the time of the dose plus
+the added dose amount). 
+
+::: {.callout-note}
+# Event object construction
+In the previous example, we specified each argument in the `ev()` 
+constructor. All of the arguments were specified at their default values 
+(e.g., `time = 0`, `evid = 1`) for clarity. The same event object can be 
+created with 
+
+```{r}
+#| eval: false
+dose <- ev(amt = 100)
+```
+
+See @sec-event-chapter for more information.
+:::
+
+
+## Intermittent infusion dose
+
+To implement a single, intermittent infusion dose, specify the `rate` in the 
+data set or event object. We can convert the previous bolus dose as an 
+infusion like this
+
+```{r}
+dose <- ev(time = 10, evid = 1, amt = 100, rate = 10, cmt = 1)
+
+mrgsim(mod, dose) %>% plot()
+```
+
+Because there was a 100 mg dose infused at a rate of 10 mg/hr, the duration 
+of the infusion is 10 hours. In this case, mrgsolve integrates up to the time 
+of the infusion dose and starts a zero-order infusion at the specified rate. 
+At the time the dose is started, mrgsolve schedules another event to turn the 
+infusion off. Discontinuities (ODE solver resets) are introduced in the
+simulation at the times when infusions start or end.
+
+While infusions are sometimes thought of as extra-vascular administration 
+(like an IV infusion), these doses can be administered to any compartment in 
+the model. 
+
+This is an intermittent dose because it has a definite start and end time.
+
+### Modeled infusion rate and duration
+
+In certain cases, we'd like to model the infusion rate or the infusion duration.
+In that case, we cannot specify `rate` in the data set prior to the simulation;
+it must be set in the model itself. 
+
+To do this, enter the infusion rate or duration in the `$PK` block. We'll 
+expand the example to model the duration of an infusion over 20 hours. We 
+write the model with `D_DEPOT = 20;` to indicate that any infusion in to the 
+`DEPOT` compartment should have a duration of 20 hours. 
+
+
+```{r}
+#| message: false
+
+code <- '
+$PARAM CL = 1, V = 20, KA = 1
+$PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+$PK
+D_DEPOT = 20;
+'
+
+mod <- mcode("dose-events-1", code, end = 72, delt = 0.1)
+```
+
+To model the infusion rate, use `R_DEPOT = 5;` to get a duration of 20 hours 
+for 100 mg dose.
+
+
+::: {.callout-note}
+`R_DEPOT` and `D_DEPOT` are the original variables to set for modeling infusion
+rate and duration, respectively. NONMEM uses `Rn` and `Dn` instead, where 
+`n` is the compartment number (i.e. `R1` and `D1`). To use this syntax instead,
+you need to invoke the `nm-vars` plugin (@sec-plugin-nm-vars).
+:::
+
+When modeling the infusion duration or rate, you must set `RATE` to `-1` 
+(modeled infusion rate) or `-2` (modeled infusion duration) in your input 
+data set or event object. In our case we modify the `rate` item in the event 
+object to `-2` because we are modeling the infusion duration.
+
+```{r}
+dose_d <- mutate(dose, rate = -2)
+
+mrgsim(mod, dose_d) %>% plot()
+```
+
+mrgsolve will warn you if you have not provided a `RATE` data item that is 
+consistent with your model. So, we would get warned if we forgot to set 
+`RATE = -2`.
+
+```{r}
+out <- mrgsim(mod, dose)
+```
+
+Note that it is not unreasonable to request either / both bolus or infusion 
+doses into a compartment with a modeled infusion duration or rate. To enable 
+this behavior, you can either write logic into `$PK` that detects the dose
+type and set either `R_CMT` or `D_CMT` to a positive number for an infusion
+or 0 for bolus; this will silence the warning from mrgsolve. A more global 
+option is to set the `@!check_modeled_infusions` option on the `$PK` (or 
+`$MAIN`) block. 
+
+
