@@ -92,11 +92,12 @@ write the model with `D_DEPOT = 20;` to indicate that any infusion in to the
 code <- '
 $PARAM CL = 1, V = 20, KA = 1
 $PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+
 $PK
 D_DEPOT = 20;
 '
 
-mod <- mcode("dose-events-1", code, end = 72, delt = 0.1)
+mod <- mcode_cache("dose-events-1", code, end = 72, delta = 0.1)
 ```
 
 To model the infusion rate, use `R_DEPOT = 5;` to get a duration of 20 hours 
@@ -137,4 +138,188 @@ or 0 for bolus; this will silence the warning from mrgsolve. A more global
 option is to set the `@!check_modeled_infusions` option on the `$PK` (or 
 `$MAIN`) block. 
 
+
+
+## Bioavailability 
+
+### Bolus dose
+
+When you specify a bioavailability factor for bolus doses, mrgsolve multiplies
+the dose amount by that factor just before administering the dose. 
+
+To illustrate, we code a model with `F = 0.5` through a parameter named `BA`.
+
+```{r}
+#| message: false
+
+code <- '
+$PARAM CL = 1, V = 20, KA = 1, BA = 0.5
+$PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+
+$PK
+F_DEPOT = BA;
+'
+
+mod <- mcode_cache("dose-events-2", code, end = 72, delta = 0.1)
+```
+
+In the bolus dose case, this will be as if we had given 50 mg rather than 
+100 mg.
+
+```{r}
+dose <- ev(amt = 100, time = 10) 
+
+mrgsim(mod, dose) %>% plot()
+```
+
+Note that `F_CMT` can be greater than 1. In this case, you can _increase_ the 
+effective dose administered.
+
+::: {.callout-note}
+To get the NONMEM-like syntax `F1` or `F3` for bioavailability, invoke the 
+`nm-vars` plugin (@sec-plugin-nm-vars).
+:::
+
+### Infusion dose
+
+When you specify a bioavailability factor for an infusion, mrgsolve again 
+multiplies the dose amount by the bioavailability factor. When you have given 
+and infusion rate or modeled the rate, changing the bioavailability factor from 
+1 will _change the duration of the infusion_: setting `F_CMT` less than 1 will
+reduce the infusion duration and setting `F_CMT` greater than 1 will increase 
+the duration of the infusion. 
+
+We use the same model and do sensitivity analysis on `BA` to look at how 
+infusion duration change when rate is fixed.
+
+```{r}
+#| message: false
+
+code <- '
+$PARAM CL = 1, V = 20, KA = 1, BA = 0.5
+$PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+
+$PK
+F_DEPOT = BA;
+'
+
+mod <- mcode_cache("dose-events-2", code, end = 72, delta = 0.1)
+```
+
+
+The key here is that we fix `RATE` to 10 in the data / event object.
+
+```{r}
+dose <- ev(amt = 100, time = 10, rate = 10) 
+
+idata <- expand.idata(BA = c(1.5, 1, 0.5))
+
+out <- mrgsim_ei(mod, dose, idata, end = 40, recover = "BA")
+
+plot(out, DEPOT ~ time |factor(BA), scales = list(y = list(relation = "same")))
+```
+
+When you model the infusion duration, the infusion will run for that duration
+regardless of the bioavailability.
+
+```{r}
+#| message: false
+
+code <- '
+$PARAM CL = 1, V = 20, KA = 1, BA = 0.5
+$PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+
+$PK
+D_DEPOT = 20;
+F_DEPOT = BA;
+'
+
+mod <- mcode_cache("dose-events-3", code, end = 40, delta = 0.1)
+
+```
+
+
+Be sure to use `rate = -2` in the data set.
+
+```{r}
+dose <- ev(amt = 100, time = 10, rate = -2) 
+
+out <- mrgsim_ei(mod, dose, idata, end = 40, recover = "BA")
+
+plot(out, DEPOT ~ time | factor(BA), scales = list(y = list(relation = "same")))
+```
+
+With the duration fixed, reducing the bioavailability reduces the maximum
+concentration from the dose.
+
+## Lag time
+
+Adding a lag time to your model simply pushes the effective time of dose
+administration into the future. This example sets the lag time of 5 hours. 
+
+```{r}
+#| message: false
+
+code <- '
+$PARAM CL = 1, V = 20, KA = 1, LT = 5
+$PKMODEL cmt = "DEPOT,CENT", depot = TRUE
+
+$PK
+ALAG_DEPOT = LT;
+'
+
+mod <- mcode_cache("dose-events-4", code, end = 40, delta = 0.1)
+```
+
+::: {.callout-note}
+To get the NONMEM-like syntax `ALAG1` or `ALAG3` for bioavailability, invoke the 
+`nm-vars` plugin (@sec-plugin-nm-vars).
+:::
+
+
+```{r}
+dose <- ev(amt = 100, time = 10)
+
+mrgsim(mod, dose) %>% plot("DEPOT")
+```
+
+Lag times work the same for bolus doses and intermittent infusions.
+
+## Steady-state infusion
+
+A steady-state infusion is a single, infinitely long infusion at a specified 
+rate. For example, you start a zero-order infusion at a given rate and keep 
+it running at that rate out to steady state. You can do that in mrgsolve by 
+specifying the infusion rate with the `SS = 1` flag, but zero in `AMT`. 
+
+
+```{r}
+mod <- modlib("pk1cmt", end = 48, delta = 0.1, start = 0.1)
+
+dose <- ev(amt = 0, rate = 10, ss = 1, cmt = 2)
+
+mrgsim(mod, dose) %>% plot()
+```
+
+Notice that `CP` is 10 at `time = 0`. This is because we gave a 10 mg/h 
+infusion and clearance was `r mod$CL`. Then the steady state concentration 
+should be `r dose$rate / mod$CL`.
+
+```{r}
+dose$rate / mod$CL
+```
+
+The steady-state infusion dose record just gets to Css at the time of the
+record. If additional doses are desired, they need to be coded into the data
+set after the steady state infusion record.
+
+Let's reduce clearance to check.
+
+```{r}
+mod <- param(mod, CL = 0.5)
+
+mrgsim(mod, dose) %>% plot()
+```
+
+Now, we get the expected Css of 20 mg/L.
 

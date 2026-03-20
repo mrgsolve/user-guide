@@ -256,6 +256,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#modeled-infusion-rate-and-duration" id="toc-modeled-infusion-rate-and-duration" class="nav-link" data-scroll-target="#modeled-infusion-rate-and-duration"><span class="header-section-number">6.2.1</span> Modeled infusion rate and duration</a></li>
   </ul></li>
+  <li><a href="#bioavailability" id="toc-bioavailability" class="nav-link" data-scroll-target="#bioavailability"><span class="header-section-number">6.3</span> Bioavailability</a>
+  <ul class="collapse">
+  <li><a href="#bolus-dose-1" id="toc-bolus-dose-1" class="nav-link" data-scroll-target="#bolus-dose-1"><span class="header-section-number">6.3.1</span> Bolus dose</a></li>
+  <li><a href="#infusion-dose" id="toc-infusion-dose" class="nav-link" data-scroll-target="#infusion-dose"><span class="header-section-number">6.3.2</span> Infusion dose</a></li>
+  </ul></li>
+  <li><a href="#lag-time" id="toc-lag-time" class="nav-link" data-scroll-target="#lag-time"><span class="header-section-number">6.4</span> Lag time</a></li>
+  <li><a href="#steady-state-infusion" id="toc-steady-state-infusion" class="nav-link" data-scroll-target="#steady-state-infusion"><span class="header-section-number">6.5</span> Steady-state infusion</a></li>
   </ul>
 </nav>
     </div>
@@ -344,11 +351,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20, KA = 1</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL cmt = "DEPOT,CENT", depot = TRUE</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">D_DEPOT = 20;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode</span>(<span class="st">"dose-events-1"</span>, code, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">delt =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">D_DEPOT = 20;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode_cache</span>(<span class="st">"dose-events-1"</span>, code, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To model the infusion rate, use <code>R_DEPOT = 5;</code> to get a duration of 20 hours for 100 mg dose.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -388,9 +396,200 @@ Note
 </div>
 </div>
 <p>Note that it is not unreasonable to request either / both bolus or infusion doses into a compartment with a modeled infusion duration or rate. To enable this behavior, you can either write logic into <code>$PK</code> that detects the dose type and set either <code>R_CMT</code> or <code>D_CMT</code> to a positive number for an infusion or 0 for bolus; this will silence the warning from mrgsolve. A more global option is to set the <code>@!check_modeled_infusions</code> option on the <code>$PK</code> (or <code>$MAIN</code>) block.</p>
-
-
 </section>
+</section>
+<section id="bioavailability" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="bioavailability"><span class="header-section-number">6.3</span> Bioavailability</h2>
+<section id="bolus-dose-1" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="bolus-dose-1"><span class="header-section-number">6.3.1</span> Bolus dose</h3>
+<p>When you specify a bioavailability factor for bolus doses, mrgsolve multiplies the dose amount by that factor just before administering the dose.</p>
+<p>To illustrate, we code a model with <code>F = 0.5</code> through a parameter named <code>BA</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20, KA = 1, BA = 0.5</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL cmt = "DEPOT,CENT", depot = TRUE</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">F_DEPOT = BA;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode_cache</span>(<span class="st">"dose-events-2"</span>, code, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In the bolus dose case, this will be as if we had given 50 mg rather than 100 mg.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">time =</span> <span class="dv">10</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, dose) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note that <code>F_CMT</code> can be greater than 1. In this case, you can <em>increase</em> the effective dose administered.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To get the NONMEM-like syntax <code>F1</code> or <code>F3</code> for bioavailability, invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>).</p>
+</div>
+</div>
+</section>
+<section id="infusion-dose" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="infusion-dose"><span class="header-section-number">6.3.2</span> Infusion dose</h3>
+<p>When you specify a bioavailability factor for an infusion, mrgsolve again multiplies the dose amount by the bioavailability factor. When you have given and infusion rate or modeled the rate, changing the bioavailability factor from 1 will <em>change the duration of the infusion</em>: setting <code>F_CMT</code> less than 1 will reduce the infusion duration and setting <code>F_CMT</code> greater than 1 will increase the duration of the infusion.</p>
+<p>We use the same model and do sensitivity analysis on <code>BA</code> to look at how infusion duration change when rate is fixed.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20, KA = 1, BA = 0.5</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL cmt = "DEPOT,CENT", depot = TRUE</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">F_DEPOT = BA;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode_cache</span>(<span class="st">"dose-events-2"</span>, code, <span class="at">end =</span> <span class="dv">72</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The key here is that we fix <code>RATE</code> to 10 in the data / event object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">time =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="dv">10</span>) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>idata <span class="ot">&lt;-</span> <span class="fu">expand.idata</span>(<span class="at">BA =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="dv">1</span>, <span class="fl">0.5</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_ei</span>(mod, dose, idata, <span class="at">end =</span> <span class="dv">40</span>, <span class="at">recover =</span> <span class="st">"BA"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, DEPOT <span class="sc">~</span> time <span class="sc">|</span><span class="fu">factor</span>(BA), <span class="at">scales =</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">list</span>(<span class="at">relation =</span> <span class="st">"same"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When you model the infusion duration, the infusion will run for that duration regardless of the bioavailability.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20, KA = 1, BA = 0.5</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL cmt = "DEPOT,CENT", depot = TRUE</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">D_DEPOT = 20;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">F_DEPOT = BA;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode_cache</span>(<span class="st">"dose-events-3"</span>, code, <span class="at">end =</span> <span class="dv">40</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Be sure to use <code>rate = -2</code> in the data set.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">time =</span> <span class="dv">10</span>, <span class="at">rate =</span> <span class="sc">-</span><span class="dv">2</span>) </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">mrgsim_ei</span>(mod, dose, idata, <span class="at">end =</span> <span class="dv">40</span>, <span class="at">recover =</span> <span class="st">"BA"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(out, DEPOT <span class="sc">~</span> time <span class="sc">|</span> <span class="fu">factor</span>(BA), <span class="at">scales =</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">list</span>(<span class="at">relation =</span> <span class="st">"same"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With the duration fixed, reducing the bioavailability reduces the maximum concentration from the dose.</p>
+</section>
+</section>
+<section id="lag-time" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="lag-time"><span class="header-section-number">6.4</span> Lag time</h2>
+<p>Adding a lag time to your model simply pushes the effective time of dose administration into the future. This example sets the lag time of 5 hours.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">$PARAM CL = 1, V = 20, KA = 1, LT = 5</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">$PKMODEL cmt = "DEPOT,CENT", depot = TRUE</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">$PK</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">ALAG_DEPOT = LT;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">'</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">mcode_cache</span>(<span class="st">"dose-events-4"</span>, code, <span class="at">end =</span> <span class="dv">40</span>, <span class="at">delta =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To get the NONMEM-like syntax <code>ALAG1</code> or <code>ALAG3</code> for bioavailability, invoke the <code>nm-vars</code> plugin (<a href="plugins.html#sec-plugin-nm-vars" class="quarto-xref"><span>Section 11.2</span></a>).</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">100</span>, <span class="at">time =</span> <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, dose) <span class="sc">%&gt;%</span> <span class="fu">plot</span>(<span class="st">"DEPOT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lag times work the same for bolus doses and intermittent infusions.</p>
+</section>
+<section id="steady-state-infusion" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="steady-state-infusion"><span class="header-section-number">6.5</span> Steady-state infusion</h2>
+<p>A steady-state infusion is a single, infinitely long infusion at a specified rate. For example, you start a zero-order infusion at a given rate and keep it running at that rate out to steady state. You can do that in mrgsolve by specifying the infusion rate with the <code>SS = 1</code> flag, but zero in <code>AMT</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">modlib</span>(<span class="st">"pk1cmt"</span>, <span class="at">end =</span> <span class="dv">48</span>, <span class="at">delta =</span> <span class="fl">0.1</span>, <span class="at">start =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>. Loading model from cache.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">amt =</span> <span class="dv">0</span>, <span class="at">rate =</span> <span class="dv">10</span>, <span class="at">ss =</span> <span class="dv">1</span>, <span class="at">cmt =</span> <span class="dv">2</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, dose) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that <code>CP</code> is 10 at <code>time = 0</code>. This is because we gave a 10 mg/h infusion and clearance was 1. Then the steady state concentration should be 10.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dose<span class="sc">$</span>rate <span class="sc">/</span> mod<span class="sc">$</span>CL</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] 10</code></pre>
+</div>
+</div>
+<p>The steady-state infusion dose record just gets to Css at the time of the record. If additional doses are desired, they need to be coded into the data set after the steady state infusion record.</p>
+<p>Let’s reduce clearance to check.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">param</span>(mod, <span class="at">CL =</span> <span class="fl">0.5</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mrgsim</span>(mod, dose) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="dose-events_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, we get the expected Css of 20 mg/L.</p>
+
+
 </section>
 
 </main> <!-- /main -->
