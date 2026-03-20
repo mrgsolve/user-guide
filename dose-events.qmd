@@ -272,7 +272,7 @@ mod <- mcode_cache("dose-events-4", code, end = 40, delta = 0.1)
 ```
 
 ::: {.callout-note}
-To get the NONMEM-like syntax `ALAG1` or `ALAG3` for bioavailability, invoke the 
+To get the NONMEM-like syntax `ALAG1` or `ALAG3` for lag times, invoke the 
 `nm-vars` plugin (@sec-plugin-nm-vars).
 :::
 

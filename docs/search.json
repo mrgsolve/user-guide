@@ -34,7 +34,7 @@
     "href": "index.html#other-resources",
     "title": "mrgsolve user guide",
     "section": "Other Resources",
-    "text": "Other Resources\n\nMain resource page: mrgsolve.github.io\nVignettes: mrgsolve.github.io/vignettes\nR documentation: mrgsolve.github.io/docs\nGallery: github.com/mrgsolve/gallery\n\n\nThis book was assembled on Fri Mar 20 12:53:52 2026 with mrgsolve version 1.7.2.",
+    "text": "Other Resources\n\nMain resource page: mrgsolve.github.io\nVignettes: mrgsolve.github.io/vignettes\nR documentation: mrgsolve.github.io/docs\nGallery: github.com/mrgsolve/gallery\n\n\nThis book was assembled on Fri Mar 20 13:11:36 2026 with mrgsolve version 1.7.2.",
     "crumbs": [
       "Introduction"
     ]
@@ -404,7 +404,7 @@
     "href": "dose-events.html#lag-time",
     "title": "6  Dose events",
     "section": "6.4 Lag time",
-    "text": "6.4 Lag time\nAdding a lag time to your model simply pushes the effective time of dose administration into the future. This example sets the lag time of 5 hours.\n\ncode &lt;- '\n$PARAM CL = 1, V = 20, KA = 1, LT = 5\n$PKMODEL cmt = \"DEPOT,CENT\", depot = TRUE\n\n$PK\nALAG_DEPOT = LT;\n'\n\nmod &lt;- mcode_cache(\"dose-events-4\", code, end = 40, delta = 0.1)\n\n\n\n\n\n\n\nNote\n\n\n\nTo get the NONMEM-like syntax ALAG1 or ALAG3 for bioavailability, invoke the nm-vars plugin (Section 11.2).\n\n\n\ndose &lt;- ev(amt = 100, time = 10)\n\nmrgsim(mod, dose) %&gt;% plot(\"DEPOT\")\n\n\n\n\n\n\n\n\nLag times work the same for bolus doses and intermittent infusions.",
+    "text": "6.4 Lag time\nAdding a lag time to your model simply pushes the effective time of dose administration into the future. This example sets the lag time of 5 hours.\n\ncode &lt;- '\n$PARAM CL = 1, V = 20, KA = 1, LT = 5\n$PKMODEL cmt = \"DEPOT,CENT\", depot = TRUE\n\n$PK\nALAG_DEPOT = LT;\n'\n\nmod &lt;- mcode_cache(\"dose-events-4\", code, end = 40, delta = 0.1)\n\n\n\n\n\n\n\nNote\n\n\n\nTo get the NONMEM-like syntax ALAG1 or ALAG3 for lag times, invoke the nm-vars plugin (Section 11.2).\n\n\n\ndose &lt;- ev(amt = 100, time = 10)\n\nmrgsim(mod, dose) %&gt;% plot(\"DEPOT\")\n\n\n\n\n\n\n\n\nLag times work the same for bolus doses and intermittent infusions.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Dose events</span>"
     ]
