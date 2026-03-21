@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#bolus-dose" id="toc-bolus-dose" class="nav-link active" data-scroll-target="#bolus-dose"><span class="header-section-number">6.1</span> Bolus dose</a></li>
-  <li><a href="#intermittent-infusion-dose" id="toc-intermittent-infusion-dose" class="nav-link" data-scroll-target="#intermittent-infusion-dose"><span class="header-section-number">6.2</span> Intermittent infusion dose</a>
+  <li><a href="#intermittent-infusion" id="toc-intermittent-infusion" class="nav-link" data-scroll-target="#intermittent-infusion"><span class="header-section-number">6.2</span> Intermittent infusion</a>
   <ul class="collapse">
   <li><a href="#modeled-infusion-rate-and-duration" id="toc-modeled-infusion-rate-and-duration" class="nav-link" data-scroll-target="#modeled-infusion-rate-and-duration"><span class="header-section-number">6.2.1</span> Modeled infusion rate and duration</a></li>
   </ul></li>
@@ -325,8 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="intermittent-infusion-dose" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="intermittent-infusion-dose"><span class="header-section-number">6.2</span> Intermittent infusion dose</h2>
+<section id="intermittent-infusion" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="intermittent-infusion"><span class="header-section-number">6.2</span> Intermittent infusion</h2>
 <p>To implement a single, intermittent infusion dose, specify the <code>rate</code> in the data set or event object. We can convert the previous bolus dose as an infusion like this</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">time =</span> <span class="dv">10</span>, <span class="at">evid =</span> <span class="dv">1</span>, <span class="at">amt =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="dv">10</span>, <span class="at">cmt =</span> <span class="dv">1</span>)</span>
@@ -392,7 +392,7 @@ Note
 <pre><code>. Warning in (function (x, data, idata = no_idata_set(), carry_out = carry.out, :
 . [mrgsolve] RATE is not -2 on a dosing record with modeled infusion duration;
 . either set the modeled duration to zero or use the `@!check_modeled_infusions`
-. block option for $MAIN/$PK to slience this warning.</code></pre>
+. block option for $MAIN/$PK to silence this warning.</code></pre>
 </div>
 </div>
 <p>Note that it is not unreasonable to request either / both bolus or infusion doses into a compartment with a modeled infusion duration or rate. To enable this behavior, you can either write logic into <code>$PK</code> that detects the dose type and set either <code>R_CMT</code> or <code>D_CMT</code> to a positive number for an infusion or 0 for bolus; this will silence the warning from mrgsolve. A more global option is to set the <code>@!check_modeled_infusions</code> option on the <code>$PK</code> (or <code>$MAIN</code>) block.</p>

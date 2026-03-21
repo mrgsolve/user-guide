@@ -49,7 +49,7 @@ See @sec-event-chapter for more information.
 :::
 
 
-## Intermittent infusion dose
+## Intermittent infusion
 
 To implement a single, intermittent infusion dose, specify the `rate` in the 
 data set or event object. We can convert the previous bolus dose as an 
