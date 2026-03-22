@@ -5,6 +5,7 @@ execute:
   freeze: auto  # re-render only when source changes
 book:
   title: "mrgsolve user guide"
+  favicon: images/MRG-Solve-Hex.png
   author: "Kyle Baron"
   date: "today"
   date-format: long
