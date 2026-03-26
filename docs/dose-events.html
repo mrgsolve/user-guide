@@ -328,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="intermittent-infusion" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="intermittent-infusion"><span class="header-section-number">6.2</span> Intermittent infusion</h2>
-<p>To implement a single, intermittent infusion dose, specify the <code>rate</code> in the data set or event object. We can convert the previous bolus dose as an infusion like this</p>
+<p>To implement a single, zero-order, intermittent infusion dose, specify a <code>rate</code> in the data set or event object for the dose. We can convert the previous bolus dose as an infusion like this</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dose <span class="ot">&lt;-</span> <span class="fu">ev</span>(<span class="at">time =</span> <span class="dv">10</span>, <span class="at">evid =</span> <span class="dv">1</span>, <span class="at">amt =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="dv">10</span>, <span class="at">cmt =</span> <span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
